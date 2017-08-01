@@ -1,0 +1,23 @@
+﻿@using EGH01DB.Objects;
+@using EGH01DB.Primitives;
+@using EGH01.Core;
+@using EGH01.Models.EGHCEQ;
+@using EGH01;
+@model EGH01DB.CEQContext
+@{
+      Layout = "~/Views/Shared/EGHLayout.cshtml";
+      EGH01DB.CEQContext ceq = (EGH01DB.CEQContext)Model;
+      CEQViewContext context = null;
+      if (Model != null)
+      {
+          context = (CEQViewContext)Model.GetViewContext(CEQViewContext.VIEWNAME);
+          if (context == null) { Model.SaveViewContext(CEQViewContext.VIEWNAME, context = new CEQViewContext()); };
+      }   
+         
+      
+}
+
+@if (Model != null &&  context.ecoevalution!= null)
+{
+  @Html.Partial("_ConfirmChoiceForecastResult", @Model)
+}

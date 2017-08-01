@@ -1,0 +1,7 @@
+<WaterCleaningMethodList>
+  <WaterCleaningMethod type_code="1" name="Механические" method_description="Откачка нефтепродуктов с зеркала грунтовых вод" />
+  <WaterCleaningMethod type_code="2" name="Механические" method_description="Откачка загрязненных грунтовых вод по методу «гидродинамических ловушек» " />
+  <WaterCleaningMethod type_code="3" name="Механические" method_description=" Гравитационное вытеснение" />
+  <WaterCleaningMethod type_code="4" name="Механические" method_description=" Устройство противофильтрационных завес (стена в грунте)" />
+  <WaterCleaningMethod type_code="5" name=" Механические" method_description=" Барбатирование воздухом" />
+</WaterCleaningMethodList>

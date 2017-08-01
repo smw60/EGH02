@@ -1,0 +1,444 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+
+.top_name
+{
+    color: #037205;
+    font-size: 1.6em;
+    font-weight: 500;
+    padding: 10px 0;
+}
+.logo
+{
+    width: 56px;
+    float: right;
+}
+
+.bg
+{
+    background: url(../Resources/server.jpg);
+    width: 100%;
+    height: 500px;
+    position: absolute;
+    z-index: -1;
+    background-size: cover;
+}
+.bstu
+{
+    color: #fff;
+    font-size: 2em;
+    text-align: center;
+    padding: 100px 0;
+    font-weight: 500;
+}
+.large_letter
+{
+    font-size: 3em;
+}
+.holder
+{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    width: 95%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.holder_ppl
+{
+    padding: 25px;
+    overflow: hidden;
+}
+.ppl_card
+{
+    float: left;
+    width: 19%;
+    background-size: cover;
+    margin: 0 0.5%;
+    overflow: hidden;
+}
+.ph_holder
+{
+    overflow: hidden;
+      background: #000;
+}
+.ppl_1
+{
+    background: url(../Resources/1.jpg);
+    background-size: cover;
+}
+.photo
+{
+    width: 100%;
+    float: left;
+    -webkit-transition: all 0.2s cubic-bezier(.25,.8,.25,1);
+    transition: all 0.2s cubic-bezier(.25,.8,.25,1);
+}
+.ppl_card:hover .photo
+{
+    opacity: 0.2;
+}
+.info
+{
+    z-index: 999;
+    width: 100%;
+    color: #fff;
+    margin: -45px 0 0 0;
+    visibility: hidden;
+    -webkit-transition: all 0.1s cubic-bezier(.25,.8,.25,1);
+    transition: all 0.1s cubic-bezier(.25,.8,.25,1);
+    padding-bottom: 15px;
+}
+.ppl_card:hover .info
+{
+    visibility: visible;
+}
+.tel
+{
+    text-align: center;
+}
+.mail
+{
+    text-align: center;
+}
+.ppl_name
+{
+    text-align: center;
+    color: #037205;
+    font-weight: 600;
+    font-size: 1.3em;
+}
+.ppl_position
+{
+    text-align: center;
+    color: grey;
+    font-size: 0.9em;
+    padding: 0 0 25px 0;
+}
+
+.contact_text
+{
+    text-align: center;
+    color: #037205;
+    font-size: 2em;
+    font-weight: 500;
+}
+.contact_line
+{
+    width: 100%;
+    border-bottom: 1px solid grey;
+}
+.mail_b
+{
+    text-decoration: none;
+}
+.contact_mail
+{
+    text-decoration: none;
+    text-align: center;
+    color: #037205;
+    font-size: 2em;
+    font-weight: 500;
+}
+
+/* Bootstrap grids */
+.container {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 1200px;
+        box-sizing: border-box;
+    }
+    .row {
+        border: #9b59b6;
+        overflow: hidden;
+    }
+    .col-12 {
+        float: left;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .col-11 {
+        float: left;
+        width: 91.66666667%;
+        box-sizing: border-box;
+    }
+    .col-10 {
+        float: left;
+        width: 83.33333333%;
+        box-sizing: border-box;
+    }
+    .col-9 {
+        float: left;
+        width: 75%;
+        box-sizing: border-box;
+    }
+    .col-8 {
+        float: left;
+        width: 66.66666667%;
+        box-sizing: border-box;
+    }
+    .col-7 {
+        float: left;
+        width: 58.33333333%;
+        box-sizing: border-box;
+    }
+    .col-6 {
+        float: left;
+        width: 50%;
+        box-sizing: border-box;
+    }
+    .col-5 {
+        float: left;
+        width: 41.66666667%;
+        box-sizing: border-box;
+    }
+    .col-4 {
+        float: left;
+        width: 33.33333333%;
+        box-sizing: border-box;
+    }
+    .col-4-c {
+        
+        margin: 100px auto 100px auto;
+        width: 33.33333333%;
+        box-sizing: border-box;
+    }
+    .col-3 {
+        float: left;
+        width: 25%;
+        box-sizing: border-box;
+    }
+    .col-2 {
+        float: left;
+        width: 16.66666667%;
+        box-sizing: border-box;
+    }
+    .col-1 {
+        float: left;
+        width: 8.33333333%;
+        box-sizing: border-box;
+    }
+
+@media all and (max-width: 1200px)
+{
+   .top_name
+    {
+        margin: 0 0 0 10px;
+    }
+}
+@media all and (max-width: 1120px)
+{
+    body
+    {
+        font-size: 14px;
+    }
+    .info
+    {
+    margin: -40px 0 0 0;
+    padding-bottom: 7px;
+    }
+    .top_name
+    {
+    padding: 15px 0;
+    }
+    .info
+    {
+    margin: -43px 0 0 0;
+    padding-bottom: 15px;
+    }
+}
+@media all and (max-width: 988px)
+{
+    body
+    {
+        font-size: 12px;
+    }
+    .info
+    {
+    margin: -35px 0 0 0;
+    padding-bottom: 10px;
+    }
+    .top_name
+    {
+    padding: 10px 0;
+    }
+    .logo
+    {
+    width: 40px;
+    float: right;
+    }
+}
+@media all and (max-width: 856px)
+{
+    body
+    {
+        font-size: 10px;
+    }
+    .info
+    {
+    margin: -30px 0 0 0;
+    padding-bottom: 7px;
+    }
+    .bstu
+    {
+    padding: 50px 0;
+    }
+    .bg
+    {
+        height: 300px;
+    }
+    .col-4-c 
+    {
+     margin: 70px auto 70px auto;
+    }
+}
+@media all and (max-width: 750px)
+{
+    body
+    {
+        font-size: 10px;
+    }
+    .info
+    {
+    margin: -30px 0 0 0;
+    padding-bottom: 10px;
+    }
+    .ppl_card
+    {
+    width: 24%;
+    margin: 0 0.5%;
+    }
+    .margin_2
+    {
+        margin: 0 0 0 25.5%;
+    }
+    .ppl_position
+    {
+    padding: 0 0 15px 0;
+    }
+}
+@media all and (max-width: 582px)
+{
+    body
+    {
+        font-size: 10px;
+    }
+    .info
+    {
+    margin: -30px 0 0 0;
+    padding-bottom: 7px;
+    }
+    .ppl_card
+    {
+    width: 32%;
+    margin: 0 0.5%;
+    }
+    .margin_1
+    {
+        margin: 0 0 0 33%;
+    }
+    .bstu
+    {
+        font-size: 1.5em;
+    }
+    .col-4-c
+    {
+        width: 40%;
+    }
+    .bg
+    {
+        height: 250px;
+    }
+      .ppl_position
+    {
+    padding: 0 0 10px 0;
+    }
+}
+@media all and (max-width: 460px)
+{
+    body
+    {
+        font-size: 8px;
+    }
+    .info
+    {
+    margin: -25px 0 0 0;
+    padding-bottom: 7px;
+    }
+    .bg
+    {
+        height: 180px;
+    }
+    .bstu
+    {
+        padding: 30px 0;
+    }
+
+}
+@media all and (max-width: 382px)
+{
+    body
+    {
+        font-size: 10px;
+    }
+    .info
+    {
+    margin: -30px 0 0 0;
+    padding-bottom: 10px;
+    }
+     .ppl_card
+    {
+    width: 49%;
+    margin: 0 0.5%;
+    }
+    .bstu
+    {
+        font-size: 1.2em;
+    }
+    .large_letter
+    {
+        font-size: 2em;
+    }
+    .col-4-c
+    {
+        width: 60%;
+    }
+      .ppl_position
+    {
+    padding: 0 0 5px 0;
+    }
+    .logo
+    {
+        margin: 8px 0 0 0;
+    }
+}
+@media all and (max-width: 326px)
+{
+     .large_letter
+    {
+        font-size: 1.7em;
+    }
+    .bstu
+    {
+        font-size: 1em;
+    }
+}
+.navbar-brand {     /*логотип*/
+    
+    position:fixed;
+    left:0;
+    top:0;
+    padding:0px;
+    height:53px;
+}
+.navbar-brand img{
+    padding:0px;
+    padding-left:15px;
+    height:53px;
+}

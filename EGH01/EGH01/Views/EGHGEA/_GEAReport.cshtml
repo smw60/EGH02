@@ -1,0 +1,236 @@
+﻿@using EGH01.Models.EGHGEA;
+@using EGH01DB;
+@using EGH01DB.Blurs;
+@using EGH01.Core;
+@model EGH01DB.GEAContext
+@{
+    GEAContextView context = (GEAContextView)Model.GetViewContext(GEAContextView.VIEWNAME);
+    if (context == null) { Model.SaveViewContext(GEAContextView.VIEWNAME, context = new GEAContextView()); }
+
+    Menu head = new Menu(
+                         new Menu.MenuItem("Сохранить", "Report.Save", true),
+                         new Menu.MenuItem("Отказаться", "Report.Cancel", true)
+                        );
+
+     GEAContext.ECOClassification ecoclassification  =  context.ecoclassifiation;
+
+
+}
+@if (ecoclassification != null)
+{
+
+    string s = string.Format("{0}-С-{1}", ecoclassification.id, ecoclassification.date.ToString("yyy-MM-dd"));
+    using (Html.BeginForm("ClassificationEvalution", "EGHGEA"))
+    {
+
+        <div class="box">
+            <div class="boxdata">
+                <fieldset>
+                    <legend> Прогноз @s </legend>
+                    <p>
+                        <label class="boxdata-label-40 "> Дата составления прогноза </label>
+                        @ecoclassification.date
+                    </p>
+                    <fieldset>
+                        <legend>  @ecoclassification.incident.riskobject.name </legend>
+                        <p>
+                            <label class="boxdata-label-40 ">Область</label>
+                            @ecoclassification.incident.riskobject.region.name;
+                        </p>
+                        <p>
+                            <label class="boxdata-label-40 ">Район</label>
+                            @ecoclassification.incident.riskobject.district.name;
+                        </p>
+
+                        <p><label class="boxdata-label-40">Координаты. Широта</label>@ecoclassification.incident.riskobject.coordinates.lat.d.ToString()°&nbsp;@ecoclassification.incident.riskobject.coordinates.lat.m.ToString()'&nbsp;@ecoclassification.incident.riskobject.coordinates.lat.s.ToString("0.00")"</p>
+                        <p><label class="boxdata-label-40">Координаты. Долгота</label>@ecoclassification.incident.riskobject.coordinates.lng.d.ToString()°&nbsp;@ecoclassification.incident.riskobject.coordinates.lng.m.ToString()'&nbsp;@ecoclassification.incident.riskobject.coordinates.lng.s.ToString("0.00")" </p>
+                        <p><label class="boxdata-label-40">Координаты в градусах</label>@ecoclassification.incident.riskobject.coordinates.latitude.ToString()°&nbsp;@ecoclassification.incident.riskobject.coordinates.lngitude.ToString()°</p>
+                        <p>
+                            <label class="boxdata-label-40 ">Категория  земли</label>
+                            @ecoclassification.incident.riskobject.cadastretype.name;
+                        </p>
+                        <p>
+                            <label class="boxdata-label-40 ">Документ, определяющий ПДК</label>
+                            @ecoclassification.incident.riskobject.cadastretype.ground_doc_name;
+                        </p>
+                    </fieldset>
+                    <p>
+                        <label class="boxdata-label-40 "> Нефтепродукт</label>
+                        @ecoclassification.incident.petrochemicaltype.name
+                    </p>
+                    <p>
+                        <label class="boxdata-label-40 "> Объем пролива (м<sup>3</sup>)</label>
+                        @ecoclassification.incident.volume
+                    </p>
+                    <p>
+                        <label class="boxdata-label-40 ">  Радиус разлива (м) </label>
+                        @ecoclassification.groundblur.radius
+                    </p>
+                    <p>
+                        <label class="boxdata-label-40 ">  Радиус распрстранения  нефтепродукта с грунтовыми водами (м)  </label>
+                        @ecoclassification.waterblur.radius
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <legend> Сравнение с предельно-допустимыми концентрациями </legend>
+                    <fieldset>
+                        <legend> Наземное пятно загрязнения </legend>
+                        <p>
+                            <label class="boxdata-label-40 "> Средняя концентрация нефтепродукта  в грунтах зоны аэрации </label>
+                            @ecoclassification.groundblur.concentrationinsoil
+                        </p>
+                        <p>
+                            <label class="boxdata-label-40 "> Глубина проиникновения  загрязения (м)  </label>
+                            @Math.Round(ecoclassification.groundblur.depth, 3)
+                        </p>
+                        <p>
+                            <label class="boxdata-label-40 "> Предельно допустимая концентрация в грунте (кг/кг)  </label>
+                            @ecoclassification.incident.riskobject.cadastretype.pdk_coef
+                        </p>
+                        @if (ecoclassification.excessgroundconcentration > 1)
+                        {
+                            <p>
+                                <label class="boxdata-label-40 "> Кратность превышения   </label>
+                                @Math.Round(ecoclassification.excessgroundconcentration, 1)
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                <label class="boxdata-label-40 "> Превышение   </label>
+                                нет превышения
+                            </p>
+                        }
+                        <p>
+                            <label class="boxdata-label-40 "> Макс. концентрация на уровне (поверхности) грунтовых вод (кг/кг)</label>
+                            @ecoclassification.groundblur.maxconcentrationwater
+                        </p>
+                        <p>
+                            <label class="boxdata-label-40 "> Предельно допустимая концентрация в воде (кг/кг)  </label>
+                            @ecoclassification.incident.riskobject.cadastretype.water_pdk_coef
+                        </p>
+                        @if (ecoclassification.exesswaterconcentration > 1)
+                        {
+                            <p>
+                                <label class="boxdata-label-40 "> Кратность превышения   </label>
+                                @Math.Round(ecoclassification.exesswaterconcentration, 1)
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                <label class="boxdata-label-40 "> Превышение   </label>
+                                нет превышения
+                            </p>
+                        }
+                        <fieldset>
+                            <legend>Классификация уровня загрязнения </legend>
+                            <p>
+                                <label class="boxdata-label-40 ">Категория загрязнения грунта </label>
+                                @ecoclassification.soilpollutioncategories.name
+                            </p>
+                            <p>
+                                <label class="boxdata-label-40 ">Радиус поиска природоохранных объектов (м) </label>
+                                @Math.Round(ecoclassification.groundblur.ecoobjectsearchradius, 0)
+                            </p>
+                            <p>
+                                <label class="boxdata-label-40 ">Категория загрязнения грунтовых вод </label>
+                                @ecoclassification.waterpollutioncategories.name
+                            </p>
+                        </fieldset>
+                        <fieldset form="ChoiseRiskObject">
+                            <legend> Природоохранные объекты </legend>
+                            <p>
+                                <label class="boxdata-label-40 ">Радиус поиска прирооохранных объектов (м) </label>
+                                @Math.Round(ecoclassification.groundblur.ecoobjectsearchradius, 0)
+                            </p>
+                            @foreach (GroundPollution o in ecoclassification.groundpollutionlist)
+                            {
+                                <fieldset form="ChoiseRiskObject">
+                                    <legend>@o.comment @o.name </legend>
+                                    <fieldset>
+                                        <p><label class="boxdata-label-40">Координаты. Широта</label>@o.coordinates.lat.d.ToString()°&nbsp;@o.coordinates.lat.m.ToString()'&nbsp;@o.coordinates.lat.s.ToString("0.00")"</p>
+                                        <p><label class="boxdata-label-40">Координаты. Долгота</label>@o.coordinates.lng.d.ToString()°&nbsp;@o.coordinates.lng.m.ToString()'&nbsp;@o.coordinates.lng.s.ToString("0.00")" </p>
+                                        <p><label class="boxdata-label-40">Координаты в градусах</label>@o.coordinates.latitude.ToString()°&nbsp;@o.coordinates.lngitude.ToString()°</p>
+                                        <p><label class="boxdata-label-40">Расстояние</label><span class="boxdata-span">@Math.Round(o.distance, 0)</span></p>
+                                        <p><label class="boxdata-label-40">Высота (м)</label> @Math.Round(o.height, 0)</p>
+                                        <p><label class="boxdata-label-40">Угол</label> @Math.Round(o.angle, 1)</p>
+                                        <p><label class="boxdata-label-40">Глубина грунтовых вод (м)</label> @Math.Round(o.waterdeep, 1)</p>
+                                    </fieldset>
+                                </fieldset>
+                            }
+                        </fieldset>
+                    </fieldset>
+                    <fieldset>
+                        <legend> Распространение загрязнения с грунтовыми водами  </legend>
+                        <p>
+                            <label class="boxdata-label-40 ">  Радиус распрстранения  нефтепрдукта с грунтовыми водами (м)  </label>
+                            @Math.Round(ecoclassification.waterblur.radius, 0)
+                        </p>
+                        <fieldset>
+                            <legend> Природоохранные объекты </legend>
+                            <p>
+                                <label class="boxdata-label-40 ">Радиус поиска природоохранных объектов (м)  </label>
+                                @Math.Round(ecoclassification.groundblur.radius, 0) -
+                                @Math.Round(ecoclassification.waterblur.radius, 0)
+                            </p>
+                            @foreach (WaterPollution o in ecoclassification.waterpolutionlist)
+                            {
+                                <fieldset>
+                                    <legend>@o.comment @o.name </legend>
+                                    <fieldset>
+                                        <p><label class="boxdata-label-40">Координаты. Широта</label>@o.coordinates.lat.d.ToString()°&nbsp;@o.coordinates.lat.m.ToString()'&nbsp;@o.coordinates.lat.s.ToString("0.00")"</p>
+                                        <p><label class="boxdata-label-40">Координаты. Долгота</label>@o.coordinates.lng.d.ToString()°&nbsp;@o.coordinates.lng.m.ToString()'&nbsp;@o.coordinates.lng.s.ToString("0.00")" </p>
+                                        <p><label class="boxdata-label-40">Координаты в градусах</label>@o.coordinates.latitude.ToString()°&nbsp;@o.coordinates.lngitude.ToString()°</p>
+                                        <p><label class="boxdata-label-40">Расстояние</label><span class="boxdata-span">@Math.Round(o.distance, 0)</span></p>
+                                        <p><label class="boxdata-label-40">Высота (м)</label> @Math.Round(o.height, 0)</p>
+                                        <p><label class="boxdata-label-40">Угол</label> @Math.Round(o.angle, 1)</p>
+                                        <p><label class="boxdata-label-40">Глубина грунтовых вод (м)</label> @Math.Round(o.waterdeep, 1)</p>
+                                    </fieldset>
+                                    @if (o.iswaterobject)
+                                    {
+                                        <p>
+                                            <label class="boxdata-label-40 ">Водоохранный объект</label>&nbsp;
+                                        </p>
+                                    }
+                                    <p>
+                                        <label class="boxdata-label-40 ">Предельно допустимая концентрация (кг/кг) </label>
+                                        @o.cadastretype.water_pdk_coef     @o.cadastretype.water_doc_name
+                                    </p>
+                                    <p>
+                                        <label class="boxdata-label-40 ">Дата достижения максимальной концентрации  </label>
+                                        @o.datemaxconcentration.ToShortDateString()  (@Math.Round(o.daymaxconcentration) сут.)
+                                    </p>
+                                    <p>
+                                        <label class="boxdata-label-40 "> Кратность превышения   </label>
+                                        @if (o.excessconcentration > 0)
+                                        {
+                                            @Math.Round(o.excessconcentration, 1);
+                                        }
+                                        else
+                                        {<span>----</span> }
+                                    </p>
+                                    <p>
+                                        @if (o.waterpollutioncategories != null)
+                                        {
+                                            <label class="boxdata-label-40 "> Категория загрязнения грунтовых вод </label>
+                                            @o.waterpollutioncategories.name
+
+                                        }
+                                        else
+                                        {<span>----</span> }
+                                    </p>
+                                </fieldset>
+                            }
+                        </fieldset>
+                    </fieldset>
+                </fieldset>
+                @Html.Partial("_TypeLineMenu", head)
+            </div>
+        </div>
+
+    }
+
+}
+else
+{ <h2> Ошибка </h2>}

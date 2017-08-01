@@ -1,0 +1,112 @@
+<EcoObjectsList>
+  <EcoObject id="17" name="Тест Ручей б/н" iswaterobject="EGH01DB.Types.WaterProtectionArea" angle="0" pollutionecoobject="0">
+    <Point height="112" waterdeep="5">
+      <Coordinates latitude="54.31157" latitude_d="54" latitude_m="18" latitude_s="41.64917" lngitude="26.8711" lngitude_d="26" lngitude_m="52" lngitude_s="15.9581" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0.4" holdmigration="14" waterfilter="4.213E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.08" soilmoisture="0.39" аveryanovfactor="4" permeability="0.2" density="1450" />
+    </Point>
+    <EcoObjectType type_code="4" name="Ручей">
+      <WaterProtectionArea type_code="2" name="Водоохранная зона" />
+    </EcoObjectType>
+    <CadastreType type_code="6" name="Земли водного фонда" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </EcoObject>
+  <EcoObject id="18" name="Тест Ручей б/н" iswaterobject="EGH01DB.Types.WaterProtectionArea" angle="0" pollutionecoobject="0">
+    <Point height="112" waterdeep="6">
+      <Coordinates latitude="54.30699" latitude_d="54" latitude_m="18" latitude_s="25.15594" lngitude="26.86176" lngitude_d="26" lngitude_m="51" lngitude_s="42.33307" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0.4" holdmigration="14" waterfilter="4.213E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.08" soilmoisture="0.39" аveryanovfactor="4" permeability="0.2" density="1450" />
+    </Point>
+    <EcoObjectType type_code="4" name="Ручей">
+      <WaterProtectionArea type_code="2" name="Водоохранная зона" />
+    </EcoObjectType>
+    <CadastreType type_code="6" name="Земли водного фонда" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </EcoObject>
+  <EcoObject id="19" name="Тест р. Молодечанка" iswaterobject="EGH01DB.Types.WaterProtectionArea" angle="0" pollutionecoobject="0">
+    <Point height="140" waterdeep="0.5">
+      <Coordinates latitude="54.30709" latitude_d="54" latitude_m="18" latitude_s="25.54047" lngitude="26.86182" lngitude_d="26" lngitude_m="51" lngitude_s="42.5528" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0.4" holdmigration="14" waterfilter="4.213E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.08" soilmoisture="0.39" аveryanovfactor="4" permeability="0.2" density="1450" />
+    </Point>
+    <EcoObjectType type_code="5" name="Река">
+      <WaterProtectionArea type_code="2" name="Водоохранная зона" />
+    </EcoObjectType>
+    <CadastreType type_code="6" name="Земли водного фонда" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </EcoObject>
+  <EcoObject id="20" name="Тест Водозабор «Голеново»" iswaterobject="EGH01DB.Types.WaterProtectionArea" angle="0" pollutionecoobject="0">
+    <Point height="120" waterdeep="3">
+      <Coordinates latitude="54.30722" latitude_d="54" latitude_m="18" latitude_s="26.00739" lngitude="26.86158" lngitude_d="26" lngitude_m="51" lngitude_s="41.68762" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0.4" holdmigration="14" waterfilter="4.213E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.08" soilmoisture="0.39" аveryanovfactor="4" permeability="0.2" density="1450" />
+    </Point>
+    <EcoObjectType type_code="6" name="Водозабор">
+      <WaterProtectionArea type_code="1" name="Зона санитарной охраны " />
+    </EcoObjectType>
+    <CadastreType type_code="4" name="Земли природоохранного, оздоровительного, рекреационного, историко-культурного назначения" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </EcoObject>
+  <EcoObject id="21" name="Тест р. Рось" iswaterobject="EGH01DB.Types.WaterProtectionArea" angle="0" pollutionecoobject="0">
+    <Point height="130" waterdeep="0.6">
+      <Coordinates latitude="53.11869" latitude_d="53" latitude_m="7" latitude_s="7.2995" lngitude="22.37384" lngitude_d="22" lngitude_m="22" lngitude_s="25.81146" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0.4" holdmigration="14" waterfilter="4.213E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.08" soilmoisture="0.39" аveryanovfactor="4" permeability="0.2" density="1450" />
+    </Point>
+    <EcoObjectType type_code="5" name="Река">
+      <WaterProtectionArea type_code="2" name="Водоохранная зона" />
+    </EcoObjectType>
+    <CadastreType type_code="6" name="Земли водного фонда" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </EcoObject>
+  <EcoObject id="22" name="Тест Артскважины ОАО &quot;Волковысский мясокомбинат&quot;" iswaterobject="EGH01DB.Types.WaterProtectionArea" angle="0" pollutionecoobject="0">
+    <Point height="131" waterdeep="25">
+      <Coordinates latitude="53.11875" latitude_d="53" latitude_m="7" latitude_s="7.505493" lngitude="22.37309" lngitude_d="22" lngitude_m="22" lngitude_s="23.11981" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0.4" holdmigration="14" waterfilter="4.213E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.08" soilmoisture="0.39" аveryanovfactor="4" permeability="0.2" density="1450" />
+    </Point>
+    <EcoObjectType type_code="8" name="Скважина">
+      <WaterProtectionArea type_code="1" name="Зона санитарной охраны " />
+    </EcoObjectType>
+    <CadastreType type_code="4" name="Земли природоохранного, оздоровительного, рекреационного, историко-культурного назначения" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </EcoObject>
+  <EcoObject id="23" name="Тест Водозабор «Блакитное»" iswaterobject="EGH01DB.Types.WaterProtectionArea" angle="0" pollutionecoobject="0">
+    <Point height="117" waterdeep="17">
+      <Coordinates latitude="53.11875" latitude_d="53" latitude_m="7" latitude_s="7.505493" lngitude="22.37309" lngitude_d="22" lngitude_m="22" lngitude_s="23.11981" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0.4" holdmigration="14" waterfilter="4.213E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.08" soilmoisture="0.39" аveryanovfactor="4" permeability="0.2" density="1450" />
+    </Point>
+    <EcoObjectType type_code="6" name="Водозабор">
+      <WaterProtectionArea type_code="1" name="Зона санитарной охраны " />
+    </EcoObjectType>
+    <CadastreType type_code="4" name="Земли природоохранного, оздоровительного, рекреационного, историко-культурного назначения" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </EcoObject>
+  <EcoObject id="24" name="Тест Ручей б/н" iswaterobject="EGH01DB.Types.WaterProtectionArea" angle="0" pollutionecoobject="0">
+    <Point height="120.8" waterdeep="0.33">
+      <Coordinates latitude="55.50516" latitude_d="55" latitude_m="30" latitude_s="18.56689" lngitude="28.74037" lngitude_d="28" lngitude_m="44" lngitude_s="25.33127" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0.4" holdmigration="14" waterfilter="4.213E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.08" soilmoisture="0.39" аveryanovfactor="4" permeability="0.2" density="1450" />
+    </Point>
+    <EcoObjectType type_code="4" name="Ручей">
+      <WaterProtectionArea type_code="2" name="Водоохранная зона" />
+    </EcoObjectType>
+    <CadastreType type_code="6" name="Земли водного фонда" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </EcoObject>
+  <EcoObject id="25" name="Тест Пруд" iswaterobject="EGH01DB.Types.WaterProtectionArea" angle="0" pollutionecoobject="0">
+    <Point height="137" waterdeep="1.5">
+      <Coordinates latitude="55.50502" latitude_d="55" latitude_m="30" latitude_s="18.07251" lngitude="28.7398" lngitude_d="28" lngitude_m="44" lngitude_s="23.2782" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0.4" holdmigration="14" waterfilter="4.213E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.08" soilmoisture="0.39" аveryanovfactor="4" permeability="0.2" density="1450" />
+    </Point>
+    <EcoObjectType type_code="1" name="Озеро">
+      <WaterProtectionArea type_code="2" name="Водоохранная зона" />
+    </EcoObjectType>
+    <CadastreType type_code="6" name="Земли водного фонда" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </EcoObject>
+  <EcoObject id="26" name="Тест Колодец" iswaterobject="EGH01DB.Types.WaterProtectionArea" angle="0" pollutionecoobject="0">
+    <Point height="19" waterdeep="13">
+      <Coordinates latitude="55.50508" latitude_d="55" latitude_m="30" latitude_s="18.2785" lngitude="28.74089" lngitude_d="28" lngitude_m="44" lngitude_s="27.21268" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0.4" holdmigration="14" waterfilter="4.213E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.08" soilmoisture="0.39" аveryanovfactor="4" permeability="0.2" density="1450" />
+    </Point>
+    <EcoObjectType type_code="2" name="Колодец">
+      <WaterProtectionArea type_code="1" name="Зона санитарной охраны " />
+    </EcoObjectType>
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0.0001" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </EcoObject>
+  <EcoObject id="27" name="Тест Колодец" iswaterobject="EGH01DB.Types.WaterProtectionArea" angle="0" pollutionecoobject="0">
+    <Point height="80" waterdeep="7">
+      <Coordinates latitude="53.6635" latitude_d="53" latitude_m="39" latitude_s="48.60626" lngitude="27.08552" lngitude_d="27" lngitude_m="5" lngitude_s="7.871246" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0.4" holdmigration="14" waterfilter="4.213E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.08" soilmoisture="0.39" аveryanovfactor="4" permeability="0.2" density="1450" />
+    </Point>
+    <EcoObjectType type_code="2" name="Колодец">
+      <WaterProtectionArea type_code="1" name="Зона санитарной охраны " />
+    </EcoObjectType>
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0.0001" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </EcoObject>
+</EcoObjectsList>

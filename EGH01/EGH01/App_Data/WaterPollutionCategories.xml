@@ -1,0 +1,65 @@
+<WaterPollutionCategories>
+  <WaterPollutionCategories code="1" name="Слабое" min="1" max="5">
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="2" name="Среднее" min="5.1" max="100">
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="3" name="Сильное" min="100.1" max="1E+09">
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="4" name="Слабое" min="1" max="5">
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0.0001" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="5" name="Среднее" min="5.1" max="100">
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0.0001" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="6" name=" Сильное" min="100.1" max="1E+09">
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0.0001" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="7" name="Слабое" min="1" max="5">
+    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0.0005" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="8" name="Среднее" min="5.1" max="100">
+    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0.0005" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="9" name="Сильное" min="100.1" max="1E+09">
+    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0.0005" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="10" name="Слабое" min="1" max="5">
+    <CadastreType type_code="4" name="Земли природоохранного, оздоровительного, рекреационного, историко-культурного назначения" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="11" name="Среднее" min="5.1" max="100">
+    <CadastreType type_code="4" name="Земли природоохранного, оздоровительного, рекреационного, историко-культурного назначения" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="12" name="Сильное" min="100.1" max="1E+09">
+    <CadastreType type_code="4" name="Земли природоохранного, оздоровительного, рекреационного, историко-культурного назначения" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="13" name="Слабое" min="1" max="5.1">
+    <CadastreType type_code="5" name="Земли лесного фонда" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="14" name="Среднее" min="5.1" max="100">
+    <CadastreType type_code="5" name="Земли лесного фонда" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="15" name="Сильное" min="100.1" max="1E+09">
+    <CadastreType type_code="5" name="Земли лесного фонда" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="16" name="Слабое" min="1" max="5">
+    <CadastreType type_code="6" name="Земли водного фонда" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="17" name="Среднее" min="5.1" max="100">
+    <CadastreType type_code="6" name="Земли водного фонда" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="18" name="Сильное" min="100.1" max="1E+09">
+    <CadastreType type_code="6" name="Земли водного фонда" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="19" name="Слабое" min="1" max="5">
+    <CadastreType type_code="7" name="Земли запаса" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="20" name="Среднее" min="5.1" max="100">
+    <CadastreType type_code="7" name="Земли запаса" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+  <WaterPollutionCategories code="21" name="Сильное" min="100.1" max="1E+09">
+    <CadastreType type_code="7" name="Земли запаса" pdk_coef="5E-05" water_pdk_coef="0.0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </WaterPollutionCategories>
+</WaterPollutionCategories>

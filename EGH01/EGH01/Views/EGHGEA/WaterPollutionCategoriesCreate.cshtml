@@ -1,0 +1,92 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGHGEA;
+@using EGH01DB;
+@using EGH01DB.Primitives;
+@using EGH01DB.Types;
+@using EGH01.Core;
+@using EGH01.Models.EGH;
+@model EGH01DB.GEAContext
+
+@{
+
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    EGH01DB.GEAContext gea = (EGH01DB.GEAContext)Model;
+    WaterPollutionCategoriesView context = (WaterPollutionCategoriesView)Model.GetViewContext("WaterPollutionCategoriesCreate");
+    if (context == null) { Model.SaveViewContext("WaterPollutionCategoriesCreate", context = new WaterPollutionCategoriesView()); };
+    Menu head = new Menu(
+                  new Menu.MenuItem("Создать", "WaterPollutionCategories.Create", false),
+                  new Menu.MenuItem("Excel-формат", "WaterPollutionCategories.Excel", false)
+                );
+
+    Menu create = new Menu(
+                          new Menu.MenuItem("Создать", "WaterPollutionCategories.Create.Create", true),
+                          new Menu.MenuItem("Отказаться", "WaterPollutionCategories.Create.Cancel", true)
+                        );
+    List<EGH01DB.Types.CadastreType> list_cadastre = new List<EGH01DB.Types.CadastreType>();
+    ViewBag.list_cadastre = new List<SelectListItem>();
+    if (Model != null)
+    {
+        Helper.GetListCadastreType(Model, ref list_cadastre);
+        list_cadastre.ForEach(o => ViewBag.list_cadastre.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+    }
+
+}
+
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHGEA", Action = "WaterPollutionCategories", Menu = head })
+@using (Html.BeginForm("WaterPollutionCategoriesCreate", "EGHGEA"))
+{
+    {
+
+        @ViewBag.error
+
+    }
+
+    <div class="box">
+            <div class="boxdata">
+              
+                <p>
+                    <label class="boxdata-label-30">Наименование категории загрязнения  грунтовых вод</label>
+@{
+
+    String Name = " ";
+    if (context.name != null)
+    {
+
+        Name = context.name;
+    }
+                    <textarea class="boxdata-input-50" name="Name">@Name</textarea>
+    }
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Диапазон кратности превышения показателя ПДК<sup><small></small></sup></label>
+@{
+    string Min = "";
+    if (context.min != null)
+    {
+        Min = ((float?)context.min).ToString().Replace(',', '.');
+
+    }
+                       <input class="boxdata-input-20" type="number" step="0.1" min="0" name="min" value="@Min" />
+}
+@{
+    string Max = "";
+    if (context.max != 0.0f)
+    {
+        Max = ((float?)context.max).ToString().Replace(',', '.');
+
+    }
+                           <input class="boxdata-input-20" type="number" step="0.1" min="0" name="max" value="@Max" />               
+}
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Категория земли</label> @Html.DropDownList("list_cadastre")
+                </p>
+            </div>
+
+            @Html.Partial("_TypeLineMenu", create)
+    </div>
+    }
+
+    
+

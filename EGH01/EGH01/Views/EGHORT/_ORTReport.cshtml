@@ -1,0 +1,126 @@
+﻿@using EGH01.Models.EGHORT;
+@using EGH01DB;
+@using EGH01DB.Types;
+@using EGH01DB.Blurs;
+@using EGH01.Core;
+@model EGH01DB.ORTContext
+@{
+    ORTContextView context = (ORTContextView)Model.GetViewContext(ORTContextView.VIEWNAME);
+    if (context == null) { Model.SaveViewContext(ORTContextView.VIEWNAME,  context = new ORTContextView());}
+        
+     Menu head = new Menu(
+                          new Menu.MenuItem("Сохранить",   "Report.Save", true),
+                          new Menu.MenuItem("Отказаться",  "Report.Cancel", true)
+                         );
+ 
+   ORTContext.ECORehabilitation ecorehabilitation =   context.ecorehabilitation;
+
+
+}
+
+
+@if (ecorehabilitation != null) 
+{
+       
+ string s = string.Format("{0}-Р-{1}", ecorehabilitation.id, ecorehabilitation.date.ToString("yyy-MM-dd"));
+ using (Html.BeginForm("Rehabilitation", "EGHORT"))
+ {
+
+   <div class="box">
+
+        <div class="boxdata">
+            <fieldset>
+                <legend> Прогноз </legend>
+
+                <p>
+                    <label class="boxdata-label-40 "> Дата составления отчета </label>
+                    @ecorehabilitation.date
+                </p>
+                <fieldset>
+                    <legend>  @ecorehabilitation.incident.riskobject.name </legend>
+                    <p>
+                        <label class="boxdata-label-40 ">Область</label>
+                        @ecorehabilitation.incident.riskobject.region.name
+                    </p>
+                    <p>
+                        <label class="boxdata-label-40 ">Район</label>
+                        @ecorehabilitation.incident.riskobject.district.name
+                    </p>
+
+                    <p><label class="boxdata-label-40">Координаты. Широта</label>@ecorehabilitation.incident.riskobject.coordinates.lat.d.ToString()°&nbsp;@ecorehabilitation.incident.riskobject.coordinates.lat.m.ToString()'&nbsp;@ecorehabilitation.incident.riskobject.coordinates.lat.s.ToString("0.00")"</p>
+                    <p><label class="boxdata-label-40">Координаты. Долгота</label>@ecorehabilitation.incident.riskobject.coordinates.lng.d.ToString()°&nbsp;@ecorehabilitation.incident.riskobject.coordinates.lng.m.ToString()'&nbsp;@ecorehabilitation.incident.riskobject.coordinates.lng.s.ToString("0.00")" </p>
+                    <p><label class="boxdata-label-40">Координаты в градусах</label>@ecorehabilitation.incident.riskobject.coordinates.latitude.ToString()°&nbsp;@ecorehabilitation.incident.riskobject.coordinates.lngitude.ToString()°</p>
+                </fieldset>
+
+                <fieldset>
+                    <legend> Критерии выбора технологий     </legend>
+                    <p>
+                        <label class="boxdata-label-40 ">Тип Техногенного объкта </label>
+                        @ecorehabilitation.incident.riskobject.type.name
+                    </p>
+                    <p>
+                       <label class="boxdata-label-40 ">Категория  земли</label>
+                        @ecorehabilitation.incident.riskobject.cadastretype.name
+                    </p>
+                    <p>
+                        <label class="boxdata-label-40 ">Категоря разлитого нефтепродукта </label>
+                        @ecorehabilitation.incident.petrochemicaltype.petrochemicalcategories.name ( @ecorehabilitation.incident.petrochemicaltype.name)
+                    </p>
+                 
+                   <p>
+                     <label class="boxdata-label-40 ">Категоря аварии</label>
+                      @ecorehabilitation.emergencyclass.name (@ecorehabilitation.groundblur.totalmass кг)
+                   </p>
+                 
+                    <p>
+                      <label class="boxdata-label-40 "> Категория глубины  проникновения нефтепродукта </label>
+                      @ecorehabilitation.penetrationdepth.name (@ecorehabilitation.groundblur.depth м)
+                    </p>
+
+                  
+                   <p>
+                    <label class="boxdata-label-40 "> Категория загрязнения грунта </label>
+                    @ecorehabilitation.soilpollutioncategories.name
+                </p>
+                <p>
+                    <label class="boxdata-label-40 "> Категория загрязнения грунтовых вод  </label>
+                    @ecorehabilitation.waterpollutioncategories.name
+                </p>
+                 <p>
+                     <label class="boxdata-label-40 "> Категория водоохранной территории  </label>
+                     @ecorehabilitation.waterprotectionarea.name
+                  </p>
+
+                 <p>
+                    <label class="boxdata-label-40 "> Достижение грунтовых вод  </label>
+                    @if (ecorehabilitation.groundblur.totalmass > ecorehabilitation.groundblur.adsorbedmass)  { <span>есть</span>}
+                    else { <span>нет</span> }
+               </p>
+
+            </fieldset>
+            <fieldset>
+                <legend> Методы ликвидации загрязнения </legend>
+                 @foreach (RehabilitationMethod m in ecorehabilitation.rehabilitationlist)
+                 {
+                    <p>
+                     @m.soilcleaningmethod.method_description
+                    </p>
+                     <p>
+                     @m.watercleaningmethod.method_description
+                    </p>
+
+                 } 
+
+            </fieldset>
+
+      </fieldset>
+     </div>
+     
+    @Html.Partial("_TypeLineMenu", head)
+        
+    </div>
+
+  }
+
+ }
+

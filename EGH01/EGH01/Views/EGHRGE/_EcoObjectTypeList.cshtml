@@ -1,0 +1,32 @@
+﻿@using EGH01DB.Types;
+@using EGH01.Core;
+
+@model List<EcoObjectType>
+@{
+    Menu menu = new Menu(
+                            new Menu.MenuItem("Удалить", "EcoObjectType.Delete", true),
+                            new Menu.MenuItem("Изменить", "EcoObjectType.Update", true)
+                           );
+
+}
+@foreach (EcoObjectType t in @Model)
+{
+
+    using (Html.BeginForm("EcoObjectType", "EGHRGE"))
+    {
+
+        <div class="box">
+            <div class="boxdata">
+
+                <p><label class="boxdata-label-30">Код типа природоохранного объекта</label> @t.type_code.ToString()</p>
+                <p><label class="boxdata-label-50">Наименование типа природоохранного объекта</label>@t.name.ToString()</p>
+                <p> <label class="boxdata-label-50">Категория водоохранной территории</label> @t.waterprotectionarea.name.ToString()</p>
+                <input type="hidden" value="@t.type_code.ToString()" name="type_code">
+
+            </div>
+            @Html.Partial("_TypeLineMenu", menu)
+        </div>
+
+    }
+}
+

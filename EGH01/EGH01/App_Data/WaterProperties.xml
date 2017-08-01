@@ -1,0 +1,14 @@
+<WaterPropertiesList>
+  <WaterProperties water_code="2" temperature="1" viscocity="1793" density="999" tension="2" />
+  <WaterProperties water_code="3" temperature="10" viscocity="1309" density="999" tension="0,073" />
+  <WaterProperties water_code="4" temperature="20" viscocity="0,001003" density="998,29" tension="0,073" />
+  <WaterProperties water_code="5" temperature="30" viscocity="0,001003" density="998,29" tension="0,073" />
+  <WaterProperties water_code="6" temperature="40" viscocity="657" density="992" tension="69,56" />
+  <WaterProperties water_code="7" temperature="50" viscocity="550" density="988" tension="67,91" />
+  <WaterProperties water_code="8" temperature="60" viscocity="469" density="982" tension="66,18" />
+  <WaterProperties water_code="9" temperature="70" viscocity="406" density="977" tension="64,4" />
+  <WaterProperties water_code="10" temperature="80" viscocity="13,7" density="557" tension="90,9" />
+  <WaterProperties water_code="11" temperature="80" viscocity="13,7" density="557" tension="90,9" />
+  <WaterProperties water_code="12" temperature="90" viscocity="67,9" density="557" tension="66,6" />
+  <WaterProperties water_code="13" temperature="22" viscocity="0,001004" density="998,281" tension="0,1" />
+</WaterPropertiesList>

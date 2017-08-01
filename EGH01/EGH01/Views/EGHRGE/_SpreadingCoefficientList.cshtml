@@ -1,0 +1,36 @@
+﻿@using EGH01DB.Primitives;
+@using EGH01.Core;
+
+@model List<SpreadingCoefficient>
+@{
+    Menu menu = new Menu(
+                            new Menu.MenuItem("Удалить", "SpreadingCoefficient.Delete", true),
+                            new Menu.MenuItem("Изменить", "SpreadingCoefficient.Update", true)
+                           );
+
+}
+@foreach (SpreadingCoefficient t in @Model)
+{
+
+    using (Html.BeginForm("SpreadingCoefficient", "EGHRGE"))
+    {
+
+        <div class="box">
+            <div class="boxdata">
+             
+                <p><label class="boxdata-label-30">Тип нефтепродукта</label>@t.petrochemical_type.name.ToString()</p>        
+                <p><label class="boxdata-label-30">Тип грунта</label>@t.ground_type.name.ToString()
+                   <input type="hidden" value="@t.code.ToString()" name="code"></p>
+                <p><label class="boxdata-label-30">Диапазон значений объема пролива, м<sup><small>3</small></sup></label>@t.min_volume.ToString("0.0") - @t.max_volume.ToString("0.0")</p>
+                <p><label class="boxdata-label-30">Диапазон значений гидравлического уклона</label>@t.min_angle.ToString("0.0") - @t.max_angle.ToString("0.0")</p>
+                <p><label class="boxdata-label-30">Коэффициент растекания, 1/м</label>@t.koef.ToString("0.0")</p>
+
+            </div>
+
+                @Html.Partial("_TypeLineMenu", menu)
+            </div>
+
+    }
+}
+
+

@@ -1,0 +1,51 @@
+﻿@using EGH01.Core;
+@using EGH01DB.Primitives;
+@using EGH01.Models.EGH;
+@{
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    {
+
+        @ViewBag.Error;
+
+    }
+    Menu head = new Menu(
+                          new Menu.MenuItem("Создать", "EcoObjectType.Create", false),
+                          new Menu.MenuItem("Excel-формат", "EcoObjectType.Excel", false)
+                        );
+
+    Menu create = new Menu(
+                          new Menu.MenuItem("Создать", "EcoObjectType.Create.Create", true),
+                          new Menu.MenuItem("Отказаться", "EcoObjectType.Create.Cancel", true)
+                        );
+
+    List<EGH01DB.Types.WaterProtectionArea> list_WaterProtectionArea = new List<EGH01DB.Types.WaterProtectionArea>();
+    ViewBag.list_WaterProtectionArea = new List<SelectListItem>();
+    if (@Model != null)
+    {
+        Helper.GetListWaterProtectionArea(@Model, ref list_WaterProtectionArea);
+        list_WaterProtectionArea.ForEach(o => ViewBag.list_WaterProtectionArea.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+    }
+}
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHRGE", Action = "EcoObjectType", Menu = head })
+
+@using (Html.BeginForm("EcoObjectTypeCreate", "EGHRGE"))
+{
+
+    <div class="box">
+        <div class="boxdata">
+
+            <p>
+                <label class="boxdata-label-30"> Наименование типа природоохранного объекта</label>
+                <input class="boxdata-input-50" type="text" name="Name" value=" " />
+            </p>
+            <p>
+                <label class="boxdata-label-30">Категория водоохранной территории</label> @Html.DropDownList("list_WaterProtectionArea")
+            </p>
+
+        </div>
+
+        @Html.Partial("_TypeLineMenu", create)
+
+    </div>
+}

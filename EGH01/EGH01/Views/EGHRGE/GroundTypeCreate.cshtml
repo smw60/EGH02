@@ -1,0 +1,184 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGHRGE;
+@using EGH01DB.Primitives;
+@using EGH01DB.Types;
+@using EGH01.Core;
+@using EGH01.Models.EGH;
+@model EGH01DB.RGEContext
+
+@{
+
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    EGH01DB.RGEContext rge = (EGH01DB.RGEContext)Model;
+    GroundTypeView context = (GroundTypeView)Model.GetViewContext(GroundTypeView.VIEWNAME);
+    if (context == null) { Model.SaveViewContext(GroundTypeView.VIEWNAME, context = new GroundTypeView()); };
+
+    Menu start = new Menu(
+                  new Menu.MenuItem("Создать", "GroundType.Create", true),
+                  new Menu.MenuItem("Отказаться", "GroundType.Cancel", true)
+                );
+
+    Menu create = new Menu(
+                          new Menu.MenuItem("Создать", "GroundType.Create.Create", true),
+                          new Menu.MenuItem("Отказаться", "GroundType.Create.Cancel", true)
+                        );
+
+}
+
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHRGE", Action = "GroundType", Menu = start })
+@using (Html.BeginForm("GroundTypeCreate", "EGHRGE"))
+{
+
+    if (ViewBag.error != null)
+    {
+        @ViewBag.error
+        Session.Abandon();
+
+    }
+
+    <div class="box">
+
+        <fieldset form="GroundType">
+            <div class="boxdata">
+                @{ string name = "";
+                    if (context.name != null)
+                    {
+                        name = (context.name);
+                    }
+                    <label class="boxdata-label-30"> Наименование </label>
+                    <input class="boxdata-input-30" type="text" name="name" value="@name" />
+                }
+            </div>
+            <div class="boxdata">
+
+                @{string Porosity = "";
+                    if (context.porosity != 0.0f)
+                    {
+                        Porosity = ((float)context.porosity).ToString().Replace(',', '.');
+                    }    <label class="boxdata-label-30">Пористость</label>
+                    <input class="boxdata-input-30" type="number" name="porosity" min="0" max="1" step="0.01" value=@Porosity />}
+            </div>
+            <div class="boxdata">
+                @{
+                    string Waterfilter = "";
+                    if (context.waterfilter != 0.0f)
+                    {
+                        Waterfilter = ((float)context.waterfilter).ToString().Replace(',', '.');
+                    }
+                    <label class="boxdata-label-30">Коэффициент фильтрации, м/с</label>
+
+                    <input class="boxdata-input-30" type="number" name="waterfilter" min="0.0000000001" max="1.0" step="0.00000000001" value=@Waterfilter />
+                }
+            </div>
+            <div class="boxdata">
+                @{
+                    string Holdmigration = "";
+                    if (context.holdmigration != 0.0f)
+                    {
+                        Holdmigration = ((float)context.holdmigration).ToString().Replace(',', '.');
+                    }
+                    <label class="boxdata-label-30">Коэффициент задержки нефтепродукта</label>
+                    <input class="boxdata-input-30" type="number" name="holdmigration" step="0.1" min="0" value=@Holdmigration />}
+            </div>
+            <div class="boxdata">
+                @{
+                    string Soilmoisture = "";
+                    if (context.soilmoisture != 0.0f)
+                    {
+                        Soilmoisture = ((float)context.soilmoisture).ToString().Replace(',', '.');
+                    }
+                    <label class="boxdata-label-30">Влажность</label>
+                    <input class="boxdata-input-30" type="number" name="soilmoisture" step="0.01" min="0" max="1" value=@Soilmoisture />
+                }
+                </div>
+                <div class="boxdata">
+                    @{
+                        string Watercapacity = "";
+                        if (context.watercapacity != 0.0f)
+                        {
+                            Watercapacity = ((float)context.watercapacity).ToString().Replace(',', '.');
+                        }
+                        <label class="boxdata-label-30">Влагоемкость</label>
+                        <input class="boxdata-input-30" type="number" name="watercapacity" step="0.01" min="0" max="1" value=@Watercapacity />
+
+                    }   </div>
+                    <div class="boxdata">
+                        @{
+                            string Averyanovfactor = "";
+                            if (context.аveryanovfactor != 0.0f)
+                            {
+                                Averyanovfactor = ((float)context.аveryanovfactor).ToString().Replace(',', '.');
+                            }
+                            <label class="boxdata-label-30">Коэффициент Аверьянова</label>
+
+                            <input class="boxdata-input-30" type="number" name="аveryanovfactor" step="0.1" min="3" max="9" value=@Averyanovfactor />
+                        }
+                    </div>
+                    <div class="boxdata">
+                        @{
+                            string Density = "";
+                            if (context.density != 0.0f)
+                            {
+                                Density = ((float)context.density).ToString().Replace(',', '.');
+                            }
+                            <label class="boxdata-label-30">Средняя плотность грунта, кг/м<sup>3</sup></label>
+                            <input class="boxdata-input-30" type="number" name="density" step="0.1" min="0" value=@Density />
+                        }
+                        </div>
+                     </fieldset>
+
+                    <fieldset form="GroundType">
+                        <div class="boxdata">
+                            @{
+                                string Diffusion = "";
+                                if (context.diffusion != 0.0f)
+                                {
+                                    Diffusion = ((float)context.diffusion).ToString().Replace(',', '.');
+                                }
+                                <label class="boxdata-label-30">Коэффициент диффузии, м<sup>2</sup>/с</label>
+                                <input class="boxdata-input-30" type="number" name="diffusion" min="0" step="0.01" value=@Diffusion />
+
+                            }
+                        </div>
+                        <div class="boxdata">
+                            @{
+                                string Distribution = "";
+                                if (context.distribution != 0.0f)
+                                {
+                                    Distribution = ((float)context.distribution).ToString().Replace(',', '.');
+                                }
+                                <label class="boxdata-label-30">Коэффициент распределения</label>
+                            
+                                <input class="boxdata-input-30" type="number" name="distribution" min="0" step="0.01" value=@Distribution />
+                            }
+                            </div>
+                            <div class="boxdata">
+                                @{
+                                    string Sorption = "";
+                                    if (context.sorption != 0.0f)
+                                    {
+                                        Sorption = ((float)context.sorption).ToString().Replace(',', '.');
+                                    }
+                                    <label class="boxdata-label-30">Коэффициент сорбции, 1/с</label>
+                                
+                                    <input class="boxdata-input-30" type="number" name="sorption" min="0" step="0.1" value=@Sorption />
+                                }
+                                </div>
+                                <div class="boxdata">
+                                    @{
+                                        string Permeability = "";
+                                        if (context.permeability != 0.0f)
+                                        {
+
+                                            Permeability = ((float)context.permeability).ToString().Replace(',', '.');
+                                        }
+                                        <label class="boxdata-label-30">Водопроницаемость, м/с</label>
+                                        <input class="boxdata-input-30" type="number" name="permeability" min="0" step="0.001" value=@Permeability />
+                                    }
+                                    </div>
+                                </fieldset>
+                                    
+                                @Html.Partial("_TypeLineMenu", create)
+                    </div>
+                                    }       
+                                

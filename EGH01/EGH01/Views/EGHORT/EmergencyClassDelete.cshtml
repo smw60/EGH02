@@ -1,0 +1,48 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+
+@model EGH01DB.Types.EmergencyClass
+@{
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    Menu head = new Menu(
+                          new Menu.MenuItem("Создать", "EmergencyClass.Create", false),
+                          new Menu.MenuItem("Excel-формат", "EmergencyClass.Excel", false)
+                        );
+
+    Menu update = new Menu(
+                          new Menu.MenuItem("Удалить", "EmergencyClass.Delete.Delete", true),
+                          new Menu.MenuItem("Отказаться", "EmergencyClass.Delete.Cancel", true)
+                        );
+
+}
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHORT", Action = "EmergencyClass", Menu = head })
+@using (Html.BeginForm("EmergencyClassDelete", "EGHORT"))
+{
+
+    <div class="box">
+        <div class="boxdata">
+            <p>
+                <label class="boxdata-label-30">Код аварии</label>
+                @Model.type_code.ToString()
+                <input type="hidden" value="@Model.type_code.ToString()" name="type_code">
+            </p>
+            <p>
+                <label class="boxdata-label-30">Наименование аварии</label>
+                @Model.name.ToString()
+            </p>
+            <p>
+                <label class="boxdata-label-30">Масса пролитого нефтепродукта от, кг</label>
+                @Model.minmass.ToString()
+            </p>
+            <p>
+                <label class="boxdata-label-30">Масса пролитого нефтепродукта до, кг</label>
+                @Model.maxmass.ToString()
+            </p>
+
+        </div>
+
+        @Html.Partial("_TypeLineMenu", update)
+
+    </div>
+}
+

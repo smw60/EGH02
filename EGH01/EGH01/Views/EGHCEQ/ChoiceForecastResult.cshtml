@@ -1,0 +1,30 @@
+﻿@using EGH01DB.Objects;
+@using EGH01DB.Primitives;
+@using EGH01.Core;
+@using EGH01.Models.EGHCEQ;
+@using EGH01;
+@model EGH01DB.CEQContext
+@{
+     Layout = "~/Views/Shared/EGHLayout.cshtml";
+
+    //EGH01DB.CEQContext ceq = (EGH01DB.CEQContext)Model;
+    CEQViewContext context = (CEQViewContext)Model.GetViewContext("ChoiceForecastResult");
+    if (context == null) { Model.SaveViewContext("ChoiceForecastResult", context = new CEQViewContext()); };
+    
+}
+@Html.Partial("_ConfirmChoiceForecastResult", @Model)
+
+@switch (context.RegimChoice)
+{
+    case CEQViewContext.REGIM_CHOICE.INIT:     @Html.Partial("_ChoiceForecastResult", @Model)  break;
+                                 
+    case CEQViewContext.REGIM_CHOICE.CHOICE:   @Html.Partial("_ChoiceForecastResult", @Model)  break;
+    case CEQViewContext.REGIM_CHOICE.CANCEL:   break;
+    case CEQViewContext.REGIM_CHOICE.ERROR:    break;
+    case CEQViewContext.REGIM_CHOICE.REPORT:   break;                        
+    default: break;                                                                    
+} 
+    
+
+
+

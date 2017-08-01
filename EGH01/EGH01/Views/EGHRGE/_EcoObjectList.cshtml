@@ -1,0 +1,44 @@
+﻿@using EGH01DB.Types;
+@using EGH01.Core;
+@using EGH01DB.Objects;
+@model List<EcoObject>
+@{
+    Menu menu = new Menu(
+                            new Menu.MenuItem("Удалить", "EcoObject.Delete", true),
+                            new Menu.MenuItem("Изменить", "EcoObject.Update", true)
+                           );
+
+}
+@foreach (EcoObject t in @Model)
+{
+
+    using (Html.BeginForm("EcoObject", "EGHRGE"))
+    {
+        float latitude = EGH01DB.Primitives.Coordinates.dms_to_d(@t.coordinates.lat.d, @t.coordinates.lat.m, @t.coordinates.lat.s);
+        float lngitude = EGH01DB.Primitives.Coordinates.dms_to_d(@t.coordinates.lng.d, @t.coordinates.lng.m, @t.coordinates.lng.s);
+        <div class="box">
+            <div class="boxdata">
+               
+                <p><label class="boxdata-label-30">Идентификатор</label> @t.id.ToString()</p>
+                <p><label class="boxdata-label-30">Наименование природоохранного объекта </label> <span class="boxdata-span">@t.name</span></p>
+                <p><label class="boxdata-label-30">Тип природохранного объекта</label> <span class="boxdata-span">@t.ecoobjecttype.name.ToString()</span></p>
+                <p><label class="boxdata-label-30">Категория земли</label> <span class="boxdata-span">@t.cadastretype.name</span></p>
+                <p><label class="boxdata-label-30">Координаты. Широта</label>@t.coordinates.lat.d.ToString()°&nbsp;@t.coordinates.lat.m.ToString()'&nbsp;@t.coordinates.lat.s.ToString("0.00")"</p>
+                <p><label class="boxdata-label-30">Координаты. Долгота</label>@t.coordinates.lng.d.ToString()°&nbsp;@t.coordinates.lng.m.ToString()'&nbsp;@t.coordinates.lng.s.ToString("0.00")" </p>
+                <p><label class="boxdata-label-30">Координаты в градусах</label>@latitude.ToString()°&nbsp;@lngitude.ToString()°</p>
+                <p><label class="boxdata-label-30">Грунт</label>@t.groundtype.name</p>
+                <p><label class="boxdata-label-30">Высота над уровнем моря, м</label> @t.height.ToString("0.00")</p>
+                <p><label class="boxdata-label-30">Глубина грунтовых вод, м</label> @t.waterdeep.ToString("0.00")</p>
+                @if (@t.iswaterobject == true)
+                    {
+                    <label>Водный объект</label>
+                }
+                <input type="hidden" value="@t.id.ToString()" name="type_code">
+
+            </div>
+            @Html.Partial("_TypeLineMenu", menu)
+        </div>
+
+    }
+}
+

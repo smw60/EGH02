@@ -1,0 +1,19 @@
+﻿
+@using EGH01DB.Objects;
+@using EGH01DB.Primitives;
+@using EGH01.Core;
+@using EGH01.Models.EGHORT;
+@model EGH01DB.ORTContext
+
+@{
+    ORTContextView context = Model.GetViewContext(ORTContextView.VIEWNAME) as ORTContextView;
+    if (context == null) {Model.SaveViewContext(ORTContextView.VIEWNAME, context = new ORTContextView());}
+
+
+}
+@if (context.ecoclassifiation != null)
+{
+       <div class="box">
+           <h4>@Html.ActionLink(context.ecoclassifiation.line, "Index")</h4>
+       </div>
+}

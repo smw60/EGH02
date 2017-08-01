@@ -1,0 +1,39 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Types;
+@using EGH01DB.Primitives;
+
+@model EGH01DB.RGEContext
+@{
+
+
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    Menu head = new Menu(
+                          new Menu.MenuItem("Создать", "CadastreType.Create", true),
+                          new Menu.MenuItem("Excel-формат", "CadastreType.Excel", true)
+                        );
+
+    List<CadastreType> list = new List<CadastreType>();
+    if (@Model != null) { Helper.GetListCadastreType(@Model, ref list); };
+
+}
+
+
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHRGE", Action = "CadastreType", Menu = head })
+@Html.Partial("_CadastreTypeList", list)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

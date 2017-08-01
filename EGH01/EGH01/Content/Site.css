@@ -1,0 +1,683 @@
+﻿html {
+    padding: 0px;
+    height: 100%;
+}
+
+body {
+    padding: 0px;
+    min-height: 100%;
+    background: #eeffee; /*новый фон*/
+}
+
+.container {
+    padding: 15px 0;
+}
+
+h2 {
+    vertical-align: top;
+}
+
+    h2 * {
+        vertical-align: top;
+    }
+    
+    h2 span {
+        display: inline-block;
+        padding: 0 1%;
+        max-width: 48%;
+    }
+        h2 span:nth-last-child(2) {
+            border-right: 4px solid #013d02;
+        }
+
+    h2 span:nth-child(2) {
+        max-width: 48%;
+    }
+    h2 span.big {
+        max-width: 78%;
+    }
+
+
+h3, h4 {
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+a {
+    color: #316d32;
+}
+
+    a:hover {
+        color: #316d32;
+    }
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.navbar .dropdown-menu li a {
+    padding: 8px 20px;
+}
+
+    .navbar .dropdown-menu li a:hover { /*при наведении на пункты меню*/
+        background: #c8da94;
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    }
+
+.osnova {
+    padding-top: 10px;
+}
+
+.navbar-brand { /*логотип*/
+    padding: 0px;
+    height: 53px;
+}
+
+    .navbar-brand img {
+        background: #c8da94;
+        padding: 0px;
+        padding-left: 15px;
+        height: 53px;
+    }
+
+.panel-title {
+    font-size: 25px;
+}
+
+.dsblock input, .dsblock select {
+    display: block;
+}
+
+.mesto input {
+    width: 60px;
+}
+
+.textbold {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.carta {
+    background: #013d02;
+    height: 500px;
+}
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto 150px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+    height: -50px;
+}
+
+.proverka1 > a, .proverka1 > div {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    border: none;
+    color: #444444;
+    background-color: #ffffff;
+    display: inline-block;
+    margin: 10px 10px 0 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    #013d02-space: nowrap;
+    padding: 6px 16px;
+    font-size: 13px;
+    line-height: 1.846;
+    border-radius: 3px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    vertical-align: top;
+}
+
+.panel-success > .panel-heading {
+    background: #85DB18;
+}
+
+#spravochniki_list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navbar {
+    background: #fde779; /*фон верхней основной панели*/
+}
+
+body {
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    width: 58%;
+    padding: 1px;
+    height: auto;
+    display: inline-flexbox;
+}
+
+    input[type="checkbox"] {
+        text-align: left;
+        width: 20px;
+    }
+
+fieldset {
+    padding: 0.5%;
+    border: 1px solid black;
+    width: 99%;
+    margin: 0.5%;
+}
+
+    fieldset legend {
+        margin-bottom: 0;
+        width: auto;
+        font: inherit;
+        border: none;
+        padding: 0 5px;
+    }
+
+.boxdata select {
+    height: 23.2px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #f2cb9b;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e3ef9e;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #f2cb9b;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/*заголовок */
+.title h2 {
+    color: #013d02;
+    font-size: 30px;
+    vertical-align: middle;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: left;
+}
+
+    .title h2 a {
+        color: #316d32;
+    }
+
+    .title h2.double {
+        font-size: 24px;
+    }
+/*меню*/
+a.dropdown-toggle.btn.btn-link {
+    color: #013d02;
+    font-size: 20px;
+}
+/*второе меню*/
+.proverka1.navbar-default .navbar-nav > li > a, .proverka1 a.dropdown-toggle.btn.btn-link {
+    color: #02470f;
+    font-size: 16px;
+}
+
+.proverka1.navbar-default {
+    background: #f9df86;
+    position: relative;
+}
+
+/**    не трогать   смелов       */
+
+body {
+    color: black;
+}
+
+
+*::after {
+    content: "";
+}
+
+label[aria-required]::after {
+    content: "*";
+    color: red;
+}
+
+.boxmenu {
+    box-sizing: border-box; /* границу включить в размер .box*/
+    background-color: #f7e696; /* основные верхние менюшки беж*/
+    overflow: hidden;
+    border: 2px solid #ffbb40; /* светло-зелен.*/
+    width: 100%;
+    margin: 12px 0;
+    padding: 1px;
+    /*min-width: 800px;*/
+}
+
+.boxconnect, .boxcainfo {
+    box-sizing: border-box;
+    background-color: #eff2cd;
+    overflow: hidden;
+    border: 2px solid #75cc72;
+    width: 85%;
+    margin: 12px;
+    padding: 1px;
+    min-width: 800px;
+}
+
+.boxconnect-boxitem, .boxcainfo-boxitem {
+    border: 2px solid #013d02; /* темно-зеленый*/
+    padding: 12px;
+}
+
+    .boxconnect-boxitem label, .boxcainfo-boxitem label {
+        width: 10%;
+        margin: 10px;
+    }
+
+    .boxconnect-boxitem input {
+        width: 20%;
+        margin: 10px;
+    }
+
+    .boxconnect-boxitem button, .boxcainfo-boxitem button {
+        float: right;
+        background-color: #f2fcbd;
+        color: #013d02;
+        font-weight: bold;
+        padding: 10px;
+        border: 2px solid #013d02;
+        margin: 5px;
+    }
+/*для всех контейнеров fieldset*/
+.box-fieldset {
+    display: block;
+    margin: 5px;
+    white-space: nowrap;
+    height: auto;
+}
+
+.boxcainfo-boxitem-fieldset {
+    display: block;
+    margin: 2px;
+}
+
+.boxcainfo-boxitem-buttonlist {
+    display: block;
+    float: right;
+    margin: 2px;
+}
+
+.boxmenu-buttonlist {
+    border: 2px solid #013d02;
+    padding: 5px;
+}
+
+.box-close {
+    float: right;
+    /*border:1px solid #013d02;*/
+    background-color: #f2fcbd;
+    padding: 0px 0px 0px 0px;
+    margin: 2px;
+    border: none;
+}
+
+.boxmenu button {
+    background-color: #f2fcbd;
+    color: #013d02;
+    font-weight: bold;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid #013d02;
+}
+
+    .boxmenu button[disabled] {
+        background-color: #f2fcbd;
+        color: gray;
+        font-weight: bold;
+        margin: 5px;
+        padding: 10px;
+        border: 2px solid #013d02;
+    }
+
+.box {
+    box-sizing: border-box; /* границу включить в размер .box*/
+    overflow: hidden; /* все что вылезает за границу .box  - скрывать*/
+    border: 2px solid #013d02;
+    width: 100%;
+    background-color: #f0f5ad; /* меню основные в таблицах*/
+    margin: 12px 0;
+    padding: 0.5%;
+    /*min-width: 800px;*/
+}
+
+    .box .boxdata {
+        margin: 5px;
+        width: 100%;
+    }
+
+.boxdata label {
+    width: 40%;
+    float: left;
+    white-space: nowrap;
+    margin-bottom: 0;
+}
+
+    .boxdata label.boxdata-label-20 {
+        float: left;
+        margin-top: 5px;
+        width: 20%;
+    }
+    /*#list_cadastre{
+            width:80%;
+            max-width:none;
+        }*/
+
+    .boxdata label.boxdata-label-40 {
+        width: 45%;
+        float: left;
+    }
+
+    .boxdata label.boxdata-label-80 {
+        width: 70%;
+        float: left;
+    }
+
+.box p {
+    margin: 1px;
+}
+
+.boxdata span {
+    width: 25%;
+    float: none;
+}
+
+.boxdata .leftboxdata {
+    width: 50%;
+    float: left;
+}
+
+.boxdata .rightboxdata {
+    width: 50%;
+    float: right;
+}
+
+.leftboxdata label {
+    width: 50%;
+    float: left;
+}
+
+.rightboxdata label {
+    width: initial;
+    float: left;
+    margin-right: 10%;
+}
+
+.boxdata-input-20 {
+    width: 20%;
+}
+
+/*Для широты и долготы в 3 текстовых поля*/
+.boxdata-input-10 {
+    width: 10%;
+}
+
+.boxdata-input-80 {
+    float: left;
+    width: 70%;
+    max-width: none;
+    position: relative;
+    left: 140px;
+}
+.boxdata-textarea-80 {
+    float: left;
+    width: 75%;
+    margin-bottom:10px;
+}
+
+.boxdata-input-50 {
+    /*display:flexbox;
+            align-items:flex-start;*/
+    /*height:auto;
+           min-height: 80px;*/
+}
+
+.boxdata input[disabled] {
+    background-color: #f2fcbd; /*кнопки светлосалатовые);*/
+    color: black;
+    border: none;
+}
+
+element.style {
+    width: 25%;
+    height: inherit;
+}
+
+/*строки без форм*/
+.boxdata span.boxdata-span {
+    width: 55%;
+    max-width: 55%;
+    display: inline-block;
+    text-align: left;
+}
+
+.boxcontrol {
+    margin: 1px;
+    background-color: #eff2cd;
+    padding: 2px;
+    text-align: right;
+    border: 1px solid #013d02;
+    clear: both;
+}
+
+    .boxcontrol input, button {
+        background-color: #f2fcbd;
+        color: #013d02;
+        font-weight: bold;
+        border: 1px solid #013d02;
+    }
+
+        .boxcontrol input[disabled], button[disabled] {
+            background-color: #f2fcbd;
+            color: gray;
+            font-weight: bold;
+            border: 1px solid #013d02;
+        }
+
+.boxmessage {
+    display: none;
+    margin: 1px;
+    background-color: #f7e19e;
+    padding: 2px;
+    border: 1px double #013d02;
+    /*text-align:right;*/
+}
+
+
+/*    не трогать          */
+
+
+
+/* Минимально необходимый CSS для footer*/
+#footer {
+    position: fixed; /* Фиксированное положение */
+    left: 0;
+    bottom: 0; /* Левый нижний угол */
+    padding: 10px; /* Поля вокруг текста */
+    background: #c8da94; /* Цвет фона */
+    color: #0e210b; /* Цвет текста */
+    width: 100%; /* Ширина слоя */
+}
+
+    #footer a img {
+        height: 20px;
+    }
+
+/*Для поиска*/
+#ChoiceRiskObject_id {
+    max-width: none;
+    max-height: none;
+    white-space: pre;
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+    height: 100%;
+    /*overflow:scroll;*/
+}
+
+#main_menu:hover { /*при наведении на главное меню меняется фон*/
+    background: #c8da94;
+    text-decoration: none;
+}
+
+.go-up, .go-down {
+    display: none;
+    position: fixed; /*позиционирование*/
+    z-index: 9999; /*поверх все элементов на странице*/
+    right: 15%; /*положение на странице, если слева - left*/
+    background: #4F4F4F;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    font: normal normal 42px/42px sans-serif;
+    text-shadow: 0 1px 2px #000;
+    opacity: .5;
+    padding: 3px;
+    margin-bottom: 5px;
+    width: 42px;
+    height: 42px;
+}
+
+.go-up {
+    bottom: 60px;
+}
+
+.go-down {
+    bottom: 10px;
+}
+
+    .go-down:hover,
+    .go-up:hover {
+        opacity: 1;
+        box-shadow: 0 5px 0.5em -1px #666;
+    }
+
+.imgCenter {
+    text-align: center;
+}
+/*Карта*/
+.map {
+    height: 600px;
+    width: 100%;
+    margin: auto;
+    border: 1px solid #316d32;
+}
+.mapList {
+    border: 1px solid #316d32;
+}
+/*Кнопка над картой*/
+.center {
+    text-align: center;
+}
+
+    .center input[type='button'] {
+        width: 100%;
+        margin: 2px 0;
+    }
+    
+
+/*Для маленьких экранов*/
+@media (max-width:1440px) {
+    .boxdata label {
+        width: 50%;
+    }
+
+    .boxdata span.boxdata-span {
+        width: 45%;
+    }
+
+    input, select, textarea {
+        width: 45%;
+    }
+
+    #wrap {
+        margin-top: 30px;
+    }
+    #wrap .navbar{
+        min-height:40px;
+    }
+    #wrap .navbar .navbar-nav li a{
+        padding: 10px;
+    }
+    h2 span {
+        font-size:90%;
+    }
+}
+/*Для маленьких экранов*/
+@media (max-width:1200px) {
+    #wrap {
+        margin-top: 50px;
+    }
+}

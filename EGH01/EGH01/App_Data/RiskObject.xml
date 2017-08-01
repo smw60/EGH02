@@ -1,0 +1,158 @@
+<RiskObjectList>
+  <RiskObject id="1" name="АЗС-21" address="ул.Строителей, 2" ownership="f" phone="11      телефон много русского текста" fax="11" email="q@tut.by" foundationdate="02.11.2016" reconstractiondate="01.11.2016" numberofrefuel="1" volume="1" watertreatment="нет" watertreatmentcollect="нет" groundtank="4" undergroundtank="3" fueltype="11" numberofthreads="0" tubediameter="0" productivity="0" geodescription="11">
+    <Point height="130" waterdeep="7">
+      <Coordinates latitude="56,63389" latitude_d="56" latitude_m="38" latitude_s="1,997681" lngitude="25,1841" lngitude_d="25" lngitude_m="11" lngitude_s="2,770844" />
+      <GroundType type_code="9" name="Тест1 Песок м/з" porosity="0,35" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <RiskObjectType type_code="1" name="АЗС" />
+    <CadastreType type_code="4" name="Земли природоохранного, оздоровительного, рекреационного, историко-культурного назначения" pdk_coef="5E-05" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <District code="1" name="Барановичский">
+      <Region region_code="1" name="Брестская" />
+    </District>
+    <Region region_code="1" name="Брестская" />
+  </RiskObject>
+  <RiskObject id="4" name="АЗС-781" address="г. Гомель, ул. Строителей, 7" ownership="f" phone="11" fax="11" email="q@tut.by" foundationdate="25.11.2016" reconstractiondate="25.11.2016" numberofrefuel="1" volume="1" watertreatment="нет" watertreatmentcollect="нет" groundtank="10" undergroundtank="8" fueltype="11" numberofthreads="0" tubediameter="0" productivity="0" geodescription="11">
+    <Point height="1" waterdeep="20">
+      <Coordinates latitude="8,13395" latitude_d="8" latitude_m="8" latitude_s="2,22084" lngitude="90,68394" lngitude_d="90" lngitude_m="41" lngitude_s="2,200928" />
+      <GroundType type_code="9" name="Тест1 Песок м/з" porosity="0,35" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <RiskObjectType type_code="1" name="АЗС" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <District code="1" name="Барановичский">
+      <Region region_code="1" name="Брестская" />
+    </District>
+    <Region region_code="1" name="Брестская" />
+  </RiskObject>
+  <RiskObject id="5" name="Дружба" address="ул.Строителей, 2" ownership="f" phone="80293334575" fax="80293334785" email="xxx@xxx.com" foundationdate="03.02.1960" reconstractiondate="03.02.2000" numberofrefuel="1" volume="1" watertreatment="нет" watertreatmentcollect="нет" groundtank="10" undergroundtank="10" fueltype="" numberofthreads="0" tubediameter="0" productivity="0" geodescription="">
+    <Point height="2" waterdeep="7">
+      <Coordinates latitude="42,34167" latitude_d="42" latitude_m="20" latitude_s="30,00183" lngitude="123,0506" lngitude_d="123" lngitude_m="3" lngitude_s="1,988525" />
+      <GroundType type_code="1" name="Песчаный" porosity="0,43" holdmigration="0,6" waterfilter="4,21E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,01" soilmoisture="0,2" аveryanovfactor="5" permeability="0,2" density="2100" />
+    </Point>
+    <RiskObjectType type_code="1" name="АЗС" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <District code="1" name="Барановичский">
+      <Region region_code="1" name="Брестская" />
+    </District>
+    <Region region_code="1" name="Брестская" />
+  </RiskObject>
+  <RiskObject id="6" name="Нефтебаза № 28" address="Свердлова, 16" ownership="f" phone="222333" fax="222333" email="xxx@xxx.com" foundationdate="02.12.2000" reconstractiondate="06.06.2010" numberofrefuel="1" volume="1" watertreatment="нет" watertreatmentcollect="нет" groundtank="5000" undergroundtank="1500" fueltype="222333" numberofthreads="0" tubediameter="0" productivity="0" geodescription="222333">
+    <Point height="110" waterdeep="4,6">
+      <Coordinates latitude="53,66332" latitude_d="53" latitude_m="39" latitude_s="47,96082" lngitude="27,14367" lngitude_d="27" lngitude_m="8" lngitude_s="37,20886" />
+      <GroundType type_code="7" name="SMW60" porosity="0,43" holdmigration="14" waterfilter="3,8E-06" diffusion="0" distribution="0" sorption="0" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="3" permeability="0" density="2100" />
+    </Point>
+    <RiskObjectType type_code="1" name="АЗС" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <District code="1" name="Барановичский">
+      <Region region_code="1" name="Брестская" />
+    </District>
+    <Region region_code="1" name="Брестская" />
+  </RiskObject>
+  <RiskObject id="8" name="Республиканское унитарное предприятие «Производственное объединение «Белоруснефть», Республиканское дочернее унитарное предприятие по снабжению нефтепродуктами Белоруснефть-Минскоблнефтепродукт, Молодечненский филиал" address="222310, г. Молодечно, ул. Либаво-Роменская, 157" ownership="f" phone="(0176) 77-77" fax="77-09-83" email="mldoil@tut.by" foundationdate="01.01.1946" reconstractiondate="01.01.2011" numberofrefuel="1" volume="1" watertreatment="нет" watertreatmentcollect="нет" groundtank="15" undergroundtank="17" fueltype="77-09-83" numberofthreads="0" tubediameter="0" productivity="0" geodescription="77-09-83">
+    <Point height="2" waterdeep="2">
+      <Coordinates latitude="54,30695" latitude_d="54" latitude_m="18" latitude_s="25,00488" lngitude="26,86167" lngitude_d="26" lngitude_m="51" lngitude_s="41,99661" />
+      <GroundType type_code="1" name="Песчаный" porosity="0,43" holdmigration="0,6" waterfilter="4,21E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,01" soilmoisture="0,2" аveryanovfactor="5" permeability="0,2" density="2100" />
+    </Point>
+    <RiskObjectType type_code="1" name="АЗС" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <District code="1" name="Барановичский">
+      <Region region_code="1" name="Брестская" />
+    </District>
+    <Region region_code="1" name="Брестская" />
+  </RiskObject>
+  <RiskObject id="9" name="Республиканское унитарное предприятие «Производственное объединение «Белоруснефть», Республиканское дочернее унитарное предприятие по снабжению нефтепродуктами Белоруснефть-Гроднооблнефтепродукт, Волковысский филиал" address="231900 , г. Волковыск, ул. Октябрьская, 153" ownership="f" phone="(1512) 5-16-" fax="5-16-41" email="" foundationdate="01.01.1940" reconstractiondate="01.01.2012" numberofrefuel="1" volume="1" watertreatment="нет" watertreatmentcollect="нет" groundtank="13" undergroundtank="15" fueltype="5-16-41" numberofthreads="0" tubediameter="0" productivity="0" geodescription="5-16-41">
+    <Point height="2" waterdeep="2">
+      <Coordinates latitude="53,11806" latitude_d="53" latitude_m="7" latitude_s="5,006104" lngitude="22,37278" lngitude_d="22" lngitude_m="22" lngitude_s="22,00058" />
+      <GroundType type_code="1" name="Песчаный" porosity="0,43" holdmigration="0,6" waterfilter="4,21E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,01" soilmoisture="0,2" аveryanovfactor="5" permeability="0,2" density="2100" />
+    </Point>
+    <RiskObjectType type_code="1" name="АЗС" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <District code="1" name="Барановичский">
+      <Region region_code="1" name="Брестская" />
+    </District>
+    <Region region_code="1" name="Брестская" />
+  </RiskObject>
+  <RiskObject id="13" name="8" address="8" ownership="f" phone="80295582395" fax="80295582395" email="8" foundationdate="01.11.2016" reconstractiondate="17.11.2016" numberofrefuel="1" volume="1" watertreatment="нет" watertreatmentcollect="нет" groundtank="18" undergroundtank="48" fueltype="80295582395" numberofthreads="0" tubediameter="0" productivity="0" geodescription="80295582395">
+    <Point height="8,56" waterdeep="8,56">
+      <Coordinates latitude="8,135555" latitude_d="8" latitude_m="8" latitude_s="7,998962" lngitude="8,135555" lngitude_d="8" lngitude_m="8" lngitude_s="7,998962" />
+      <GroundType type_code="2" name="Глинистый" porosity="0,5" holdmigration="111,3" waterfilter="2E-07" diffusion="0,1" distribution="0,2" sorption="0,2" watercapacity="0,16" soilmoisture="0,43" аveryanovfactor="3,5" permeability="0,2" density="2000" />
+    </Point>
+    <RiskObjectType type_code="6" name="Оборудование нефтеперерабатывающих предприятий" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <District code="2" name="Березовский">
+      <Region region_code="2" name="Витебская" />
+    </District>
+    <Region region_code="2" name="Витебская" />
+  </RiskObject>
+  <RiskObject id="15" name="SMW60" address="Минск" ownership="f" phone="+375 173274" fax="+375 17327" email="smw60@mail.ru" foundationdate="15.11.2016" reconstractiondate="15.11.2016" numberofrefuel="1" volume="1" watertreatment="нет" watertreatmentcollect="нет" groundtank="20000" undergroundtank="20000" fueltype="+375 17327" numberofthreads="0" tubediameter="0" productivity="0" geodescription="+375 17327">
+    <Point height="120" waterdeep="4">
+      <Coordinates latitude="53,66332" latitude_d="53" latitude_m="39" latitude_s="47,96082" lngitude="27,14367" lngitude_d="27" lngitude_m="8" lngitude_s="37,20886" />
+      <GroundType type_code="7" name="SMW60" porosity="0,43" holdmigration="14" waterfilter="3,8E-06" diffusion="0" distribution="0" sorption="0" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="3" permeability="0" density="2100" />
+    </Point>
+    <RiskObjectType type_code="1" name="АЗС" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <District code="92" name="Минский">
+      <Region region_code="5" name="Минская" />
+    </District>
+    <Region region_code="5" name="Минская" />
+  </RiskObject>
+  <RiskObject id="17" name="Тест1 Республиканское унитарное предприятие «Производственное объединение «Белоруснефть», Республиканское дочернее унитарное предприятие по снабжению нефтепродуктами Белоруснефть-Минскоблнефтепродукт, Молодечненский филиал" address="г. Молодечно, ул. Либаво-Роменская, 157" ownership="f" phone="(0176) 77-77-47" fax="(0176) 777- 78-74" email="mldoil@tut.by" foundationdate="01.01.1900" reconstractiondate="01.01.1900" numberofrefuel="1" volume="1" watertreatment="нет" watertreatmentcollect="нет" groundtank="0" undergroundtank="0" fueltype="(0176) 777- 78-74" numberofthreads="0" tubediameter="0" productivity="0" geodescription="(0176) 777- 78-74">
+    <Point height="179,22" waterdeep="2,5">
+      <Coordinates latitude="54,30694" latitude_d="54" latitude_m="18" latitude_s="24,99115" lngitude="26,86167" lngitude_d="26" lngitude_m="51" lngitude_s="41,99661" />
+      <GroundType type_code="9" name="Тест1 Песок м/з" porosity="0,35" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <RiskObjectType type_code="2" name="Нефтебаза" />
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0,0001" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <District code="93" name="Молодечненский">
+      <Region region_code="5" name="Минская" />
+    </District>
+    <Region region_code="5" name="Минская" />
+  </RiskObject>
+  <RiskObject id="18" name="Тест2 Республиканское унитарное предприятие «Производственное объединение «Белоруснефть», Республиканское дочернее унитарное предприятие по снабжению нефтепродуктами Белоруснефть-Гроднооблнефтепродукт, Волковысский филиал" address="г. Волковыск, ул. Октябрьская, 153" ownership="f" phone="(1512) 5-16-30, 5-15-37, 5-16-41" fax="(1512) 5-16-30" email="-" foundationdate="01.01.1900" reconstractiondate="01.01.1900" numberofrefuel="1" volume="1" watertreatment="нет" watertreatmentcollect="нет" groundtank="11250" undergroundtank="525" fueltype="(1512) 5-16-30" numberofthreads="0" tubediameter="0" productivity="0" geodescription="(1512) 5-16-30">
+    <Point height="141,7" waterdeep="3">
+      <Coordinates latitude="53,11806" latitude_d="53" latitude_m="7" latitude_s="5,006104" lngitude="22,37278" lngitude_d="22" lngitude_m="22" lngitude_s="22,00058" />
+      <GroundType type_code="9" name="Тест1 Песок м/з" porosity="0,35" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <RiskObjectType type_code="2" name="Нефтебаза" />
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0,0001" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <District code="65" name="Волковысский">
+      <Region region_code="4" name="Гродненская" />
+    </District>
+    <Region region_code="4" name="Гродненская" />
+  </RiskObject>
+  <RiskObject id="20" name="Тест3 МАЗС № 38 РУП «Белоруснефть-Витебскоблнефтепродукт»" address="211400 Полоцк, Боровухский с/с, д. Чернещино, автодорога Р-20, 6-й км." ownership="f" phone="(0214) 419161" fax="" email="" foundationdate="01.01.1900" reconstractiondate="01.01.1900" numberofrefuel="1" volume="1" watertreatment="нет" watertreatmentcollect="нет" groundtank="10" undergroundtank="0" fueltype="" numberofthreads="0" tubediameter="0" productivity="0" geodescription="">
+    <Point height="137,3" waterdeep="3,4">
+      <Coordinates latitude="56,63389" latitude_d="56" latitude_m="38" latitude_s="2,011414" lngitude="25,1841" lngitude_d="25" lngitude_m="11" lngitude_s="2,757111" />
+      <GroundType type_code="9" name="Тест1 Песок м/з" porosity="0,35" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <RiskObjectType type_code="1" name="АЗС" />
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0,0001" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <District code="32" name="Полоцкий">
+      <Region region_code="2" name="Витебская" />
+    </District>
+    <Region region_code="2" name="Витебская" />
+  </RiskObject>
+  <RiskObject id="22" name="Тест4 МАЗС № 70 РУП «Белоруснефть-Минскоблнефтепродукт»" address="юго-восточнее д. Дягильно на 810 м." ownership="f" phone="+375 1716 54241" fax="" email="" foundationdate="01.01.1900" reconstractiondate="01.09.2007" numberofrefuel="1" volume="1" watertreatment="нет" watertreatmentcollect="нет" groundtank="10" undergroundtank="0" fueltype="" numberofthreads="0" tubediameter="0" productivity="0" geodescription="">
+    <Point height="187,3" waterdeep="3,1">
+      <Coordinates latitude="53,66328" latitude_d="53" latitude_m="39" latitude_s="47,80975" lngitude="27,08486" lngitude_d="27" lngitude_m="5" lngitude_s="5,509186" />
+      <GroundType type_code="9" name="Тест1 Песок м/з" porosity="0,35" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <RiskObjectType type_code="1" name="АЗС" />
+    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0,0005" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <District code="86" name="Дзержинский">
+      <Region region_code="5" name="Минская" />
+    </District>
+    <Region region_code="5" name="Минская" />
+  </RiskObject>
+  <RiskObject id="23" name="Тест5 МАЗС № 49 РУП «Белоруснефть-Гомельоблнефтепродукт»" address="Автодорога Р-31 Бобруйск-Житомир в Мозырском районе пересечение дорог Мозырь-Овруч-Сользавод" ownership="f" phone="+375 236 361715" fax="" email="" foundationdate="01.01.1900" reconstractiondate="01.11.2009" numberofrefuel="1" volume="1" watertreatment="нет" watertreatmentcollect="нет" groundtank="10" undergroundtank="0" fueltype="" numberofthreads="0" tubediameter="0" productivity="0" geodescription="">
+    <Point height="157" waterdeep="3,4">
+      <Coordinates latitude="52" latitude_d="52" latitude_m="0" latitude_s="0" lngitude="29,27152" lngitude_d="29" lngitude_m="16" lngitude_s="17,48108" />
+      <GroundType type_code="9" name="Тест1 Песок м/з" porosity="0,35" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <RiskObjectType type_code="1" name="АЗС" />
+    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0,0005" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <District code="55" name="Мозырский">
+      <Region region_code="3" name="Гомельская" />
+    </District>
+    <Region region_code="3" name="Гомельская" />
+  </RiskObject>
+</RiskObjectList>

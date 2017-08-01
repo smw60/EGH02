@@ -1,0 +1,77 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Types;
+@model EGH01DB.RGEContext
+
+@{
+
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    Menu head = new Menu(
+                          new Menu.MenuItem("Создать", "SpreadingCoefficient.Create", false),
+                          new Menu.MenuItem("Excel-формат", "SpreadingCoefficient.Excel", false)
+                        );
+
+    Menu create = new Menu(
+                          new Menu.MenuItem("Создать", "SpreadingCoefficient.Create.Create", true),
+                          new Menu.MenuItem("Отказаться", "SpreadingCoefficient.Create.Cancel", true)
+                        );
+
+
+    List<EGH01DB.Types.GroundType> list_groundType = new List<EGH01DB.Types.GroundType>();
+    ViewBag.list_groundType = new List<SelectListItem>();
+    if (@Model != null)
+    {
+        Helper.GetListGroundType(@Model, ref list_groundType);
+        list_groundType.ForEach(o => ViewBag.list_groundType.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+    }
+
+    List<EGH01DB.Types.PetrochemicalType> list_petrochemicalType = new List<EGH01DB.Types.PetrochemicalType>();
+    ViewBag.list_petrochemicalType = new List<SelectListItem>();
+    if (@Model != null)
+    {
+        Helper.GetListPetrochemicalType(@Model, ref list_petrochemicalType);
+        list_petrochemicalType.ForEach(o => ViewBag.list_petrochemicalType.Add(new SelectListItem { Text = o.name, Value = o.code_type.ToString() }));
+
+    }
+
+}
+
+
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHRGE", Action = "SpreadingCoefficient", Menu = head })
+@using (Html.BeginForm("SpreadingCoefficientCreate", "EGHRGE"))
+{
+
+
+    <div class="box">
+        <div class="boxdata">
+            <p>
+                <label class="boxdata-label-30">Тип нефтепродукта</label>@Html.DropDownList("list_petrochemicalType")
+            </p>
+            <p>
+                <label class="boxdata-label-30">Тип грунта</label>@Html.DropDownList("list_groundType")
+                @*<input type="hidden" value="@Model.code.ToString()" name="code">*@
+
+            </p>
+     
+            <p>
+                <label class="boxdata-label-30">Диапазон значений объема пролива, м<sup><small>3</small></sup></label>
+                <input class="boxdata-input-20" type="number" step="0.1" min="0" name="min_volume" value=" " />
+                <input class="boxdata-input-20" type="number" step="0.1" min="0" name="max_volume" value=" " />
+            </p>
+            <p>
+                <label class="boxdata-label-30">Диапазон значений гидравлического уклона</label>
+                <input class="boxdata-input-20" type="number" step="0.1" name="min_angle" min="0" max="90" value=" " />
+                <input class="boxdata-input-20" type="number" step="0.1" name="max_angle" min="0" max="90" value=" " />
+            </p>
+            <p>
+                <label class="boxdata-label-30">Коэффициент растекания, 1/м</label>
+                <input class="boxdata-input-20" type="number" name="koef" min ="0.1" max="50" step="0.1" value="1" />
+            </p>
+        </div>
+
+        @Html.Partial("_TypeLineMenu", create)
+    </div>
+}
+

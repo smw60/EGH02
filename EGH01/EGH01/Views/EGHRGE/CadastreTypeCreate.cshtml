@@ -1,0 +1,39 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Types;
+@model EGH01DB.RGEContext
+
+@{
+
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    Menu start = new Menu(
+                          new Menu.MenuItem("Создать", "CadastreType.Create", true),
+                          new Menu.MenuItem("Отказаться", "CadastreType.Cancel", true)
+                        );
+
+    Menu create = new Menu(
+                          new Menu.MenuItem("Создать", "CadastreType.Create.Create", true),
+                          new Menu.MenuItem("Отказаться", "CadastreType.Create.Cancel", true)
+                        );
+
+}
+
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHRGE", Action = "CadastreType", Menu = start })
+@using (Html.BeginForm("CadastreTypeCreate", "EGHRGE"))
+{
+        <div class="box">
+        <fieldset form="CadastreType">
+            <div class="boxdata">
+                <p>
+                    <label class="boxdata-label-30"> Наименование категории земли</label>
+                    @*<input class="boxdata-input-30" type="text" name="name" />*@
+                    <textarea class="boxdata-input-50" name="Name"></textarea>
+                </p>
+</div>
+        </fieldset>
+            @Html.Partial("_TypeLineMenu", create)
+</div>
+}
+
+

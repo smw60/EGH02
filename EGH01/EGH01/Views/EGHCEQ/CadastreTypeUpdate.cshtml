@@ -1,0 +1,55 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Objects;
+@using EGH01DB.Types;
+@model EGH01DB.Types.CadastreType
+@{
+
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    //Menu head = new Menu(
+    //                      new Menu.MenuItem("Создать", "CadastreType.Create", false),
+    //                      new Menu.MenuItem("Excel-формат", "CadastreType.Excel", false)
+    //                    );
+
+    Menu delete = new Menu(
+                          new Menu.MenuItem("Изменить", "CadastreType.Update.Update", true),
+                          new Menu.MenuItem("Отказаться", "CadastreType.Update.Cancel", true)
+                        );
+}
+@*@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHCEQ", Action = "CadastreType", Menu = head })*@
+
+@using (Html.BeginForm("CadastreTypeUpdate", "EGHCEQ"))
+{
+
+    <div class="box">
+        <div class="boxdata">
+
+            <div class="boxdata">
+                <input type="hidden" value="@Model.type_code" name="type_code">
+            </div>
+            <div class="boxdata">
+                <p><label class="boxdata-label-50">Наименование категории земли</label><span class="boxdata-span">@Model.name</span></p>
+                <input type="hidden" value="@Model.name.ToString()" name="name">
+</div>
+               <p> <label class="boxdata-label-30">ПДК в грунте, кг/кг</label>
+                   <input class="boxdata-input-50" type="number" name="pdk_coef" value="@Model.pdk_coef.ToString().Replace(',' , '.')" step="0.00000001" min="0" />           
+            </p>
+            <p>
+                <label class="boxdata-label-30">ПДК в воде, кг/м<sup>3</sup></label>
+                <input class="boxdata-input-50" type="number" name="water_pdk_coef" value="@Model.water_pdk_coef.ToString().Replace(',' , '.')" step="0.0000001" min="0" />
+            </p>
+            <p>
+                <label class="boxdata-label-30">Название нормативного документа для почвы</label>
+                <input class="boxdata-input-50" type="text" name="ground_doc_name" value="@Model.ground_doc_name" />
+            </p>
+            <p>
+                <label class="boxdata-label-30">Название нормативного документа для воды</label>
+                <input class="boxdata-input-50" type="text" name="water_doc_name" value="@Model.water_doc_name" />
+            </p>
+        </div>
+
+        @Html.Partial("_TypeLineMenu", delete)
+
+    </div>
+}

@@ -1,0 +1,5 @@
+<WaterProtectionArea>
+  <WaterProtectionArea type_code="0" name="Нет водоохранных ограничений" />
+  <WaterProtectionArea type_code="1" name="Зона санитарной охраны " />
+  <WaterProtectionArea type_code="2" name="Водоохранная зона" />
+</WaterProtectionArea>

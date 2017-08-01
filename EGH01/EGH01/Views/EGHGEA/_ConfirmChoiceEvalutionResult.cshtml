@@ -1,0 +1,19 @@
+﻿
+@using EGH01DB.Objects;
+@using EGH01DB.Primitives;
+@using EGH01.Core;
+@using EGH01.Models.EGHGEA;
+@model EGH01DB.GEAContext
+
+@{
+    GEAContextView context = Model.GetViewContext(GEAContextView.VIEWNAME) as GEAContextView;
+    if (context == null) {Model.SaveViewContext(GEAContextView.VIEWNAME, context = new GEAContextView());}
+
+
+}
+@if (context.ecoevolution != null)
+{
+       <div class="box">
+           <h4>@Html.ActionLink(context.ecoevolution.line, "Index")</h4>
+       </div>
+}

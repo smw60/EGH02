@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "Map";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<style>
+    #map-canvas {
+        height: 350px;
+        width: 600px;
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDD-BQGwH6mEgOBp15GhEpzm8h1JzP-fpg"></script>
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<p class="center"><input type="button" id="redraw" value="Отобразить карту по координатам" /></p>
+<p class="center"><input type="submit" id="get_screen_button" value="Заскринить"  name="upload"/></p>
+<div id="canvas" class="map"   src="@Url.Action("Upload", "Home")"></div>
+}
+@section scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var alt = 0;
+            var zoom = 6;
+            var screen_width = 600;
+            var screen_height = 350;
+            var screen_map_type = 'roadmap';
+            var map = null;
+            var map_marker = null;
+        GetMap();
+    });
+
+    function GetMap() {
+
+        google.maps.visualRefresh = true;
+        var create = new google.maps.LatLng(53.8842846, 27.5526839);
+        var mapOptions = {
+            zoom: 15,
+            center: create,
+            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+        };
+
+        var map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
+        var myLatlng = new google.maps.LatLng(53.8842846, 27.5526839);
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+        });
+        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+    }
+
+    function GetMapCoordinat() {
+
+        google.maps.visualRefresh = true;
+        var create = new google.maps.LatLng(25, 27);
+
+        var mapOptions = {
+            zoom: 4,
+            center: create,
+            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+        };
+        var map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
+
+        var myLatlng = new google.maps.LatLng(25, 27);
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+        });
+        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+    }
+    $("#redraw").click(function () {
+        GetMapCoordinat();
+    });
+
+    function convertImgToDataURLviaCanvas(url) {
+        var img = new Image();
+        img.crossOrigin = 'Anonymous';
+        img.onload = function () {
+            var canvas = document.createElement('CANVAS');
+            var ctx = canvas.getContext('2d');
+            var dataURL;
+            canvas.height = this.height;
+            canvas.width = this.width;
+            ctx.drawImage(this, 0, 0);
+            dataURL = canvas.toDataURL(outputFormat);
+            callback(dataURL);
+            canvas = null;
+        };
+        img.src = url;
+        img.width = screen_width;
+        img.height = screen_height;
+        upload.Image = img;
+        upload.ImageShow=
+        upload.outputFormat;
+
+    }
+
+    function get_static_map_url() {
+        //URL of Google Static Maps.
+        var staticMapUrl = "https://maps.googleapis.com/maps/api/staticmap";
+
+        //Set the Google Map Center.
+        staticMapUrl += "?center=" + map.center.lat() + "," + map.center.lng();
+
+        //Set the Google Map Size.
+        staticMapUrl += "&size=" + 300 + "x" + 500;
+
+        //Set the Google Map Zoom.
+        staticMapUrl += "&zoom=" + map.zoom(6);
+
+        //Set the Google Map Type.
+        staticMapUrl += "&maptype=" + map.mapTypeId;
+
+        staticMapUrl += "&key=AIzaSyC_kYTsnbJwMtUD_aganLKktrdZYYKjcC8";
+
+        return staticMapUrl;
+    }
+
+    $("#get_screen_button").click(function () {
+        convertImgToDataURLviaCanvas(get_static_map_url());
+
+
+
+
+    });
+    </script>
+}

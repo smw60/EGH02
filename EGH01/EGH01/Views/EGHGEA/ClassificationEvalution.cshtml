@@ -1,0 +1,15 @@
+﻿
+@model EGH01DB.GEAContext
+@{
+     Layout = "~/Views/Shared/EGHLayout.cshtml";
+}
+
+@if (Model != null)
+{
+    @Html.Partial("_ConfirmChoiceEvalutionResult", Model)
+    @Html.Partial("_GEAReport", Model)
+}
+
+
+
+

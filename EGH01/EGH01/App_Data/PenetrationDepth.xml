@@ -1,0 +1,5 @@
+<PenetrationDepthList>
+  <PenetrationDepth code="1" name="Мелкопрофильное" mindepth="0" maxdepth="1" />
+  <PenetrationDepth code="2" name="Среднепрофильное" mindepth="1,1" maxdepth="5" />
+  <PenetrationDepth code="3" name="Глубокопрофильное" mindepth="5,1" maxdepth="100" />
+</PenetrationDepthList>

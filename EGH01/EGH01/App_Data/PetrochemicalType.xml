@@ -1,0 +1,41 @@
+<PetrochemicalTypeList>
+  <PetrochemicalType code_type="1" name="Нефть" boilingtemp="20" density="850" viscosity="6,1" solubility="10" tension="0,026" dynamicviscosity="0,0178" diffusion="1E-07">
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  </PetrochemicalType>
+  <PetrochemicalType code_type="2" name="Бензин SMW60" boilingtemp="60" density="750" viscosity="0,00052" solubility="15" tension="0,021" dynamicviscosity="0,00052" diffusion="1E-07">
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  </PetrochemicalType>
+  <PetrochemicalType code_type="3" name="Керосин" boilingtemp="215" density="775" viscosity="0,002375" solubility="11" tension="0,0252" dynamicviscosity="0,0022" diffusion="1E-07">
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  </PetrochemicalType>
+  <PetrochemicalType code_type="4" name="Топливо дизельное" boilingtemp="275" density="795" viscosity="0,004785" solubility="0,65" tension="0,0308" dynamicviscosity="0,00132" diffusion="1E-07">
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  </PetrochemicalType>
+  <PetrochemicalType code_type="5" name="Топливо котельное (мазут)" boilingtemp="0" density="930" viscosity="0,0614" solubility="0,1" tension="0,03" dynamicviscosity="2,946" diffusion="1E-07">
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  </PetrochemicalType>
+  <PetrochemicalType code_type="9" name="Нефть сырая волго-уральская" boilingtemp="60" density="810" viscosity="0,0208" solubility="50" tension="0,026" dynamicviscosity="0,04545" diffusion="1E-07">
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  </PetrochemicalType>
+  <PetrochemicalType code_type="10" name="Нефть сырая западно-сибирская" boilingtemp="60" density="830" viscosity="0,0066" solubility="50" tension="0,026" dynamicviscosity="0,04545" diffusion="1E-07">
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  </PetrochemicalType>
+  <PetrochemicalType code_type="11" name="Нефть сырая казахская" boilingtemp="60" density="850" viscosity="0,0186" solubility="50" tension="0,026" dynamicviscosity="0,04545" diffusion="1E-07">
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  </PetrochemicalType>
+  <PetrochemicalType code_type="13" name="Тест1 Бензин" boilingtemp="110" density="750" viscosity="4,3E-07" solubility="0,009" tension="0,021" dynamicviscosity="0,00052" diffusion="1E-07">
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  </PetrochemicalType>
+  <PetrochemicalType code_type="14" name="Тест2 Нефть " boilingtemp="200" density="850" viscosity="6,1E-06" solubility="0,05" tension="0,026" dynamicviscosity="0,0178" diffusion="1E-07">
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  </PetrochemicalType>
+  <PetrochemicalType code_type="15" name=" Тест3 Керосин" boilingtemp="130" density="850" viscosity="1,25E-06" solubility="0,002" tension="0,024" dynamicviscosity="0,002" diffusion="1E-07">
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  </PetrochemicalType>
+  <PetrochemicalType code_type="16" name=" Тест4 Дизельнок топливо" boilingtemp="200" density="795" viscosity="1,84E-06" solubility="0,00065" tension="0,0308" dynamicviscosity="0,0032" diffusion="1E-07">
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  </PetrochemicalType>
+  <PetrochemicalType code_type="17" name=" Тест5 Мазут" boilingtemp="300" density="930" viscosity="3,53E-05" solubility="1E-05" tension="0,052" dynamicviscosity="2,022" diffusion="1E-07">
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  </PetrochemicalType>
+</PetrochemicalTypeList>
