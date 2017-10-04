@@ -9,27 +9,51 @@
                             new Menu.MenuItem("Удалить", "SoilPollutionCategories.Delete", true),
                             new Menu.MenuItem("Изменить", "SoilPollutionCategories.Update", true)
                            );
+    }
 
 
-}
+
+<script>
+    var dataSet = [];
+
+</script>
 @foreach (SoilPollutionCategories t in @Model)
 {
 
     using (Html.BeginForm("SoilPollutionCategories", "EGHGEA"))
     {
-     
-        <div class="box">
-            <div class="boxdata">
-
-                <p><label class="boxdata-label-30">Код типа категории</label> @t.code.ToString()</p>
-                <p><label class="boxdata-label-30">Наименование категории загрязнения грунта</label> <span class="boxdata-span">@t.name</span></p>            
-                <p><label class="boxdata-label-30">Диапазон кратности превышения показателя ПДК </label>@t.min.ToString()&nbsp;-&nbsp;@t.max.ToString()&nbsp;</p>
-                <p><label class="boxdata-label-30">Категория земли </label> <span class="boxdata-span">@t.cadastretype.name</span></p>   
-
-                <input type="hidden" value="@t.code.ToString()" name="id">
-
-            </div>
-       @Html.Partial("_TypeLineMenu", menu)
-        </div>
+        <script>
+ dataSet.push( [
+ ` @t.code.ToString() `,
+ `@t.name`,
+ `@t.min.ToString()&nbsp;-&nbsp;@t.max.ToString()&nbsp;`,
+  `@t.cadastretype.name`,
+ `<button onclick='location="SoilPollutionCategories?menuitem=SoilPollutionCategories.Delete&id=@t.code.ToString()"' name='menuitem' value="SoilPollutionCategories.Delete">Удалить </button><button onclick='location="SoilPollutionCategories?menuitem=SoilPollutionCategories.Update&id=@t.code.ToString()"' name='menuitem' value="SoilPollutionCategories.Update">Изменить </button>&nbsp`
+   ] );
+  </script>
     }
 }
+
+<script>
+$(document).ready(function() {
+    $('#main').DataTable({
+        "language": 
+datatables_lang,
+
+        data: dataSet,
+        columns: [
+		//тут должны быть названия наших колонок для шапки
+            { title: "Код" },
+            { title: "Наименование" },
+            { title: "Привышение ПДК(раз)" },
+            { title: "Категория земли" },
+            { title: "Действие" }
+
+        ]
+    } );
+} );
+</script>
+
+
+
+<table style="width:100%" class="main" id="main"></table>

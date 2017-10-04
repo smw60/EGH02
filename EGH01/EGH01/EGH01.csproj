@@ -255,6 +255,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\datatables.min.css" />
     <Content Include="Content\dev.css" />
     <Content Include="Resources\1.jpg" />
     <Content Include="Resources\10.jpg" />
@@ -282,8 +283,10 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\Developer.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\datatables.min.js" />
     <Content Include="Scripts\html2canvas.js" />
     <Content Include="Scripts\html2canvas.svg.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\time.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -473,6 +476,8 @@
     <Content Include="Views\EGHORT\Rehabilitation.cshtml" />
     <Content Include="Views\EGHORT\_ORTReport.cshtml" />
     <Content Include="Views\EGHGEA\_GEAReport.cshtml" />
+    <Content Include="Views\EGHGEA\_SoilPollutionCategoriesList - Копировать.cshtml" />
+    <Content Include="Views\EGHGEA\_SoilPollutionCategoriesList - Копировать %282%29.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

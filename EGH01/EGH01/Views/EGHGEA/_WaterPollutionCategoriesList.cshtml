@@ -12,24 +12,98 @@
 
 
 }
+
+
+<script>
+    var dataSet = [];
+
+</script>
+
 @foreach (WaterPollutionCategories t in @Model)
 {
 
     using (Html.BeginForm("WaterPollutionCategories", "EGHGEA"))
     {
-
-        <div class="box">
-            <div class="boxdata">
-
-                <p><label class="boxdata-label-30">Код типа категории</label> @t.code.ToString()</p>
-                <p><label class="boxdata-label-30">Наименование категории загрязнения  грунтовых вод</label> <span class="boxdata-span">@t.name</span></p>
-                <p><label class="boxdata-label-30">Диапазон кратности превышения показателя ПДК от</label>@t.min.ToString()&nbsp;-&nbsp;@t.max.ToString()&nbsp;</p>
-                <p><label class="boxdata-label-30">Категория земли</label> @t.cadastretype.name</p>
-
-                <input type="hidden" value="@t.code.ToString()" name="id">
-
-            </div>
-            @Html.Partial("_TypeLineMenu", menu)
-        </div>
+            <script>
+ dataSet.push( [
+ ` @t.code.ToString() `,
+ `    @t.name`,
+  `   @t.min.ToString()&nbsp;-&nbsp;@t.max.ToString()&nbsp;`,
+  `@t.cadastretype.name`,
+ `<button onclick='location="WaterPollutionCategories?menuitem=WaterPollutionCategories.Delete&id=@t.code.ToString()"' name='menuitem' value="WaterPollutionCategories.Delete">Удалить </button><button onclick='location="WaterPollutionCategories?menuitem=WaterPollutionCategories.Update&id=@t.code.ToString()"' name='menuitem' value="WaterPollutionCategories.Update">Изменить </button>&nbsp`
+   ] );
+            </script>
+        }
     }
-}
+
+    <script>
+$(document).ready(function() {
+    $('#main').DataTable({
+        "language":
+datatables_lang,
+
+        data: dataSet,
+        columns: [
+		//тут должны быть названия наших колонок для шапки
+            { title: "Код" },
+            { title:  "Наименование" },
+            { title: "Привышение ПДК(раз)" },
+            { title: "Категория земли" },
+            { title: "Действие" }
+
+        ]
+    } );
+} );
+    </script>
+
+
+
+    <table style="width:100%" class="main" id="main"></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
