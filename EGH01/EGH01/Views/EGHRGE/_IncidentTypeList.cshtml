@@ -1,31 +1,52 @@
 ﻿@using EGH01DB.Types;
-@using EGH01.Core; 
+@using EGH01.Core;
 @model List<IncidentType>
 @{
-   Menu menu =  new Menu( 
-                           new Menu.MenuItem("Удалить",  "IncidentType.Delete",  true),
-                           new Menu.MenuItem("Изменить", "IncidentType.Update",  true)
-                          );   
-    
+    Menu menu = new Menu(
+                            new Menu.MenuItem("Удалить", "IncidentType.Delete", true),
+                            new Menu.MenuItem("Изменить", "IncidentType.Update", true)
+                           );
+
 }
-@foreach(IncidentType t in @Model)
+
+<script>
+    var dataSet = [];
+
+</script>
+
+@foreach (IncidentType t in @Model)
 {
 
-    using(Html.BeginForm("IncidentType", "EGHRGE"))
+    using (Html.BeginForm("IncidentType", "EGHRGE"))
     {
+        <script>
+ dataSet.push( [
+ `@t.type_code.ToString() `,
+ ` @t.name`,
+ `<button onclick='location="IncidentType?menuitem=IncidentType.Delete&type_code=@t.type_code.ToString()"' name='menuitem' value="IncidentType.Delete">Удалить </button><button onclick='location="IncidentType?menuitem=IncidentType.Update&type_code=@t.type_code.ToString()"' name='menuitem' value="IncidentType.Update">Изменить </button>&nbsp`
 
-        <div class="box">
-            <div class="boxdata">
-
-                <p><label class="boxdata-label-30">Код типа инцидента</label> @t.type_code.ToString() </p>
-                              <p><label class="boxdata-label-30">Наименование типа инцидента</label> @t.name </p>
-                <input type="hidden" value="@t.type_code.ToString()" name="type_code">
-            
-            </div>
-            @Html.Partial("_TypeLineMenu", menu)
-        </div>
-
+ ]);
+        </script>
     }
 }
 
- 
+<script>
+$(document).ready(function() {
+    $('#main').DataTable({
+        "language":
+datatables_lang,
+
+        data: dataSet,
+        columns: [
+		//тут должны быть названия наших колонок для шапки
+            { title: "Код типа инцидента" },
+            { title: "Наименование типа инцидента" },
+            { title: "Действие" }
+
+        ]
+    } );
+} );
+</script>
+
+<table style="width:100%" class="main" id="main"></table>
+

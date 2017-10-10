@@ -9,24 +9,56 @@
                            );
 
 }
+<script>
+    var dataSet = [];
+
+</script>
+
+
 @foreach (EcoObjectType t in @Model)
 {
 
     using (Html.BeginForm("EcoObjectType", "EGHRGE"))
     {
 
-        <div class="box">
-            <div class="boxdata">
+        <script>
+ dataSet.push( [
+ `@t.type_code.ToString()`,
+ `@t.name.ToString()`,
+ `@t.waterprotectionarea.name.ToString()`,
+ `<button onclick='location="EcoObjectType?menuitem=EcoObjectType.Delete&type_code=@t.type_code.ToString()"' name='menuitem' value="EcoObjectType.Delete">Удалить </button><button onclick='location="EcoObjectType?menuitem=EcoObjectType.Update&type_code=@t.type_code.ToString()"' name='menuitem' value="EcoObjectType.Update">Изменить </button>&nbsp`
 
-                <p><label class="boxdata-label-30">Код типа природоохранного объекта</label> @t.type_code.ToString()</p>
-                <p><label class="boxdata-label-50">Наименование типа природоохранного объекта</label>@t.name.ToString()</p>
-                <p> <label class="boxdata-label-50">Категория водоохранной территории</label> @t.waterprotectionarea.name.ToString()</p>
-                <input type="hidden" value="@t.type_code.ToString()" name="type_code">
-
-            </div>
-            @Html.Partial("_TypeLineMenu", menu)
-        </div>
-
+ ]);
+        </script>
     }
 }
+
+<script>
+$(document).ready(function() {
+    $('#main').DataTable({
+        "language":
+datatables_lang,
+
+        data: dataSet,
+        columns: [
+		//тут должны быть названия наших колонок для шапки
+            { title: "Код типа природоохранного объекта" },
+            { title: "Наименование типа природоохранного объекта" },
+            { title: "Категория водоохранной территории" },
+            { title: "Действие" }
+
+      ]
+    } );
+} );
+</script>
+
+
+<table style="width:100%" class="main" id="main"></table>
+
+
+
+
+
+
+
 

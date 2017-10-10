@@ -8,24 +8,56 @@
                            );
 
 }
+
+<script>
+    var dataSet = [];
+
+</script>
+
+
 @foreach (CadastreType t in @Model)
 {
 
     using (Html.BeginForm("CadastreType", "EGHRGE"))
     {
+            <script>
+ dataSet.push( [
+ `@t.type_code.ToString()`,
+ `@t.name.ToString()`,
+ `<button onclick='location="CadastreType?menuitem=CadastreType.Delete&type_code=@t.type_code.ToString()"' name='menuitem' value="CadastreType.Delete">Удалить </button><button onclick='location="CadastreTypeType?menuitem=CadastreType.Update&type_code=@t.type_code.ToString()"' name='menuitem' value="CadastreType.Update">Изменить </button>&nbsp`
 
-        <div class="box">
-            <div class="boxdata">
-
-
-                <p><label class="boxdata-label-30">Идентификатор</label> @t.type_code.ToString()</p>
-                <p><label class="boxdata-label-30">Категория земли</label> @t.name.ToString()</p>
-                <input type="hidden" value="@t.type_code.ToString()" name="type_code">
-
-            </div>
-            @Html.Partial("_TypeLineMenu", menu)
-        </div>
-
+ ]);
+            </script>
+        }
     }
-}
 
+    <script>
+$(document).ready(function() {
+    $('#main').DataTable({
+        "language":
+datatables_lang,
+
+        data: dataSet,
+        columns: [
+		//тут должны быть названия наших колонок для шапки
+            { title: "Индетификатор" },
+            { title: "Наименование типа техногенного объекта" },
+            { title: "Действие" }
+
+        ]
+    } );
+} );
+    </script>
+
+    <table style="width:100%" class="main" id="main"></table>
+
+
+
+
+
+
+
+
+
+
+       
