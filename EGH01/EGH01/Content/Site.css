@@ -6,7 +6,7 @@
 body {
     padding: 0px;
     min-height: 100%;
-    background: #eeffee; /*новый фон*/
+    background: #f3f3f3; /*новый фон*/
 }
 
 .container {
@@ -27,7 +27,7 @@ h2 {
         max-width: 48%;
     }
         h2 span:nth-last-child(2) {
-            border-right: 4px solid #013d02;
+            border-right: 4px solid #000;
         }
 
     h2 span:nth-child(2) {
@@ -86,8 +86,8 @@ input[type="checkbox"].input-validation-error {
     padding: 8px 20px;
 }
 
-    .navbar .dropdown-menu li a:hover { /*при наведении на пункты меню*/
-        background: #c8da94;
+    .navbar .dropdown-menu li:hover { /*при наведении на пункты меню*/
+        background: #ddd;
         box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
     }
 
@@ -101,7 +101,6 @@ input[type="checkbox"].input-validation-error {
 }
 
     .navbar-brand img {
-        background: #c8da94;
         padding: 0px;
         padding-left: 15px;
         height: 53px;
@@ -129,7 +128,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 .carta {
-    background: #013d02;
+    background: #000;
     height: 500px;
 }
 /* Wrapper for page content to push down footer */
@@ -161,7 +160,7 @@ input[type="checkbox"].input-validation-error {
     touch-action: manipulation;
     cursor: pointer;
     background-image: none;
-    #013d02-space: nowrap;
+    #000-space: nowrap;
     padding: 6px 16px;
     font-size: 13px;
     line-height: 1.846;
@@ -182,7 +181,8 @@ input[type="checkbox"].input-validation-error {
 }
 
 .navbar {
-    background: #fde779; /*фон верхней основной панели*/
+    background: #fff; /*фон верхней основной панели*/
+    border-bottom: 2px #aaa solid;
 }
 
 body {
@@ -257,7 +257,7 @@ input[type="checkbox"].input-validation-error {
 
 /*заголовок */
 .title h2 {
-    color: #013d02;
+    color: #000;
     font-size: 30px;
     vertical-align: middle;
     font-weight: bold;
@@ -274,18 +274,24 @@ input[type="checkbox"].input-validation-error {
     }
 /*меню*/
 a.dropdown-toggle.btn.btn-link {
-    color: #013d02;
+    color: #000;
     font-size: 20px;
 }
 /*второе меню*/
 .proverka1.navbar-default .navbar-nav > li > a, .proverka1 a.dropdown-toggle.btn.btn-link {
-    color: #02470f;
+    color: #000;
+    font-weight:bold;
     font-size: 16px;
 }
 
 .proverka1.navbar-default {
-    background: #f9df86;
+    background: #fff;
     position: relative;
+    border-top: 2px solid #aaa;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus{
+    border: #030 1px solid;
 }
 
 /**    не трогать   смелов       */
@@ -306,9 +312,9 @@ label[aria-required]::after {
 
 .boxmenu {
     box-sizing: border-box; /* границу включить в размер .box*/
-    background-color: #f7e696; /* основные верхние менюшки беж*/
+    background-color: #ddd; /* основные верхние менюшки беж*/
     overflow: hidden;
-    border: 2px solid #ffbb40; /* светло-зелен.*/
+    border: 2px solid #000; /* светло-зелен.*/
     width: 100%;
     margin: 12px 0;
     padding: 1px;
@@ -327,7 +333,7 @@ label[aria-required]::after {
 }
 
 .boxconnect-boxitem, .boxcainfo-boxitem {
-    border: 2px solid #013d02; /* темно-зеленый*/
+    border: 2px solid #000; /* темно-зеленый*/
     padding: 12px;
 }
 
@@ -343,11 +349,11 @@ label[aria-required]::after {
 
     .boxconnect-boxitem button, .boxcainfo-boxitem button {
         float: right;
-        background-color: #f2fcbd;
-        color: #013d02;
+        background-color: #eee;
+        color: #000;
         font-weight: bold;
         padding: 10px;
-        border: 2px solid #013d02;
+        border: 2px solid #000;
         margin: 5px;
     }
 /*для всех контейнеров fieldset*/
@@ -370,43 +376,43 @@ label[aria-required]::after {
 }
 
 .boxmenu-buttonlist {
-    border: 2px solid #013d02;
+    /*border: 2px solid #000;*/
     padding: 5px;
 }
 
 .box-close {
     float: right;
-    /*border:1px solid #013d02;*/
-    background-color: #f2fcbd;
+    /*border:1px solid #000;*/
+    background-color: #eee;
     padding: 0px 0px 0px 0px;
     margin: 2px;
     border: none;
 }
 
 .boxmenu button {
-    background-color: #f2fcbd;
-    color: #013d02;
+    background-color: #eee;
+    color: #000;
     font-weight: bold;
     margin: 5px;
     padding: 10px;
-    border: 2px solid #013d02;
+    border: 2px solid #000;
 }
 
     .boxmenu button[disabled] {
-        background-color: #f2fcbd;
+        background-color: #eee;
         color: gray;
         font-weight: bold;
         margin: 5px;
         padding: 10px;
-        border: 2px solid #013d02;
+        border: 2px solid #000;
     }
 
 .box {
     box-sizing: border-box; /* границу включить в размер .box*/
     overflow: hidden; /* все что вылезает за границу .box  - скрывать*/
-    border: 2px solid #013d02;
+    border: 2px solid #000;
     width: 100%;
-    background-color: #f0f5ad; /* меню основные в таблицах*/
+    background-color: #eee; /* меню основные в таблицах*/
     margin: 12px 0;
     padding: 0.5%;
     /*min-width: 800px;*/
@@ -446,6 +452,10 @@ label[aria-required]::after {
 
 .box p {
     margin: 1px;
+}
+
+.boxdata label.boxdata-label-100{
+    width:100%;
 }
 
 .boxdata span {
@@ -504,7 +514,7 @@ label[aria-required]::after {
 }
 
 .boxdata input[disabled] {
-    background-color: #f2fcbd; /*кнопки светлосалатовые);*/
+    background-color: #eee; /*кнопки светлосалатовые);*/
     color: black;
     border: none;
 }
@@ -527,22 +537,27 @@ element.style {
     background-color: #eff2cd;
     padding: 2px;
     text-align: right;
-    border: 1px solid #013d02;
+    border: 1px solid #000;
     clear: both;
 }
 
     .boxcontrol input, button {
-        background-color: #f2fcbd;
-        color: #013d02;
+        background-color: #eee;
+        color: #000;
         font-weight: bold;
-        border: 1px solid #013d02;
+        border: 1px solid #000;
+    }
+    button:focus, button:active{
+        border: 1px solid #030;
+        box-shadow:none !important;
+        -webkit-box-shadow:none !important;
     }
 
         .boxcontrol input[disabled], button[disabled] {
-            background-color: #f2fcbd;
+            background-color: #eee;
             color: gray;
             font-weight: bold;
-            border: 1px solid #013d02;
+            border: 1px solid #000;
         }
 
 .boxmessage {
@@ -550,7 +565,7 @@ element.style {
     margin: 1px;
     background-color: #f7e19e;
     padding: 2px;
-    border: 1px double #013d02;
+    border: 1px double #000;
     /*text-align:right;*/
 }
 
@@ -565,14 +580,15 @@ element.style {
     left: 0;
     bottom: 0; /* Левый нижний угол */
     padding: 10px; /* Поля вокруг текста */
-    background: #c8da94; /* Цвет фона */
-    color: #0e210b; /* Цвет текста */
+    background: #fff; /*фон верхней основной панели*/
+    border-top: 2px #aaa solid;
+    color: #000; /* Цвет текста */
     width: 100%; /* Ширина слоя */
 }
 
-    #footer a img {
-        height: 20px;
-    }
+#footer a img {
+    height: 20px;
+}
 
 /*Для поиска*/
 #ChoiceRiskObject_id {
@@ -586,7 +602,7 @@ element.style {
 }
 
 #main_menu:hover { /*при наведении на главное меню меняется фон*/
-    background: #c8da94;
+    background: #ddd;
     text-decoration: none;
 }
 
@@ -692,16 +708,40 @@ element.style {
 
 
 .dataTable.border{
-    border: 2px solid #013d02;
+    border: 2px solid #000;
     width: 100%;
-    background-color: #f0f5ad;
+    background-color: #eee;
     padding:0px;
 }
 
 
 .dataTable.border td, .dataTable.border th{
     padding: 0.5%;
-    border-left:1px solid #013d02;
-    border-top:1px solid #013d02;
+    border-left:1px solid #000;
+    border-top:1px solid #000;
     margin:0;
+}
+.dataTable.border th {
+    text-align:center;
+}
+/*Кнопки в списках*/
+.Удалить {
+    padding: 12px;
+    background: url(/Resources/delete-ico.png) no-repeat 2px;
+    background-size:20px;
+}
+.Изменить{
+    padding: 12px;
+    background: url(/Resources/edit-ico.png) no-repeat 2px;
+    background-size:20px;
+}
+.Просмотреть{
+    padding: 12px;
+    background: url(/Resources/eye-ico.png) no-repeat 2px;
+    background-size:20px;
+}
+.Сохранить{
+    padding: 12px;
+    background: url(/Resources/save-ico.png) no-repeat 2px;
+    background-size:20px;
 }

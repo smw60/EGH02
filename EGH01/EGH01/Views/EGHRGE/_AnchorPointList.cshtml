@@ -51,7 +51,7 @@
                         <td> @t.groundtype.name </td>
                         <td> @t.height.ToString()</td>
                         <td> @t.waterdeep.ToString() </td>
-                   <td><button onclick='location="AnchorPoint?menuitem=AnchorPoint.Delete&type_code=@t.id.ToString()"' name='menuitem' value="AnchorPoint.Delete">Удалить </button><button onclick='location="AnchorPoint?menuitem=AnchorPoint.Update&type_code=@t.id.ToString()"' name='menuitem' value="AnchorPoint.Update">Изменить </button>&nbsp;</td>
+                   <td><button class="Удалить" title="Удалить" onclick='location="AnchorPoint?menuitem=AnchorPoint.Delete&type_code=@t.id.ToString()"' name='menuitem' value="AnchorPoint.Delete"> </button><button class="Изменить" title="Изменить" onclick='location="AnchorPoint?menuitem=AnchorPoint.Update&type_code=@t.id.ToString()"' name='menuitem' value="AnchorPoint.Update"></button>&nbsp;</td>
 
                </tr>
         }

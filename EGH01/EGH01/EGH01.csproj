@@ -275,6 +275,8 @@
     <Content Include="Content\site.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\delete-ico.png" />
+    <Content Include="Resources\edit-ico.png" />
     <Content Include="Resources\Layout_Mobile_Whiteframe.png" />
     <Content Include="Resources\logo_bstu_v.png" />
     <Content Include="Resources\map.png" />

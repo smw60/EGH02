@@ -43,13 +43,13 @@
                 <p><label class="boxdata-label-30">Высота над уровнем моря, м</label> @t.height.ToString("0.00")</p>
                 <p><label class="boxdata-label-30">Глубина грунтовых вод, м</label> @t.waterdeep.ToString("0.00")</p>
                 @if (@t.iswaterobject == true)
-                    {
-                    <label>Водный объект</label>
-                }
+{
+    <p><label class="boxdata-label-100">Водный объект</label></p>
+}
                 <input type="hidden" value="@t.id.ToString()" name="type_code">
 
             </div>
-            @Html.Partial("_TypeLineMenu", menu)
+            <p>@Html.Partial("_TypeLineMenu", menu)</p>
         </div>
 
     }
