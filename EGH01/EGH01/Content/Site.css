@@ -691,3 +691,17 @@ element.style {
 }
 
 
+.dataTable.border{
+    border: 2px solid #013d02;
+    width: 100%;
+    background-color: #f0f5ad;
+    padding:0px;
+}
+
+
+.dataTable.border td, .dataTable.border th{
+    padding: 0.5%;
+    border-left:1px solid #013d02;
+    border-top:1px solid #013d02;
+    margin:0;
+}
