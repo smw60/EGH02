@@ -1,53 +1,77 @@
 ﻿@using EGH01DB.Types;
-@using EGH01.Core; 
+@using EGH01.Core;
 @model List<GroundType>
 @{
-   Menu menu =  new Menu( 
-                           new Menu.MenuItem("Удалить",  "GroundType.Delete",  true),
-                           new Menu.MenuItem("Изменить", "GroundType.Update",  true)
-                          );   
-    
+    Menu menu = new Menu(
+                            new Menu.MenuItem("Удалить", "GroundType.Delete", true),
+                            new Menu.MenuItem("Изменить", "GroundType.Update", true)
+                           );
+
 }
-@foreach(GroundType t in @Model)
-{
+<table style="width:100%" id="main">
 
-    using(Html.BeginForm("GroundType", "EGHRGE"))
-    {
+    <thead>
+        <tr>
+            <th> &nbsp; </th>
+        </tr>
+    </thead>
 
-        <div class="box">
-            <div class="boxdata">
+    <tbody>
 
-               
-                 <p><label class="boxdata-label-30">Код типа грунта</label> @t.type_code.ToString()</p>
+        @foreach (GroundType t in @Model)
+        {
+            <tr>
+                <td>
+                    @using (Html.BeginForm("GroundType", "EGHRGE"))
+                    {
 
-                <fieldset  form="GroundType">
-                    <p><label class="boxdata-label-30">Наименование грунта</label> @t.name </p>
-                    <p><label class="boxdata-label-30">Пористость</label> @t.porosity.ToString()</p>
-                    <p><label class="boxdata-label-30">Коэффициент фильтрации, м/с</label> @t.waterfilter.ToString()</p>
-                    <p><label class="boxdata-label-30">Коэффициент задержки нефтепродукта</label> @t.holdmigration.ToString()</p>
-                    <p><label class="boxdata-label-30">Влажность</label> @t.soilmoisture.ToString() </p>
-                    <p><label class="boxdata-label-30">Влагоемкость</label> @t.watercapacity.ToString() </p>
-                    <p><label class="boxdata-label-30">Коэффициент Аверьянова</label> @t.аveryanovfactor.ToString() </p>
-                    <p><label class="boxdata-label-30">Средняя плотность грунта, кг/м<sup>3</sup></label>@t.density.ToString()</p>
-                </fieldset>
-                              
-                <fieldset  form="GroundType">
-                    <p><label class="boxdata-label-30">Коэффициент распределения</label> @t.distribution.ToString() </p>
-                    <p><label class="boxdata-label-30">Водопроницаемость, м/с</label> @t.permeability.ToString() </p>
-                    <p><label class="boxdata-label-30">Коэффициент сорбции, 1/с</label> @t.sorption.ToString() </p>
-                    <p><label class="boxdata-label-30">Коэфицинт диффузии, м<sup>2</sup>/с</label> @t.diffusion.ToString()</p>
-                </fieldset>
+                    <div class="box">
+                        <div class="boxdata">
 
 
+                            <p><label class="boxdata-label-30">Код типа грунта</label> @t.type_code.ToString()</p>
+
+                            <fieldset form="GroundType">
+                                <p><label class="boxdata-label-30">Наименование грунта</label> @t.name </p>
+                                <p><label class="boxdata-label-30">Пористость</label> @t.porosity.ToString()</p>
+                                <p><label class="boxdata-label-30">Коэффициент фильтрации, м/с</label> @t.waterfilter.ToString()</p>
+                                <p><label class="boxdata-label-30">Коэффициент задержки нефтепродукта</label> @t.holdmigration.ToString()</p>
+                                <p><label class="boxdata-label-30">Влажность</label> @t.soilmoisture.ToString() </p>
+                                <p><label class="boxdata-label-30">Влагоемкость</label> @t.watercapacity.ToString() </p>
+                                <p><label class="boxdata-label-30">Коэффициент Аверьянова</label> @t.аveryanovfactor.ToString() </p>
+                                <p><label class="boxdata-label-30">Средняя плотность грунта, кг/м<sup>3</sup></label>@t.density.ToString()</p>
+                            </fieldset>
+
+                            <fieldset form="GroundType">
+                                <p><label class="boxdata-label-30">Коэффициент распределения</label> @t.distribution.ToString() </p>
+                                <p><label class="boxdata-label-30">Водопроницаемость, м/с</label> @t.permeability.ToString() </p>
+                                <p><label class="boxdata-label-30">Коэффициент сорбции, 1/с</label> @t.sorption.ToString() </p>
+                                <p><label class="boxdata-label-30">Коэфицинт диффузии, м<sup>2</sup>/с</label> @t.diffusion.ToString()</p>
+                            </fieldset>
 
 
-                    <input type="hidden" value="@t.type_code.ToString()" name="type_code">
 
-</div>
-            @Html.Partial("_TypeLineMenu", menu)
-        </div>
 
-    }
-}
+                            <input type="hidden" value="@t.type_code.ToString()" name="type_code">
 
- 
+                        </div>
+                        @Html.Partial("_TypeLineMenu", menu)
+                    </div>
+
+                    }
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<script>
+$(document).ready(function() {
+    $('#main').DataTable({
+        "language":
+datatables_lang, "pageLength":1
+
+    } );
+} );
+</script>
+

@@ -12,23 +12,52 @@
 
 
 }
-@foreach (PenetrationDepth t in @Model)
-{
 
-    using (Html.BeginForm("PenetrationDepth", "EGHORT"))
-    {
+<table style="width:100%" id="main">
 
-        <div class="box">
-            <div class="boxdata">
+    <thead>
+        <tr>
+            <th> &nbsp; </th>
+        </tr>
+    </thead>
 
-                <p><label class="boxdata-label-30">Код типа категории</label> @t.type_code.ToString()</p>
-                <p><label class="boxdata-label-30">Наименование категории</label> <span class="boxdata-span">@t.name</span></p>
-                <p><label class="boxdata-label-30">Диапазон глубины проникновения НП, м </label>@t.mindepth.ToString()&nbsp;-&nbsp;@t.maxdepth.ToString()&nbsp;</p>
+    <tbody>
 
-                <input type="hidden" value="@t.type_code.ToString()" name="id">
+        @foreach (PenetrationDepth t in @Model)
+        {
+            <tr>
+                <td>
 
-            </div>
-            @Html.Partial("_TypeLineMenu", menu)
-        </div>
-    }
-}
+                    @using (Html.BeginForm("PenetrationDepth", "EGHORT"))
+                {
+
+                        <div class="box">
+                            <div class="boxdata">
+
+                                <p><label class="boxdata-label-30">Код типа категории</label> @t.type_code.ToString()</p>
+                                <p><label class="boxdata-label-30">Наименование категории</label> <span class="boxdata-span">@t.name</span></p>
+                                <p><label class="boxdata-label-30">Диапазон глубины проникновения НП, м </label>@t.mindepth.ToString()&nbsp;-&nbsp;@t.maxdepth.ToString()&nbsp;</p>
+
+                                <input type="hidden" value="@t.type_code.ToString()" name="id">
+
+                            </div>
+                            @Html.Partial("_TypeLineMenu", menu)
+                        </div>
+                    }
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<script>
+$(document).ready(function() {
+    $('#main').DataTable({
+        "language":
+datatables_lang, "pageLength":3
+
+    } );
+} );
+</script>
+
+

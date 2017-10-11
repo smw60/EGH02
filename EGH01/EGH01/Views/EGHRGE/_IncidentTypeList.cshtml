@@ -3,50 +3,55 @@
 @model List<IncidentType>
 @{
     Menu menu = new Menu(
-                            new Menu.MenuItem("Удалить", "IncidentType.Delete", true),
-                            new Menu.MenuItem("Изменить", "IncidentType.Update", true)
-                           );
+    new Menu.MenuItem("Удалить", "IncidentType.Delete", true),
+    new Menu.MenuItem("Изменить", "IncidentType.Update", true)
+    );
 
 }
 
-<script>
-    var dataSet = [];
+<table style="width:100%" id="main">
 
-</script>
+    <thead>
+        <tr>
+            <th> &nbsp; </th>
+        </tr>
+    </thead>
 
-@foreach (IncidentType t in @Model)
-{
+    <tbody>
 
-    using (Html.BeginForm("IncidentType", "EGHRGE"))
-    {
-        <script>
- dataSet.push( [
- `@t.type_code.ToString() `,
- ` @t.name`,
- `<button onclick='location="IncidentType?menuitem=IncidentType.Delete&type_code=@t.type_code.ToString()"' name='menuitem' value="IncidentType.Delete">Удалить </button><button onclick='location="IncidentType?menuitem=IncidentType.Update&type_code=@t.type_code.ToString()"' name='menuitem' value="IncidentType.Update">Изменить </button>&nbsp`
+        @foreach (IncidentType t in @Model)
+        {
 
- ]);
-        </script>
-    }
-}
+            <tr>
+                <td>
 
+                    @using (Html.BeginForm("IncidentType", "EGHRGE"))
+                    {
+
+                        <div class="box">
+                            <div class="boxdata">
+
+                                <p><label class="boxdata-label-30">Код типа инцидента</label> @t.type_code.ToString() </p>
+                                <p><label class="boxdata-label-30">Наименование типа инцидента</label> @t.name </p>
+                                <input type="hidden" value="@t.type_code.ToString()" name="type_code">
+
+                            </div>
+                            @Html.Partial("_TypeLineMenu", menu)
+                        </div>
+
+                    }
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
 <script>
 $(document).ready(function() {
     $('#main').DataTable({
         "language":
-datatables_lang,
+datatables_lang, "pageLength": 5
 
-        data: dataSet,
-        columns: [
-		//тут должны быть названия наших колонок для шапки
-            { title: "Код типа инцидента" },
-            { title: "Наименование типа инцидента" },
-            { title: "Действие" }
-
-        ]
     } );
 } );
 </script>
-
-<table style="width:100%" class="main" id="main"></table>
-

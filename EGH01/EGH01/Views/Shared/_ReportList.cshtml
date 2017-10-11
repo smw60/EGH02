@@ -5,7 +5,7 @@
 @model List<Report>
 @{
 
-   
+
     Menu menu = new Menu(
                     new Menu.MenuItem("Просмотреть отчет", "Report.Watch", true),
                     new Menu.MenuItem("Сохранить комментарий", "Report.SaveComment", true),
@@ -13,97 +13,146 @@
                    );
 
 }
-@if (ViewBag.stage.Equals("П")){
-foreach (Report t in @Model)
-{
-    
-    using (Html.BeginForm("Report", "EGHRGE"))
-    {
-        
-        <div class="box">
-            <div class="boxdata">
-                <p><label class="boxdata-label-20">@t.line.ToString()</label>
-                    <textarea class="boxdata-textarea-80" name="comment">@t.comment.ToString()</textarea></p>
-                <input type="hidden" value="@t.id" name="id">
 
-            </div>
-            @Html.Partial("_TypeLineMenu", menu)
-     
-        </div>
+<table style="width:100%" id="main">
 
-    }
-}
-}
-else if (ViewBag.stage.Equals("Р")) 
-{ 
-foreach (Report t in @Model)
-{
-    
-    using (Html.BeginForm("Report", "EGHCEQ"))
-    {
-        
-        <div class="box">
-            <div class="boxdata">
-                <p><label class="boxdata-label-20">@t.line.ToString()</label>
-                    <textarea class="boxdata-textarea-80" name="comment">@t.comment.ToString()</textarea></p>
-                <input type="hidden" value="@t.id" name="id">
+    <thead>
+        <tr>
+            <th> &nbsp; </th>
+        </tr>
+    </thead>
 
-            </div>
-            @Html.Partial("_TypeLineMenu", menu)
-     
-        </div>
+    <tbody>
 
-    }
-}
-}
-else if (ViewBag.stage.Equals("С"))
-{
-    foreach (Report t in @Model)
-    {
 
-        using (Html.BeginForm("Report", "EGHGEA"))
+
+        @if (ViewBag.stage.Equals("П"))
         {
+            foreach (Report t in @Model)
+            {
+                <tr>
+                    <td>
 
-            <div class="box">
-                <div class="boxdata">
-                    <p>
-                        <label class="boxdata-label-20">@t.line.ToString()</label>
-                        <textarea class="boxdata-textarea-80" name="comment">@t.comment.ToString()</textarea>
-                    </p>
-                    <input type="hidden" value="@t.id" name="id">
+                        @using (Html.BeginForm("Report", "EGHRGE"))
+                        {
 
-                </div>
-                @Html.Partial("_TypeLineMenu", menu)
+                            <div class="box">
+                                <div class="boxdata">
+                                    <p>
+                                        <label class="boxdata-label-20">@t.line.ToString()</label>
+                                        <textarea class="boxdata-textarea-80" name="comment">@t.comment.ToString()</textarea>
+                                    </p>
+                                    <input type="hidden" value="@t.id" name="id">
 
-            </div>
+                                </div>
+                                @Html.Partial("_TypeLineMenu", menu)
 
+                            </div>
+
+                        }
+                    </td>
+                </tr>
+            }
         }
-    }
-}
-else if (ViewBag.stage.Equals("Т"))
-{
-    foreach (Report t in @Model)
-    {
-
-        using (Html.BeginForm("Report", "EGHORT"))
+        else if (ViewBag.stage.Equals("Р"))
         {
+            foreach (Report t in @Model)
+            {
+                <tr>
+                    <td>
 
-            <div class="box">
-                <div class="boxdata">
-                    <p>
-                        <label class="boxdata-label-20">@t.line.ToString()</label>
-                        <textarea class="boxdata-textarea-80" name="comment">@t.comment.ToString()</textarea>
-                    </p>
-                    <input type="hidden" value="@t.id" name="id">
+                        @using (Html.BeginForm("Report", "EGHCEQ"))
+                        {
 
-                </div>
-                @Html.Partial("_TypeLineMenu", menu)
+                            <div class="box">
+                                <div class="boxdata">
+                                    <p>
+                                        <label class="boxdata-label-20">@t.line.ToString()</label>
+                                        <textarea class="boxdata-textarea-80" name="comment">@t.comment.ToString()</textarea>
+                                    </p>
+                                    <input type="hidden" value="@t.id" name="id">
 
-            </div>
+                                </div>
+                                @Html.Partial("_TypeLineMenu", menu)
 
+                            </div>
+
+                        }
+                    </td>
+                </tr>
+            }
         }
-    }
-}
+        else if (ViewBag.stage.Equals("С"))
+        {
+            foreach (Report t in @Model)
+            {
+                <tr>
+                    <td>
+                        @using (Html.BeginForm("Report", "EGHGEA"))
+                        {
+
+                            <div class="box">
+                                <div class="boxdata">
+                                    <p>
+                                        <label class="boxdata-label-20">@t.line.ToString()</label>
+                                        <textarea class="boxdata-textarea-80" name="comment">@t.comment.ToString()</textarea>
+                                    </p>
+                                    <input type="hidden" value="@t.id" name="id">
+
+                                </div>
+                                @Html.Partial("_TypeLineMenu", menu)
+
+                            </div>
+
+                        }
+
+                    </td>
+                </tr>
+            }
+        }
+        else if (ViewBag.stage.Equals("Т"))
+        {
+            foreach (Report t in @Model)
+            {
+
+                <tr>
+                    <td>
+
+                        @using (Html.BeginForm("Report", "EGHORT"))
+                        {
+
+                            <div class="box">
+                                <div class="boxdata">
+                                    <p>
+                                        <label class="boxdata-label-20">@t.line.ToString()</label>
+                                        <textarea class="boxdata-textarea-80" name="comment">@t.comment.ToString()</textarea>
+                                    </p>
+                                    <input type="hidden" value="@t.id" name="id">
+
+                                </div>
+                                @Html.Partial("_TypeLineMenu", menu)
+
+                            </div>
+
+                        }
+                        
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <script>
+$(document).ready(function() {
+    $('#main').DataTable({
+        "language":
+datatables_lang, "pageLength":3
+
+    } );
+} );
+    </script>
+
+
 
 
 

@@ -10,29 +10,55 @@
 
 }
 
+<table style="width:100%" id="main">
+
+    <thead>
+        <tr>
+            <th> &nbsp; </th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (SpreadingCoefficient t in @Model)
+        {
+            <tr>
+                <td>
+
+                    <div class="box">
+                        <div class="boxdata">
+
+                            <p><label class="boxdata-label-30">Тип нефтепродукта</label>@t.petrochemical_type.name.ToString()</p>
+                            <p>
+                                <label class="boxdata-label-30">Тип грунта</label>@t.ground_type.name.ToString()
+                                <input type="hidden" value="@t.code.ToString()" name="code">
+                            </p>
+                            <p><label class="boxdata-label-30">Диапазон значений объема пролива, м<sup><small>3</small></sup></label>@t.min_volume.ToString("0.0") - @t.max_volume.ToString("0.0")</p>
+                            <p><label class="boxdata-label-30">Диапазон значений гидравлического уклона</label>@t.min_angle.ToString("0.0") - @t.max_angle.ToString("0.0")</p>
+                            <p><label class="boxdata-label-30">Коэффициент растекания, 1/м</label>@t.koef.ToString("0.0")</p>
+
+                        </div>
+
+                        @Html.Partial("_TypeLineMenu", menu)
+                    </div>
+
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<script>
+$(document).ready(function() {
+    $('#main').DataTable({
+        "language":
+datatables_lang, "pageLength":3
+
+    } );
+} );
+</script>
 
 
-@foreach (SpreadingCoefficient t in @Model)
-{
-    <div class="box">
-        <div class="boxdata">
-
-            <p><label class="boxdata-label-30">Тип нефтепродукта</label>@t.petrochemical_type.name.ToString()</p>
-            <p>
-                <label class="boxdata-label-30">Тип грунта</label>@t.ground_type.name.ToString()
-                <input type="hidden" value="@t.code.ToString()" name="code">
-            </p>
-            <p><label class="boxdata-label-30">Диапазон значений объема пролива, м<sup><small>3</small></sup></label>@t.min_volume.ToString("0.0") - @t.max_volume.ToString("0.0")</p>
-            <p><label class="boxdata-label-30">Диапазон значений гидравлического уклона</label>@t.min_angle.ToString("0.0") - @t.max_angle.ToString("0.0")</p>
-            <p><label class="boxdata-label-30">Коэффициент растекания, 1/м</label>@t.koef.ToString("0.0")</p>
-
-        </div>
-
-        @Html.Partial("_TypeLineMenu", menu)
-    </div>
-
-}
-}
 
 
 
