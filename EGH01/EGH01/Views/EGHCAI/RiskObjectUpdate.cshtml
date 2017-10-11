@@ -112,13 +112,13 @@
             </div>
             <p>
                 <label class="boxdata-label-30">Наименование</label>
-                <textarea class="boxdata-input-50" name="Name" >@Model.name</textarea>
+                <textarea class="boxdata-input-50" name="Name">@Model.name</textarea>
             </p>
             <p>
                 <label class="boxdata-label-30">Тип техногенного объекта</label>@Html.DropDownList("selectlist")
             </p>
             <fieldset form="ChoiseRiskObject">
-                <legend >Адрес</legend>
+                <legend>Адрес</legend>
                 <p>
                     <label class="boxdata-label-30">Область</label>@Html.DropDownList("list_region")
                 </p>
@@ -143,7 +143,7 @@
                 </p>
             </fieldset>
             <fieldset form="ChoiseRiskObject">
-                <legend >Объем резервуаров для хранения нефтепродутов, м<sup>3</sup></legend>
+                <legend>Объем резервуаров для хранения нефтепродутов, м<sup>3</sup></legend>
                 <p>
                     <label class="boxdata-label-30">Наземные</label>
                     <input class="boxdata-input-50" type="number" name="groundtank" value="@Model.groundtank.ToString()" min="0" step="0.1" />
@@ -154,7 +154,7 @@
                 </p>
             </fieldset>
             <fieldset form="ChoiseRiskObject">
-                <legend >Наличие очистных сооружений</legend>
+                <legend>Наличие очистных сооружений</legend>
                 <p>
                     @if (@Model.watertreatment == true)
                 {
@@ -176,55 +176,55 @@
                     }
                 </p>
             </fieldset>
-           
 
-                                
-                <p>
-            @if (@Model.foundationdate.Year != 1900)
-            {
 
+
+            <p>
+                @if (@Model.foundationdate.Year != 1900)
                 {
 
-                    string foundationdate = context.foundationdate.ToString("yyyy-MM-dd");
-                    if (context.foundationdate != null) { foundationdate = ((DateTime)@Model.foundationdate).ToString("yyyy-MM-dd"); }
+                    {
 
-                    <div class="boxdata">
-                        <label class="boxdata-label-30">Дата ввода в эксплуатацию</label>
-                        <input class="boxdata-input-50" type="date" name="foundationdate" value="@foundationdate" />
-                    </div>
+                        string foundationdate = context.foundationdate.ToString("yyyy-MM-dd");
+                        if (context.foundationdate != null) { foundationdate = ((DateTime)@Model.foundationdate).ToString("yyyy-MM-dd"); }
 
-                }
+                        <div class="boxdata">
+                            <label class="boxdata-label-30">Дата ввода в эксплуатацию</label>
+                            <input class="boxdata-input-50" type="date" name="foundationdate" value="@foundationdate" />
+                        </div>
 
                     }
-            @if (@Model.reconstractiondate.Year != 1900)
-            {
-                {
-
-                    string reconstractiondate = context.reconstractiondate.ToString("yyyy-MM-dd");
-                    if (context.reconstractiondate != null) { reconstractiondate = ((DateTime)@Model.reconstractiondate).ToString("yyyy-MM-dd"); }
-
-                    <div class="boxdata">
-                        <label class="boxdata-label-30">Дата последней реконструкции</label>
-                        <input class="boxdata-input-50" type="date" name="reconstractiondate" value="@reconstractiondate" />
-                    </div>
 
                 }
-            }
-            <fieldset form="RiskObject">
-                <legend >Географические координаты</legend>
-                <p>
-                    <label class="boxdata-label-30">Широта </label>
+                @if (@Model.reconstractiondate.Year != 1900)
+                {
+                    {
 
-                    <input class="boxdata-input-10" type="number" name="Latitude"  id="Latitude" value="@Model.coordinates.lat.d.ToString()" min="-90" max="90" />&deg;
-                    <input class="boxdata-input-10" type="number" name="Lat_m" value="@Model.coordinates.lat.m.ToString()" min="-90" max="90" />&acute;
-                    <input class="boxdata-input-10" type="number" name="Lat_s" value="@Model.coordinates.lat.s.ToString("0.00").Replace(',' , '.')" min="0" max="60" step="0.001" />&quot;
-                </p>
-                <p>
-                    <label class="boxdata-label-30">Долгота</label>
-                    <input class="boxdata-input-10" type="number" name="Lngitude" id="Lngitude" value="@Model.coordinates.lng.d.ToString()" max="90" min="-90" />&deg;
-                    <input class="boxdata-input-10" type="number" name="Lng_m" value="@Model.coordinates.lng.m.ToString()" min="-90" max="90" />&acute;
-                    <input class="boxdata-input-10" type="number" name="Lng_s" value="@Model.coordinates.lng.s.ToString("0.00").Replace(',' , '.')" min="0" max="60" step="0.001" />&quot;
-                </p>
+                        string reconstractiondate = context.reconstractiondate.ToString("yyyy-MM-dd");
+                        if (context.reconstractiondate != null) { reconstractiondate = ((DateTime)@Model.reconstractiondate).ToString("yyyy-MM-dd"); }
+
+                        <div class="boxdata">
+                            <label class="boxdata-label-30">Дата последней реконструкции</label>
+                            <input class="boxdata-input-50" type="date" name="reconstractiondate" value="@reconstractiondate" />
+                        </div>
+
+                    }
+                }
+                <fieldset form="RiskObject">
+                    <legend>Географические координаты</legend>
+            <p>
+                <label class="boxdata-label-30">Широта </label>
+
+                <input class="boxdata-input-10" type="number" name="Latitude" id="Latitude" value="@Model.coordinates.lat.d.ToString()" min="-90" max="90" />&deg;
+                <input class="boxdata-input-10" type="number" name="Lat_m" value="@Model.coordinates.lat.m.ToString()" min="-90" max="90" />&acute;
+                <input class="boxdata-input-10" type="number" name="Lat_s" value="@Model.coordinates.lat.s.ToString("0.00").Replace(',' , '.')" min="0" max="60" step="0.001" />&quot;
+            </p>
+            <p>
+                <label class="boxdata-label-30">Долгота</label>
+                <input class="boxdata-input-10" type="number" name="Lngitude" id="Lngitude" value="@Model.coordinates.lng.d.ToString()" max="90" min="-90" />&deg;
+                <input class="boxdata-input-10" type="number" name="Lng_m" value="@Model.coordinates.lng.m.ToString()" min="-90" max="90" />&acute;
+                <input class="boxdata-input-10" type="number" name="Lng_s" value="@Model.coordinates.lng.s.ToString("0.00").Replace(',' , '.')" min="0" max="60" step="0.001" />&quot;
+            </p>
             <p class="center"><input type="button" id="redraw" value="Отобразить карту по координатам" /></p>
             <div id="canvas" class="map"></div>
             <input type="hidden" id="base64" name="base64" value="" />
@@ -232,10 +232,10 @@
             </fieldset>
 
             <fieldset form="ChoiseRiskObject">
-                <legend >Геологические данные</legend>
+                <legend>Геологические данные</legend>
                 <p>
                     <label class="boxdata-label-50">Категория земли</label> @Html.DropDownList("list_cadastre")
-                      </p>
+                </p>
 
                 <p>
                     <label class="boxdata-label-50">Грунт</label>@Html.DropDownList("list_groundType")
@@ -251,42 +251,42 @@
             </fieldset>
         </div>
 
-        @section scripts {
+        
             <script type="text/javascript">
 
-        $(document).ready(function () {
-            GetMap();
-        });
-        $("#save").click(function () {
-            var data = getBase64Image(document.getElementById("canvasImg"));
+                $(document).ready(function () {
+                    GetMap();
+                });
+                $("#save").click(function () {
+                    var data = getBase64Image(document.getElementById("canvasImg"));
 
-            document.getElementById("canvasImg2") = data;
-        });
-    function GetMap() {
+                    document.getElementById("canvasImg2") = data;
+                });
+                function GetMap() {
 
-        google.maps.visualRefresh = true;
-        var create = new google.maps.LatLng(@Model.coordinates.lat.d, @Model.coordinates.lng.d);
-        var mapOptions = {
-            zoom: 12,
-            center: create,
-            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
-        };
+                    google.maps.visualRefresh = true;
+                    var create = new google.maps.LatLng(@Model.coordinates.lat.d, @Model.coordinates.lng.d);
+                    var mapOptions = {
+                        zoom: 12,
+                        center: create,
+                        mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+                    };
 
-        var map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
-        var myLatlng = new google.maps.LatLng(@Model.coordinates.lat.d, @Model.coordinates.lng.d);
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-        });
-        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
-    }
-            
+                    var map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
+                    var myLatlng = new google.maps.LatLng(@Model.coordinates.lat.d, @Model.coordinates.lng.d);
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                    });
+                    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+                }
+
                 function getBase64Image_new(path) {
                     var imgE = document.createElement("img");
                     imgE.id = "imgE";
                     imgE.crossOrigin = 'Anonymous';
                     imgE.onload = function () {
-                    document.getElementById("canvas").appendChild(imgE);
+                        document.getElementById("canvas").appendChild(imgE);
 
                         var canvas = document.createElement("canvas");
                         canvas.width = 640;
@@ -309,16 +309,16 @@
                         center: create,
                         mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
                     };
-     
+
                     var map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
-         
+
                     var myLatlng = new google.maps.LatLng(Latitude.value, Lngitude.value);
 
                     var marker = new google.maps.Marker({
                         position: myLatlng,
                         map: map,
                     });
-      
+
                     marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
 
                     var path = "http://maps.google.com/maps/api/staticmap?sensor=false&center=" +
@@ -334,7 +334,7 @@
                     GetMapCoordinat();
                 });
             </script>
-        }
+        
 
         @Html.Partial("_TypeLineMenu", delete)
     </div>
