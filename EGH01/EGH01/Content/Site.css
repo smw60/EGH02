@@ -87,7 +87,7 @@ input[type="checkbox"].input-validation-error {
 }
 
     .navbar .dropdown-menu li:hover { /*при наведении на пункты меню*/
-        background: #ddd;
+        background: #ccc;
         box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
     }
 
@@ -312,7 +312,7 @@ label[aria-required]::after {
 
 .boxmenu {
     box-sizing: border-box; /* границу включить в размер .box*/
-    background-color: #ddd; /* основные верхние менюшки беж*/
+    background-color: #ccc; /* основные верхние менюшки беж*/
     overflow: hidden;
     border: 2px solid #000; /* светло-зелен.*/
     width: 100%;
@@ -349,7 +349,7 @@ label[aria-required]::after {
 
     .boxconnect-boxitem button, .boxcainfo-boxitem button {
         float: right;
-        background-color: #eee;
+        background-color: #ccc;
         color: #000;
         font-weight: bold;
         padding: 10px;
@@ -383,14 +383,14 @@ label[aria-required]::after {
 .box-close {
     float: right;
     /*border:1px solid #000;*/
-    background-color: #eee;
+    background-color: #ccc;
     padding: 0px 0px 0px 0px;
     margin: 2px;
     border: none;
 }
 
 .boxmenu button {
-    background-color: #eee;
+    background-color: #ccc;
     color: #000;
     font-weight: bold;
     margin: 5px;
@@ -399,7 +399,7 @@ label[aria-required]::after {
 }
 
     .boxmenu button[disabled] {
-        background-color: #eee;
+        background-color: #ccc;
         color: gray;
         font-weight: bold;
         margin: 5px;
@@ -412,7 +412,7 @@ label[aria-required]::after {
     overflow: hidden; /* все что вылезает за границу .box  - скрывать*/
     border: 2px solid #000;
     width: 100%;
-    background-color: #eee; /* меню основные в таблицах*/
+    background-color: #ccc; /* меню основные в таблицах*/
     margin: 12px 0;
     padding: 0.5%;
     /*min-width: 800px;*/
@@ -514,7 +514,7 @@ label[aria-required]::after {
 }
 
 .boxdata input[disabled] {
-    background-color: #eee; /*кнопки светлосалатовые);*/
+    background-color: #ccc; /*кнопки светлосалатовые);*/
     color: black;
     border: none;
 }
@@ -542,7 +542,7 @@ element.style {
 }
 
     .boxcontrol input, button {
-        background-color: #eee;
+        background-color: #ccc;
         color: #000;
         font-weight: bold;
         border: 1px solid #000;
@@ -554,7 +554,7 @@ element.style {
     }
 
         .boxcontrol input[disabled], button[disabled] {
-            background-color: #eee;
+            background-color: #ccc;
             color: gray;
             font-weight: bold;
             border: 1px solid #000;
@@ -602,7 +602,7 @@ element.style {
 }
 
 #main_menu:hover { /*при наведении на главное меню меняется фон*/
-    background: #ddd;
+    background: #ccc;
     text-decoration: none;
 }
 
@@ -710,7 +710,7 @@ element.style {
 .dataTable.border{
     border: 2px solid #000;
     width: 100%;
-    background-color: #eee;
+    background-color: #ccc;
     padding:0px;
 }
 
@@ -744,4 +744,44 @@ element.style {
     padding: 12px;
     background: url(/Resources/save-ico.png) no-repeat 2px;
     background-size:20px;
+}
+.Прогноз{
+    padding: 12px;
+    background: url(/Resources/trend.png) no-repeat 2px;
+    background-size:20px;
+}
+.Отказаться{
+    padding: 12px;
+    background: url(/Resources/reject.png) no-repeat 2px;
+    background-size:20px;
+}
+.точка{
+    padding: 12px;
+    background: url(/Resources/geo-point.png) no-repeat 2px;
+    background-size:20px;
+}
+.Выбрать{
+    padding: 12px;
+    background: url(/Resources/select.png) no-repeat 2px;
+    background-size:20px;
+}
+.home_button{
+    font-size:200%;
+    width:118px;
+    word-wrap:normal;
+    height:40px;
+    overflow:hidden;
+    font-family:"Courier New";
+    margin-bottom:20px;
+    transition:1s;
+    text-align:left;
+    background: linear-gradient(to top, #aaa, #ddd);
+}
+
+.home_button:hover{
+    font-size:200%;
+    width:100%;
+    overflow:hidden;
+
+
 }

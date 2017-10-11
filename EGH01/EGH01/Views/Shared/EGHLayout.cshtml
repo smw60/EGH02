@@ -25,6 +25,7 @@
         <div class="navbar-brand col-xs-1">
             <a href="/"><img src="~/Resources/Layout_Mobile_Whiteframe.png" alt="EGH" /></a>
         </div>
+        
         <!--Заголовок индивидуальный для страниц-->
         <div class="title col-xs-6">
 
@@ -172,7 +173,7 @@
             
 
         </div>
-        <div class=" col-xs-3">
+                <div class=" col-xs-3">
             <div id="time">Текущее время: <span id="doc_time"></span><br />Последнее обновление: <span id="version">@((new FileInfo(Assembly.GetExecutingAssembly().Location)).LastWriteTime.ToString("dd.M.yyyy HH:mm"))</span></div>
             <style>
                 #time {
@@ -201,12 +202,12 @@
         <ul class="navbar-nav nav navbar-right">
             <li class="dropdown">
                 <ul class="dropdown-menu" role="menu">
-                    <li>@Html.ActionLink("EGHRGE-Прогноз", "Index", "EGHRGE")  </li>
-                    <li>@Html.ActionLink("EGHCEQ-Оценка прогнозируемого состояния", "Index", "EGHCEQ")  </li>
-                    <li>@Html.ActionLink("EGHGEA-Классификация прогнозируемого состояния", "Index", "EGHGEA")  </li>
-                    <li>@Html.ActionLink("EGHORT-Выбор технологий реабилитации", "Index", "EGHORT")  </li>
-                    <li>@Html.ActionLink("EGHCCO-Химический состав нефтей", "Index", "EGHCCO")  </li>
-                    <li>@Html.ActionLink("EGHCAI-Техногенные объекты", "Index", "EGHCAI")  </li>
+                    <li>@Html.ActionLink("EGHRGE - Прогноз", "Index", "EGHRGE")  </li>
+                    <li>@Html.ActionLink("EGHCEQ - Оценка прогнозируемого состояния", "Index", "EGHCEQ")  </li>
+                    <li>@Html.ActionLink("EGHGEA - Классификация прогнозируемого состояния", "Index", "EGHGEA")  </li>
+                    <li>@Html.ActionLink("EGHORT - Выбор технологий реабилитации", "Index", "EGHORT")  </li>
+                    <li>@Html.ActionLink("EGHCCO - Химический состав нефтей", "Index", "EGHCCO")  </li>
+                    <li>@Html.ActionLink("EGHCAI - Техногенные объекты", "Index", "EGHCAI")  </li>
 
                 </ul>
             </li>
@@ -293,40 +294,41 @@
                         </ul>
                     </li>
                 }
-        </div>
-        <div class=" container mainbody">
-            @RenderBody()
-            <style>
-                /*Стиль для кнопки вверх */
-                .btnn-top button {
-                    bottom: 100px;
-                    right: 40px;
-                    position: fixed !important;
-                    float: right !important;
-                    width: 120px;
-                    height: 44px;
-                }
-                /*Стиль для кнопки вниз */
-                .btnn-bot button {
-                    bottom: 50px;
-                    right: 40px;
-                    position: fixed !important;
-                    float: right !important;
-                    width: 120px;
-                    height: 44px;
-                }
-            </style>
-            <span class="btnn-top">
-                <button id="toTop">Вверх</button>
-            </span>
-            <span class="btnn-bot">
-                <button id="toBot">Вниз</button>
-            </span>
-        </div>
+        </div>        
+           <div class=" container mainbody">
+               @RenderBody()
+                <!--<style>
+                    /*Стиль для кнопки вверх */
+                    .btnn-top button {
+                        bottom: 100px;
+                        right: 40px;
+                        position: fixed !important;
+                        float: right !important;
+                        width: 120px;
+                        height: 44px;
+                    }
+                    /*Стиль для кнопки вниз */
+                    .btnn-bot button {
+                        bottom: 50px;
+                        right: 40px;
+                        position: fixed !important;
+                        float: right !important;
+                        width: 120px;
+                        height: 44px;
+                    }
+                </style>
+                <span class="btnn-top">
+                    <button id="toTop">Вверх</button>
+                </span>
+                <span class="btnn-bot">
+                    <button id="toBot">Вниз</button>
+                </span>-->
+            </div>
 
 
-        <div id="push"></div>
-    </div>
+            <div id="push"></div>
+        </div>
+    
     <div class="footer col-xs-8">
         <style>
             .footer {
@@ -355,6 +357,25 @@
             & Институт гидрогеологии и геоэкологии им. У.М. Ахмедсафина (Казахстан)
         </div>
     </div>
+
+    <div class="jumbotron">
+        <style>
+            .jumbotron {
+                position:fixed;
+                z-index:-99999;
+                width: 100%;
+                height:100%;
+                top:0;
+                margin:0;
+                padding:0;
+                background-image: url(/Resources/завод.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                opacity: 0.25;
+            }
+        </style>
+    </div>
+
 
     
     <script type="text/javascript">

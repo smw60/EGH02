@@ -281,6 +281,8 @@
     <Content Include="Resources\logo_bstu_v.png" />
     <Content Include="Resources\map.png" />
     <Content Include="Resources\Layout_Mobile_Whiteframe1.png" />
+    <Content Include="Resources\главная нефтевышка.jpg" />
+    <Content Include="Resources\завод.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\Developer.pubxml" />
