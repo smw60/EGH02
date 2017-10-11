@@ -782,6 +782,8 @@ element.style {
     font-size:200%;
     width:100%;
     overflow:hidden;
-
-
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+    background:#060;
+    border: 1px solid #060;
 }
