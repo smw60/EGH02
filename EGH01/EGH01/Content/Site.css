@@ -776,14 +776,58 @@ element.style {
     transition:1s;
     text-align:left;
     background: linear-gradient(to top, #aaa, #ddd);
-}
-
-.home_button:hover{
-    font-size:200%;
     width:100%;
-    overflow:hidden;
+}
+.home_button:hover{
+    color:#060;
+    box-shadow:#000 2px 2px 5px;
 }
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
     background:#060;
     border: 1px solid #060;
 }
+
+
+    #calendar3 {
+        width: 100%;
+        font: monospace;
+        line-height: 1.2em;
+        font-size: 15px;
+        text-align: center;
+
+    }
+
+        #calendar3 thead tr:last-child {
+            font-size: small;
+            color: #141413;
+        }
+
+        #calendar3 tbody td {
+            color: #0c3009;
+        }
+
+            #calendar3 tbody td:nth-child(n+6), #calendar3 .holiday {
+                color: #060;
+                font-weight: bold;
+            }
+
+            #calendar3 tbody td.today {
+                outline: 3px solid green;
+            }
+            #calendar3 select, #calendar3 input{
+                width:100%;
+            }
+
+    .container .btn{
+        border:1px solid #000;
+    }
+    .padding{
+        padding:5%;
+    }
+
+    .modal .close{
+        margin-top:-20px;
+    }
+    .w100{
+        width:100%;
+    }

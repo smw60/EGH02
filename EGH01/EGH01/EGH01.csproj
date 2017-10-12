@@ -257,6 +257,7 @@
   <ItemGroup>
     <Content Include="Content\datatables.min.css" />
     <Content Include="Content\dev.css" />
+    <Content Include="Content\stickynotes.css" />
     <Content Include="Resources\1.jpg" />
     <Content Include="Resources\10.jpg" />
     <Content Include="Resources\11.jpg" />
@@ -291,6 +292,7 @@
     <Content Include="Scripts\html2canvas.js" />
     <Content Include="Scripts\html2canvas.svg.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\stickynotes.js" />
     <Content Include="Scripts\time.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
