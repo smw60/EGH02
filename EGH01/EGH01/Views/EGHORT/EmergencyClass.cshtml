@@ -1,0 +1,23 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Types;
+@using EGH01DB.Primitives;
+
+@model EGH01DB.ORTContext
+
+@{
+
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    Menu head = new Menu(
+                          new Menu.MenuItem("Создать", "EmergencyClass.Create", true),
+                          new Menu.MenuItem("Excel-формат", "EmergencyClass.Excel", true)
+                        );
+
+    List<EmergencyClass> list = new List<EmergencyClass>();
+    if (@Model != null) { Helper.GetListEmergencyClass(@Model, ref list); };
+
+}
+
+
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHORT", Action = "EmergencyClass", Menu = head })
+@Html.Partial("_EmergencyClassList", list)

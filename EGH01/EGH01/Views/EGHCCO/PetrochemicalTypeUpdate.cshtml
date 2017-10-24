@@ -1,0 +1,86 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Types;
+@model EGH01DB.Types.PetrochemicalType
+@{
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    Menu head = new Menu(
+                          new Menu.MenuItem("Создать", "PetrochemicalType.Create", false),
+                          new Menu.MenuItem("Excel-формат", "PetrochemicalType.Excel", false)
+                        );
+
+    Menu delete = new Menu(
+                          new Menu.MenuItem("Изменить", "PetrochemicalType.Update.Update", true),
+                          new Menu.MenuItem("Отказаться", "PetrochemicalType.Update.Cancel", true)
+                        );
+    EGH01DB.CCOContext db = new EGH01DB.CCOContext();
+    {
+        List<PetrochemicalCategories> list_PetrochemicalCategories = new List<PetrochemicalCategories>();
+        List<SelectListItem> list = ViewBag.list_PetrochemicalCategories = new List<SelectListItem>();
+
+        Helper.GetListPetrochemicalCategories(db, ref list_PetrochemicalCategories);
+        list_PetrochemicalCategories.ForEach(o => ViewBag.list_PetrochemicalCategories.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+        if (Model.petrochemicalcategories != null)
+        {
+            SelectListItem si = list.FirstOrDefault(s => s.Value == Model.petrochemicalcategories.type_code.ToString());
+            si.Selected = true;
+        }
+    }
+   
+}
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHCCO", Action = "PetrochemicalType", Menu = head })
+
+@using (Html.BeginForm("PetrochemicalTypeUpdate", "EGHCCO"))
+{
+
+    <div class="box">
+        <div class="boxdata">
+          <p>
+                <label class="boxdata-label-30">Код типа нефтепродукта</label>@Model.code_type
+                <input type="hidden" value="@Model.code_type.ToString()" name="code_type">
+          </p>
+          <p>
+              <label class="boxdata-label-30">Наименование нефтепродукта</label>
+              <input class="boxdata-input-50" type="text" name="Name" value="@Model.name.ToString()" />
+          </p>
+            <p>
+                <label class="boxdata-label-30">Категория нефтепродукта</label>@Html.DropDownList("list_PetrochemicalCategories")
+            </p>
+          <fieldset  form="PetrochemicalType">
+            
+              <p>
+                 <label class="boxdata-label-30">Плотность, кг/м<sup><small>3</small></sup></label>
+                 <input class="boxdata-input-50" type="number" step="0.1"  min="700" max="960" name="Density" value="@Model.density.ToString("0.0").Replace(',', '.')" />
+              </p>
+              <p>
+                  <label class="boxdata-label-30">Динамическая вязкость, кг/м*с</label>
+                  <input class="boxdata-input-50" type="number" step="0.0000001"  min="0.00052" max="3870" name="Dynamicviscosity" value="@Model.dynamicviscosity.ToString("0.0000000").Replace(',', '.')" />
+              </p>
+              <p>
+                  <label class="boxdata-label-30">Кинематическая вязкость, м<sup><small>2</small></sup>/с</label>
+                  <input class="boxdata-input-50" type="number" step="0.000000001" name="Viscosity" value="@Model.viscosity.ToString("0.000000000").Replace(',', '.')" />
+              </p>
+              <p>
+                  <label class="boxdata-label-30">Коэф. диффузии, м<sup><small>2</small></sup>/с</label>
+                  <input class="boxdata-input-50" type="number" step="0.000000001" name="Diffusion" value="@Model.diffusion.ToString("0.000000000").Replace(',', '.')" />
+              </p>     
+            </fieldset>
+            <p>
+                <label class="boxdata-label-30">Температура кипения, <sup><small>о</small></sup>С </label>
+                <input class="boxdata-input-50" type="number" name="Boilingtemp" value="@Model.boilingtemp.ToString("0").Replace(',', '.')" />
+            </p>
+            <p>
+                <label class="boxdata-label-30">Растворимость, кг/м<sup><small>2</small></sup></label>
+                <input class="boxdata-input-50" type="number" step="0.000001" m name="Solubility" value="@Model.solubility.ToString("0.000000").Replace(',', '.')" />
+            </p>
+            <p>
+                <label class="boxdata-label-30">Коэф. поверхностного натяжения, кг/с<sup><small>2</small></sup></label>
+                <input class="boxdata-input-50" type="number" step="0.000000001"  name="Tension" value="@Model.tension.ToString("0.000000000").Replace(',', '.')" />
+            </p>
+       </div>
+        @Html.Partial("_TypeLineMenu", delete)
+
+    </div>
+}

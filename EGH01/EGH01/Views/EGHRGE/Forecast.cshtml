@@ -1,0 +1,200 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Types;
+@using EGH01DB.Blurs;
+@using EGH01DB.Objects;
+@using EGH01.Models.EGHRGE;
+@model EGH01DB.RGEContext
+
+@{
+
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    
+    EGH01DB.RGEContext rge = (EGH01DB.RGEContext)Model;
+    ForecastViewConext context = (ForecastViewConext)Model.GetViewContext("Forecast");
+    if (context == null) { Model.SaveViewContext("Forecast", context = new ForecastViewConext()); };
+
+    if (context.ecoforecast != null && !string.IsNullOrEmpty(context.ecoforecast.errormessage))
+    {
+        context.Regim = ForecastViewConext.REGIM.RUNERROR; 
+    }
+
+
+    Menu.MenuItem mitemgeop = new Menu.MenuItem("Географическая точка", "Forecast.Point", false);
+    Menu.MenuItem mitemsave = new Menu.MenuItem("Сохранить отчет",      "Forecast.Save",  false);
+    
+    Menu start = new Menu(
+                          new Menu.MenuItem("Прогноз",    "Forecast.Forecast", true),
+                          new Menu.MenuItem("Отказаться", "Forecast.Cancel",  true),
+                          mitemsave,
+                          mitemgeop 
+                        );
+
+     
+   
+
+    
+       
+   
+
+}
+
+@using (Html.BeginForm("Forecast", "EGHRGE"))
+{
+    
+
+    <div class="box">
+        @{
+
+            string idate = DateTime.Now.ToString("yyyy-MM-dd");
+            if (context.Incident_date != null) { idate = ((DateTime)context.Incident_date).ToString("yyyy-MM-dd"); }
+
+            <div class="boxdata">
+                <label class="boxdata-label-30"> Дата инцидента </label>
+                <input class="boxdata-input-30" type="date" name="date" value="@idate" />
+            </div>
+
+        }
+        @{
+
+    string mdate = DateTime.Now.ToString("yyyy-MM-dd");
+    if (context.Incident_date_message != null) { mdate = ((DateTime)context.Incident_date_message).ToString("yyyy-MM-dd"); }
+
+    <div class="boxdata">
+        <label class="boxdata-label-30"> Дата регистрации </label>
+        <input class="boxdata-input-30" type="date" name="date_message" value="@mdate" />
+    </div>
+
+        }
+
+        @{
+    List<EGH01DB.Types.PetrochemicalType> ptl = new List<EGH01DB.Types.PetrochemicalType>();
+    List<SelectListItem> petrochemicaltype = new List<SelectListItem>();
+    if (Model != null)
+    {
+        if (Helper.GetListPetrochemicalType(Model, ref ptl))
+        {
+            ptl.ForEach(o => petrochemicaltype.Add(new SelectListItem { Text = o.name, Value = o.code_type.ToString() }));
+        }
+        if (context.Petrochemical_type_code != null)
+        {
+            SelectListItem si = petrochemicaltype.FirstOrDefault(s => s.Value == context.Petrochemical_type_code.ToString());
+            si.Selected = true;
+        }
+
+    }
+
+    <div class="boxdata">
+        <label class="boxdata-label-30">Тип нефтепродукта</label>@Html.DropDownList("petrochemicaltype", petrochemicaltype)
+    </div>
+
+        }
+
+        @{
+
+    List<SelectListItem> incidenttype = new List<SelectListItem>();
+    if (Model != null)
+    {
+
+        EGH01DB.Types.IncidentTypeList itl = new EGH01DB.Types.IncidentTypeList(Model);
+        itl.ForEach(o => incidenttype.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+    }
+    if (context.Incident_type_code != null)
+    {
+        SelectListItem si = incidenttype.FirstOrDefault(s => s.Value == context.Incident_type_code.ToString());
+        si.Selected = true;
+    }
+    <div class="boxdata">
+        <label class="boxdata-label-30">Тип инцидента</label>@Html.DropDownList("incidenttype", incidenttype)
+    </div>
+        }
+
+        @{
+
+    string volume = "";
+    if (context.Volume != null)
+    {
+        volume = ((int)context.Volume).ToString();
+    }
+    <div class="boxdata">
+        <label class="boxdata-label-30">Объем пролива (м<sup>3</sup>)</label>
+        <input class="boxdata-input-30" type="number" name="volume" value="@volume" min="0" max="1000000" step="1" />
+    </div>
+
+        }
+
+
+        @if (!mitemgeop.Value.Equals("Forecast.Point"))
+        {
+            <fieldset style="border:1px solid black; width:95%; margin:5px">
+                <legend style="margin:10px;"></legend>
+                <div class="boxdata">
+                    <label class="boxdata-label-30">Широта</label>
+                    <input class="boxdata-input-20" type="number" name="latitude_grad" min="-90" max="90" step="1" />
+                    <input class="boxdata-input-20" type="number" name="latitude_min" min="0" max="60" step="1" />
+                    <input class="boxdata-input-20" type="number" name="latitude_sec" min="0" max="60" step="0.01" />
+                </div>
+                <div class="boxdata">
+                    <label class="boxdata-label-30">Долгота</label>
+                    <input class="boxdata-input-20" type="number" name="lngitude_grad" min="-180" max="1800" step="1" />
+                    <input class="boxdata-input-20" type="number" name="lngitude_min" min="0" max="60" step="1" />
+                    <input class="boxdata-input-20" type="number" name="lngitude_sec" min="0" max="60" step="0.01" />
+                </div>
+            </fieldset>
+        }
+        else
+        {
+
+            @Html.Action("ChoiceRiskObject", "EGHRGE", new { controller = "EGHRGE", action = "Forecast" });
+        }
+
+        @if (context.Regim == ForecastViewConext.REGIM.REPORT)
+        {
+            mitemsave.Enable();
+        }
+
+        @Html.Partial("_TypeLineMenu", start)
+
+        @if (context.Regim == ForecastViewConext.REGIM.ERROR)
+        {
+            <div class="boxdata">
+                <p>
+                    Ошибка заполнения
+                </p>
+            </div>
+        }
+        else if (context.Regim == ForecastViewConext.REGIM.RUNERROR)
+        {
+            <div class="boxdata">
+                <p>
+                    @if (!string.IsNullOrEmpty(context.ecoforecast.errormessage))
+               {
+                @context.ecoforecast.errormessage
+               }
+               else
+               {
+                @:"Ошибка выполнения"
+               }
+
+                </p>
+            </div>
+        }
+    </div>
+
+    if (context.Regim == ForecastViewConext.REGIM.REPORT)
+    {
+       
+        <div class="box">
+            @Html.Partial("_ForecastReportGB", @context)
+        </div>
+        <div class="box">
+            @Html.Partial("_ForecastReportWB", @context)
+        </div>
+        
+
+    }
+
+}
+
+ 

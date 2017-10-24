@@ -1,0 +1,82 @@
+﻿@model EGH01DB.RGEContext
+@using EGH01DB.Objects;
+@using EGH01DB.Primitives;
+@using EGH01.Models.EGHRGE;
+@{
+    
+    EGH01DB.RGEContext rge = (EGH01DB.RGEContext)Model;
+    ChoiceRiskObjectContext context = (ChoiceRiskObjectContext)Model.GetViewContext("_ChoiceRiskObject");
+    if (context == null) { Model.SaveViewContext("_ChoiceRiskObject", context = new ChoiceRiskObjectContext()); };
+    List<SelectListItem> riskobjectlist = null;
+  
+    
+}
+
+@using (Html.BeginForm("Forecast", "EGHRGE"))
+{
+               
+    <fieldset  form="ChoiseRiskObject">
+        <legend > Техногенный объект </legend>
+        @if (context.Regim == ChoiceRiskObjectContext.REGIM.INIT)
+        {
+           {
+                Model.SaveViewContext("_ChoiceRiskObject", context = new ChoiceRiskObjectContext());
+           }
+            
+          <input type="search" name="ChoiceRiskObject.template" />
+          <button type="submit" name="ChoiceRiskObject.choicefind" value="choice">Поиск</button> 
+
+        }
+        else if (context.Regim == ChoiceRiskObjectContext.REGIM.CHOICE && !string.IsNullOrEmpty(context.Template))
+        {
+            {       
+                List<RiskObject> rol = new List<RiskObject>();
+                if (RiskObjectsList.GetListRiskObjectByLike(Model, context.Template, ref rol))
+                {
+                    riskobjectlist = new List<SelectListItem>();
+                    rol.ForEach(o => riskobjectlist.Add(new SelectListItem { Text = o.Line, Value = o.id.ToString(), Selected = false }));
+                    if (riskobjectlist.Count > 0) { riskobjectlist[0].Selected = true; }
+             
+                    @Html.DropDownList("ChoiceRiskObject.id", riskobjectlist, new { size = riskobjectlist.Count })
+                    <button type="submit" name="ChoiceRiskObject.choicefind" value="set">Получить</button>
+                }
+                else
+                { 
+                  <label class="boxdata-label-40" > Нет объектов соответсвующих  введенному запросу </label>
+                }
+                <button type="submit" name="ChoiceRiskObject.choicefind" value="init">Повторить поиск </button>
+
+            }
+
+
+        }
+        else if (context.Regim == ChoiceRiskObjectContext.REGIM.SET && context.RiskObjectID > 0)
+        {
+            {
+                RiskObject riskobject = null;
+                if (RiskObject.GetById(Model, context.RiskObjectID, ref riskobject))
+                {
+                    Coordinates c = new Coordinates(riskobject.coordinates);
+                  <div class="boxdata">
+                    <input type="hidden" name="riskobjectid" value="@riskobject.id.ToString()" />
+                    <p><label class="boxdata-label-30">Идентификатор </label> @riskobject.id.ToString().PadRight(10) </p>
+                    <p><label class="boxdata-label-30">Наименование  </label> <span class="boxdata-span">@riskobject.name.PadRight(20)</span> </p>
+                    <p><label class="boxdata-label-30">Адрес         </label> @riskobject.address.PadRight(50) </p>
+                      <p><label class="boxdata-label-30">Координаты. Широта</label>@c.lat.d.ToString()°&nbsp;@c.lat.m.ToString()'&nbsp;@c.lat.s.ToString("0.00")"</p>
+                      <p><label class="boxdata-label-30">Координаты. Долгота</label>@c.lng.d.ToString()°&nbsp;@c.lng.m.ToString()'&nbsp;@c.lng.s.ToString("0.00")" </p>
+                      <p><label class="boxdata-label-30">Координаты в градусах</label>@c.latitude.ToString()°&nbsp;@c.lngitude.ToString()°</p>
+
+
+                 </div>
+                 <button type="submit" name="ChoiceRiskObject.choicefind" value="init">Повторить поиск </button>
+                }
+            }
+
+                        
+            
+
+        }
+
+    </fieldset>       
+       
+}

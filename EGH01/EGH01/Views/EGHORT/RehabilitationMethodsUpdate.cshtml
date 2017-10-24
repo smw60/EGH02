@@ -1,0 +1,228 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Objects;
+@using EGH01DB.Types;
+@model EGH01DB.Types.RehabilitationMethod
+@{
+    EGH01DB.RGEContext dbrge = new EGH01DB.RGEContext();
+    EGH01DB.ORTContext dbort = new EGH01DB.ORTContext();
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    Menu head = new Menu(
+          new Menu.MenuItem("Создать", "RehabilitationMethods.Create", false),
+          new Menu.MenuItem("Excel-формат", "RehabilitationMethods.Excel", false)
+        );
+
+    Menu delete = new Menu(
+                          new Menu.MenuItem("Изменить", "RehabilitationMethods.Update.Update", true),
+                          new Menu.MenuItem("Отказаться", "RehabilitationMethods.Update.Cancel", true)
+                        );
+
+
+
+    {
+        List<EGH01DB.Types.RiskObjectType> list_type = new List<EGH01DB.Types.RiskObjectType>();
+        List<SelectListItem> listtype = ViewBag.list_type = new List<SelectListItem>();
+
+        Helper.GetListRiskObjectType(dbort, ref list_type);
+
+        list_type.ForEach(o => ViewBag.list_type.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+        if (Model.riskobjecttype!= null)
+        {
+            SelectListItem sit = listtype.FirstOrDefault(s => s.Value == Model.riskobjecttype.type_code.ToString());
+            sit.Selected = true;
+        }
+    }
+
+
+    {
+        List<EGH01DB.Types.CadastreType> list_cadastre = new List<EGH01DB.Types.CadastreType>();
+        List<SelectListItem> listcadastre = ViewBag.list_cadastre = new List<SelectListItem>();
+
+        Helper.GetListCadastreType(dbrge, ref list_cadastre);
+        list_cadastre.ForEach(o => ViewBag.list_cadastre.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+        if (@Model.cadastretype != null)
+        {
+            SelectListItem sic = listcadastre.FirstOrDefault(s => s.Value == Model.cadastretype.type_code.ToString());
+            sic.Selected = true;
+
+        }
+    }
+
+    {
+        List<EGH01DB.Types.PetrochemicalCategories> list_petrochemical = new List<EGH01DB.Types.PetrochemicalCategories>();
+        List<SelectListItem> listpetrochemical = ViewBag.list_petrochemical = new List<SelectListItem>();
+
+        Helper.GetListPetrochemicalCategories(dbort, ref list_petrochemical);
+
+        list_petrochemical.ForEach(o => ViewBag.list_petrochemical.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+        if (Model.petrochemicalcategory != null)
+        {
+            SelectListItem sit = listpetrochemical.FirstOrDefault(s => s.Value == Model.petrochemicalcategory.type_code.ToString());
+            sit.Selected = true;
+        }
+    }
+
+    {
+        List<EGH01DB.Types.EmergencyClass> list_emergency = new List<EGH01DB.Types.EmergencyClass>();
+        List<SelectListItem> listemergency = ViewBag.list_emergency = new List<SelectListItem>();
+
+        Helper.GetListEmergencyClass(dbort, ref list_emergency);
+
+        list_emergency.ForEach(o => ViewBag.list_emergency.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+        if (Model.emergencyclass != null)
+        {
+            SelectListItem sit = listemergency.FirstOrDefault(s => s.Value == Model.emergencyclass.type_code.ToString());
+            sit.Selected = true;
+        }
+    }
+
+    {
+        List<EGH01DB.Types.PenetrationDepth> list_penetration = new List<EGH01DB.Types.PenetrationDepth>();
+        List<SelectListItem> listpenetration = ViewBag.list_penetration = new List<SelectListItem>();
+
+        Helper.GetListPenetrationDepth(dbort, ref list_penetration);
+
+        list_penetration.ForEach(o => ViewBag.list_penetration.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+        if (Model.petrochemicalcategory!= null)
+        {
+            SelectListItem sit = listpenetration.FirstOrDefault(s => s.Value == Model.petrochemicalcategory.type_code.ToString());
+            sit.Selected = true;
+        }
+    }
+
+    {
+        List<EGH01DB.Types.SoilPollutionCategories> list_soil = new List<EGH01DB.Types.SoilPollutionCategories>();
+        List<SelectListItem> listsoil = ViewBag.list_soil = new List<SelectListItem>();
+
+        Helper.GetListSoilPollutionCategories(dbort, ref list_soil);
+
+        list_soil.ForEach(o => ViewBag.list_soil.Add(new SelectListItem { Text = o.name, Value = o.code.ToString() }));
+
+        if (Model.soilpollutioncategories != null)
+        {
+            SelectListItem sit = listsoil.FirstOrDefault(s => s.Value == Model.soilpollutioncategories.code.ToString());
+            sit.Selected = true;
+        }
+    }
+
+    {
+        List<EGH01DB.Types.WaterPollutionCategories> list_water = new List<EGH01DB.Types.WaterPollutionCategories>();
+        List<SelectListItem> listwater = ViewBag.list_water = new List<SelectListItem>();
+
+        Helper.GetListWaterPollutionCategories(dbort, ref list_water);
+
+        list_water.ForEach(o => ViewBag.list_water.Add(new SelectListItem { Text = o.name, Value = o.code.ToString() }));
+
+        if (Model.waterpollutioncategories!= null)
+        {
+            SelectListItem sit = listwater.FirstOrDefault(s => s.Value == Model.waterpollutioncategories.code.ToString());
+            sit.Selected = true;
+        }
+    }
+
+    {
+        List<EGH01DB.Types.WaterProtectionArea> list_waterArea = new List<EGH01DB.Types.WaterProtectionArea>();
+        List<SelectListItem> listwaterArea = ViewBag.list_waterArea = new List<SelectListItem>();
+
+        Helper.GetListWaterProtectionArea(dbort, ref list_waterArea);
+
+        list_waterArea.ForEach(o => ViewBag.list_waterArea.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+        if (Model.waterprotectionarea != null)
+        {
+            SelectListItem sit = listwaterArea.FirstOrDefault(s => s.Value == Model.waterprotectionarea.type_code.ToString());
+            sit.Selected = true;
+        }
+    }
+
+    {
+        List<EGH01DB.Types.SoilCleaningMethod> list_soilCleaning = new List<EGH01DB.Types.SoilCleaningMethod>();
+        List<SelectListItem> listsoilCleaning = ViewBag.list_soilCleaning = new List<SelectListItem>();
+
+        Helper.GetListSoilCleaningMethods(dbort, ref list_soilCleaning);
+
+        list_soilCleaning.ForEach(o => ViewBag.list_soilCleaning.Add(new SelectListItem { Text = o.method_description, Value = o.type_code.ToString() }));
+
+        if (Model.soilcleaningmethod != null)
+        {
+            SelectListItem sit = listsoilCleaning.FirstOrDefault(s => s.Value == Model.soilcleaningmethod.type_code.ToString());
+            sit.Selected = true;
+        }
+    }
+
+    {
+        List<EGH01DB.Types.WaterCleaningMethod> list_waterCleaning = new List<EGH01DB.Types.WaterCleaningMethod>();
+        List<SelectListItem> listwaterCleaning = ViewBag.list_waterCleaning = new List<SelectListItem>();
+
+        Helper.GetListWaterCleaningMethods(dbort, ref list_waterCleaning);
+
+        list_waterCleaning.ForEach(o => ViewBag.list_waterCleaning.Add(new SelectListItem { Text = o.method_description, Value = o.type_code.ToString() }));
+
+        if (Model.watercleaningmethod != null)
+        {
+            SelectListItem sit = listwaterCleaning.FirstOrDefault(s => s.Value == Model.watercleaningmethod.type_code.ToString());
+            sit.Selected = true;
+        }
+    }
+
+
+
+
+
+
+
+     }
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHCORT", Action = "RehabilitationMethods", Menu = head })
+
+@using (Html.BeginForm("RehabilitationMethodsUpdate", "EGHORT"))
+{
+
+
+    <div class="box">
+        <div class="boxdata">
+            <div class="boxdata">
+                <input type="hidden" value="@Model.type_code.ToString()" name="type_code">
+            </div>
+            <p><label class="boxdata-label-30">Тип техногенного объекта</label>@Html.DropDownList("list_type")</p>
+            <p><label class="boxdata-label-30">Категория земли</label>  @Html.DropDownList("list_cadastre")</p>
+            <p><label class="boxdata-label-30">Категория разлитого нефтепродукта</label>@Html.DropDownList("list_petrochemical")</p>
+            <p><label class="boxdata-label-30">Классификация аварии</label>@Html.DropDownList("list_emergency")</p>
+            <p><label class="boxdata-label-30">Категория глубины проникновения</label>@Html.DropDownList("list_penetration")</p>
+            <p><label class="boxdata-label-30">Категория загрязнения грунтов</label>@Html.DropDownList("list_soil")</p>
+            @{
+
+                bool k = Model.waterachieved;
+                if (k == true)
+                {
+                    <input type="checkbox" id="waterachieved" class="boxdata-label-30" checked="checked" name="waterachieved" value="true"><label>Достижение грунтовых вод</label>
+                }
+                else
+                {
+                    <input type="checkbox" id="waterachieved" class="boxdata-label-30" name="waterachieved" value="false"><label>Достижение грунтовых вод</label>
+                }
+            }
+            <script>
+                var c = document.querySelector('#waterachieved');
+                     c.onclick = function ()
+                     {
+                         if (c.checked) {
+                             c.value = true;
+                         }
+                         else
+                             c.value = false;
+                     }
+            </script>
+            <p><label class="boxdata-label-30">Категория загрязнения грунтовых вод</label>@Html.DropDownList("list_water")</p>
+            <p><label class="boxdata-label-30">Категория водоохранной территории</label>@Html.DropDownList("list_waterArea")</p>
+            <p><label class="boxdata-label-30">Категория методов ликвидации загрязнения почвогрунтов</label>@Html.DropDownList("list_soilCleaning")</p>
+            <p><label class="boxdata-label-30">Категория методов ликвидации загрязнения грунтовых вод </label>@Html.DropDownList("list_waterCleaning")</p>
+        </div>
+        @Html.Partial("_TypeLineMenu", delete)
+    </div>
+}

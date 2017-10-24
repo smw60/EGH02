@@ -1,0 +1,341 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Objects;
+@using EGH01DB.Types;
+@model EGH01DB.Objects.RiskObject
+@{
+    EGH01DB.CAIContext db = new EGH01DB.CAIContext();
+    EGH01DB.CAIContext rge = (EGH01DB.CAIContext)db;
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    EGH01.Models.EGHCAI.RiskObject context = (EGH01.Models.EGHCAI.RiskObject)db.GetViewContext("RiskObject");
+    if (context == null) { db.SaveViewContext("RiskObject", context = new EGH01.Models.EGHCAI.RiskObject()); };
+    Menu head = new Menu(
+          new Menu.MenuItem("Создать", "RiskObject.Create", false),
+          new Menu.MenuItem("Excel-формат", "RiskObject.Excel", false)
+        );
+
+    Menu delete = new Menu(
+                          new Menu.MenuItem("Изменить", "RiskObject.Update.Update", true),
+                          new Menu.MenuItem("Отказаться", "RiskObject.Update.Cancel", true)
+                        );
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDD-BQGwH6mEgOBp15GhEpzm8h1JzP-fpg"></script>
+
+
+
+    {
+        List<EGH01DB.Types.RiskObjectType> selectlist = new List<EGH01DB.Types.RiskObjectType>();
+        List<SelectListItem> listtype = ViewBag.selectlist = new List<SelectListItem>();
+
+        Helper.GetListRiskObjectType(db, ref selectlist);
+
+        selectlist.ForEach(o => ViewBag.selectlist.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+        if (Model.type != null)
+        {
+            SelectListItem sit = listtype.FirstOrDefault(s => s.Value == Model.type.type_code.ToString());
+            sit.Selected = true;
+        }
+    }
+
+    {
+        List<EGH01DB.Types.GroundType> list_groundType = new List<EGH01DB.Types.GroundType>();
+        List<SelectListItem> list = ViewBag.list_groundType = new List<SelectListItem>();
+
+        Helper.GetListGroundType(db, ref list_groundType);
+        list_groundType.ForEach(o => ViewBag.list_groundType.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+        if (Model.groundtype != null)
+        {
+            SelectListItem si = list.FirstOrDefault(s => s.Value == Model.groundtype.type_code.ToString());
+            si.Selected = true;
+        }
+    }
+
+
+
+
+    {
+        List<EGH01DB.Types.Region> list_region = new List<EGH01DB.Types.Region>();
+        List<SelectListItem> listregion = ViewBag.list_region = new List<SelectListItem>();
+
+        Helper.GetListRegion(db, ref list_region);
+        list_region.ForEach(o => ViewBag.list_region.Add(new SelectListItem { Text = o.name, Value = o.region_code.ToString() }));
+        if (@Model.region != null)
+        {
+            SelectListItem sir = listregion.FirstOrDefault(s => s.Value == Model.region.region_code.ToString());
+            sir.Selected = true;
+
+
+        }
+    }
+    {
+        List<EGH01DB.Types.District> list_district = new List<EGH01DB.Types.District>();
+        List<SelectListItem> listdistrict = ViewBag.list_district = new List<SelectListItem>();
+
+        Helper.GetListDistrict(db, ref list_district);
+        list_district.ForEach(o => ViewBag.list_district.Add(new SelectListItem { Text = o.name, Value = o.code.ToString() }));
+
+        if (@Model.district != null)
+        {
+            SelectListItem sid = listdistrict.FirstOrDefault(s => s.Value == Model.district.code.ToString());
+            sid.Selected = true;
+
+        }
+    }
+    {
+        List<EGH01DB.Types.CadastreType> list_cadastre = new List<EGH01DB.Types.CadastreType>();
+        List<SelectListItem> listcadastre = ViewBag.list_cadastre = new List<SelectListItem>();
+
+        Helper.GetListCadastreType(db, ref list_cadastre);
+        list_cadastre.ForEach(o => ViewBag.list_cadastre.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+        if (@Model.cadastretype != null)
+        {
+            SelectListItem sic = listcadastre.FirstOrDefault(s => s.Value == Model.cadastretype.type_code.ToString());
+            sic.Selected = true;
+
+        }
+    }
+
+}
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHCAI", Action = "RiskObject", Menu = head })
+
+@using (Html.BeginForm("RiskObjectUpdate", "EGHCAI"))
+{
+
+    <div class="box">
+        <div class="boxdata">
+            <div class="boxdata">
+                <input type="hidden" value="@Model.id.ToString()" name="type_code">
+            </div>
+            <p>
+                <label class="boxdata-label-30">Наименование</label>
+                <textarea class="boxdata-input-50" name="Name" >@Model.name</textarea>
+            </p>
+            <p>
+                <label class="boxdata-label-30">Тип техногенного объекта</label>@Html.DropDownList("selectlist")
+            </p>
+            <fieldset form="ChoiseRiskObject">
+                <legend >Адрес</legend>
+                <p>
+                    <label class="boxdata-label-30">Область</label>@Html.DropDownList("list_region")
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Район</label>@Html.DropDownList("list_district")
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Город(населенный пункт),улица,дом</label>
+                    <input class="boxdata-input-50" type="text" name="Adress" value="@Model.address" />
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Телефон</label>
+                    <input class="boxdata-input-50" type="text" name="phone" value="@Model.phone.ToString()" />
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Факс</label>
+                    <input class="boxdata-input-50" type="text" name="fax" value="@Model.fax.ToString()" />
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Электронный адрес</label>
+                    <input class="boxdata-input-50" type="text" name="email" value="@Model.email" />
+                </p>
+            </fieldset>
+            <fieldset form="ChoiseRiskObject">
+                <legend >Объем резервуаров для хранения нефтепродутов, м<sup>3</sup></legend>
+                <p>
+                    <label class="boxdata-label-30">Наземные</label>
+                    <input class="boxdata-input-50" type="number" name="groundtank" value="@Model.groundtank.ToString()" min="0" step="0.1" />
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Подземные</label>
+                    <input class="boxdata-input-50" type="number" name="undergroundtank" value="@Model.undergroundtank.ToString()" min="0" step="0.1" />
+                </p>
+            </fieldset>
+            <fieldset form="ChoiseRiskObject">
+                <legend >Наличие очистных сооружений</legend>
+                <p>
+                    @if (@Model.watertreatment == true)
+                {
+                        <input type="checkbox" class="boxdata-label-30" name="watertreatment" checked="checked" value="@Model.watertreatment"><label>Для дождевого стока</label>
+                    }
+                    else
+                    {
+                        <input type="checkbox" class="boxdata-label-30" name="watertreatment" value="@Model.watertreatment"><label>Для дождевого стока</label>
+                    }
+                </p>
+                <p>
+                    @if (@Model.watertreatmentcollect == true)
+                {
+                        <input type="checkbox" class="boxdata-label-30" name="watertreatmentcollect" checked="checked" value="@Model.watertreatmentcollect"><label>Резервуар для сбора проливов</label>
+                    }
+                    else
+                    {
+                        <input type="checkbox" class="boxdata-label-30" name="watertreatmentcollect" value="@Model.watertreatmentcollect"><label>Резервуар для сбора проливов</label>
+                    }
+                </p>
+            </fieldset>
+           
+
+                                
+                <p>
+            @if (@Model.foundationdate.Year != 1900)
+            {
+
+                {
+
+                    string foundationdate = context.foundationdate.ToString("yyyy-MM-dd");
+                    if (context.foundationdate != null) { foundationdate = ((DateTime)@Model.foundationdate).ToString("yyyy-MM-dd"); }
+
+                    <div class="boxdata">
+                        <label class="boxdata-label-30">Дата ввода в эксплуатацию</label>
+                        <input class="boxdata-input-50" type="date" name="foundationdate" value="@foundationdate" />
+                    </div>
+
+                }
+
+                    }
+            @if (@Model.reconstractiondate.Year != 1900)
+            {
+                {
+
+                    string reconstractiondate = context.reconstractiondate.ToString("yyyy-MM-dd");
+                    if (context.reconstractiondate != null) { reconstractiondate = ((DateTime)@Model.reconstractiondate).ToString("yyyy-MM-dd"); }
+
+                    <div class="boxdata">
+                        <label class="boxdata-label-30">Дата последней реконструкции</label>
+                        <input class="boxdata-input-50" type="date" name="reconstractiondate" value="@reconstractiondate" />
+                    </div>
+
+                }
+            }
+            <fieldset form="RiskObject">
+                <legend >Географические координаты</legend>
+                <p>
+                    <label class="boxdata-label-30">Широта </label>
+
+                    <input class="boxdata-input-10" type="number" name="Latitude"  id="Latitude" value="@Model.coordinates.lat.d.ToString()" min="-90" max="90" />&deg;
+                    <input class="boxdata-input-10" type="number" name="Lat_m" value="@Model.coordinates.lat.m.ToString()" min="-90" max="90" />&acute;
+                    <input class="boxdata-input-10" type="number" name="Lat_s" value="@Model.coordinates.lat.s.ToString("0.00").Replace(',' , '.')" min="0" max="60" step="0.001" />&quot;
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Долгота</label>
+                    <input class="boxdata-input-10" type="number" name="Lngitude" id="Lngitude" value="@Model.coordinates.lng.d.ToString()" max="90" min="-90" />&deg;
+                    <input class="boxdata-input-10" type="number" name="Lng_m" value="@Model.coordinates.lng.m.ToString()" min="-90" max="90" />&acute;
+                    <input class="boxdata-input-10" type="number" name="Lng_s" value="@Model.coordinates.lng.s.ToString("0.00").Replace(',' , '.')" min="0" max="60" step="0.001" />&quot;
+                </p>
+            <p class="center"><input type="button" id="redraw" value="Отобразить карту по координатам" /></p>
+            <div id="canvas" class="map"></div>
+            <input type="hidden" id="base64" name="base64" value="" />
+            <img id="canvasImg" />
+            </fieldset>
+
+            <fieldset form="ChoiseRiskObject">
+                <legend >Геологические данные</legend>
+                <p>
+                    <label class="boxdata-label-50">Категория земли</label> @Html.DropDownList("list_cadastre")
+                      </p>
+
+                <p>
+                    <label class="boxdata-label-50">Грунт</label>@Html.DropDownList("list_groundType")
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Глубина грунтовых вод, м</label>
+                    <input class="boxdata-input-50" type="number" name="waterdeep" value="@Model.waterdeep.ToString("0.00").Replace(',' , '.')" min="0" step="0.01" />
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Высота над уровнем моря, м</label>
+                    <input class="boxdata-input-50" type="number" name="height" value="@Model.height.ToString("0.00").Replace(',' , '.')" min="0" step="0.01" />
+                </p>
+            </fieldset>
+        </div>
+
+        @section scripts {
+            <script type="text/javascript">
+
+        $(document).ready(function () {
+            GetMap();
+        });
+        $("#save").click(function () {
+            var data = getBase64Image(document.getElementById("canvasImg"));
+
+            document.getElementById("canvasImg2") = data;
+        });
+    function GetMap() {
+
+        google.maps.visualRefresh = true;
+        var create = new google.maps.LatLng(@Model.coordinates.lat.d, @Model.coordinates.lng.d);
+        var mapOptions = {
+            zoom: 12,
+            center: create,
+            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+        };
+
+        var map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
+        var myLatlng = new google.maps.LatLng(@Model.coordinates.lat.d, @Model.coordinates.lng.d);
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+        });
+        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+    }
+            
+                function getBase64Image_new(path) {
+                    var imgE = document.createElement("img");
+                    imgE.id = "imgE";
+                    imgE.crossOrigin = 'Anonymous';
+                    imgE.onload = function () {
+                    document.getElementById("canvas").appendChild(imgE);
+
+                        var canvas = document.createElement("canvas");
+                        canvas.width = 640;
+                        canvas.height = 600;
+                        var ctx = canvas.getContext("2d");
+                        ctx.drawImage(imgE, 0, 0);
+                        var dataURL = canvas.toDataURL("image/png");
+                        document.getElementById("base64").value = dataURL;
+                    }
+                    imgE.src = path;
+                }
+
+                function GetMapCoordinat() {
+
+                    google.maps.visualRefresh = true;
+                    var create = new google.maps.LatLng(Latitude.value, Lngitude.value);
+
+                    var mapOptions = {
+                        zoom: 12,
+                        center: create,
+                        mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+                    };
+     
+                    var map = new google.maps.Map(document.getElementById("canvas"), mapOptions);
+         
+                    var myLatlng = new google.maps.LatLng(Latitude.value, Lngitude.value);
+
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                    });
+      
+                    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+
+                    var path = "http://maps.google.com/maps/api/staticmap?sensor=false&center=" +
+                       myLatlng.lat() + "," + myLatlng.lng() +
+          "&zoom=" + map.zoom +
+          "&size=640x600" +
+          "&markers=color:red%7C"+myLatlng.lat() + "," + myLatlng.lng() +
+            "&key=AIzaSyCX4kdHa13iAH0dVcEm7SuV_VNcuxoUQNs";
+                    getBase64Image_new(path);
+
+                }
+                $("#redraw").click(function () {
+                    GetMapCoordinat();
+                });
+            </script>
+        }
+
+        @Html.Partial("_TypeLineMenu", delete)
+    </div>
+}

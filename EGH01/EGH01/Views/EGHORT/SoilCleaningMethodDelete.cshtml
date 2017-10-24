@@ -1,0 +1,45 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+
+@model EGH01DB.Types.SoilCleaningMethod
+@{
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    Menu head = new Menu(
+                          new Menu.MenuItem("Создать", "SoilCleaningMethod.Create", false),
+                          new Menu.MenuItem("Excel-формат", "SoilCleaningMethod.Excel", false)
+                        );
+
+    Menu update = new Menu(
+                          new Menu.MenuItem("Удалить", "SoilCleaningMethod.Delete.Delete", true),
+                          new Menu.MenuItem("Отказаться", "SoilCleaningMethod.Delete.Cancel", true)
+                        );
+
+}
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHORT", Action = "SoilCleaningMethod", Menu = head })
+@using (Html.BeginForm("SoilCleaningMethodDelete", "EGHORT"))
+{
+
+    <div class="box">
+        <div class="boxdata">
+            <p>
+                <label class="boxdata-label-30">Код метода</label>
+                @Model.type_code.ToString()
+                <input type="hidden" value="@Model.type_code.ToString()" name="type_code">
+            </p>
+            @*<p>
+                <label class="boxdata-label-30">Наименование метода</label>
+                @Model.name.ToString()
+            </p>*@
+            <p>
+                <label class="boxdata-label-30">Описание метода</label>
+                @Model.method_description.ToString()
+            </p>
+
+        </div>
+
+        @Html.Partial("_TypeLineMenu", update)
+
+    </div>
+}
+

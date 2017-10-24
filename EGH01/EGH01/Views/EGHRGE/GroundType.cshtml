@@ -1,0 +1,58 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Types;
+@model EGH01DB.RGEContext
+
+@{
+
+
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    Menu head = new Menu(
+                          new Menu.MenuItem("Создать", "GroundType.Create", true),
+                          new Menu.MenuItem("Excel-формат", "GroundType.Excel", true)
+                        );
+
+    List<GroundType> list = new List<GroundType>();
+    if (@Model != null) { Helper.GetListGroundType(@Model, ref list); };
+
+}
+
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHRGE", Action = "GroundType", Menu = head })
+@Html.Partial("_GroundTypeList", list)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

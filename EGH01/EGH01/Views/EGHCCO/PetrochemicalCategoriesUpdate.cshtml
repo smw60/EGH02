@@ -1,0 +1,37 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@model EGH01DB.Types.PetrochemicalCategories
+@{
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    Menu head = new Menu(
+                          new Menu.MenuItem("Создать", "PetrochemicalCategories.Create", false),
+                          new Menu.MenuItem("Excel-формат", "PetrochemicalCategories.Excel", false)
+                        );
+
+    Menu delete = new Menu(
+                          new Menu.MenuItem("Изменить", "PetrochemicalCategories.Update.Update", true),
+                          new Menu.MenuItem("Отказаться", "PetrochemicalCategories.Update.Cancel", true)
+                        );
+
+}
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHCCO", Action = "PetrochemicalCategories", Menu = head })
+
+@using (Html.BeginForm("PetrochemicalCategoriesUpdate", "EGHCCO"))
+{
+
+    <div class="box">
+        <div class="boxdata">
+          <p>
+                <label class="boxdata-label-30">Код категории нефтепродукта</label>@Model.type_code
+                <input type="hidden" value="@Model.type_code.ToString()" name="type_code">
+          </p>
+          <p>
+              <label class="boxdata-label-30">Наименование категории нефтепродукта</label>
+              <input class="boxdata-input-50" type="text" name="Name" value="@Model.name.ToString()" />
+          </p>
+          
+       </div>
+        @Html.Partial("_TypeLineMenu", delete)
+
+    </div>
+}

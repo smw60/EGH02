@@ -1,0 +1,158 @@
+<SpreadingCoefficientList>
+  <SpreadingCoefficient code="25" min_volume="0" max_volume="100000" min_angle="0" max_angle="90" koef="5">
+    <GroundType type_code="1" name="Песчаный" porosity="0,43" holdmigration="0,6" waterfilter="4,21E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,01" soilmoisture="0,2" аveryanovfactor="5" permeability="0,2" density="2100" />
+    <PetrochemicalType code_type="2" name="Бензин SMW60" boilingtemp="60" density="750" viscosity="0,00052" solubility="15" tension="0,021" dynamicviscosity="0,00052" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="27" min_volume="0" max_volume="100000" min_angle="0" max_angle="90" koef="5">
+    <GroundType type_code="1" name="Песчаный" porosity="0,43" holdmigration="0,6" waterfilter="4,21E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,01" soilmoisture="0,2" аveryanovfactor="5" permeability="0,2" density="2100" />
+    <PetrochemicalType code_type="1" name="Нефть" boilingtemp="20" density="850" viscosity="6,1" solubility="10" tension="0,026" dynamicviscosity="0,0178" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="26" min_volume="0" max_volume="100000" min_angle="0" max_angle="90" koef="5">
+    <GroundType type_code="3" name="Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,21E-06" diffusion="0,1" distribution="0,1" sorption="0,1" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,1" density="1650" />
+    <PetrochemicalType code_type="1" name="Нефть" boilingtemp="20" density="850" viscosity="6,1" solubility="10" tension="0,026" dynamicviscosity="0,0178" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="62" min_volume="1" max_volume="50" min_angle="1" max_angle="50" koef="1">
+    <GroundType type_code="3" name="Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,21E-06" diffusion="0,1" distribution="0,1" sorption="0,1" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,1" density="1650" />
+    <PetrochemicalType code_type="18" name="Ксюша" boilingtemp="1" density="700" viscosity="1E-09" solubility="1E-06" tension="1E-09" dynamicviscosity="0,00052" diffusion="1E-09">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="33" min_volume="0" max_volume="120" min_angle="0" max_angle="12" koef="5">
+    <GroundType type_code="7" name="SMW60" porosity="0,43" holdmigration="14" waterfilter="3,8E-06" diffusion="0" distribution="0" sorption="0" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="3" permeability="0" density="2100" />
+    <PetrochemicalType code_type="2" name="Бензин SMW60" boilingtemp="60" density="750" viscosity="0,00052" solubility="15" tension="0,021" dynamicviscosity="0,00052" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="18" min_volume="0" max_volume="1000000" min_angle="0" max_angle="90" koef="5">
+    <GroundType type_code="7" name="SMW60" porosity="0,43" holdmigration="14" waterfilter="3,8E-06" diffusion="0" distribution="0" sorption="0" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="3" permeability="0" density="2100" />
+    <PetrochemicalType code_type="1" name="Нефть" boilingtemp="20" density="850" viscosity="6,1" solubility="10" tension="0,026" dynamicviscosity="0,0178" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="31" min_volume="0" max_volume="10000" min_angle="0" max_angle="90" koef="3">
+    <GroundType type_code="9" name="Тест1 Песок м/з" porosity="0,35" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    <PetrochemicalType code_type="14" name="Тест2 Нефть " boilingtemp="200" density="850" viscosity="6,1E-06" solubility="0,05" tension="0,026" dynamicviscosity="0,0178" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="29" min_volume="0" max_volume="10000" min_angle="0" max_angle="90" koef="5">
+    <GroundType type_code="9" name="Тест1 Песок м/з" porosity="0,35" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    <PetrochemicalType code_type="15" name=" Тест3 Керосин" boilingtemp="130" density="850" viscosity="1,25E-06" solubility="0,002" tension="0,024" dynamicviscosity="0,002" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="49" min_volume="0" max_volume="10000" min_angle="0" max_angle="10" koef="5">
+    <GroundType type_code="9" name="Тест1 Песок м/з" porosity="0,35" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    <PetrochemicalType code_type="16" name=" Тест4 Дизельнок топливо" boilingtemp="200" density="795" viscosity="1,84E-06" solubility="0,00065" tension="0,0308" dynamicviscosity="0,0032" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="50" min_volume="0" max_volume="10000" min_angle="0" max_angle="10" koef="5">
+    <GroundType type_code="9" name="Тест1 Песок м/з" porosity="0,35" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    <PetrochemicalType code_type="17" name=" Тест5 Мазут" boilingtemp="300" density="930" viscosity="3,53E-05" solubility="1E-05" tension="0,052" dynamicviscosity="2,022" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="36" min_volume="0" max_volume="1E+08" min_angle="0" max_angle="90" koef="5">
+    <GroundType type_code="9" name="Тест1 Песок м/з" porosity="0,35" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    <PetrochemicalType code_type="13" name="Тест1 Бензин" boilingtemp="110" density="750" viscosity="4,3E-07" solubility="0,009" tension="0,021" dynamicviscosity="0,00052" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="45" min_volume="0" max_volume="100" min_angle="0" max_angle="10" koef="5">
+    <GroundType type_code="10" name="Тест2 Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    <PetrochemicalType code_type="13" name="Тест1 Бензин" boilingtemp="110" density="750" viscosity="4,3E-07" solubility="0,009" tension="0,021" dynamicviscosity="0,00052" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="54" min_volume="0" max_volume="1000" min_angle="0" max_angle="90" koef="5">
+    <GroundType type_code="10" name="Тест2 Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    <PetrochemicalType code_type="16" name=" Тест4 Дизельнок топливо" boilingtemp="200" density="795" viscosity="1,84E-06" solubility="0,00065" tension="0,0308" dynamicviscosity="0,0032" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="57" min_volume="0" max_volume="1000" min_angle="0" max_angle="30" koef="5">
+    <GroundType type_code="10" name="Тест2 Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    <PetrochemicalType code_type="17" name=" Тест5 Мазут" boilingtemp="300" density="930" viscosity="3,53E-05" solubility="1E-05" tension="0,052" dynamicviscosity="2,022" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="44" min_volume="0" max_volume="5000" min_angle="0" max_angle="90" koef="5">
+    <GroundType type_code="10" name="Тест2 Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    <PetrochemicalType code_type="14" name="Тест2 Нефть " boilingtemp="200" density="850" viscosity="6,1E-06" solubility="0,05" tension="0,026" dynamicviscosity="0,0178" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="30" min_volume="0" max_volume="10000" min_angle="0" max_angle="90" koef="5">
+    <GroundType type_code="10" name="Тест2 Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    <PetrochemicalType code_type="15" name=" Тест3 Керосин" boilingtemp="130" density="850" viscosity="1,25E-06" solubility="0,002" tension="0,024" dynamicviscosity="0,002" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="51" min_volume="0" max_volume="1000" min_angle="0" max_angle="90" koef="5">
+    <GroundType type_code="11" name="Тест3 Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    <PetrochemicalType code_type="14" name="Тест2 Нефть " boilingtemp="200" density="850" viscosity="6,1E-06" solubility="0,05" tension="0,026" dynamicviscosity="0,0178" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="58" min_volume="0" max_volume="1000" min_angle="0" max_angle="60" koef="5">
+    <GroundType type_code="11" name="Тест3 Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    <PetrochemicalType code_type="17" name=" Тест5 Мазут" boilingtemp="300" density="930" viscosity="3,53E-05" solubility="1E-05" tension="0,052" dynamicviscosity="2,022" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="55" min_volume="0" max_volume="1000" min_angle="0" max_angle="40" koef="5">
+    <GroundType type_code="11" name="Тест3 Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    <PetrochemicalType code_type="16" name=" Тест4 Дизельнок топливо" boilingtemp="200" density="795" viscosity="1,84E-06" solubility="0,00065" tension="0,0308" dynamicviscosity="0,0032" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="43" min_volume="0" max_volume="10000" min_angle="0" max_angle="50" koef="5">
+    <GroundType type_code="11" name="Тест3 Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    <PetrochemicalType code_type="15" name=" Тест3 Керосин" boilingtemp="130" density="850" viscosity="1,25E-06" solubility="0,002" tension="0,024" dynamicviscosity="0,002" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="28" min_volume="0" max_volume="100000" min_angle="0" max_angle="90" koef="5">
+    <GroundType type_code="11" name="Тест3 Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    <PetrochemicalType code_type="13" name="Тест1 Бензин" boilingtemp="110" density="750" viscosity="4,3E-07" solubility="0,009" tension="0,021" dynamicviscosity="0,00052" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="52" min_volume="0" max_volume="100" min_angle="0" max_angle="90" koef="5">
+    <GroundType type_code="12" name="Тест4 Глина" porosity="0,5" holdmigration="111,3" waterfilter="2E-07" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,2" soilmoisture="0,46" аveryanovfactor="9" permeability="0,2" density="2300" />
+    <PetrochemicalType code_type="13" name="Тест1 Бензин" boilingtemp="110" density="750" viscosity="4,3E-07" solubility="0,009" tension="0,021" dynamicviscosity="0,00052" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="53" min_volume="0" max_volume="1000" min_angle="0" max_angle="50" koef="5">
+    <GroundType type_code="12" name="Тест4 Глина" porosity="0,5" holdmigration="111,3" waterfilter="2E-07" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,2" soilmoisture="0,46" аveryanovfactor="9" permeability="0,2" density="2300" />
+    <PetrochemicalType code_type="14" name="Тест2 Нефть " boilingtemp="200" density="850" viscosity="6,1E-06" solubility="0,05" tension="0,026" dynamicviscosity="0,0178" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="56" min_volume="0" max_volume="1000" min_angle="0" max_angle="40" koef="5">
+    <GroundType type_code="12" name="Тест4 Глина" porosity="0,5" holdmigration="111,3" waterfilter="2E-07" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,2" soilmoisture="0,46" аveryanovfactor="9" permeability="0,2" density="2300" />
+    <PetrochemicalType code_type="16" name=" Тест4 Дизельнок топливо" boilingtemp="200" density="795" viscosity="1,84E-06" solubility="0,00065" tension="0,0308" dynamicviscosity="0,0032" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="59" min_volume="0" max_volume="1000" min_angle="0" max_angle="40" koef="5">
+    <GroundType type_code="12" name="Тест4 Глина" porosity="0,5" holdmigration="111,3" waterfilter="2E-07" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,2" soilmoisture="0,46" аveryanovfactor="9" permeability="0,2" density="2300" />
+    <PetrochemicalType code_type="17" name=" Тест5 Мазут" boilingtemp="300" density="930" viscosity="3,53E-05" solubility="1E-05" tension="0,052" dynamicviscosity="2,022" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+  <SpreadingCoefficient code="60" min_volume="0" max_volume="1000" min_angle="0" max_angle="30" koef="5">
+    <GroundType type_code="12" name="Тест4 Глина" porosity="0,5" holdmigration="111,3" waterfilter="2E-07" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,2" soilmoisture="0,46" аveryanovfactor="9" permeability="0,2" density="2300" />
+    <PetrochemicalType code_type="15" name=" Тест3 Керосин" boilingtemp="130" density="850" viscosity="1,25E-06" solubility="0,002" tension="0,024" dynamicviscosity="0,002" diffusion="1E-07">
+      <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    </PetrochemicalType>
+  </SpreadingCoefficient>
+</SpreadingCoefficientList>

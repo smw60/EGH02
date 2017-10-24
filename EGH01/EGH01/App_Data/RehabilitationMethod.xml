@@ -1,0 +1,82 @@
+<RehabilitationMethodList>
+  <RehabilitationMethod type_code="1" waterachieved="False">
+    <RiskObjectType type_code="5" name="Нефтепровод, нефтепродуктопровод" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    <EmergencyClass code="1" name="Мелкая авария" minmass="0" maxmass="5000" />
+    <PenetrationDepth code="1" name="Мелкопрофильное" mindepth="0" maxdepth="1" />
+    <SoilPollutionCategories code="19" name="высокая" min="20,1" max="50">
+      <CadastreType type_code="5" name="" pdk_coef="0" water_pdk_coef="0" ground_doc_name="" water_doc_name="" />
+    </SoilPollutionCategories>
+    <WaterPollutionCategories code="3" name="Высокая" min="100,1" max="1E+08">
+      <CadastreType type_code="1" name="" pdk_coef="0" water_pdk_coef="0" ground_doc_name="" water_doc_name="" />
+    </WaterPollutionCategories>
+    <WaterProtectionArea type_code="2" name="Водоохранная зона" />
+    <SoilCleaningMethod type_code="1" method_description="Механические. Обваловка участка источника загрязнения, сбор жидкой нефти и нефтепродуктов с рельефа местности" />
+    <WaterCleaningMethod type_code="2" method_description="Механические. Откачка загрязненных грунтовых вод по методу «гидродинамических ловушек» " />
+  </RehabilitationMethod>
+  <RehabilitationMethod type_code="2" waterachieved="True">
+    <RiskObjectType type_code="1" name="АЗС" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+    <EmergencyClass code="1" name="Мелкая авария" minmass="0" maxmass="5000" />
+    <PenetrationDepth code="1" name="Мелкопрофильное" mindepth="0" maxdepth="1" />
+    <SoilPollutionCategories code="2" name="Допустимая" min="1" max="2">
+      <CadastreType type_code="2" name="" pdk_coef="0" water_pdk_coef="0" ground_doc_name="" water_doc_name="" />
+    </SoilPollutionCategories>
+    <WaterPollutionCategories code="3" name="Высокая" min="100,1" max="1E+08">
+      <CadastreType type_code="1" name="" pdk_coef="0" water_pdk_coef="0" ground_doc_name="" water_doc_name="" />
+    </WaterPollutionCategories>
+    <WaterProtectionArea type_code="1" name="Зона санитарной охраны " />
+    <SoilCleaningMethod type_code="1" method_description="Механические. Обваловка участка источника загрязнения, сбор жидкой нефти и нефтепродуктов с рельефа местности" />
+    <WaterCleaningMethod type_code="1" method_description="Механические. Откачка нефтепродуктов с зеркала грунтовых вод" />
+  </RehabilitationMethod>
+  <RehabilitationMethod type_code="3" waterachieved="True">
+    <RiskObjectType type_code="2" name="Нефтебаза" />
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0,0001" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <PetrochemicalCategories type_code="3" name="Легкие нефтепродукты" />
+    <EmergencyClass code="2" name="Средняя авария" minmass="5001" maxmass="20000" />
+    <PenetrationDepth code="2" name="Среднепрофильное" mindepth="1,1" maxdepth="5" />
+    <SoilPollutionCategories code="3" name="Умеренно опасная" min="2,1" max="5">
+      <CadastreType type_code="2" name="" pdk_coef="0" water_pdk_coef="0" ground_doc_name="" water_doc_name="" />
+    </SoilPollutionCategories>
+    <WaterPollutionCategories code="3" name="Высокая" min="100,1" max="1E+08">
+      <CadastreType type_code="1" name="" pdk_coef="0" water_pdk_coef="0" ground_doc_name="" water_doc_name="" />
+    </WaterPollutionCategories>
+    <WaterProtectionArea type_code="0" name="Нет водоохранных ограничений" />
+    <SoilCleaningMethod type_code="2" method_description="Механические. Экскавация загрязненной части почвогрунтов с последующей утилизацией и/или заменой почвогрунтов" />
+    <WaterCleaningMethod type_code="1" method_description="Механические. Откачка нефтепродуктов с зеркала грунтовых вод" />
+  </RehabilitationMethod>
+  <RehabilitationMethod type_code="4" waterachieved="True">
+    <RiskObjectType type_code="2" name="Нефтебаза" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <PetrochemicalCategories type_code="3" name="Легкие нефтепродукты" />
+    <EmergencyClass code="3" name="Крупная авария" minmass="20001" maxmass="100000" />
+    <PenetrationDepth code="3" name="Глубокопрофильное" mindepth="5,1" maxdepth="100" />
+    <SoilPollutionCategories code="4" name="Опасная" min="5,1" max="1E+08">
+      <CadastreType type_code="2" name="" pdk_coef="0" water_pdk_coef="0" ground_doc_name="" water_doc_name="" />
+    </SoilPollutionCategories>
+    <WaterPollutionCategories code="3" name="Высокая" min="100,1" max="1E+08">
+      <CadastreType type_code="1" name="" pdk_coef="0" water_pdk_coef="0" ground_doc_name="" water_doc_name="" />
+    </WaterPollutionCategories>
+    <WaterProtectionArea type_code="1" name="Зона санитарной охраны " />
+    <SoilCleaningMethod type_code="1" method_description="Механические. Обваловка участка источника загрязнения, сбор жидкой нефти и нефтепродуктов с рельефа местности" />
+    <WaterCleaningMethod type_code="1" method_description="Механические. Откачка нефтепродуктов с зеркала грунтовых вод" />
+  </RehabilitationMethod>
+  <RehabilitationMethod type_code="5" waterachieved="True">
+    <RiskObjectType type_code="1" name="АЗС" />
+    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0,0005" water_pdk_coef="0,0003" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <PetrochemicalCategories type_code="3" name="Легкие нефтепродукты" />
+    <EmergencyClass code="2" name="Средняя авария" minmass="5001" maxmass="20000" />
+    <PenetrationDepth code="1" name="Мелкопрофильное" mindepth="0" maxdepth="1" />
+    <SoilPollutionCategories code="3" name="Умеренно опасная" min="2,1" max="5">
+      <CadastreType type_code="2" name="" pdk_coef="0" water_pdk_coef="0" ground_doc_name="" water_doc_name="" />
+    </SoilPollutionCategories>
+    <WaterPollutionCategories code="3" name="Высокая" min="100,1" max="1E+08">
+      <CadastreType type_code="1" name="" pdk_coef="0" water_pdk_coef="0" ground_doc_name="" water_doc_name="" />
+    </WaterPollutionCategories>
+    <WaterProtectionArea type_code="0" name="Нет водоохранных ограничений" />
+    <SoilCleaningMethod type_code="1" method_description="Механические. Обваловка участка источника загрязнения, сбор жидкой нефти и нефтепродуктов с рельефа местности" />
+    <WaterCleaningMethod type_code="2" method_description="Механические. Откачка загрязненных грунтовых вод по методу «гидродинамических ловушек» " />
+  </RehabilitationMethod>
+</RehabilitationMethodList>

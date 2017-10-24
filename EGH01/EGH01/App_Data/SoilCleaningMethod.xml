@@ -1,0 +1,13 @@
+<SoilCleaningMethodList>
+  <SoilCleaningMethod type_code="1" name="Механические" method_description="Обваловка участка источника загрязнения, сбор жидкой нефти и нефтепродуктов с рельефа местности" />
+  <SoilCleaningMethod type_code="2" name="Механические" method_description="Экскавация загрязненной части почвогрунтов с последующей утилизацией и/или заменой почвогрунтов" />
+  <SoilCleaningMethod type_code="3" name="Механические" method_description="Изоляция пятна загрязнения (песчаный грунт, сорбент, противопожарная пена)" />
+  <SoilCleaningMethod type_code="4" name="Физико-химические" method_description="Термическая обработка загрязненных почвогрунтов" />
+  <SoilCleaningMethod type_code="5" name="Физико-химические" method_description="Промывка почвы с применением ПАВ" />
+  <SoilCleaningMethod type_code="6" name="Физико-химические" method_description="Аэрирование " />
+  <SoilCleaningMethod type_code="7" name="Физико-химически" method_description="Дренирование " />
+  <SoilCleaningMethod type_code="8" name="Физико-химические" method_description="Химическая обработка" />
+  <SoilCleaningMethod type_code="9" name="Биологические" method_description="Агротехническая обработка (вспашка, дискование, боронование)" />
+  <SoilCleaningMethod type_code="10" name="Биологические" method_description="Биоремедиация (применение бактерий)" />
+  <SoilCleaningMethod type_code="11" name="Биологические" method_description="Фиторемедиация (высевка нефтестойких растений)" />
+</SoilCleaningMethodList>

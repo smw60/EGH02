@@ -1,0 +1,160 @@
+﻿@{
+    ViewBag.Title = "Map";
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+}
+<h2>Map</h2>
+<style>
+    #map-canvas {
+        height: 350px;
+        width: 600px;
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        var lat = 53.901206;
+        var lng = 27.560119;
+        var alt = 0;
+        var zoom = 6;
+        var screen_width = 600;
+        var screen_height = 350;
+        var screen_map_type = 'roadmap';
+        var map = null;
+        var map_marker = null;
+
+        function addMap(map_id, lat, lng, alt, zoom) {
+            map = new google.maps.Map(document.getElementById(map_id), {
+                zoom: zoom,
+                center: { lat: lat, lng: lng, alt: alt }
+            });
+            return map;
+        }
+
+        function addMarker(map, lat, lng, alt) {
+            map_marker = new google.maps.Marker({ position: { lat: lat, lng: lng }, map: map });
+            map_marker.setMap(map);
+            map.setCenter({ lat: lat, lng: lng, alt: alt })
+            map_marker.setPosition({ lat: lat, lng: lng, alt: alt });
+            return map_marker;
+        }
+
+        if (navigator.geolocation) {
+            map = addMap('map-canvas', lat, lng, alt, zoom);
+            map_marker = addMarker(map, lat, lng, alt);
+        }
+        else { console.log("geolocation not supported"); }
+
+        function redraw(map, map_marker, lat, lng, alt) {
+            map.setCenter({ lat: lat, lng: lng, alt: alt })
+            map_marker.setPosition({ lat: lat, lng: lng, alt: alt });
+        }
+
+        $("#redraw").click(function () {
+            redraw(map, map_marker, parseInt($("#lat_input").val()), parseInt($("#lng_input").val()));
+        });
+
+        function convertImgToDataURLviaCanvas(url, callback, outputFormat) {
+            var img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = function () {
+                var canvas = document.createElement('CANVAS');
+                var ctx = canvas.getContext('2d');
+                var dataURL;
+                canvas.height = this.height;
+                canvas.width = this.width;
+                ctx.drawImage(this, 0, 0);
+                dataURL = canvas.toDataURL(outputFormat);
+                callback(dataURL);
+                canvas = null;
+            };
+            img.src = url;
+            img.width = screen_width;
+            img.height = screen_height;
+        }
+
+        function get_static_map_url() {
+            //URL of Google Static Maps.
+            var staticMapUrl = "https://maps.googleapis.com/maps/api/staticmap";
+
+            //Set the Google Map Center.
+            staticMapUrl += "?center=" + map.center.lat() + "," + map.center.lng();
+
+            //Set the Google Map Size.
+            staticMapUrl += "&size=" + screen_width + "x" + screen_height;
+
+            //Set the Google Map Zoom.
+            staticMapUrl += "&zoom=" + map.zoom;
+
+            //Set the Google Map Type.
+            staticMapUrl += "&maptype=" + map.mapTypeId;
+
+            staticMapUrl += "&key=AIzaSyC_kYTsnbJwMtUD_aganLKktrdZYYKjcC8";
+
+            return staticMapUrl;
+        }
+
+        $("#get_screen_button").click(function () {
+            convertImgToDataURLviaCanvas(get_static_map_url(),
+            function (base64Img) {
+                CallServer(base64Img.split(",")[1], "");
+            });
+        });
+
+    });
+
+    $("#form1").submit(function (form) {
+        form.preventDefault();
+    });
+
+    function ReceiveServerData(rValue) {
+        alert(rValue);
+    }
+
+</script>
+
+
+@using (Html.BeginForm("Forecast", "EGHRGE", new { name = "form1" }))
+{
+
+    <div class="box">
+        @{
+
+
+            <div class="boxdata">
+                <div id="map-canvas"></div>
+
+                <div style="padding-top: 15px;">
+                    <table>
+                        <tr>
+                            <td><label>lat</label></td>
+                            <td><label>lng</label></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" id="lat_input" /></td>
+                            <td><input type="text" id="lng_input" /></td>
+                        </tr>
+                        <tr>
+                            <td><button id="redraw">Применить</button></td>
+                            <td><button id="get_screen_button">Заскринить</button></td>
+                        </tr>
+                    </table>
+
+                </div>
+
+
+
+
+
+
+                <button type="submit" name="ChoiceRiskObject.choicefind" value="choice">Карта</button>
+
+            </div>
+
+
+        }
+    </div>
+            }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDD-BQGwH6mEgOBp15GhEpzm8h1JzP-fpg"></script>

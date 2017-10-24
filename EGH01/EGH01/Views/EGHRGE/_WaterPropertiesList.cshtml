@@ -1,0 +1,38 @@
+﻿@using EGH01DB.Primitives;
+@using EGH01.Core;
+
+@model List<WaterProperties>
+@{
+    Menu menu = new Menu(
+                            new Menu.MenuItem("Удалить", "WaterProperties.Delete", true),
+                            new Menu.MenuItem("Изменить", "WaterProperties.Update", true)
+                           );
+
+}
+
+@foreach (WaterProperties t in @Model)
+{
+
+    using (Html.BeginForm("WaterProperties", "EGHRGE"))
+    {
+
+        <div class="box">
+            <div class="boxdata">
+                    <p><label class="boxdata-label-30">Код воды</label>@t.water_code.ToString()</p>
+                    <input type="hidden" value="@t.water_code.ToString()" name="water_code">
+                    <p><label class="boxdata-label-30">Температура, <sup><small>о</small></sup>С</label>@t.temperature.ToString("0.0")</p>
+                    <p><label class="boxdata-label-30">Вязкость, кг/м*с</label>@t.viscocity.ToString("0.000000")</p>
+                    <p><label class="boxdata-label-30">Плотность, кг/м<sup><small>3</small></sup></label>@t.density.ToString("0.00")</p>
+                    <p><label class="boxdata-label-30">Коэффициент поверхностного натяжения, кг/с<sup><small>2</small></sup></label>@t.tension.ToString("0.000")</p>
+            </div>
+
+            @Html.Partial("_TypeLineMenu", menu)
+        </div>
+
+    }
+}
+
+
+
+
+

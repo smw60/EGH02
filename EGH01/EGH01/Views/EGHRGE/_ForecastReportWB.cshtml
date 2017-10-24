@@ -1,0 +1,99 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Types;
+@using EGH01DB.Blurs;
+@using EGH01DB.Objects;
+@using EGH01DB.Primitives;
+@using EGH01DB.Points;
+@using EGH01.Models.EGHRGE;
+@model  EGH01.Models.EGHRGE.ForecastViewConext
+
+@{
+
+    EGH01.Models.EGHRGE.ForecastViewConext context = @Model;
+}
+
+<div class="boxdata">
+
+    <h4>Очаг загрязнения грунтовых вод</h4>
+    <fieldset form="ChoiseRiskObject">
+        <legend> Природоохранные объекты </legend>
+        
+           <p>
+             <label class="boxdata-label-40 ">Средняя глубина грунтовых вод (м) </label>
+              @Math.Round(context.ecoforecast.groundblur.avgdeep, 1)
+           </p>
+           <p>
+              <label class="boxdata-label-40 ">Глубина проникновения нефтепродукта в грунте (м) </label>
+              @Math.Round(context.ecoforecast.groundblur.depth, 2)
+           </p>
+           <p>
+             <label class="boxdata-label-40 ">Максимальная концентрация на уровне грунтовых вод (кг/м<sup>3</sup>) </label>
+             @context.ecoforecast.groundblur.maxconcentrationwater
+           </p>
+           <p>
+            <label class="boxdata-label-40 ">Радиус поиска природоохранных объектов (м) </label>
+            @if (context.ecoforecast.waterblur.radius > context.ecoforecast.groundblur.radius)
+            {
+                  <span>@Math.Round(context.ecoforecast.groundblur.radius, 0) - </span>  
+                  <span>@Math.Round(context.ecoforecast.waterblur.radius,  0)   </span>   
+            }
+            else
+            {
+               <span>---</span>    
+            }
+           </p>
+        
+        @foreach (WaterPollution o in context.ecoforecast.waterblur.watepollutionlist)
+        {
+            if (o.pointtype == Point.POINTTYPE.ECO)
+            {
+                <fieldset form="ChoiseRiskObject">
+                    <legend>@o.comment @o.name </legend>
+                    <p><label class="boxdata-label-40">Координаты. Широта</label>@o.coordinates.lat.d.ToString()°&nbsp;@o.coordinates.lat.m.ToString()'&nbsp;@o.coordinates.lat.s.ToString("0.00")"</p>
+                    <p><label class="boxdata-label-40">Координаты. Долгота</label>@o.coordinates.lng.d.ToString()°&nbsp;@o.coordinates.lng.m.ToString()'&nbsp;@o.coordinates.lng.s.ToString("0.00")" </p>
+                    <p><label class="boxdata-label-40">Координаты в градусах</label>@o.coordinates.latitude.ToString()°&nbsp;@o.coordinates.lngitude.ToString()°</p>
+
+                    <p>
+                        <label class="boxdata-label-40 ">Расстояние (м)</label>
+                        @Math.Round(o.distance, 0)
+                    </p>
+                    <p>
+                        <label class="boxdata-label-40 ">Высота (м)</label>
+                        @Math.Round(o.height, 0)
+                    </p>
+                    <p>
+                        <label class="boxdata-label-40 ">Угол</label>
+                        @Math.Round(o.angle, 3)
+                    </p>
+                    <p>
+                        <label class="boxdata-label-40 ">Глубина грунтовых вод (м)</label>
+                        @Math.Round(o.waterdeep, 1)
+                    </p>
+                    <p>
+                        <label class="boxdata-label-40 ">Максимальная концентрация нефтепродукта (кг/м<sup>3</sup>) </label>
+                        @o.maxconcentration
+                        =
+                        @(o.maxconcentration * 10E3f) (мг/дм<sup>3</sup>)
+                    </p>
+                    <p>
+                        <label class="boxdata-label-40 ">Время достижения максимальной концентрации (c) </label>
+                        @o.timemaxconcentration  = @(o.timemaxconcentration/Const.SEC_PER_DAY) (сут)
+                    </p>
+                    <p>
+                        <label class="boxdata-label-40 ">Дата достижения максимальной концкнтрации </label>
+                        @o.datemaxconcentration.ToShortDateString()
+                    </p>
+                   
+                </fieldset>
+            }
+
+        }
+
+        
+    </fieldset>
+
+
+
+</div>

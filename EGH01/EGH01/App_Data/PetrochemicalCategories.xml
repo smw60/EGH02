@@ -1,0 +1,5 @@
+<PetrochemicalCategoriesList>
+  <PetrochemicalCategories type_code="1" name="Сырая нефть" />
+  <PetrochemicalCategories type_code="2" name="Тяжелые нефтепродукты" />
+  <PetrochemicalCategories type_code="3" name="Легкие нефтепродукты" />
+</PetrochemicalCategoriesList>

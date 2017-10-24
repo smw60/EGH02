@@ -1,0 +1,62 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@model EGH01DB.Types.PetrochemicalType
+@{
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    Menu head = new Menu(
+                          new Menu.MenuItem("Создать", "PetrochemicalType.Create", false),
+                          new Menu.MenuItem("Excel-формат", "PetrochemicalType.Excel", false)
+                        );
+
+    Menu delete = new Menu(
+                          new Menu.MenuItem("Удалить", "PetrochemicalType.Delete.Delete", true),
+                          new Menu.MenuItem("Отказаться", "PetrochemicalType.Delete.Cancel", true)
+                        );
+
+}
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHCCO", Action = "PetrochemicalType", Menu = head })
+
+@using (Html.BeginForm("PetrochemicalTypeDelete", "EGHCCO"))
+{
+
+    <div class="box">
+        <div class="boxdata">
+            <p>
+                <label class="boxdata-label-30">Код типа нефтепродукта</label>@Model.code_type.ToString()
+                <input type="hidden" value="@Model.code_type.ToString()" name="type_code">
+            </p>
+            <p>
+                <label class="boxdata-label-30">Наименование нефтепродукта</label>@Model.name.ToString()
+            </p>
+            <p>
+                <label class="boxdata-label-30">Категория нефтепродукта</label>@Model.petrochemicalcategories.name.ToString()
+            </p>
+            <p>
+                <label class="boxdata-label-30">Температура кипения, <sup><small>о</small></sup>С</label>@Model.boilingtemp
+            </p>
+            <p>
+                <label class="boxdata-label-30">Плотность, кг/м<sup><small>3</small></sup></label>@Model.density
+            </p>
+            <p>
+                <label class="boxdata-label-30">Кинематическая вязкость, м<sup><small>2</small></sup>/с</label>@Model.viscosity
+            </p>
+            <p>
+                <label class="boxdata-label-30">Растворимость, кг/м<sup><small>3</small></sup></label>@Model.solubility
+            </p>
+            <p>
+                <label class="boxdata-label-30">Динамическая вязкость, кг/м*с</label>@Model.dynamicviscosity
+            </p>
+            <p>
+                <label class="boxdata-label-30">Коэф. поверхностного натяжения, кг/с<sup><small>2</small></sup></label>@Model.tension
+            </p>
+            <p>
+                <label class="boxdata-label-30">Коэф. диффузии, м<sup><small>2</small></sup>/с</label>@Model.diffusion
+            </p>
+
+         </div>
+
+        @Html.Partial("_TypeLineMenu", delete)
+
+     </div>
+}
+

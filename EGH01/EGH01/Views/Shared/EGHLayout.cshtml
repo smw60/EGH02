@@ -1,0 +1,368 @@
+﻿@using System.IO
+
+@using System.Reflection
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Экспертная система [EGH] </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="~/Scripts/html2canvas.js"></script>
+    <script src="~/Scripts/html2canvas.svg.js"></script>
+    @*<link href="~/content/bootstrap.css" type="text/css" rel="stylesheet" />
+        <link href="~/content/site.css" type="text/css" rel="stylesheet" />*@
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/time.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-default  navbar-fixed-top">
+        <div class="navbar-brand col-xs-1">
+            <a href="/"><img src="~/Resources/Layout_Mobile_Whiteframe.png" alt="EGH" /></a>
+        </div>
+        <!--Заголовок индивидуальный для страниц-->
+        <div class="title col-xs-6">
+
+
+            @if (ViewBag.EGHLayout == "RGE")
+            {
+                <h2>Прогноз</h2>
+            }
+            else if (ViewBag.EGHLayout == "EGH")
+            {
+                <h2>Экспертная система</h2>
+            }
+            else if (ViewBag.EGHLayout == "CEQ")
+            {
+                <h2>Оценка прогнозируемого состояния</h2>
+            }
+            else if (ViewBag.EGHLayout == "GEA")
+            {
+                <h2>Классификация прогнозируемого состояния </h2>
+            }
+            else if (ViewBag.EGHLayout == "ORT")
+            {
+                <h2>Выбор технологий реабилитации</h2>
+            }
+            else if (ViewBag.EGHLayout == "CCO")
+            {
+                <h2>Химический состав нефтей</h2>
+            }
+            else if (ViewBag.EGHLayout == "CAI")
+            {
+                <h2>Техногенные объекты</h2>
+            }
+
+            else if (ViewBag.EGHLayout == "RGE.AnchorPoint")
+            {
+                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Опорные точки</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "RGE.EcoObject")
+            {
+                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Природоохранные объекты</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "RGE.IncidentType")
+            {
+                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Типы инцидентов</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "RGE.Forecast")
+            {
+                <h2>Прогноз</h2>
+            }
+
+            else if (ViewBag.EGHLayout == "RGE.GroundType")
+            {
+                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Типы грунтов</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "RGE.Report")
+            {
+                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Отчеты</span></h2>
+            }
+
+            else if (ViewBag.EGHLayout == "RGE.CadastreType")
+            {
+                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Категории земли</span></h2>
+            }
+
+            else if (ViewBag.EGHLayout == "RGE.SpreadingCoefficient")
+            {
+                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Коэффициент растекания</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "RGE.EcoObjectType")
+            {
+                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Типы природоохранных объектов</span></h2>
+            }
+
+            else if (ViewBag.EGHLayout == "RGE.WaterProperties")
+            {
+                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Свойства воды</span></h2>
+                
+            }
+             else if (ViewBag.EGHLayout == "RGE.RiskObjectType")
+            {
+                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Тип техногенного объекта</span></h2>
+                
+            }
+            
+            else if (ViewBag.EGHLayout == "ORT.SoilPollutionCategories")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Выбор технологий реабилитации", "Index", "EGHORT") </span><span>Категории загрязнения грунтов</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "ORT.WaterPollutionCategories")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Выбор технологий реабилитации", "Index", "EGHORT") </span><span>Категории загрязнения грунтовых вод</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "ORT.PenetrationDepth")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Выбор технологий реабилитации", "Index", "EGHORT") </span><span>Категории проникновения нефтепродукта</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "ORT.WaterProtectionArea")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Выбор технологий реабилитации", "Index", "EGHORT") </span><span>Категории водоохранной территории</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "ORT.RehabilitationMethods")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Выбор технологий реабилитации", "Index", "EGHORT") </span><span>Классификатор методов реабилитации</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "ORT.SoilCleaningMethod")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Выбор технологий реабилитации", "Index", "EGHORT") </span><span>Методы ликвидации загрязнения почвогрунтов</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "ORT.WaterCleaningMethod")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Выбор технологий реабилитации", "Index", "EGHORT") </span><span>Методы ликвидации загрязнения грунтовых вод</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "ORT.EmergencyClass")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Выбор технологий реабилитации", "Index", "EGHORT") </span><span>Классификация аварий</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "ORT.Report")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Выбор технологий реабилитации", "Index", "EGHORT") </span><span>Отчеты</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "CEQ.CadastreType")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Оценка прогнозируемого состояния", "Index", "EGHCEQ") </span><span>Предельно-допустимые концентрации</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "CEQ.Report")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Оценка прогнозируемого состояния", "Index", "EGHCEQ") </span><span>Отчеты</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "GEA.Report")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Классификация прогнозируемого состояния", "Index", "EGHCEQ") </span><span>Отчеты</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "GEA.SoilPollutionCategories")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Классификация прогнозируемого состояния", "Index", "EGHCEQ") </span><span>Категории загрязнения грунтов</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "GEA.WaterPollutionCategories")
+            {
+                <h2 class="double"><span>@Html.ActionLink("Классификация прогнозируемого состояния", "Index", "EGHCEQ") </span><span>Категории загрязнения грунтовых вод</span></h2>
+            }
+            else if (ViewBag.EGHLayout == "CCO.PetrochemicalCategories")
+            {
+                <h2><span>@Html.ActionLink("Химический состав нефтей", "Index", "EGHCCO") </span><span>Категории нефтепродукта</span></h2>
+            }
+            
+
+        </div>
+        <div class=" col-xs-3">
+            <div id="time">Текущее время: <span id="doc_time"></span><br />Последнее обновление: <span id="version">@((new FileInfo(Assembly.GetExecutingAssembly().Location)).LastWriteTime.ToString("dd.M.yyyy HH:mm"))</span></div>
+            <style>
+                #time {
+                    float: right;
+                    padding: 7px 0;
+                }
+            </style>
+        </div>
+        <div class=" col-xs-2">
+            <!--Главное меню-->
+            <ul class="navbar-nav nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle btn btn-link" id="main_menu" data-toggle="dropdown" role="button" aria-expanded="false">Главное меню <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>@Html.ActionLink("Прогноз", "Index", "EGHRGE")  </li>
+                        <li>@Html.ActionLink("Оценка прогнозируемого состояния", "Index", "EGHCEQ")  </li>
+                        <li>@Html.ActionLink("Классификация прогнозируемого состояния", "Index", "EGHGEA")  </li>
+                        <li>@Html.ActionLink("Выбор технологий реабилитации", "Index", "EGHORT")  </li>
+                        <li>@Html.ActionLink("Химический состав нефтей", "Index", "EGHCCO")  </li>
+                        <li>@Html.ActionLink("Техногенные объекты", "Index", "EGHCAI")  </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--Главное меню-->
+        <ul class="navbar-nav nav navbar-right">
+            <li class="dropdown">
+                <ul class="dropdown-menu" role="menu">
+                    <li>@Html.ActionLink("EGHRGE-Прогноз", "Index", "EGHRGE")  </li>
+                    <li>@Html.ActionLink("EGHCEQ-Оценка прогнозируемого состояния", "Index", "EGHCEQ")  </li>
+                    <li>@Html.ActionLink("EGHGEA-Классификация прогнозируемого состояния", "Index", "EGHGEA")  </li>
+                    <li>@Html.ActionLink("EGHORT-Выбор технологий реабилитации", "Index", "EGHORT")  </li>
+                    <li>@Html.ActionLink("EGHCCO-Химический состав нефтей", "Index", "EGHCCO")  </li>
+                    <li>@Html.ActionLink("EGHCAI-Техногенные объекты", "Index", "EGHCAI")  </li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="wrap" class="osnova">
+        <!--Меню индивидуальное для страниц-->
+        <div class="navbar navbar-default proverka1">
+            <ul class="navbar-nav nav">
+                @if (ViewBag.EGHLayout.StartsWith("RGE"))
+                {
+                    <li>@Html.ActionLink("Прогноз", "Forecast", "EGHRGE")</li>
+                    <li>@Html.ActionLink("Опорные точки", "AnchorPoint", "EGHRGE")</li>
+                    <li>@Html.ActionLink("Природоохранные объекты", "EcoObject", "EGHRGE")</li>
+                    <li>@Html.ActionLink("Отчеты", "Report", "EGHRGE")</li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle btn btn-link" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Справочники<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Типы инцидентов", "IncidentType", "EGHRGE")</li>
+                            <li>@Html.ActionLink("Типы природоохранных объектов", "EcoObjectType", "EGHRGE")</li>
+                            <li>@Html.ActionLink("Типы грунтов", "GroundType", "EGHRGE")</li>
+                            <li>@Html.ActionLink("Категории земли", "CadastreType", "EGHRGE")</li>
+                            <li>@Html.ActionLink("Коэффициент растекания", "SpreadingCoefficient", "EGHRGE")</li>
+                            <li>@Html.ActionLink("Свойства воды", "WaterProperties", "EGHRGE")</li>
+                            <li>@Html.ActionLink("Тип техногенного объекта", "RiskObjectType", "EGHRGE")</li>
+                        </ul>
+                    </li>
+
+                }
+                else if (ViewBag.EGHLayout.StartsWith("CEQ"))
+                {
+                    <li>@Html.ActionLink("Результаты прогнозирования", "ChoiceForecastResult", "EGHCEQ")</li>
+                    <li>@Html.ActionLink("Оценка прогнозируемого состояния", "EvalutionForecast", "EGHCEQ")</li>
+                    <li>@Html.ActionLink("Предельно-допустимые концентрации", "CadastreType", "EGHCEQ")</li>
+                    <li>@Html.ActionLink("Отчеты", "Report", "EGHCEQ")</li>
+                }
+
+                else if (ViewBag.EGHLayout.StartsWith("GEA"))
+                {
+                    <li>@Html.ActionLink("Результаты оценки прогнозируемого  состояния", "ChoiceEvalutionResult", "EGHGEA")</li>
+                    <li>@Html.ActionLink("Классификация прогнозируемого состояния", "ClassificationEvalution", "EGHGEA")</li>
+                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle btn btn-link" data-toggle="dropdown" role="button" aria-expanded="false">
+                           Критерии классификации<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Категории загрязнения грунтов", "SoilPollutionCategories", "EGHGEA")</li>
+                            <li>@Html.ActionLink("Категории загрязнения грунтовых вод", "WaterPollutionCategories", "EGHGEA")</li>
+                            
+                        </ul>
+                    </li>
+                                                          
+                    <li>@Html.ActionLink("Отчеты", "Report", "EGHGEA")</li>
+                    
+                }
+
+                else if (ViewBag.EGHLayout == "CCO")
+                {
+
+                    <li class="dropdown">
+                            @Html.ActionLink("Категория нефтепродукта", "PetrochemicalCategories", "EGHCCO")
+                    </li>
+                }
+
+                else if (ViewBag.EGHLayout.StartsWith("ORT"))
+                {
+                    <li>@Html.ActionLink("Результаты классификации прогнозируемого состояния", "ChoiceClassificationResult", "EGHORT")</li>
+                     <li>@Html.ActionLink("Выбор технологий реабилитации", "Rehabilitation", "EGHORT")</li>
+                    <li>@Html.ActionLink("Отчеты", "Report", "EGHORT")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle btn btn-link" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Критерии выбора технологий<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Категории проникновения нефтепродукта", "PenetrationDepth", "EGHORT")</li>
+                            <li>@Html.ActionLink("Методы ликвидации загрязнения почвогрунтов", "SoilCleaningMethod", "EGHORT")</li>
+                            <li>@Html.ActionLink("Методы ликвидации загрязнения грунтовых вод", "WaterCleaningMethod", "EGHORT")</li>
+                            <li>@Html.ActionLink("Классификация аварий", "EmergencyClass", "EGHORT")</li>
+                            <li>@Html.ActionLink("Категории водоохранной территории ", "WaterProtectionArea", "EGHORT")</li>
+                            <li>@Html.ActionLink("Классификатор методов реабилитации", "RehabilitationMethods", "EGHORT")</li>
+                        </ul>
+                    </li>
+                }
+        </div>
+        <div class=" container mainbody">
+            @RenderBody()
+            <style>
+                /*Стиль для кнопки вверх */
+                .btnn-top button {
+                    bottom: 100px;
+                    right: 40px;
+                    position: fixed !important;
+                    float: right !important;
+                    width: 120px;
+                    height: 44px;
+                }
+                /*Стиль для кнопки вниз */
+                .btnn-bot button {
+                    bottom: 50px;
+                    right: 40px;
+                    position: fixed !important;
+                    float: right !important;
+                    width: 120px;
+                    height: 44px;
+                }
+            </style>
+            <span class="btnn-top">
+                <button id="toTop">Вверх</button>
+            </span>
+            <span class="btnn-bot">
+                <button id="toBot">Вниз</button>
+            </span>
+        </div>
+
+
+        <div id="push"></div>
+    </div>
+    <div class="footer col-xs-8">
+        <style>
+            .footer {
+                text-align: right;
+            }
+
+            .footer__lnk {
+                text-align: left;
+                color: #125213;
+                float: left;
+                padding: 0 5px;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+                .footer__lnk img {
+                    max-height: 25px;
+                }
+        </style>
+
+        <div id="footer">
+
+            <a href="~/Content/Developers_page/developers.html" class="footer__lnk "><img src="~/Resources/logo_bstu_v.png" alt="Разработчики" title="Разработчики" /></a>
+            <a href="~/Content/Developers_page/shema.html" class="footer__lnk "><img src="~/Resources/Layout_Mobile_Whiteframe.png" alt="Система ЭС" title="Система ЭС" /></a>
+            &copy; Государственное предприятие "НПЦ по геологии"(Беларусь)
+            & Институт гидрогеологии и геоэкологии им. У.М. Ахмедсафина (Казахстан)
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        clock();
+    </script>
+    <script src="~/Scripts/top_function.js"></script>
+
+
+
+
+</body>
+</html>

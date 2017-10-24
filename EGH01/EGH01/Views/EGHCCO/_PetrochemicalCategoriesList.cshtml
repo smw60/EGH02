@@ -1,0 +1,36 @@
+﻿@using EGH01.Core;
+@using EGH01DB.Types;
+@using EGH01.Core;
+@using EGH01DB.Types;
+
+
+@model List<PetrochemicalCategories>
+@{
+    Menu menu = new Menu(
+                            new Menu.MenuItem("Удалить", "PetrochemicalCategories.Delete", true),
+                            new Menu.MenuItem("Изменить", "PetrochemicalCategories.Update", true)
+                           );
+
+}
+@foreach (PetrochemicalCategories t in @Model)
+{
+
+    using (Html.BeginForm("PetrochemicalCategories", "EGHCCO"))
+    {
+
+        <div class="box">
+            <div class="boxdata">
+              
+                <p><label class="boxdata-label-30">Код категории нефтепродукта</label>@t.type_code.ToString()</p>
+                <input type="hidden" value="@t.type_code.ToString()" name="type_code">
+                <p><label class="boxdata-label-30">Наименование категории нефтепродукта</label>@t.name</p>
+
+            </div>
+            @Html.Partial("_TypeLineMenu", menu)
+        </div>
+
+    }
+}
+
+
+

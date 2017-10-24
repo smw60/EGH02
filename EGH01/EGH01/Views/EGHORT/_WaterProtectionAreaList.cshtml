@@ -1,0 +1,36 @@
+﻿@using EGH01.Core;
+@using EGH01DB.Types;
+@using EGH01.Core;
+@using EGH01DB.Types;
+
+
+@model List<EGH01DB.Types.WaterProtectionArea>
+@{
+    Menu menu = new Menu(
+                            new Menu.MenuItem("Удалить", "WaterProtectionArea.Delete", true),
+                            new Menu.MenuItem("Изменить", "WaterProtectionArea.Update", true)
+                           );
+
+}
+@foreach (EGH01DB.Types.WaterProtectionArea t in @Model)
+{
+
+    using (Html.BeginForm("WaterProtectionArea", "EGHORT"))
+    {
+
+        <div class="box">
+            <div class="boxdata">
+              
+                <p><label class="boxdata-label-30">Код категории водоохранной территории</label>@t.type_code.ToString()</p>
+                <input type="hidden" value="@t.type_code.ToString()" name="type_code">
+                <p><label class="boxdata-label-30">Наименование категории водоохранной территории</label>@t.name</p>
+
+            </div>
+            @Html.Partial("_TypeLineMenu", menu)
+        </div>
+
+    }
+}
+
+
+

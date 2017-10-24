@@ -1,0 +1,21 @@
+﻿@using EGH01DB.Objects;
+@using EGH01DB.Primitives;
+@using EGH01.Core;
+@using EGH01.Models.EGHCEQ;
+@model EGH01DB.CEQContext
+@{
+    
+    
+    CEQViewContext context = Model.GetViewContext(CEQViewContext.VIEWNAME) as CEQViewContext;
+    if (context == null) {Model.SaveViewContext(CEQViewContext.VIEWNAME, context = new CEQViewContext()); };
+    
+}
+
+@if (context.idforecat != null)
+{
+    <div class="box">
+        <h4>@Html.ActionLink(context.ecoforecat.line, "Index")</h4>
+    </div>
+}
+
+  

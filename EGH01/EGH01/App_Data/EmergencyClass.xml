@@ -1,0 +1,7 @@
+<EmergencyClassList>
+  <EmergencyClass code="1" name="Мелкая авария" minmass="500" maxmass="5000" />
+  <EmergencyClass code="2" name="Средняя авария" minmass="5001" maxmass="20000" />
+  <EmergencyClass code="3" name="Крупная авария" minmass="20001" maxmass="100000" />
+  <EmergencyClass code="4" name="Очень крупная авария" minmass="100001" maxmass="500000" />
+  <EmergencyClass code="5" name="Катастрофа" minmass="500001" maxmass="1E+11" />
+</EmergencyClassList>

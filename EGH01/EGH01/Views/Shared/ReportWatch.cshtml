@@ -1,0 +1,45 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using System.Web.Mvc;
+@model EGH01DB.Primitives.Report
+@{
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+
+}
+  @if (ViewBag.stage.Equals("П"))
+  {
+      using(Html.BeginForm("ReportWatch", "EGHRGE"))
+      {
+          String value = ViewBag.msg;
+          @Html.Raw(value)  
+      }
+  }
+  else if (ViewBag.stage.Equals("Р"))
+  { 
+      using(Html.BeginForm("ReportWatch", "EGHCEQ"))
+      { 
+          String value = ViewBag.msg;
+          @Html.Raw(value)
+      }
+  }
+  else if (ViewBag.stage.Equals("С"))
+  {
+      using (Html.BeginForm("ReportWatch", "EGHGEA"))
+      {
+          String value = ViewBag.msg;
+        @Html.Raw(value)
+      }
+  }
+  else if (ViewBag.stage.Equals("Т"))
+  {
+      using (Html.BeginForm("ReportWatch", "EGHORT"))
+      {
+          String value = ViewBag.msg;
+        @Html.Raw(value)
+      }
+  }
+  
+
+
+

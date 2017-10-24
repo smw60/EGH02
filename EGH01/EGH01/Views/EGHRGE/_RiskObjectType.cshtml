@@ -1,0 +1,29 @@
+﻿@using EGH01DB.Types;
+@using EGH01.Core;
+@model List<RiskObjectType>
+@{
+    Menu menu = new Menu(
+                            new Menu.MenuItem("Удалить", "RiskObjectType.Delete", true),
+                            new Menu.MenuItem("Изменить", "RiskObjectType.Update", true)
+                           );
+
+}
+@foreach (RiskObjectType t in @Model)
+{
+
+    using (Html.BeginForm("RiskObjectType", "EGHRGE"))
+    {
+        <div class="box">
+            <div class="boxdata">
+
+                <p><label class="boxdata-label-30">Код типа техногенного объекта</label> @t.type_code.ToString()</p>
+                <p><label class="boxdata-label-30">Наименование типа техногенного объекта</label> @t.name </p>
+            
+                <input type="hidden" value="@t.type_code.ToString()" name="type_code">
+            </div>
+            @Html.Partial("_TypeLineMenu", menu)
+        </div>
+
+    }
+}
+

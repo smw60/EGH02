@@ -1,0 +1,47 @@
+﻿@using EGH01DB.Types;
+@using EGH01.Core;
+@using EGH01DB.Points;
+@model List<AnchorPoint>
+@{
+    Menu menu = new Menu(
+                            new Menu.MenuItem("Удалить", "AnchorPoint.Delete", true),
+                            new Menu.MenuItem("Изменить", "AnchorPoint.Update", true)
+                           );
+
+}
+@foreach (AnchorPoint t in @Model)
+{
+
+    using (Html.BeginForm("AnchorPoint", "EGHRGE"))
+    {
+        <div class="box">
+            <div class="boxdata">
+
+
+                <p><label class="boxdata-label-30">Идентификатор</label> @t.id.ToString()</p>
+
+                <fieldset form="AnchorPoint">
+                    <legend style="width: auto; max-width: none; font: inherit; border:none;">Координаты</legend>
+
+                    <p><label class="boxdata-label-30">Координаты. Широта</label>@t.coordinates.lat.d.ToString()°&nbsp;@t.coordinates.lat.m.ToString()'&nbsp;@t.coordinates.lat.s.ToString("0.00")"</p>
+                    <p><label class="boxdata-label-30">Координаты. Долгота</label>@t.coordinates.lng.d.ToString()°&nbsp;@t.coordinates.lng.m.ToString()'&nbsp;@t.coordinates.lng.s.ToString("0.00")" </p>
+                    <p><label class="boxdata-label-30">Координаты в градусах</label>@t.coordinates.latitude.ToString()°&nbsp;@t.coordinates.lngitude.ToString()°</p>
+
+                </fieldset>
+                <p><label class="boxdata-label-20">Категория земли</label> @t.cadastretype.name</p>
+                <fieldset form="AnchorPoint">
+                    <legend>Геологические данные</legend>
+                    <p><label class="boxdata-label-30">Грунт</label> @t.groundtype.name </p>
+                    <p><label class="boxdata-label-30">Высота над уровнем моря (м)</label> @t.height.ToString()</p>
+                    <p><label class="boxdata-label-30">Глубина грунтовых вод (м)</label> @t.waterdeep.ToString() </p>
+                </fieldset>
+
+                <input type="hidden" value="@t.id.ToString()" name="type_code">
+
+            </div>
+            @Html.Partial("_TypeLineMenu", menu)
+        </div>
+
+    }
+}
+

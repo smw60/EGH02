@@ -1,0 +1,118 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGHRGE;
+@using EGH01DB.Primitives;
+@using EGH01DB.Types;
+@using EGH01.Core;
+@using EGH01.Models.EGH;
+@model EGH01DB.Types.GroundType
+@{
+    EGH01DB.RGEContext db = new EGH01DB.RGEContext();
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    EGH01DB.RGEContext rge = (EGH01DB.RGEContext)db;
+    GroundTypeView context = (GroundTypeView)db.GetViewContext("GroundTypeUpdate");
+    if (context == null) { db.SaveViewContext("GroundTypeUpdate", context = new GroundTypeView()); };
+    Menu head = new Menu(
+                  new Menu.MenuItem("Создать", "GroundType.Create", false),
+                  new Menu.MenuItem("Excel-формат", "GroundType.Excel", false)
+                );
+
+    Menu delete = new Menu(
+                          new Menu.MenuItem("Изменить", "GroundType.Update.Update", true),
+                          new Menu.MenuItem("Отказаться", "GroundType.Update.Cancel", true)
+                        );
+}
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHRGE", Action = "GroundType", Menu = head })
+
+@using (Html.BeginForm("GroundTypeUpdate", "EGHRGE"))
+{
+    if (ViewBag.error != null)
+    {
+        @ViewBag.error
+        Session.Abandon();
+
+    }
+
+    <div class="box">
+        <div class="boxdata">
+
+            <div class="boxdata">
+               
+                <input type="hidden" value="@Model.type_code.ToString()" name="type_code">
+            </div>
+            <fieldset  form="GroundType">
+                <p>
+@{ string name = "";
+    if (context.name != null)
+    {
+        name = (context.name);
+        <label class="boxdata-label-30"> Наименование </label>
+        <input class="boxdata-input-30" type="text" name="name" value="@name" />
+    }
+                        <label class="boxdata-label-30"> Наименование </label>
+                        <input class="boxdata-input-30" type="text" name="name" value="@Model.name" />
+                    }
+
+                </p>
+
+                <p>
+                    <label class="boxdata-label-30">Пористость</label>
+                    <input class="boxdata-input-50" type="number" name="porosity" value="@Model.porosity.ToString().Replace(',' , '.')" min="0" max="1" step="0.01" />
+                </p>
+
+                <p>
+                    <label class="boxdata-label-30">Коэффициент фильтрации, м/с</label>
+                    <input class="boxdata-input-50" type="number" name="waterfilter" value="@Model.waterfilter.ToString().Replace(',' , '.')" min="0.0000000000001" max="1.0" step="0.000000000000001" />
+                </p>
+
+                <p>
+                    <label class="boxdata-label-30">Коэффициент задержки нефтепродукта</label>
+                    <input class="boxdata-input-50" type="number" name="holdmigration" value="@Model.holdmigration.ToString().Replace(',' , '.')" step="0.1" min="0" />
+                </p>
+
+                <p>
+                    <label class="boxdata-label-30">Влажность</label>
+                    <input class="boxdata-input-50" type="number" name="soilmoisture" min="0" max="1" value="@Model.soilmoisture.ToString().Replace(',' , '.')" step="0.001" />
+                </p>
+
+                <p>
+                    <label class="boxdata-label-30">Влагоемкость</label>
+                    <input class="boxdata-input-50" type="number" name="watercapacity" min="0" max="1" value="@Model.watercapacity.ToString().Replace(',' , '.')" step="0.001" />
+                </p>
+
+                <p>
+                    <label class="boxdata-label-30">Коэффициент Аверьянова</label>
+                    <input class="boxdata-input-50" type="number" name="аveryanovfactor" min="3" max="9" value="@Model.аveryanovfactor.ToString().Replace(',' , '.')" step="0.1" />
+                </p>
+
+                <p>
+                    <label class="boxdata-label-30">Средняя плотность грунта, кг/м<sup>3</sup></label>
+                    <input class="boxdata-input-50" type="number" name="density" value="@Model.density.ToString().Replace(',', '.')" step="0.1" min="0" />
+                </p>
+
+            </fieldset>
+          
+            <fieldset  form="GroundType">
+                <p>
+                    <label class="boxdata-label-30">Коэффициент диффузии, м<sup>2</sup>/с </label>
+                    <input class="boxdata-input-50" type="number" name="diffusion" value="@Model.diffusion.ToString().Replace(',' , '.')" min="0" max="1" step="0.01" />
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Коэффициент распределения</label>
+                    <input class="boxdata-input-50" type="number" name="distribution" value="@Model.distribution.ToString().Replace(',' , '.')" min="0" max="1" step="0.01" />
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Коэффициент сорбции, 1/с</label>
+                    <input class="boxdata-input-50" type="number" name="sorption" value="@Model.sorption.ToString().Replace(',' , '.')" min="0" max="1" step="0.1" />
+                </p>
+                <p>
+                    <label class="boxdata-label-30">Водопроницаемость, м/с</label>
+                    <input class="boxdata-input-50" type="number" name="permeability" value="@Model.permeability.ToString().Replace(',' , '.')" min="0" max="1" step="0.01" />
+                </p>
+            </fieldset>
+
+</div>
+
+        @Html.Partial("_TypeLineMenu", delete)
+
+    </div>
+}

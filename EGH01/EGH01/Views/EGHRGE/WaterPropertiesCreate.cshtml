@@ -1,0 +1,49 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@model EGH01DB.RGEContext
+
+@{
+
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    Menu head = new Menu(
+                          new Menu.MenuItem("Создать", "WaterProperties.Create", false),
+                          new Menu.MenuItem("Excel-формат", "WaterProperties.Excel", false)
+                        );
+
+    Menu create = new Menu(
+                          new Menu.MenuItem("Создать", "WaterProperties.Create.Create", true),
+                          new Menu.MenuItem("Отказаться", "WaterProperties.Create.Cancel", true)
+                        );
+
+}
+
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHRGE", Action = "WaterProperties", Menu = head })
+@using (Html.BeginForm("WaterPropertiesCreate", "EGHRGE"))
+{
+
+
+    <div class="box">
+        <div class="boxdata">
+            <p>
+                <label class="boxdata-label-30">Температура, <sup><small>о</small></sup>С</label>
+                <input class="boxdata-input-20" type="number" name="temperature" step="0.1" value=" " />
+            </p>
+            <p>
+                <label class="boxdata-label-30">Вязкость, кг/м*с</label>
+                <input class="boxdata-input-20" type="number" name="viscocity" step="0.000001" value=" " />
+            </p>
+            <p>
+                <label class="boxdata-label-30">Плотность, кг/м<sup><small>3</small></sup></label>
+                <input class="boxdata-input-20" type="number" name="density" step="0.01" value=" " />
+            </p>
+            <p>
+                <label class="boxdata-label-30">Коэффициент поверхностного натяжения, кг/с<sup><small>2</small></sup></label>
+                <input class="boxdata-input-20" type="number" name="tension" step="0.001" value=" " />
+            </p>
+        </div>
+
+        @Html.Partial("_TypeLineMenu", create)
+    </div>
+}
+

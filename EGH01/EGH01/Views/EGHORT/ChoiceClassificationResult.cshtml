@@ -1,0 +1,13 @@
+﻿
+@using EGH01.Models.EGHORT
+@model EGH01DB.ORTContext
+@{
+  
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+     ORTContextView context =  (ORTContextView)Model.GetViewContext(ORTContextView.VIEWNAME);
+    if (context == null) { Model.SaveViewContext(ORTContextView.VIEWNAME, context = new ORTContextView()); };
+ }
+
+@Html.Partial("_ChoiceClassificationResult", @Model)
+
+

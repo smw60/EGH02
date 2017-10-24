@@ -1,0 +1,26 @@
+<EcoObjectTypeList>
+  <EcoObjectType type_code="1" name="Озеро">
+    <WaterProtectionArea type_code="2" name="Водоохранная зона" />
+  </EcoObjectType>
+  <EcoObjectType type_code="2" name="Колодец">
+    <WaterProtectionArea type_code="1" name="Зона санитарной охраны " />
+  </EcoObjectType>
+  <EcoObjectType type_code="3" name="Заповедник">
+    <WaterProtectionArea type_code="0" name="Нет водоохранных ограничений" />
+  </EcoObjectType>
+  <EcoObjectType type_code="4" name="Ручей">
+    <WaterProtectionArea type_code="2" name="Водоохранная зона" />
+  </EcoObjectType>
+  <EcoObjectType type_code="5" name="Река">
+    <WaterProtectionArea type_code="2" name="Водоохранная зона" />
+  </EcoObjectType>
+  <EcoObjectType type_code="6" name="Водозабор">
+    <WaterProtectionArea type_code="1" name="Зона санитарной охраны " />
+  </EcoObjectType>
+  <EcoObjectType type_code="7" name="Парк">
+    <WaterProtectionArea type_code="0" name="Нет водоохранных ограничений" />
+  </EcoObjectType>
+  <EcoObjectType type_code="8" name="Скважина">
+    <WaterProtectionArea type_code="1" name="Зона санитарной охраны " />
+  </EcoObjectType>
+</EcoObjectTypeList>

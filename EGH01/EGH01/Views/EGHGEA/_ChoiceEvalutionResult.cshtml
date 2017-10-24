@@ -1,0 +1,66 @@
+﻿@using EGH01DB.Objects;
+@using EGH01DB.Primitives;
+@using EGH01.Core;
+@using EGH01.Models;
+@using EGH01.Models.EGHGEA;
+@using EGH01DB;
+@model EGH01DB.GEAContext
+@{
+    
+    GEAContextView context = (GEAContextView)Model.GetViewContext(GEAContextView.VIEWNAME);
+    if (context == null) { Model.SaveViewContext(GEAContextView.VIEWNAME, context = new GEAContextView()); };
+    
+    List<SelectListItem> reportlist = new List<SelectListItem>();
+    {
+        List<EGH01DB.CEQContext.ECOEvalution> list = new List<EGH01DB.CEQContext.ECOEvalution>();
+        if ( Helper.GetListECOEvalution(Model,  ref list))
+        {
+          foreach (CEQContext.ECOEvalution f in list)
+          {
+
+                reportlist.Add(
+                                new SelectListItem { 
+                                                     Text = f.line,
+                                                     Value = f.id.ToString()
+                                                     }
+
+                                );  
+           }            
+            
+         }
+       }
+   
+    if (context.idevalution != null)
+    {
+        SelectListItem si = reportlist.FirstOrDefault(s => s.Value.Equals(context.idevalution.ToString()));
+        si.Selected = true; 
+    
+    } 
+   
+}
+
+
+
+@Html.Partial("_ConfirmChoiceEvalutionResult", Model)
+
+@if (context.Regim == GEAContextView.REGIM.INIT)
+{
+  using (Html.BeginForm("ChoiceEvalutionResult", "EGHGEA"))  
+  {
+
+    <div class="box">
+        <h3>Результаты оценки результатов прогнозирования</h3>
+        <div class="boxdata" style="margin:5px;">
+            @Html.DropDownList("ChoiceEvalutionResult.id", reportlist, new { size = reportlist.Count, style = "height:100px; width:97%; padding:5px;" })
+        </div>
+       
+        @Html.Partial("_TypeLineMenu",new Menu(
+                                                new Menu.MenuItem("Выбрать",    "ChoiceEvalutionResult.Choice", true),
+                                                new Menu.MenuItem("Отказаться", "ChoiceEvalutionResult.Cancel", true)
+                                               ))
+    </div>
+  }
+
+}
+
+

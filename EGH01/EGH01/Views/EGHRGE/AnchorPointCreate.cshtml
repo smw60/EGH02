@@ -1,0 +1,84 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Points;
+@model EGH01DB.RGEContext
+
+@{
+
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    Menu start = new Menu(
+                          new Menu.MenuItem("Создать", "AnchorPoint.Create", true),
+                          new Menu.MenuItem("Отказаться", "AnchorPoint.Cancel", true)
+                       
+                        );
+
+    Menu create = new Menu(
+                          new Menu.MenuItem("Создать", "AnchorPoint.Create.Create", true),
+                           new Menu.MenuItem("Создать рядом", "AnchorPointCreatePoint.Create", true),
+                          new Menu.MenuItem("Отказаться", "AnchorPoint.Create.Cancel", true)
+                         
+                        );
+
+    bool rc=false;
+    int id = 0;
+    EGH01DB.Points.AnchorPoint.GetNextId(Model,out id);
+    List<EGH01DB.Types.CadastreType> list_cadastre = new List<EGH01DB.Types.CadastreType>();
+    ViewBag.list_cadastre = new List<SelectListItem>();
+    if (@Model != null)
+    {
+        Helper.GetListCadastreType(@Model, ref list_cadastre);
+        list_cadastre.ForEach(o => ViewBag.list_cadastre.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+    }
+
+    List<EGH01DB.Types.GroundType> list_groundType = new List<EGH01DB.Types.GroundType>();
+    ViewBag.list_groundType = new List<SelectListItem>();
+    if (@Model != null)
+    {
+        Helper.GetListGroundType(@Model, ref list_groundType);
+        list_groundType.ForEach(o => ViewBag.list_groundType.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+
+    }
+}
+            @Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHRGE", Action = "AnchorPoint", Menu = start })
+            @using (Html.BeginForm("AnchorPointCreate", "EGHRGE"))
+{
+
+
+    <div class="box">
+        <div class="boxdata">
+            <label class="boxdata-label-30" value="id">Идентификатор</label>@id
+            <fieldset  form="ChoiseRiskObject">
+                <legend >Координаты</legend>
+                <p>
+                    <label class="boxdata-label-30">Широта</label>&nbsp;<input class="boxdata-input-10" type="number" name="Lat_d" value=" " min="-90" max="90" />&deg;&nbsp;<input class="boxdata-input-10" type="number" name="Lat_m" value=" " min="-90" max="90" />&acute;&nbsp;<input class="boxdata-input-10" type="number" name="Lat_s" value=" " min="0" max="60" step="0.001" />&quot;
+                </p>
+                <br>
+                <p>
+                    <label class="boxdata-label-30">Долгота</label>&nbsp;<input class="boxdata-input-10" type="number" name="Lngitude" value=" " max="180" min="0" />&deg;&nbsp;<input class="boxdata-input-10" type="number" name="Lng_m" value=" " min="-90" max="90" />&acute;&nbsp;<input class="boxdata-input-10" type="number" name="Lng_s" value=" " min="0" max="60" step="0.001" />&quot;
+                </p>
+            </fieldset>
+            <div class="boxdata">
+                <label class="boxdata-label-30">Категория земли</label>@Html.DropDownList("list_cadastre")
+            </div>
+            <fieldset  form="ChoiseRiskObject">
+                <legend >Геологические данные</legend>
+                <div class="boxdata">
+                    <label class="boxdata-label-30">Грунт</label>@Html.DropDownList("list_groundType")
+                </div>
+                <div class="boxdata">
+                    <label class="boxdata-label-30">Высота над уровнем моря(м)</label>
+                    <input class="boxdata-input-30" type="number" name="height" step="0.01" min="0" />
+                </div>
+                <div class="boxdata">
+                    <label class="boxdata-label-30">Глубина грунтовых вод (м)</label>
+                    <input class="boxdata-input-30" type="number" name="waterdeep" step="0.01" min="0" />
+                </div>
+            </fieldset>
+        </div>
+            @Html.Partial("_TypeLineMenu", create)
+      
+
+    </div>
+}
+

@@ -1,0 +1,31 @@
+﻿@using EGH01DB.Types;
+@using EGH01.Core;
+@model List<CadastreType>
+@{
+    Menu menu = new Menu(
+                            new Menu.MenuItem("Удалить", "CadastreType.Delete", true),
+                            new Menu.MenuItem("Изменить", "CadastreType.Update", true)
+                           );
+
+}
+@foreach (CadastreType t in @Model)
+{
+
+    using (Html.BeginForm("CadastreType", "EGHRGE"))
+    {
+
+        <div class="box">
+            <div class="boxdata">
+
+
+                <p><label class="boxdata-label-30">Идентификатор</label> @t.type_code.ToString()</p>
+                <p><label class="boxdata-label-30">Категория земли</label> @t.name.ToString()</p>
+                <input type="hidden" value="@t.type_code.ToString()" name="type_code">
+
+            </div>
+            @Html.Partial("_TypeLineMenu", menu)
+        </div>
+
+    }
+}
+
