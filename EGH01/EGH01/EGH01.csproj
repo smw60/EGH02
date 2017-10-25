@@ -485,12 +485,9 @@
     <Content Include="Views\EGHORT\Rehabilitation.cshtml" />
     <Content Include="Views\EGHORT\_ORTReport.cshtml" />
     <Content Include="Views\EGHGEA\_GEAReport.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\EGHGEA\_SoilPollutionCategoriesList - Копировать.cshtml" />
     <Content Include="Views\EGHGEA\_SoilPollutionCategoriesList - Копировать %282%29.cshtml" />
-=======
     <Content Include="Views\EGHRGE\MapPoint.cshtml" />
->>>>>>> 9863a5e79ce96963d41cf035658e4e844f4f95d8
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
