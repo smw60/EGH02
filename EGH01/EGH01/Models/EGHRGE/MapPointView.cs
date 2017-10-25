@@ -8,9 +8,13 @@ namespace EGH01.Models.EGHRGE
 {
     public class MapPointView
     {
-        public string result1 { get; set; }
-        public string result2 { get; set; }
+        public string Lngitude { get; set; }
+        public string Lng_m { get; set; }
+        public string Lng_s { get; set; }
 
+        public string Latitude { get; set; }
+        public string Lat_m { get; set; }
+        public string Lat_s { get; set; }
     }
 
 
