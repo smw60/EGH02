@@ -79,6 +79,10 @@
             {
                 <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Типы грунтов</span></h2>
             }
+            else if (ViewBag.EGHLayout == "RGE.MapPoint")
+            {
+                <h2><span>@Html.ActionLink("Карта", "Index", "EGHRGE") </span><span class="big">Карта</span></h2>
+            }
             else if (ViewBag.EGHLayout == "RGE.Report")
             {
                 <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Отчеты</span></h2>
@@ -222,6 +226,7 @@
                     <li>@Html.ActionLink("Опорные точки", "AnchorPoint", "EGHRGE")</li>
                     <li>@Html.ActionLink("Природоохранные объекты", "EcoObject", "EGHRGE")</li>
                     <li>@Html.ActionLink("Отчеты", "Report", "EGHRGE")</li>
+                    <li>@Html.ActionLink("Карта", "MapPoint", "EGHRGE")</li>
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle btn btn-link" data-toggle="dropdown" role="button" aria-expanded="false">
