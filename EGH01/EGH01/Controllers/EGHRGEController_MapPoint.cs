@@ -31,8 +31,8 @@ namespace EGH01.Controllers
 
             ActionResult view = View("Index");
             string menuitem = this.HttpContext.Request.Params["menuitem"] ?? "Empty";
-
-                return view;
+            view = View("MapPoint", db);
+            return view;
             }
 
 
