@@ -207,7 +207,7 @@
     <Compile Include="Controllers\EGHRGEController_GroundType.cs" />
     <Compile Include="Controllers\EGHRGEController_IncidentType.cs" />
     <Compile Include="Controllers\EGHRGEController.cs" />
-    <Compile Include="Controllers\EGHRGEController_MapPoint.cs" />
+    <Compile Include="Controllers\EGHMAPController.cs" />
     <Compile Include="Controllers\EGHRGEController_Report.cs" />
     <Compile Include="Controllers\EGHRGEController_RiskObjectType.cs" />
     <Compile Include="Controllers\EGHRGEController_SpreadingCoefficient.cs" />
@@ -241,7 +241,7 @@
     <Compile Include="Models\EGHRGE\AnchorPointView.cs" />
     <Compile Include="Models\EGHRGE\CadastreTypeView.cs" />
     <Compile Include="Models\EGHRGE\GroundTypeView.cs" />
-    <Compile Include="Models\EGHRGE\MapPointView.cs" />
+    <Compile Include="Models\EGHMAP\MapPointView.cs" />
     <Compile Include="Models\EGHRGE\RiskObjectTypeView.cs" />
     <Compile Include="Models\EGHRGE\IncidentTypeView.cs" />
     <Compile Include="Models\EGHRGE\ReportView.cs" />
@@ -491,7 +491,7 @@
     <Content Include="Views\EGHGEA\_GEAReport.cshtml" />
     <Content Include="Views\EGHGEA\_SoilPollutionCategoriesList - Копировать.cshtml" />
     <Content Include="Views\EGHGEA\_SoilPollutionCategoriesList - Копировать %282%29.cshtml" />
-    <Content Include="Views\EGHRGE\MapPoint.cshtml" />
+    <Content Include="Views\EGHMAP\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

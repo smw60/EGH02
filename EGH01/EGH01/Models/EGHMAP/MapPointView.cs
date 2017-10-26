@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace EGH01.Models.EGHRGE
+namespace EGH01.Models.EGHMAP
 {
     public class MapPointView
     {

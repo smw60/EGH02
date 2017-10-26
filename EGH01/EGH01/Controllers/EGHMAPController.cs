@@ -12,29 +12,29 @@ using EGH01DB.Primitives;
 using EGH01DB.Types;
 namespace EGH01.Controllers
 {
-    public partial class EGHRGEController : Controller
+    public partial class EGHMAPController : Controller
     {
-        public ActionResult MapPoint()
+        public ActionResult Index()
         {
-            ViewBag.EGHLayout = "RGE";
+            ViewBag.EGHLayout = "MAP";
             RGEContext db = null;
             ActionResult view = View("Index");
             string menuitem = this.HttpContext.Request.Params["menuitem"] ?? "Empty";
             db = new RGEContext();
-            view = View("MapPoint", db);
+            view = View("Index", db);
             return view;
         }
 
         [HttpPost]
-        public ActionResult MapPointCreate(EGH01.Models.EGHRGE.MapPointView mp)
+        public ActionResult IndexCreate(EGH01.Models.EGHMAP.MapPointView mp)
         {
-            ViewBag.EGHLayout = "RGE";
+            ViewBag.EGHLayout = "MAP";
             RGEContext db = null;
 
             ActionResult view = View("Index");
             string menuitem = this.HttpContext.Request.Params["menuitem"] ?? "Empty";
-
-                return view;
+            view = View("Index", db);
+            return view;
             }
         
 

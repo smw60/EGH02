@@ -57,6 +57,10 @@
             {
                 <h2>Техногенные объекты</h2>
             }
+            else if (ViewBag.EGHLayout == "MAP")
+            {
+                <h2>Картографические данные</h2>
+            }
 
             else if (ViewBag.EGHLayout == "RGE.AnchorPoint")
             {
@@ -79,10 +83,7 @@
             {
                 <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Типы грунтов</span></h2>
             }
-            else if (ViewBag.EGHLayout == "RGE.MapPoint")
-            {
-                <h2><span>@Html.ActionLink("Карта", "Index", "EGHRGE") </span><span class="big">Карта</span></h2>
-            }
+       
             else if (ViewBag.EGHLayout == "RGE.Report")
             {
                 <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Отчеты</span></h2>
@@ -176,7 +177,7 @@
             
 
         </div>
-                <div class=" col-xs-3">
+                <div class="col-xs-3">
             <div id="time">Текущее время: <span id="doc_time"></span><br />Последнее обновление: <span id="version">@((new FileInfo(Assembly.GetExecutingAssembly().Location)).LastWriteTime.ToString("dd.M.yyyy HH:mm"))</span></div>
             <style>
                 #time {
@@ -197,6 +198,7 @@
                         <li>@Html.ActionLink("Выбор технологий реабилитации", "Index", "EGHORT")  </li>
                         <li>@Html.ActionLink("Химический состав нефтей", "Index", "EGHCCO")  </li>
                         <li>@Html.ActionLink("Техногенные объекты", "Index", "EGHCAI")  </li>
+                        <li>@Html.ActionLink("Картографические данные", "Index", "EGHMAP")  </li>
                     </ul>
                 </li>
             </ul>
@@ -226,7 +228,7 @@
                     <li>@Html.ActionLink("Опорные точки", "AnchorPoint", "EGHRGE")</li>
                     <li>@Html.ActionLink("Природоохранные объекты", "EcoObject", "EGHRGE")</li>
                     <li>@Html.ActionLink("Отчеты", "Report", "EGHRGE")</li>
-                    <li>@Html.ActionLink("Карта", "MapPoint", "EGHRGE")</li>
+                
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle btn btn-link" data-toggle="dropdown" role="button" aria-expanded="false">
