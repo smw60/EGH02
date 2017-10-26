@@ -13,19 +13,19 @@
     Layout = "~/Views/Shared/EGHLayout.cshtml";
     ViewBag.Title = "MapPoint";
     Menu head = new Menu(
-                          new Menu.MenuItem("Создать", "MapPoint.Create", false),
-                          new Menu.MenuItem("Excel-формат", "MapPoint.Excel", false)
+                          new Menu.MenuItem("Создать", "Index.Create", false),
+                          new Menu.MenuItem("Excel-формат", "index.Excel", false)
                         );
 
     Menu create = new Menu(
-                          new Menu.MenuItem("Создать", "MapPointCreate", true),
-                          new Menu.MenuItem("Отказаться", "MapPoint.Create.Cancel", true)
+                          new Menu.MenuItem("Создать", "IndexCreate", true),
+                          new Menu.MenuItem("Отказаться", "Index.Create.Cancel", true)
                         );
 
 }
 
-@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHRGE", Action = "MapPoint", Menu = head })
-@using (Html.BeginForm("MapPointCreate", "EGHRGE"))
+@Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHMAP", Action = "Index", Menu = head })
+@using (Html.BeginForm("IndexCreate", "EGHMAP"))
 {
     <div class="box">
         <div class="boxdata">
