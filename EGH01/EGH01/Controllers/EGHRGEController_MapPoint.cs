@@ -16,6 +16,7 @@ namespace EGH01.Controllers
     {
         public ActionResult MapPoint()
         {
+            ViewBag.EGHLayout = "RGE";
             RGEContext db = null;
             ActionResult view = View("Index");
             string menuitem = this.HttpContext.Request.Params["menuitem"] ?? "Empty";
@@ -27,6 +28,7 @@ namespace EGH01.Controllers
         [HttpPost]
         public ActionResult MapPointCreate(EGH01.Models.EGHRGE.MapPointView mp)
         {
+            ViewBag.EGHLayout = "RGE";
             RGEContext db = null;
 
             ActionResult view = View("Index");
@@ -34,11 +36,10 @@ namespace EGH01.Controllers
 
                 return view;
             }
+        
 
 
 
 
-
-
-        }
+    }
     }

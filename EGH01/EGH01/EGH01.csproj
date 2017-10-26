@@ -279,6 +279,9 @@
     <Content Include="Content\site.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\clear-black.png" />
+    <Content Include="Resources\create-2.jpg" />
+    <Content Include="Resources\create.jpg" />
     <Content Include="Resources\delete-ico.png" />
     <Content Include="Resources\edit-ico.png" />
     <Content Include="Resources\Layout_Mobile_Whiteframe.png" />
@@ -295,6 +298,7 @@
     <Content Include="Scripts\html2canvas.js" />
     <Content Include="Scripts\html2canvas.svg.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\LoadFile.js" />
     <Content Include="Scripts\stickynotes.js" />
     <Content Include="Scripts\time.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
