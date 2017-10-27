@@ -25,43 +25,49 @@
 }
 
 @Html.Partial("_TypeHeadMenu", new TypeViewMenu { Controller = "EGHMAP", Action = "Index", Menu = head })
-@using (Html.BeginForm("IndexCreate", "EGHMAP"))
-{
+
     <div class="box">
         <div class="boxdata">
     <div id="map"></div>
             <div id="mouse-position"></div>
-            <div id="options-form" automplete="off">
+           
+            <form id="options-form" automplete="off">
                 <p>
-					<label class="boxdata-label-20">Широта</label>
-					<input class="boxdata-input-10" type="text" id="Latitude" name="Latitude" />&deg;
-					<input class="boxdata-input-10" type="text" id="Lat_m" name="Lat_m" />&acute;
-					<input class="boxdata-input-10" type="text" id="Lat_s" name="Lat_s" />&quot;
-				</p>
-				<p>
-					<label class="boxdata-label-20">Долгота</label>
-					<input class="boxdata-input-10" type="text" id="Lngitude" name="Lngitude" />&deg;
-					<input class="boxdata-input-10" type="text" id="Lng_m" name="Lng_m" />&acute;
-					<input class="boxdata-input-10" type="text" id="Lng_s" name="Lng_s" />&quot;
-				</p>
-				<p>
-					<label class="boxdata-label-20">Действие</label>
-					<div class="radio">
-						<label>
-							<input type="radio" name="interaction_type" value="draw" id="interection_type_draw" checked />
-							Добавить &nbsp;<br/>
-							<input type="radio" name="interaction_type" value="modify" id="interaction_type_modify" />
-							Изменить &nbsp;
-						</label>
-					</div>
-                    <br/>
-				</p>
+                    <label class="boxdata-label-20">Широта</label>
+                    <input class="boxdata-input-10" type="text" id="Latitude" name="Latitude" />&deg;
+                    <input class="boxdata-input-10" type="text" id="Lat_m" name="Lat_m" />&acute;
+                    <input class="boxdata-input-10" type="text" id="Lat_s" name="Lat_s" />&quot;
+                </p>
+                <p>
+                    <label class="boxdata-label-20">Долгота</label>
+                    <input class="boxdata-input-10" type="text" id="Lngitude" name="Lngitude" />&deg;
+                    <input class="boxdata-input-10" type="text" id="Lng_m" name="Lng_m" />&acute;
+                    <input class="boxdata-input-10" type="text" id="Lng_s" name="Lng_s" />&quot;
+                </p>
+                <p>
+                    <label class="boxdata-label-20">Действие</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="interaction_type" value="draw" id="interection_type_draw" checked />
+                            Добавить &nbsp;<br />
+                            <input type="radio" name="interaction_type" value="modify" id="interaction_type_modify" />
+                            Изменить &nbsp;
+                        </label>
+                    </div>
+                    <br>
+                </p>
+
                 <p>
                     <label class="boxdata-label-20">Тип объекта &nbsp;</label>
                     <select name="geom-type" id="type">
                         <option value="Point">Точка</option>
                     </select>
                 </p>
+
+
+</form>
+
+
                 <p>
                     <label class="boxdata-label-20">Проекция </label>
                     <select id="projection">
@@ -69,20 +75,28 @@
                     </select>
                 </p>
             </div>
-            <div id="buttons">
-                @Html.Partial("_TypeLineMenu", create)
-                <button id="clear" class="Очистить" title="Очистить"></button>
-            </div>
-            <canvas class="ol-unselectable" width="1000" height="5" style="width: 100%; height: 100%;"></canvas>
-			</div>
         </div>
+            @*</form>*@
+
+@using (Html.BeginForm("IndexCreate", "EGHMAP"))
+{
+            <div id="buttons">
+ 
+         @Html.Partial("_TypeLineMenu", create)
+        <button id="clear" class="Очистить" title="Очистить"></button>
+        </div>
+            <canvas class="ol-unselectable" width="1000" height="5" style="width: 100%; height: 100%;"></canvas>
+      
+
+
 			<!--<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>-->
     <script src="~/Scripts/ol.js"></script>
     <script src="~/Scripts/LoadFile.js"></script>
     <script type="text/javascript">
         LoadFile("/Content/ol.css");
+
     </script>
-	
+
             <script type="text/javascript">
                 var raster = new ol.layer.Tile({
                     source: new ol.source.OSM()
@@ -311,4 +325,6 @@
                     vector.getSource().clear();
                 });
             </script>
+
+        
 }
