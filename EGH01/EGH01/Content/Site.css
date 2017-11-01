@@ -85,6 +85,10 @@ input[type="radio"]{
     display: none;
 }
 
+navbar-nav nav {
+    width:100%;
+}
+
 .navbar .dropdown-menu li a {
     padding: 8px 20px;
 }
@@ -186,6 +190,10 @@ input[type="radio"]{
 .navbar {
     background: #fff; /*фон верхней основной панели*/
     border-bottom: 2px #aaa solid;
+}
+
+.navbar-nav{
+    width: 100%;
 }
 
 body {
@@ -413,10 +421,10 @@ label[aria-required]::after {
 .box {
     box-sizing: border-box; /* границу включить в размер .box*/
     overflow: hidden; /* все что вылезает за границу .box  - скрывать*/
-    border: 2px solid #000;
+    border: 1px solid #000;
     width: 100%;
     background-color: #ccc; /* меню основные в таблицах*/
-    margin: 12px 0;
+    margin: 12px 0px 12px 2px;
     padding: 0.5%;
     /*min-width: 800px;*/
 }
@@ -841,14 +849,45 @@ element.style {
 
     .container .btn{
         border:1px solid #000;
+        width:100%;
+        font-size: 150%;
+        width:118px;
+        word-wrap:normal;
+        height:40px;
+        overflow:hidden;
+        font-weight: bold;
+        font-family:"Courier New" ;
+        transition:1s;
+        background: linear-gradient(to top, #aaa, #ddd);
+        width:100%;
+       
     }
+
+.modal-footer .btn + .btn {
+    margin-bottom: 0;
+    margin-left: 2px;
+}
     .padding{
         padding:5%;
     }
 
+    
     .modal .close{
         margin-top:-20px;
     }
     .w100{
+        font-weight: bold;
+        border-radius: 0px;
+        width:100%;
+        font-size: 150%;
+        width:118px;
+        word-wrap:normal;
+        height:40px;
+        overflow:hidden;
+        font-family:"Courier New";
+        margin-bottom: -9px;
+        transition:1s;
+       
+        background: linear-gradient(to top, #aaa, #ddd);
         width:100%;
     }

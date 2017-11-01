@@ -21,6 +21,7 @@
 </head>
 <body>
     <div class="navbar navbar-default  navbar-fixed-top">
+
         <div class="navbar-brand col-xs-1">
             <a href="/"><img src="~/Resources/Layout_Mobile_Whiteframe.png" alt="EGH" /></a>
         </div>
@@ -299,6 +300,33 @@
                             <li>@Html.ActionLink("Классификатор методов реабилитации", "RehabilitationMethods", "EGHORT")</li>
                         </ul>
                     </li>
+                }
+                            
+                
+                                
+                else if (ViewBag.EGHLayout.StartsWith("EGH"))
+
+                { 
+                <style type="text/css">
+                    .style-marquee {
+                        margin: 10px;
+                        /* height: 60px; */
+                       
+                        background-color: FFFF00;
+                        /* background-image: url(http://);*/
+                        font-family: Cursive;
+                        font-size: 14pt;
+                        color: 000000;
+                        font-weight: bold;
+                        margin: 10px;
+                        /* border-width: 4;
+                        border-style: solid;
+                        border-color: FF0000;
+                        */;
+                    }
+                </style>
+                <marquee class="style-marquee" direction="left" behavior="scroll" scrollamount="8">Государственное предприятие "НПЦ по геологии"(Беларусь) & Институт гидрогеологии и геоэкологии им. У.М. Ахмедсафина (Казахстан)</marquee>
+
                 }
         </div>        
            <div class="container mainbody">
