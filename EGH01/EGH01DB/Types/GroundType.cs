@@ -29,6 +29,7 @@ namespace EGH01DB.Types
         public bool    Create()      {return true;}
         public bool    Delete()      {return true;}
         public bool    GetByCode(int code)  {return true; }
+        public bool    GetByCoordinates(float x, float y) { return true; }
 
         public GroundType()
         {
@@ -121,6 +122,48 @@ namespace EGH01DB.Types
             this.аveryanovfactor =  Helper.GetFloatAttribute(node, "аveryanovfactor");
             this.permeability =     Helper.GetFloatAttribute(node, "permeability");
             this.density   =        Helper.GetFloatAttribute(node, "density");
+        }
+        public bool GetByCoordinates(float x, float y, EGH01DB.IDBContext dbcontext, out GroundType ground_type) 
+        {
+            bool rc = false;
+            ground_type = new GroundType();
+            using (SqlCommand cmd = new SqlCommand("EGH.InSoilMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point1", SqlDbType.VarChar);
+                    parm.Value = x;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@point2", SqlDbType.VarChar);
+                    parm.Value = y;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    string name = (string)cmd.Parameters["@OutName"].Value;
+                    float filtration = (float)cmd.Parameters["@OutFiltration"].Value;
+                    float poristost = (float)cmd.Parameters["@OutPoristost"].Value;
+                    float vlagoemkost = (float)cmd.Parameters["@OutVlagoemkost"].Value;
+                    float gumus_depth = (float)cmd.Parameters["@OutGumusDepth"].Value;
+                    string klass = (string)cmd.Parameters["@OutKlass"].Value;
+                    string soil_type = (string)cmd.Parameters["@OutType"].Value;
+                    ground_type = new GroundType();
+                    rc = (int)cmd.Parameters["@exitrc"].Value > 0;
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
         }
 
         static public bool GetByCode(EGH01DB.IDBContext dbcontext, int type_code, out GroundType ground_type)

@@ -375,7 +375,14 @@ namespace EGH01DB.Points
             }
 
         }
+        static public bool GetByCoordinates(EGH01DB.IDBContext dbcontext, float x, float y, ref AnchorPoint anchor_point, out int Map)
+        {
+            bool rc = true;
+            Map = 0;
+            anchor_point = new AnchorPoint(1);
+            return rc;
 
+        }
         public XmlNode toXmlNode(string comment = "")
         {
             XmlDocument doc = new XmlDocument();
