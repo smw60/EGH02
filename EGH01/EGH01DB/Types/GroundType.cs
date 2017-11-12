@@ -24,7 +24,7 @@ namespace EGH01DB.Types
         public float   soilmoisture     {get; private set;}          // влажность грунта (от 0 до 1)
         public float   аveryanovfactor  {get; private set;}          // коэффициент Аверьянова (от 4 до 9)
         public float   permeability     {get; private set;}          // водопроницаемость м/с
-        public float   density          {get; private set;}          // водопроницаемость м/с
+        public float   density          {get; private set;}          // плотность м/с
 
         public bool    Create()      {return true;}
         public bool    Delete()      {return true;}
