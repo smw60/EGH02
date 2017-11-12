@@ -30,10 +30,30 @@ namespace EGH01.Controllers
         {
             ViewBag.EGHLayout = "MAP";
             RGEContext db = null;
+            string menuitem = this.HttpContext.Request.Params["menuitem"] ?? "Empty";
+
+            try
+            {
+                db = new RGEContext();
+                String Latitude = mp.Latitude;
+                String Lngitude = mp.Lngitude;
+                EGH01DB.Types.MapType mapPoint = new MapType(Latitude, Lngitude);
+                EGH01DB.Types.GroundType ground = new GroundType();
+                EGH01DB.Types.MapType.GetGroundType(mapPoint, db, out ground);
+                String groundtype = ground.name;
+            }
+            catch (RGEContext.Exception e)
+            {
+                ViewBag.msg = e.message;
+            }
+            catch (Exception e)
+            {
+                ViewBag.msg = e.Message;
+            }
 
             ActionResult view = View("Index");
-            string menuitem = this.HttpContext.Request.Params["menuitem"] ?? "Empty";
-            view = View("Index", db);
+                view = View("Index", db);
+            
             return view;
             }
         
