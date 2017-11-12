@@ -51,7 +51,21 @@ namespace EGH01.Controllers
             //}
             return View();
         }
-
+        public ActionResult Map_GetSoilType()// 
+        {
+            //RGEContext db = new RGEContext();
+            //{
+            //    string x = "27.4421796312367";
+            //    string y = "53.9043260781941";
+            //    MapType map_type = new MapType(x, y);
+            //    SoilType soil_type = new SoilType();
+            //    if (MapType.GetSoilType(map_type, db, out soil_type))
+            //    {
+            //        int k = 1;
+            //    };
+            //}
+            return View();
+        }
 
 
         public ActionResult XML()

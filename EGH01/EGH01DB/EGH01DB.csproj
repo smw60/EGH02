@@ -129,6 +129,7 @@
     <Compile Include="Types\RiskObjectType.cs" />
     <Compile Include="Types\SoilCleaningMethod.cs" />
     <Compile Include="Types\SoilPollutionCategories.cs" />
+    <Compile Include="Types\SoilType.cs" />
     <Compile Include="Types\WaterCleaningMethod.cs" />
     <Compile Include="Types\WaterPollutionCategories.cs" />
     <Compile Include="Types\WaterProtectionArea.cs" />

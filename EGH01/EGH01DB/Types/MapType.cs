@@ -40,26 +40,7 @@ namespace EGH01DB.Types
                     parm.Value = point.y;
                     cmd.Parameters.Add(parm);
                 }
-                {
-                    SqlParameter parm = new SqlParameter("@OutId", SqlDbType.Int);
-                    parm.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(parm);    
-                }
-                {
-                    SqlParameter parm = new SqlParameter("@OutVlagoemkost", SqlDbType.Real);
-                    parm.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(parm);
-                }
-                {
-                    SqlParameter parm = new SqlParameter("@OutFiltration", SqlDbType.Real);
-                    parm.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(parm);
-                }
-                {
-                    SqlParameter parm = new SqlParameter("@OutPoristost", SqlDbType.Real);
-                    parm.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(parm);
-                }
+                
                 {
                     SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
                     parm.Direction = ParameterDirection.ReturnValue;
@@ -68,11 +49,16 @@ namespace EGH01DB.Types
                 try
                 {
                     cmd.ExecuteNonQuery();
-                    int id = (int)cmd.Parameters["@OutId"].Value;
-                    float watercapacity = (float)cmd.Parameters["@OutVlagoemkost"].Value;
-                    float waterfilter = (float)cmd.Parameters["@OutFiltration"].Value;
-                    float porosity = (float)cmd.Parameters["@OutPoristost"].Value;
-                    
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        float watercapacity = (float)reader["vlagoemkos"];
+                        float waterfilter = (float)reader["k_filtraci"];
+                        float porosity = (float)reader["poristost"];
+                        ground_type = new GroundType(-1, "Получено из карты коэффициентов грунта", porosity, 85.2f, waterfilter, 0.0f, 0.0f, 0.0f, watercapacity, 0.4f, 6.0f, 0.0f, 1750.0f);
+                        rc = (int)cmd.Parameters["@exitrc"].Value > 0;
+                    }
+                    reader.Close();
                     // porosity          пористость     >0    <1, безразмерная , доля застрявшего  в грунте нефтепродукта       
                     // holdmigration    коэфф. задержки миграции нефтепродуктов 
                     // waterfilter      коэфф. фильтрации воды
@@ -84,9 +70,6 @@ namespace EGH01DB.Types
                     // аveryanovfactor  коэффициент Аверьянова (от 4 до 9)
                     // permeability    водопроницаемость м/с
                     // density   плотность м/с
-
-                    ground_type = new GroundType(-1, "Получено из карты коэффициентов грунта", porosity, 85.2f, waterfilter, 0.0f, 0.0f, 0.0f, watercapacity, 0.4f, 6.0f, 0.0f, 1750.0f);
-                    rc = (int)cmd.Parameters["@exitrc"].Value > 0;
                 }
                 catch (Exception e)
                 {
@@ -113,40 +96,114 @@ namespace EGH01DB.Types
                     cmd.Parameters.Add(parm);
                 }
                 {
-                    SqlParameter parm = new SqlParameter("@OutId", SqlDbType.Int);
-                    parm.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(parm);
-                }
-                {
-                    SqlParameter parm = new SqlParameter("@OutDistrict", SqlDbType.NVarChar);
-                    parm.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(parm);
-                }
-                {
-                    SqlParameter parm = new SqlParameter("@OutRegion", SqlDbType.NVarChar);
-                    parm.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(parm);
-                }
-                                {
                     SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
                     parm.Direction = ParameterDirection.ReturnValue;
                     cmd.Parameters.Add(parm);
                 }
                 try
                 {
-                    //cmd.ExecuteNonQuery();
-                    //int id = (int)cmd.Parameters["@OutId"].Value;
-                    //string district_name = (string)cmd.Parameters["@OutDistrict"].Value;
-                    //string region_name = (string)cmd.Parameters["@OutRegion"].Value;
+                    cmd.ExecuteNonQuery();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        string district_name = (string)reader["district"];
+                        string region_name = (string)reader["region"];
 
-                    string district_name = "Взято из карты регионов";
-                    string region_name = "Взято из карты регионов";
+                        Region region = new Region(region_name);
+                        district = new District(-1, region, district_name);
 
-                    Region region = new Region(region_name);
-                    district = new District(-1, region, district_name);
+                    rc = (int)cmd.Parameters["@exitrc"].Value > 0;
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
+        static public bool GetSoilType(MapType point, EGH01DB.IDBContext dbcontext, out SoilType soil_type)
+        {
+            bool rc = false;
+            soil_type = new SoilType();
+            using (SqlCommand cmd = new SqlCommand("EGH.InSoilMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point1", SqlDbType.VarChar);
+                    parm.Value = point.x;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@point2", SqlDbType.VarChar);
+                    parm.Value = point.y;
+                    cmd.Parameters.Add(parm);
+                }
 
-                    //rc = (int)cmd.Parameters["@exitrc"].Value > 0;
-                    rc = true;
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        string name = (string)reader["name"];
+                        float filter = (float)reader["kf"];
+                        float porosity = (float)reader["p"];
+                        float watercapacity = (float)reader["kv"];
+                        float gumus_height = (float)reader["gumus"];
+                        string klass = (string)reader["klass"];
+                        string soil_type_name = (string)reader["type"];
+                        soil_type = new SoilType(name, filter, porosity, watercapacity, gumus_height, klass, soil_type_name);
+                        rc = (int)cmd.Parameters["@exitrc"].Value > 0;
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
+        static public bool GetHeight(MapType point, EGH01DB.IDBContext dbcontext, out float height)
+        {
+            bool rc = false;
+            height = 0.0f;
+            using (SqlCommand cmd = new SqlCommand("EGH.InSoilMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point1", SqlDbType.VarChar);
+                    parm.Value = point.x;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@point2", SqlDbType.VarChar);
+                    parm.Value = point.y;
+                    cmd.Parameters.Add(parm);
+                }
+
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        height = (float)reader["gridcode"];
+                        rc = (int)cmd.Parameters["@exitrc"].Value > 0;
+                    }
+                    reader.Close();
                 }
                 catch (Exception e)
                 {
