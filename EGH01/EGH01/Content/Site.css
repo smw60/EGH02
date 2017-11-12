@@ -794,6 +794,11 @@ element.style {
     background: url(/Resources/clear-black.png) no-repeat 2px;
     background-size:20px;
 }
+.Центр {
+    padding: 12px;
+    background: url(/Resources/Home.png) no-repeat 2px;
+    background-size: 20px;
+}
 .home_button{
     font-size:200%;
     width:118px;

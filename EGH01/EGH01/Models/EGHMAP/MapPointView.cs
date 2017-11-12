@@ -15,6 +15,7 @@ namespace EGH01.Models.EGHMAP
         public string Latitude { get; set; }
         public string Lat_m { get; set; }
         public string Lat_s { get; set; }
+
     }
 
 
