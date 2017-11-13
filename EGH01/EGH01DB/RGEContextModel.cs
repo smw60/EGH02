@@ -36,6 +36,8 @@ namespace EGH01DB
                                                           }
         
 
+            // изменение в модели 
+
            public ECOForecast(ECOForecast forecast)
             {
                 this.id = forecast.id;

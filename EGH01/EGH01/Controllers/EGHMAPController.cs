@@ -57,8 +57,8 @@ namespace EGH01.Controllers
                 EGH01DB.Types.MapType mapPoint = new MapType(coordm.ToString("F", CultureInfo.InvariantCulture), coords.ToString("F", CultureInfo.InvariantCulture));
                 EGH01DB.Types.GroundType ground = new GroundType();
                 EGH01DB.Types.MapType.GetGroundType(mapPoint, db, out ground);
-                EGH01DB.Types.MapType.GetHeight(mapPoint, db, out float height);
-                height = 1.2f;
+                //EGH01DB.Types.MapType.GetHeight(mapPoint, db, out float height);   //smw60
+                //height = 1.2f;                                                     //smw60  
                 EGH01DB.Types.SoilType soilType = new SoilType();
                 EGH01DB.Types.MapType.GetSoilType(mapPoint, db, out soilType);
 
@@ -79,7 +79,7 @@ namespace EGH01.Controllers
 
                 ViewData["soil"] = soilType.name;
                 ViewData["waterdeep"] = waterdeep;
-                ViewData["height"] = height;
+               // ViewData["height"] = height;  // smw60
                 ViewData["district"] = district.name;
                 ViewData["ground"] = ground.name;
                 ViewData["city"] = city;
