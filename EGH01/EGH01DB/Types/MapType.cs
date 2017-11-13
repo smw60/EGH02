@@ -5,6 +5,10 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EGH01DB.Objects;
+using EGH01DB.Types;
+using EGH01DB.Primitives;
+
 
 namespace EGH01DB.Types
 {
@@ -277,7 +281,7 @@ namespace EGH01DB.Types
                 }
                 try
                 {
-                    cmd.ExecuteNonQuery();
+                    int eee = cmd.ExecuteNonQuery();
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
@@ -298,7 +302,7 @@ namespace EGH01DB.Types
         {
             bool rc = false;
             city = "";
-            using (SqlCommand cmd = new SqlCommand("EGH.InCity", dbcontext.connection))
+            using (SqlCommand cmd = new SqlCommand("EGH.InCityMap", dbcontext.connection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 {
@@ -335,6 +339,52 @@ namespace EGH01DB.Types
             }
             return rc;
         }
+        static public bool GetEcoObjectList(MapType point, EGH01DB.IDBContext dbcontext, out EcoObject eco_object)
+        {
+            bool rc = false;
+            eco_object = new EcoObject();
+            using (SqlCommand cmd = new SqlCommand("EGH.InEcoObjectMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point1", SqlDbType.VarChar);
+                    parm.Value = point.x;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@point2", SqlDbType.VarChar);
+                    parm.Value = point.y;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int id = (int)reader["Obj_Id"];
+                        string name = (string)reader["name"];
+                        string type = (string)reader["type"];
+                        EcoObjectType eco_object_type = new EcoObjectType(type);
+                        CadastreType cadastre_type = new CadastreType("не определено на карте");
 
+                        eco_object = new EcoObject(name, eco_object_type, cadastre_type);
+
+                        rc = (int)cmd.Parameters["@exitrc"].Value > 0;
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
     }
 }

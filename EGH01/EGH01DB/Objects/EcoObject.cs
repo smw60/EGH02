@@ -33,6 +33,15 @@ namespace EGH01DB.Objects
             this.angle = 0.0f;
             this.pollutionecoobject = 0.0f;
         }
+        public EcoObject(string name, EcoObjectType ecoobjecttype, CadastreType cadastretype)
+        {
+            this.id = -1;
+            this.ecoobjecttype = ecoobjecttype;
+            this.cadastretype = cadastretype;
+            this.name = name;
+            this.angle = 0.0f;
+            this.pollutionecoobject = 0.0f;
+        }
         public EcoObject(int id)
         {
             this.id = id;

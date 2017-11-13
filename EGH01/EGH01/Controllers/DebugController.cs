@@ -113,17 +113,17 @@ namespace EGH01.Controllers
         }
         public ActionResult Map_GetHeight()// 
         {
-            //RGEContext db = new RGEContext();
-            //{
-            //    string x = "27.4421796312367";
-            //    string y = "53.9043260781941";
-            //    MapType map_type = new MapType(x, y);
-            //    float height = 0.0f;
-            //    if (MapType.GetHeight(map_type, db, out height))
-            //    {
-            //        int k = 1;
-            //    };
-            //}
+            RGEContext db = new RGEContext();
+            {
+                string x = "27.4421796312367";
+                string y = "53.9043260781941";
+                MapType map_type = new MapType(x, y);
+                float height = 0.0f;
+                if (MapType.GetHeight(map_type, db, out height))
+                {
+                    int k = 1;
+                };
+            }
             return View();
         }
 
