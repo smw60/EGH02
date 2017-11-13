@@ -66,6 +66,66 @@ namespace EGH01.Controllers
             //}
             return View();
         }
+        public ActionResult Map_GetWaterdeep()// 
+        {
+            //RGEContext db = new RGEContext();
+            //{
+            //    string x = "27.4421796312367";
+            //    string y = "53.9043260781941";
+            //    MapType map_type = new MapType(x, y);
+            //    float waterdeep = 0.0f;
+            //    if (MapType.GetWaterdeep(map_type, db, out waterdeep))
+            //    {
+            //        int k = 1;
+            //    };
+            //}
+            return View();
+        }
+        public ActionResult Map_GetSelfCleaningZone()// 
+        {
+            //RGEContext db = new RGEContext();
+            //{
+            //    string x = "27.4421796312367";
+            //    string y = "53.9043260781941";
+            //    MapType map_type = new MapType(x, y);
+            //    string self_cleaning_zone = "";
+            //    if (MapType.GetSelfCleaningZone(map_type, db, out self_cleaning_zone))
+            //    {
+            //        int k = 1;
+            //    };
+            //}
+            return View();
+        }
+        public ActionResult Map_GetCity()// 
+        {
+            //RGEContext db = new RGEContext();
+            //{
+            //    string x = "27.4421796312367";
+            //    string y = "53.9043260781941";
+            //    MapType map_type = new MapType(x, y);
+            //    string city = "";
+            //    if (MapType.GetCity(map_type, db, out city))
+            //    {
+            //        int k = 1;
+            //    };
+            //}
+            return View();
+        }
+        public ActionResult Map_GetHeight()// 
+        {
+            //RGEContext db = new RGEContext();
+            //{
+            //    string x = "27.4421796312367";
+            //    string y = "53.9043260781941";
+            //    MapType map_type = new MapType(x, y);
+            //    float height = 0.0f;
+            //    if (MapType.GetHeight(map_type, db, out height))
+            //    {
+            //        int k = 1;
+            //    };
+            //}
+            return View();
+        }
 
 
         public ActionResult XML()

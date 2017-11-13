@@ -175,7 +175,7 @@ namespace EGH01DB.Types
         {
             bool rc = false;
             height = 0.0f;
-            using (SqlCommand cmd = new SqlCommand("EGH.InSoilMap", dbcontext.connection))
+            using (SqlCommand cmd = new SqlCommand("EGH.InTopographyMap", dbcontext.connection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 {
@@ -200,7 +200,130 @@ namespace EGH01DB.Types
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                        height = (float)reader["gridcode"];
+                        height = (float)reader["height"];
+                        rc = (int)cmd.Parameters["@exitrc"].Value > 0;
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
+        static public bool GetWaterdeep(MapType point, EGH01DB.IDBContext dbcontext, out float waterdeep)
+        {
+            bool rc = false;
+            waterdeep = 0.0f;
+            using (SqlCommand cmd = new SqlCommand("EGH.InGroundWaterMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point1", SqlDbType.VarChar);
+                    parm.Value = point.x;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@point2", SqlDbType.VarChar);
+                    parm.Value = point.y;
+                    cmd.Parameters.Add(parm);
+                }
+
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        waterdeep = (float)reader["h"];
+                        rc = (int)cmd.Parameters["@exitrc"].Value > 0;
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
+        static public bool GetSelfCleaningZone(MapType point, EGH01DB.IDBContext dbcontext, out string self_cleaning_zone)
+        {
+            bool rc = false;
+            self_cleaning_zone = "";
+            using (SqlCommand cmd = new SqlCommand("EGH.InGroundSelfCleaningMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point1", SqlDbType.VarChar);
+                    parm.Value = point.x;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@point2", SqlDbType.VarChar);
+                    parm.Value = point.y;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int region_name_code = (int)reader["Obj_Id"];
+                        self_cleaning_zone = (string)reader["type"];
+                        rc = (int)cmd.Parameters["@exitrc"].Value > 0;
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
+        static public bool GetCity(MapType point, EGH01DB.IDBContext dbcontext, out string city)
+        {
+            bool rc = false;
+            city = "";
+            using (SqlCommand cmd = new SqlCommand("EGH.InCity", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point1", SqlDbType.VarChar);
+                    parm.Value = point.x;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@point2", SqlDbType.VarChar);
+                    parm.Value = point.y;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int region_name_code = (int)reader["Obj_Id"];
+                        city = (string)reader["name"];
                         rc = (int)cmd.Parameters["@exitrc"].Value > 0;
                     }
                     reader.Close();
