@@ -27,7 +27,7 @@ namespace EGH01DB.Types
             this.y = y;
         }
 
-        static public bool GetGroundType(MapType point, EGH01DB.IDBContext dbcontext, out GroundType ground_type)
+        static public bool GetGroundType(MapType point, EGH01DB.IDBContext dbcontext, out GroundType ground_type) // коэффициенты: пористость, фильтрации и влагоемкость - требуется замена карты!!!!
         {
             bool rc = false;
             ground_type = new GroundType();
@@ -82,7 +82,7 @@ namespace EGH01DB.Types
             }
             return rc;
         }
-        static public bool GetDistrict(MapType point, EGH01DB.IDBContext dbcontext, out District district)
+        static public bool GetDistrict(MapType point, EGH01DB.IDBContext dbcontext, out District district) // район и область
         {
             bool rc = false;
             district = new District();
@@ -127,7 +127,7 @@ namespace EGH01DB.Types
             }
             return rc;
         }
-        static public bool GetSoilType(MapType point, EGH01DB.IDBContext dbcontext, out SoilType soil_type)
+        static public bool GetSoilType(MapType point, EGH01DB.IDBContext dbcontext, out SoilType soil_type)  // тип почвы, высота почвенного слоя и коэффициенты
         {
             bool rc = false;
             soil_type = new SoilType();
@@ -175,7 +175,7 @@ namespace EGH01DB.Types
             }
             return rc;
         }
-        static public bool GetHeight(MapType point, EGH01DB.IDBContext dbcontext, out float height)
+        static public bool GetHeight(MapType point, EGH01DB.IDBContext dbcontext, out float height)  // высота над уровнем моря - требуется замена карты!!!!
         {
             bool rc = false;
             height = 0.0f;
@@ -216,7 +216,7 @@ namespace EGH01DB.Types
             }
             return rc;
         }
-        static public bool GetWaterdeep(MapType point, EGH01DB.IDBContext dbcontext, out float waterdeep)
+        static public bool GetWaterdeep(MapType point, EGH01DB.IDBContext dbcontext, out float waterdeep) // глубина грунтовых вод
         {
             bool rc = false;
             waterdeep = 0.0f;
@@ -257,7 +257,7 @@ namespace EGH01DB.Types
             }
             return rc;
         }
-        static public bool GetSelfCleaningZone(MapType point, EGH01DB.IDBContext dbcontext, out string self_cleaning_zone)
+        static public bool GetSelfCleaningZone(MapType point, EGH01DB.IDBContext dbcontext, out string self_cleaning_zone) // способность к самоочищению почв
         {
             bool rc = false;
             self_cleaning_zone = "";
@@ -298,11 +298,11 @@ namespace EGH01DB.Types
             }
             return rc;
         }
-        static public bool GetCity(MapType point, EGH01DB.IDBContext dbcontext, out string city)
+        static public bool GetTimeMigration(MapType point, EGH01DB.IDBContext dbcontext, out float time_migration)  // время миграции до грунтовых вод
         {
             bool rc = false;
-            city = "";
-            using (SqlCommand cmd = new SqlCommand("EGH.InCityMap", dbcontext.connection))
+            time_migration = 0.0f;
+            using (SqlCommand cmd = new SqlCommand("EGH.InTimeMigrationMap", dbcontext.connection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 {
@@ -315,6 +315,7 @@ namespace EGH01DB.Types
                     parm.Value = point.y;
                     cmd.Parameters.Add(parm);
                 }
+
                 {
                     SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
                     parm.Direction = ParameterDirection.ReturnValue;
@@ -322,13 +323,10 @@ namespace EGH01DB.Types
                 }
                 try
                 {
-                    cmd.ExecuteNonQuery();
                     SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read())
+                    if (rc = reader.Read())
                     {
-                        int region_name_code = (int)reader["Obj_Id"];
-                        city = (string)reader["name"];
-                        rc = (int)cmd.Parameters["@exitrc"].Value > 0;
+                        time_migration = (float)reader["migration_time"];
                     }
                     reader.Close();
                 }
@@ -339,7 +337,7 @@ namespace EGH01DB.Types
             }
             return rc;
         }
-        static public bool GetEcoObjectList(MapType point, EGH01DB.IDBContext dbcontext, out EcoObject eco_object)
+        static public bool GetEcoObject(MapType point, EGH01DB.IDBContext dbcontext, out EcoObject eco_object) // охраняемые объекты - заповедники и нацпарки
         {
             bool rc = false;
             eco_object = new EcoObject();
@@ -386,5 +384,169 @@ namespace EGH01DB.Types
             }
             return rc;
         }
+        static public bool GetWaterObject(MapType point, EGH01DB.IDBContext dbcontext, out EcoObject water_object) // водные объекты - реки, озера, каналы, водохранилища
+        {
+            bool rc = false;
+            water_object = new EcoObject();
+            using (SqlCommand cmd = new SqlCommand("EGH.InWaterObjectMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point1", SqlDbType.VarChar);
+                    parm.Value = point.x;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@point2", SqlDbType.VarChar);
+                    parm.Value = point.y;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        int id = (int)reader["Obj_Id"];
+                        string name = (string)reader["name"];
+                        string type = (string)reader["type"];
+                        EcoObjectType eco_object_type = new EcoObjectType(type);
+                        CadastreType cadastre_type = new CadastreType("Водный объект");
+
+                        water_object = new EcoObject(name, eco_object_type, cadastre_type, true);
+
+                        rc = true;
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
+        static public bool GetCity(MapType point, EGH01DB.IDBContext dbcontext, out string city)  // Город
+        {
+            bool rc = false;
+            city = "";
+            string map_point = "Point("+point.x+" "+point.y+")";
+            using (SqlCommand cmd = new SqlCommand("EGH.InCityMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point1", SqlDbType.VarChar, 45);// сделала костыль - заранее собрала строку
+                    parm.Value = map_point;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        int city_name_code = (int)reader["Obj_Id"];
+                        city = (string)reader["name"];
+                        rc = true;
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
+        static public bool GetWaterProtection(MapType point, EGH01DB.IDBContext dbcontext, out WaterProtectionArea water_protection) // водоохраняемая зона
+        {
+            bool rc = false;
+            water_protection = new WaterProtectionArea(-1, "Не является водоохраняемой зоной");
+            using (SqlCommand cmd = new SqlCommand("EGH.InWaterProtectionMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point1", SqlDbType.VarChar);
+                    parm.Value = point.x;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@point2", SqlDbType.VarChar);
+                    parm.Value = point.y;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (rc = reader.Read())
+                    {
+                        int id = (int)reader["Obj_Id"];
+                        string name = (string)reader["name"];
+                        water_protection = new WaterProtectionArea(-1, name);
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
+        static public bool GetWaterIntake(MapType point, EGH01DB.IDBContext dbcontext, out WaterProtectionArea water_intake) // зона водозабора
+        {
+            bool rc = false;
+            water_intake = new WaterProtectionArea(-1, "Не является зоной водозабора");
+            using (SqlCommand cmd = new SqlCommand("EGH.InWaterIntakeZoneMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point1", SqlDbType.VarChar);
+                    parm.Value = point.x;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@point2", SqlDbType.VarChar);
+                    parm.Value = point.y;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (rc = reader.Read())
+                    {
+                        int id = (int)reader["Obj_Id"];
+                        string name = (string)reader["vodozabor"];
+                        water_intake = new WaterProtectionArea(-1, name);
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
+
     }
 }

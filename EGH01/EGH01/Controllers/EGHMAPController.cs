@@ -75,7 +75,7 @@ namespace EGH01.Controllers
                 EGH01DB.Types.MapType.GetWaterdeep(mapPoint, db, out waterdeep);
 
                 EGH01DB.Objects.EcoObject eco = new EGH01DB.Objects.EcoObject();
-                EGH01DB.Types.MapType.GetEcoObjectList(mapPoint, db, out eco);
+                EGH01DB.Types.MapType.GetEcoObject(mapPoint, db, out eco);
 
                 ViewData["soil"] = soilType.name;
                 ViewData["waterdeep"] = waterdeep;

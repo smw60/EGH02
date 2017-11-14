@@ -100,10 +100,10 @@ namespace EGH01.Controllers
         {
             //RGEContext db = new RGEContext();
             //{
-            //    string x = "27.4421796312367";
-            //    string y = "53.9043260781941";
+            //    string x = "27.44227963123";
+            //    string y = "53.90432607819";
             //    MapType map_type = new MapType(x, y);
-            //    string city = "";
+            //    string city = " ";
             //    if (MapType.GetCity(map_type, db, out city))
             //    {
             //        int k = 1;
@@ -126,7 +126,82 @@ namespace EGH01.Controllers
             }
             return View();
         }
+        public ActionResult Map_GetEcoObject()// 
+        {
+            //RGEContext db = new RGEContext();
+            //{
+            //    string x = "26.4422796312367";
+            //    string y = "53.9033260781941"; // Налибокская пуща
+            //    MapType map_type = new MapType(x, y);
+            //    EcoObject e = new EcoObject();
+            //    if (MapType.GetEcoObject(map_type, db, out e))
+            //    {
+            //        int k = 1;
+            //    };
+            //}
+            return View();
+        }
+        public ActionResult Map_GetWaterObject()// 
+        {
+            //RGEContext db = new RGEContext();
+            //{
+            //    string x = "26.75642";
+            //    string y = "54.85963"; // озеро Нарочь
+            //    MapType map_type = new MapType(x, y);
+            //    EcoObject e = new EcoObject();
+            //    if (MapType.GetWaterObject(map_type, db, out e))
+            //    {
+            //        int k = 1;
+            //    };
+            //}
+            return View();
+        }
+        public ActionResult Map_GetTimeMigration()// 
+        {
+            //RGEContext db = new RGEContext();
+            //{
 
+            //    string x = "26.75642";
+            //    string y = "54.85963";
+            //    MapType map_type = new MapType(x, y);
+            //    float time_migration = 0.0f;
+            //    if (MapType.GetTimeMigration(map_type, db, out time_migration))
+            //    {
+            //        int k = 1;
+            //    };
+            //}
+            return View();
+        }
+        public ActionResult Map_GetWaterProtection()// 
+        {
+            //RGEContext db = new RGEContext();
+            //{
+            //    string x = "26.4422796312367";
+            //    string y = "53.9033260781941"; 
+            //    MapType map_type = new MapType(x, y);
+            //    WaterProtectionArea wpa = new WaterProtectionArea();
+            //    if (MapType.GetWaterProtection(map_type, db, out wpa))
+            //    {
+            //        int k = 1;
+            //    };
+            //}
+            return View();
+        }
+        public ActionResult Map_GetWaterIntake()// 
+        {
+            //RGEContext db = new RGEContext();
+            //{
+            //    string x = "31.147923";
+            //    string y = "52.416785"; // Ипуть
+            //    MapType map_type = new MapType(x, y);
+            //    WaterProtectionArea wpa = new WaterProtectionArea();
+            //    if (MapType.GetWaterIntake(map_type, db, out wpa))
+            //    {
+            //        int k = 1;
+            //    };
+            //}
+            return View();
+        }
 
         public ActionResult XML()
         {
