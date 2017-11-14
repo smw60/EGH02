@@ -54,19 +54,39 @@ namespace EGH01.Controllers
                 float coords = EGH01DB.Primitives.Coordinates.dms_to_d(int.Parse(Latitude), int.Parse(Lat_m), float.Parse(Lat_s));
                 float coordm = EGH01DB.Primitives.Coordinates.dms_to_d(int.Parse(Lngitude), int.Parse(Lng_m), float.Parse(Lng_s));
 
-                EGH01DB.Types.MapType mapPoint = new MapType(coordm.ToString("F", CultureInfo.InvariantCulture), coords.ToString("F", CultureInfo.InvariantCulture));
+                EGH01DB.Types.MapType mapPoint = new MapType(coords.ToString("F", CultureInfo.InvariantCulture), coordm.ToString("F", CultureInfo.InvariantCulture));
                 EGH01DB.Types.GroundType ground = new GroundType();
                 EGH01DB.Types.MapType.GetGroundType(mapPoint, db, out ground);
-                //EGH01DB.Types.MapType.GetHeight(mapPoint, db, out float height);   //smw60
-                //height = 1.2f;                                                     //smw60  
+
+                float height = 0.0f;
+                EGH01DB.Types.MapType.GetHeight(mapPoint, db, out  height);   
+                height = 1.2f;     
+                
                 EGH01DB.Types.SoilType soilType = new SoilType();
                 EGH01DB.Types.MapType.GetSoilType(mapPoint, db, out soilType);
 
+                float time_migration = 0.0f;
+                EGH01DB.Types.MapType.GetTimeMigration(mapPoint,db,out time_migration);
+
+                EGH01DB.Objects.EcoObject ecoW = new EGH01DB.Objects.EcoObject();
+                EGH01DB.Types.MapType.GetWaterObject(mapPoint,db,out ecoW);
+
+                EGH01DB.Types.WaterProtectionArea waterProtectionArea = new WaterProtectionArea();
+                EGH01DB.Types.MapType.GetWaterProtection(mapPoint,db,out  waterProtectionArea);
+
+                EGH01DB.Types.WaterProtectionArea water_intake= new WaterProtectionArea();
+                EGH01DB.Types.MapType.GetWaterIntake(mapPoint,db, out water_intake);
+                
                 EGH01DB.Types.District district = new District();
                 EGH01DB.Types.MapType.GetDistrict(mapPoint, db, out district);
 
                 string city = "";
+              
                 EGH01DB.Types.MapType.GetCity(mapPoint, db, out  city);
+              
+                if ((String.Compare(city, "")) == -1) {
+                    ViewData["city"] = city;
+                }
 
                 string self_cleaning_zone = "";
                 EGH01DB.Types.MapType.GetSelfCleaningZone(mapPoint, db, out self_cleaning_zone);
@@ -77,23 +97,28 @@ namespace EGH01.Controllers
                 EGH01DB.Objects.EcoObject eco = new EGH01DB.Objects.EcoObject();
                 EGH01DB.Types.MapType.GetEcoObject(mapPoint, db, out eco);
 
-                ViewData["soil"] = soilType.name;
-                ViewData["waterdeep"] = waterdeep;
-               // ViewData["height"] = height;  // smw60
-                ViewData["district"] = district.name;
-                ViewData["ground"] = ground.name;
-                ViewData["city"] = city;
-                ViewData["eco"] = eco.name;
-                 ViewData["self_cleaning_zone"] = self_cleaning_zone;
+                //ViewData["soil"] = soilType.name;
+                //ViewData["waterdeep"] = waterdeep;
+                //ViewData["height"] = height; 
+                //ViewData["district"] = district.name;
+                //ViewData["ground"] = ground.name;
+               
+                //ViewData["eco"] = eco.name;
+                //ViewData["self_cleaning_zone"] = self_cleaning_zone;
+                //ViewData["ecoW"] = ecoW.name;
+                //ViewData["time_migration"] = time_migration;
+                //ViewData["waterProtectionArea"] = waterProtectionArea.name;
+                //ViewData["waterdeep"] = waterdeep;
 
-                //ViewData["soil"] = "Почва";
-                //ViewData["ground"] = "Грунт";
-                //ViewData["district"] = "регион";
-                //ViewData["city"] = "город";
-                //ViewData["self_cleaning_zone"] = "зона";
-                //ViewData["waterdeep"] = "Водная зона";
-                //ViewData["eco"] = "Экологический объект";
-                //ViewData["height"] = height;
+
+                ViewData["soil"] = "Почва";
+                ViewData["ground"] = "Грунт";
+                ViewData["district"] = "регион";
+                ViewData["city"] = "город";
+                ViewData["self_cleaning_zone"] = "зона";
+                ViewData["waterdeep"] = "Водная зона";
+                ViewData["eco"] = "Экологический объект";
+                ViewData["height"] = height;
 
 
             }

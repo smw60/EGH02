@@ -83,20 +83,32 @@
                     <br>
                     <label class="boxdata-label-20">Регион:@ViewData["district"]</label>
                     <br>
-                <label class="boxdata-label-20">Город:@ViewData["city"]</label>
+                if (ViewData["city"] == "")
+                {
+                    <label class="boxdata-label-20">Город:@ViewData["city"]</label>
+                    <br>
+                }
+
+                <label class="boxdata-label-20">Способность к самоочищению:@ViewData["self_cleaning_zone"]</label>
                 <br>
-                <label class="boxdata-label-20">Природоохранная зоны:@ViewData["self_cleaning_zone"]</label>
+                <label class="boxdata-label-20">Высота над уровнем моря:@ViewData["waterdeep"]</label>
                 <br>
-                <label class="boxdata-label-20">Водная зоны:@ViewData["waterdeep"]</label>
+                <label class="boxdata-label-20">Заповедники и парки:@ViewData["eco"]</label>
                 <br>
-                <label class="boxdata-label-20">Экологический объект:@ViewData["eco"]</label>
+                <label class="boxdata-label-20">Экологический объект:@ViewData["ecoW"]</label>
                 <br>
+                <label class="boxdata-label-20">Время миграции нефтепродукта:@ViewData["time_migration"]</label>
+                <br>
+                <label class="boxdata-label-20">Водоохранная область:@ViewData["waterProtectionArea"]</label>
+                <br>
+                             <label class="boxdata-label-20">Глубина грунтовых вод:@ViewData["waterdeep"]</label>
+                <br> 
 
 
 
             }
      </div>
-   
+
         @*</div>*@
         <div class="radio">
             <label>
