@@ -14,8 +14,8 @@ namespace EGH01DB.Types
 {
     public class MapType
     {
-        public string x { get; private set; }     // долгота
-        public string y { get; private set; }     // широта
+        public string x { get; set; }     // долгота    //smw
+        public string y { get; set; }     // широта     //smw
 
         public MapType()
         {
@@ -52,7 +52,7 @@ namespace EGH01DB.Types
                 }
                 try
                 {
-                    cmd.ExecuteNonQuery();
+                   // cmd.ExecuteNonQuery();
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
@@ -60,7 +60,7 @@ namespace EGH01DB.Types
                         float waterfilter = (float)reader["k_filtraci"];
                         float porosity = (float)reader["poristost"];
                         ground_type = new GroundType(-1, "Получено из карты коэффициентов грунта", porosity, 85.2f, waterfilter, 0.0f, 0.0f, 0.0f, watercapacity, 0.4f, 6.0f, 0.0f, 1750.0f);
-                        rc = (int)cmd.Parameters["@exitrc"].Value > 0;
+                        // rc = (int)cmd.Parameters["@exitrc"].Value > 0; // smw: если  cmd.ExecuteReader(), то нет ReturnValue-параметров
                     }
                     reader.Close();
                     // porosity          пористость     >0    <1, безразмерная , доля застрявшего  в грунте нефтепродукта       

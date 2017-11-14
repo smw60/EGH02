@@ -16,6 +16,8 @@ namespace EGH01DB
    
     public partial class RGEContext
     {
+
+#region ECOForecast [старая версия] 
         public partial class ECOForecast         //  модель прогнозирования 
         {
             public int           id                      {get; set;}                  // идентификатор прогноза 
@@ -36,9 +38,8 @@ namespace EGH01DB
                                                           }
         
 
-            // изменение в модели 
-
-           public ECOForecast(ECOForecast forecast)
+           
+            public ECOForecast(ECOForecast forecast)
             {
                 this.id = forecast.id;
                 this.date = forecast.date;
@@ -165,7 +166,59 @@ namespace EGH01DB
                 rc.AppendChild(doc.ImportNode(this.waterblur.toXmlNode(), true));
                 return (XmlNode)rc;
             }
-       }    
+        }
+#endregion 
+    
+
+          
+     public class  ECOForecastX
+     {
+         private ECOForecast0   level0;
+         private ECOForecast0   level1;
+         private ECOForecast0   level2;
+         private ECOForecast0   level3;
+         public ECOForecastX(IDBContext db, Incident incident)
+         {
+
+             this.level0 = new ECOForecast0(db, incident.coordinates, incident.petrochemicaltype);
+
+         }
+
+     }
+
+     public class ECOForecast0     // поверхность 
+     {
+         Coordinates         cooordinates               { get; set; }             // координаты  центра пролива
+         PetrochemicalType   petrochemicaltype          { get; set; }             // тип НП
+
+         public  ECOForecast0(
+                                IDBContext          db,
+                                Coordinates         cooordinates,                  // координаты  центра пролива
+                                PetrochemicalType   petrochemicaltype              // тип НП
+                          
+                              )
+         {
+             this.cooordinates      =   cooordinates;
+             this.petrochemicaltype =   petrochemicaltype;
+         
+         }
+           
+
+     }
+     protected class ECOForecast1     // почва
+     {
+
+     }
+     protected class ECOForecast2     // грунт   
+     {
+
+     }
+     protected class ECOForecast3     // грунтовые воды 
+     {
+
+     }
+    
+
     }
     
  }

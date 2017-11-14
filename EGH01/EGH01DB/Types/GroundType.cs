@@ -123,7 +123,7 @@ namespace EGH01DB.Types
             this.permeability =     Helper.GetFloatAttribute(node, "permeability");
             this.density   =        Helper.GetFloatAttribute(node, "density");
         }
-        public bool GetByCoordinates(float x, float y, EGH01DB.IDBContext dbcontext, out GroundType ground_type) 
+        public bool GetByCoordinates(float x, float y, EGH01DB.IDBContext dbcontext, out GroundType ground_type)  // smw: Coordinates
         {
             bool rc = false;
             ground_type = new GroundType();
