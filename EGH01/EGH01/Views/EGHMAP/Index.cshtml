@@ -22,11 +22,11 @@
 
 }
 
-<head>
+<<head>
     <link rel="stylesheet" href="https://openlayers.org/en/v4.4.2/css/ol.css" type="text/css">
-    <script src="https://code.jquery.com/jquery-1.11.2.js" integrity="sha256-WMJwNbei5YnfOX5dfgVCS5C4waqvc+/0fV7W2uy3DyU=" crossorigin="anonymous"></script>
+    <!--<script src="https://code.jquery.com/jquery-1.11.2.js" integrity="sha256-WMJwNbei5YnfOX5dfgVCS5C4waqvc+/0fV7W2uy3DyU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
     <script src="https://openlayers.org/en/v4.4.2/build/ol.js"></script>
 </head>
@@ -42,17 +42,21 @@
         <label class="boxdata-label-20">Тип объекта:&nbsp; Точка</label>
         <label class="boxdata-label-20">Проекция:&nbsp; EPSG:4326</label>
     </div>
+    <div class="row">
+        <div class="col-xs-8">
 
-    <div id="map" class="map"></div>
-    <div id="mouse-position"></div>
-    <form id="options-form">
+            <div id="map" class="map"></div>
+            <div id="mouse-position"></div>
+            <form id="options-form">
 
-        <div class="form-inline">
-            <select name="geom-type" id="type" style="display:none">
-                <option value="Point"></option>
-            </select>
+                <div class="form-inline">
+                    <select name="geom-type" id="type" style="display:none">
+                        <option value="Point"></option>
+                    </select>
+                </div>
+            </form>
         </div>
-    </form>
+        <div class="col-xs-4 sidebar">
     @using (Html.BeginForm("IndexCreate", "EGHMAP"))
         {
     <div class="boxdata">
@@ -84,14 +88,14 @@
             <fieldset>
                 @if (@ViewData["ground"] != null)
                 {
-                <label class="boxdata-label-20">Тип грунта:@ViewData["ground"]</label>
+                <label class="boxdata-label-20">Тип грунта: @ViewData["ground"]</label>
                 <br>
                 }
-                <label class="boxdata-label-20">Коэффициент фильтрации воды:@ViewData["waterfilter"]</label>
+                <label class="boxdata-label-20">Коэффициент фильтрации воды: @ViewData["waterfilter"]</label>
                 <br>
-                <label class="boxdata-label-20">Пористость:@ViewData["porosity"]</label>
+                <label class="boxdata-label-20">Пористость: @ViewData["porosity"]</label>
                 <br>
-                <label class="boxdata-label-20">Влагоемкость:@ViewData["watercapacity"]</label>
+                <label class="boxdata-label-20">Влагоемкость: @ViewData["watercapacity"]</label>
                 <br>
             </fieldset>
         </div>
@@ -99,7 +103,7 @@
 
         <div class="box">
             <fieldset>
-                <label class="boxdata-label-20">Высота над уровнем моря:@ViewData["height"]</label>
+                <label class="boxdata-label-20">Высота над уровнем моря: @ViewData["height"] м</label>
                 <br>
             </fieldset>
         </div>
@@ -108,16 +112,16 @@
             {
         <div class="box">
             <fieldset>
-                <label class="boxdata-label-20">Тип почвы:@ViewData["soilType"]</label>
+                <label class="boxdata-label-20">Тип почвы: @ViewData["soilType"]</label>
                 <br>
             </fieldset>
         </div>
             }
             <div class="box">
                 <fieldset>
-                    <label class="boxdata-label-20">Область:@ViewData["district"]</label>
+                    <label class="boxdata-label-20">Область: @ViewData["region"]</label>
                     <br>
-                    <label class="boxdata-label-20">Регион:@ViewData["region"]</label>
+                    <label class="boxdata-label-20">Район: @ViewData["district"]</label>
                     <br>
                 </fieldset>
                 </div>
@@ -125,7 +129,7 @@
             if (ViewData["city"] != null)
             {<div class="box">
         <fieldset>
-            <label class="boxdata-label-20">Город:@ViewData["city"]</label>
+            <label class="boxdata-label-20">Город: @ViewData["city"]</label>
             <br>
         </fieldset>
     </div>
@@ -133,7 +137,7 @@
 
         <div class="box">
             <fieldset>
-                <label class="boxdata-label-20">Способность к самоочищению:@ViewData["self_cleaning_zone"]</label>
+                <label class="boxdata-label-20">Способность к самоочищению: @ViewData["self_cleaning_zone"]</label>
                 <br>
             </fieldset>
         </div>
@@ -142,7 +146,7 @@
         {
         <div class="box">
             <fieldset>
-                <label class="boxdata-label-20">Заповедники и парки:@ViewData["eco"]</label>
+                <label class="boxdata-label-20">Заповедники и парки: @ViewData["eco"]</label>
                 <br>
             </fieldset>
         </div>
@@ -152,7 +156,7 @@
         {
         <div class="box">
             <fieldset>
-                <label class="boxdata-label-20">Экологический объект:@ViewData["ecoW"]</label>
+                <label class="boxdata-label-20">Экологический объект: @ViewData["ecoW"]</label>
                 <br>
             </fieldset>
         </div>
@@ -160,7 +164,7 @@
 
         <div class="box">
             <fieldset>
-                <label class="boxdata-label-20">Время миграции нефтепродукта:@ViewData["time_migration"]</label>
+                <label class="boxdata-label-20">Время миграции нефтепродукта: @ViewData["time_migration"]</label>
                 <br>
             </fieldset>
         </div>
@@ -169,7 +173,7 @@
         {
         <div class="box">
             <fieldset>
-                <label class="boxdata-label-20">Водоохранная область:@ViewData["waterProtectionArea"]</label>
+                <label class="boxdata-label-20">Водоохранная область: @ViewData["waterProtectionArea"]</label>
                 <br>
             </fieldset>
         </div>
@@ -177,59 +181,21 @@
 
         <div class="box">
             <fieldset>
-                <label class="boxdata-label-20">Зона водозабора:@ViewData["water_intake"]</label>
+                <label class="boxdata-label-20">Зона водозабора: @ViewData["water_intake"]</label>
                 <br>
             </fieldset>
         </div>
 
         <div class="box">
             <fieldset>
-                <label class="boxdata-label-20">Глубина грунтовых вод:@ViewData["waterdeep"]</label>
+                <label class="boxdata-label-20">Глубина грунтовых вод: @ViewData["waterdeep"] м</label>
                 <br>
             </fieldset>
         </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
-
+        
         <div class="radio">
             <label>
                 <input type="radio" name="interaction_type" value="draw" id="interection_type_draw" checked>
@@ -255,7 +221,9 @@
             </div>
         </div>
         <canvas class="ol-unselectable" width="1000" height="5" style="width: 100%; height: 100%;"></canvas>
-
+    }
+        </div>
+    </div>
         <script type="text/javascript">
 
             var raster = new ol.layer.Tile({
@@ -528,4 +496,4 @@
             });
 
         </script>
-        }
+        
