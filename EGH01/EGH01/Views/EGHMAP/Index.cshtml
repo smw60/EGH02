@@ -22,7 +22,7 @@
 
 }
 
-<<head>
+<head>
     <link rel="stylesheet" href="https://openlayers.org/en/v4.4.2/css/ol.css" type="text/css">
     <!--<script src="https://code.jquery.com/jquery-1.11.2.js" integrity="sha256-WMJwNbei5YnfOX5dfgVCS5C4waqvc+/0fV7W2uy3DyU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -57,232 +57,124 @@
             </form>
         </div>
         <div class="col-xs-4 sidebar">
-    @using (Html.BeginForm("IndexCreate", "EGHMAP"))
-        {
-    <div class="boxdata">
-        <p>
-            <label class="boxdata-label-20">Широта</label>
-            <input readonly class="boxdata-input-10" type="text" id="Latitude" name="Latitude" value="@ViewData["Latitude"]" />&deg;
-            <input  readonly class="boxdata-input-10" type="text" id="Lat_m" name="Lat_m" value="@ViewData["Lat_m"]" />&acute;
-            <input readonly class="boxdata-input-10" type="text" id="Lat_s" name="Lat_s" value="@ViewData["Lat_s"]" />&quot;
-        </p>
-        <p>
-            <label class="boxdata-label-20">Долгота</label>
-            <input readonly class="boxdata-input-10" type="text" id="Lngitude" name="Lngitude" value="@ViewData["Lngitude"]" />&deg;
-            <input readonly class="boxdata-input-10" type="text" id="Lng_m" name="Lng_m" value="@ViewData["Lng_m"]" />&acute;
-            <input readonly class="boxdata-input-10" type="text" id="Lng_s" name="Lng_s" value="@ViewData["Lng_s"]" />&quot;
-         
-        </p>
-    </div>
-//ajax
-    @*<div>
-                    <div class="box">
-                        <label> Высота:</label><span id="height"></span>
-                    </div>
-                    <div class="box">
-                        <label> Глубина грунтовых вод:</label><span id="waterdeep"></span>
-                    </div>
-        @if (@ViewData["waterProtectionArea"] != null)
-        {
-                    <div class="box">
-                        <label> Водоохранная область:</label><span id="waterProtectionArea"></span>
-                    </div>
-        }
-                    <div class="box">
-                        <label> Время миграции нефтепродукта:</label><span id="time_migration"></span>
-                        </div>
-        @if (ViewData["ecoW"] != null)
-        {
-                        <div class="box">
-                            <label> Экологический объект:</label><span id="ecoW"></span>
-                        </div>
-        }
-        @if (ViewData["eco"] != null)
-        {
-                        <div class="box">
-                            <label> Заповедники и парки:</label><span id="eco"></span>
-                        </div>
-        }
-                        <div class="box">
-                            <label> Способность к самоочищению:</label><span id="self_cleaning_zone"></span>
-                        </div>
-                        <div class="box">
-                            <label> Регион:</label><span id="region"></span>
-                            <br>
-                            <label> Область:</label><span id="district"></span>
-        @if (ViewData["city"] != null)
-        {
-                            <br>
-                            <label> Город:</label><span id="city"></span>
-        }
-                        </div>
-        @if (@ViewData["soilType"] != null)
-        {
-                        <div class="box">
-                            <label> Тип почвы:</label><span id="soil"></span>
-                        </div>
-        }
-                        <div class="box">
-                            <label> Зона водозабора:</label><span id="water_intake"></span>
-                        </div>
-                        <div class="box">
-        @if (@ViewData["ground"] != null)
-        {
-                            <label> Тип грунта:</label><span id="ground"></span>
-                            <br>
-        }
-                            <label> Коэффициент фильтрации воды:</label><span id="waterfilter"></span>
-                            <br>
-                            <label> Пористость:</label><span id="porosity"></span>
-                            <br>
-                            <label> Влагоемкость:</label><span id="watercapacity"></span>
-                        </div>
-                    </div>*@
+            @*@using (Html.BeginForm("IndexCreate", "EGHMAP"))
+                {*@
 
+            <div class="boxdata">
+                <p>
+                    <label class="boxdata-label-20">Широта</label>
+                    <input readonly class="boxdata-input-10" type="text" id="Latitude" name="Latitude" value="@ViewData["Latitude"]" />&deg;
+                    <input readonly class="boxdata-input-10" type="text" id="Lat_m" name="Lat_m" value="@ViewData["Lat_m"]" />&acute;
+                    <input readonly class="boxdata-input-10" type="text" id="Lat_s" name="Lat_s" value="@ViewData["Lat_s"]" />&quot;
+                </p>
+                <p>
+                    <label class="boxdata-label-20">Долгота</label>
+                    <input readonly class="boxdata-input-10" type="text" id="Lngitude" name="Lngitude" value="@ViewData["Lngitude"]" />&deg;
+                    <input readonly class="boxdata-input-10" type="text" id="Lng_m" name="Lng_m" value="@ViewData["Lng_m"]" />&acute;
+                    <input readonly class="boxdata-input-10" type="text" id="Lng_s" name="Lng_s" value="@ViewData["Lng_s"]" />&quot;
 
-        if (ViewData["porosity"] != null)
+                </p>
+            </div>
 
-        {
-        <div class="box">
-            <fieldset>
-                @if (@ViewData["ground"] != null)
-                {
-                <label class="boxdata-label-20">Тип грунта: @ViewData["ground"]</label>
-                <br>
-                }
-                <label class="boxdata-label-20">Коэффициент фильтрации воды: @ViewData["waterfilter"]</label>
-                <br>
-                <label class="boxdata-label-20">Пористость: @ViewData["porosity"]</label>
-                <br>
-                <label class="boxdata-label-20">Влагоемкость: @ViewData["watercapacity"]</label>
-                <br>
-            </fieldset>
-        </div>
+            <div style="display:none" id="divv">
 
-
-        <div class="box">
-            <fieldset>
-                <label class="boxdata-label-20">Высота над уровнем моря: @ViewData["height"] м</label>
-                <br>
-            </fieldset>
-        </div>
-
-            if (@ViewData["soilType"] != null)
-            {
-        <div class="box">
-            <fieldset>
-                <label class="boxdata-label-20">Тип почвы: @ViewData["soilType"]</label>
-                <br>
-            </fieldset>
-        </div>
-            }
-            <div class="box">
-                <fieldset>
-                    <label class="boxdata-label-20">Область: @ViewData["region"]</label>
-                    <br>
-                    <label class="boxdata-label-20">Район: @ViewData["district"]</label>
-                    <br>
-                </fieldset>
+                <div class="box">
+                    <label id="heightt"></label><span id="height"></span>
                 </div>
 
-            if (ViewData["city"] != null)
-            {<div class="box">
-        <fieldset>
-            <label class="boxdata-label-20">Город: @ViewData["city"]</label>
-            <br>
-        </fieldset>
-    </div>
-        }
+                <div class="box">
+                    <label id="waterdeepp"></label><span id="waterdeep"></span>
+                </div>
+                @*@if (@ViewData["waterProtectionArea"] != null)
+                    {*@
+                <div class="box">
+                    <label id="waterProtectionAreaa"></label><span id="waterProtectionArea"></span>
+                </div>
+                @*}*@
+                <div class="box">
+                    <label id="time_migrationn"></label><span id="time_migration"></span>
+                </div>
 
-        <div class="box">
-            <fieldset>
-                <label class="boxdata-label-20">Способность к самоочищению: @ViewData["self_cleaning_zone"]</label>
-                <br>
-            </fieldset>
-        </div>
-
-        if (ViewData["eco"] != null)
-        {
-        <div class="box">
-            <fieldset>
-                <label class="boxdata-label-20">Заповедники и парки: @ViewData["eco"]</label>
-                <br>
-            </fieldset>
-        </div>
-        }
-
-        if (ViewData["ecoW"] != null)
-        {
-        <div class="box">
-            <fieldset>
-                <label class="boxdata-label-20">Экологический объект: @ViewData["ecoW"]</label>
-                <br>
-            </fieldset>
-        </div>
-        }
-
-        <div class="box">
-            <fieldset>
-                <label class="boxdata-label-20">Время миграции нефтепродукта: @ViewData["time_migration"]</label>
-                <br>
-            </fieldset>
-        </div>
-
-        if (@ViewData["waterProtectionArea"] != null)
-        {
-        <div class="box">
-            <fieldset>
-                <label class="boxdata-label-20">Водоохранная область: @ViewData["waterProtectionArea"]</label>
-                <br>
-            </fieldset>
-        </div>
-        }
-
-        <div class="box">
-            <fieldset>
-                <label class="boxdata-label-20">Зона водозабора: @ViewData["water_intake"]</label>
-                <br>
-            </fieldset>
-        </div>
-
-        <div class="box">
-            <fieldset>
-                <label class="boxdata-label-20">Глубина грунтовых вод: @ViewData["waterdeep"] м</label>
-                <br>
-            </fieldset>
-        </div>
+                @*@if ()
+                {*@
+                <div class="box">
+                    <label id="ecoWW"></label><span id="ecoW"></span>
+                </div>
+                @*}*@
+               
+                    @*@if (ViewData["eco"] != null)
+                    {*@
+                <div class="box">
+                    <label id="ecoo"></label><span id="eco"></span>
+                </div>
+                @*}*@
+                <div class="box">
+                    <label id="self_cleaning_zonee"></label><span id="self_cleaning_zone"></span>
+                </div>
+                <div class="box">
+                    <label id="regionn"></label><span id="region"></span>
+                    <br>
+                    <label id="districtt"></label><span id="district"></span>
+                    @*@if (ViewData["city"] != null)
+                        {*@
+                    <br>
+                    <label id="cityy"></label><span id="city"></span>
+                    @*}*@
+                </div>
+                @*@if (@ViewData["soilType"] != null)
 
 
-        }
-        
-        <div class="radio">
-            <label>
-                <input type="radio" name="interaction_type" value="draw" id="interection_type_draw" checked>
-                Создать &nbsp;
-            </label>
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" name="interaction_type" value="modify" id="interaction_type_modify" />
-                Изменить &nbsp;
-            </label>
-        </div>
-
-
-        <div id="buttons">
-            <div class="box">
-                @Html.Partial("_TypeLineMenu", create)
-
-                <button id="clear" class="Очистить" title="Очистить"></button>
-                <span id="result"></span>
-                <input type="hidden" id="coords" value="27,54">
-                <button type="button" class="Центр" title="Центр" value="Центр" onclick="centerMap()"></button>
+                    {*@
+                <div class="box">
+                    <label id="soill"></label><span id="soil"></span>
+                </div>
+                @*}*@
+                <div class="box">
+                    <label id="water_intakee"></label><span id="water_intake"></span>
+                </div>
+                <div class="box">
+                    @*@if (@ViewData["ground"] != null)
+                        {*@
+                    @*<label id="groundd" style="display:none"></label><span id="ground"></span>
+                    <br>*@
+                    @*}*@
+                    <label id="waterfilterr"></label><span id="waterfilter"></span>
+                    <br>
+                    <label id="porosityy"></label><span id="porosity"></span>
+                    <br>
+                    <label id="watercapacityy"></label><span id="watercapacity"></span>
+                </div>
             </div>
-        </div>
-        <canvas class="ol-unselectable" width="1000" height="5" style="width: 100%; height: 100%;"></canvas>
-    }
+
+            <div class="radio">
+                <label>
+                    <input type="radio" name="interaction_type" value="draw" id="interection_type_draw" checked>
+                    Создать &nbsp;
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="interaction_type" value="modify" id="interaction_type_modify" />
+                    Изменить &nbsp;
+                </label>
+            </div>
+
+
+            <div id="buttons">
+                <div class="box">
+                    @*@Html.Partial("_TypeLineMenu", create)*@
+
+                    <button id="clear" class="Очистить" title="Очистить"></button>
+                    <span id="result"></span>
+                    <input type="hidden" id="coords" value="27,54">
+                    <button type="button" class="Центр" title="Центр" value="Центр" onclick="centerMap()"></button>
+                </div>
+            </div>
+            <canvas class="ol-unselectable" width="1000" height="5" style="width: 100%; height: 100%;"></canvas>
+
         </div>
     </div>
+</div>
         <script type="text/javascript">
 
             var raster = new ol.layer.Tile({
@@ -406,47 +298,69 @@
                 document.getElementById('Lngitude').value = deg_to_dms(hdms2);
                 document.getElementById('Lng_m').value = deg_to_dmsm(hdms2);
                 document.getElementById('Lng_s').value = deg_to_dmss(hdms2);
-                //ajax
-                //var Latitude = {
-                //    Lngitude: deg_to_dms(hdms2),
-                //    Lng_m: deg_to_dmsm(hdms2),
-                //    Lng_s: deg_to_dmss(hdms2),
-                //    Latitude: deg_to_dms(hdms),
-                //    Lat_m: deg_to_dmsm(hdms),
-                //    Lat_s: deg_to_dmss(hdms)
-                //};
 
-                //$.ajax({
-                //    url: '/EGHMAP/CreateFromAjax',
-                //    type: 'POST',
-                //    dataType: 'application/json',
-                //    data: JSON.stringify(Latitude),
-                //    contentType: 'application/json; charset=utf-8',
-                //    dataFilter: function (data) {
-                //        data = JSON.parse(data);
-                //        $("#height").html(data.Высота);
-                //        $("#waterdeep").html(data.Waterdeep);
-                //        $("#waterProtectionArea").html(data.WaterProtectionArea);
-                //        $("#time_migration").html(data.Time_migration);
-                //        $("#ecoW").html(data.EcoW);
-                //        $("#eco").html(data.Eco);
-                //        $("#self_cleaning_zone").html(data.Self_cleaning_zone);
-                //        $("#district").html(data.District);
-                //        $("#region").html(data.Region);
-                //        $("#city").html(data.City);
-                //        $("#ground").html(data.Ground);
-                //        $("#soil").html(data.Soil);
-                //        $("#water_intake").html(data.Water_intake);
-                //        $("#waterfilter").html(data.Waterfilter);
-                //        $("#porosity").html(data.Porosity);
-                //        $("#watercapacity").html(data.Watercapacity);
+     
+                var Latitude = {
+                    Lngitude: deg_to_dms(hdms2),
+                    Lng_m: deg_to_dmsm(hdms2),
+                    Lng_s: deg_to_dmss(hdms2),
+                    Latitude: deg_to_dms(hdms),
+                    Lat_m: deg_to_dmsm(hdms),
+                    Lat_s: deg_to_dmss(hdms)
+                };
+
+                $.ajax({
+                    url: '/EGHMAP/CreateFromAjax',
+                    type: 'POST',
+                    dataType: 'application/json',
+                    data: JSON.stringify(Latitude),
+                    contentType: 'application/json; charset=utf-8',
+                    dataFilter: function (data) {
+                        data = JSON.parse(data);
+                        var obj = document.getElementById('divv');
+                        obj.style.display = "block";
+            
+                        $("#height").html(data.Высота);
+                        $("#waterdeep").html(data.Waterdeep);
+                        $("#waterProtectionArea").html(data.WaterProtectionArea);
+                        $("#time_migration").html(data.Time_migration);
+                        $("#ecoW").html(data.EcoW);
+                        $("#eco").html(data.Eco);
+                        $("#self_cleaning_zone").html(data.Self_cleaning_zone);
+                        $("#district").html(data.District);
+                        $("#region").html(data.Region);
+                        $("#city").html(data.City);
+                        $("#ground").html(data.Ground);
+                        $("#soil").html(data.Soil);
+                        $("#water_intake").html(data.Water_intake);
+                        $("#waterfilter").html(data.Waterfilter);
+                        $("#porosity").html(data.Porosity);
+                        $("#watercapacity").html(data.Watercapacity);
 
 
-                //        alert(data.Высота);
+                        $("#heightt").html("Высота");
+                        $("#waterdeepp").html("Глубина грунтовых вод:");
+                        $("#waterProtectionAreaa").html("Водоохранная область:");
+                        $("#time_migrationn").html("Время миграции нефтепродукта:");
+                        $("#ecoWW").html("Экологический объект:");
+                        $("#ecoo").html("Заповедники и парки:");
+                        $("#self_cleaning_zonee").html("Способность к самоочищению:");
+                        $("#districtt").html("Область:");
+                        $("#regionn").html("Регион:");
+                        $("#cityy").html("Город:");
+                        $("#groundd").html("Тип грунта:");
+                        $("#soill").html("Тип почвы:");
+                        $("#water_intakee").html("Зона водозабора:");
+                        $("#waterfilterr").html("Коэффициент фильтрации воды:");
+                        $("#porosityy").html("Пористость:");
+                        $("#watercapacityy").html(" Влагоемкость:");
+
+                       
+                        alert(data.Высота);
 
 
-                //    }
-                //});
+                    }
+                });
 
 
             });
