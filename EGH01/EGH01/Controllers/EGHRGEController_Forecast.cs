@@ -50,7 +50,7 @@ namespace EGH01.Controllers
                                             PetrochemicalType petrochemicaltype = new PetrochemicalType();
                                             if (PetrochemicalType.GetByCode(context, (int)viewcontext.Petrochemical_type_code, ref petrochemicaltype))
                                             {
-                                                    SpreadPoint spreadpoint = new SpreadPoint(riskobject, petrochemicaltype, (float)viewcontext.Volume);
+                                                    SpreadPoint spreadpoint = new SpreadPoint(riskobject, petrochemicaltype, (float)viewcontext.Volume, (float)viewcontext.Temperature);
                                                     EGH01DB.Types.IncidentType incidenttype = new EGH01DB.Types.IncidentType();
                                                     if (EGH01DB.Types.IncidentType.GetByCode(context, (int)viewcontext.Incident_type_code, out  incidenttype))
                                                     {

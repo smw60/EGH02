@@ -30,7 +30,7 @@ namespace EGH01DB.Points
             this.cadastretype = null;
         }
         // разлив в произвольной точке
-        public SpreadPoint(Point point, CadastreType  cadastretype, PetrochemicalType petrochemicaltype, float volume): base(point) 
+        public SpreadPoint(Point point, CadastreType  cadastretype, PetrochemicalType petrochemicaltype, float volume, float temperature = 0): base(point) 
         {
             this.petrochemicaltype = petrochemicaltype;
             this.volume = volume;
@@ -38,7 +38,8 @@ namespace EGH01DB.Points
             this.cadastretype = cadastretype;
         }
         // разлив на техногенном объекте 
-        public SpreadPoint(RiskObject riskobject, PetrochemicalType petrochemicaltype, float volume): base(riskobject)
+        public SpreadPoint(RiskObject riskobject, PetrochemicalType petrochemicaltype, float volume, float temperature = 0)
+            : base(riskobject)
         {
             this.petrochemicaltype = petrochemicaltype;
             this.volume = volume;

@@ -25,6 +25,7 @@ namespace EGH01.Models.EGHRGE
         public int?      Lng_degree               {get; set;}
         public int?      Lng_min                  {get; set;}
         public float?    Lng_sec                  {get; set;}
+        public float?    Temperature              {get; set;} 
         public RGEContext.ECOForecast ecoforecast {get; set;}
         public const string VIEWNAME = "Forecast";
 
@@ -77,6 +78,14 @@ namespace EGH01.Models.EGHRGE
                         {
                             float v = 0.0f;
                             if (float.TryParse(volume, out v)) viewcontext.Volume = (float?)v;
+                            else viewcontext.Regim = REGIM.ERROR;
+                        }
+
+                        string temperature = parms["temperature"];
+                        if (String.IsNullOrEmpty(temperature)) viewcontext.Regim = REGIM.ERROR;
+                        {
+                            float t = 0.0f;
+                            if (float.TryParse(temperature, out t)) viewcontext.Temperature = (float?)t;
                             else viewcontext.Regim = REGIM.ERROR;
                         }
 

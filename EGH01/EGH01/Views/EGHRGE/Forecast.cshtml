@@ -112,7 +112,7 @@
 
         @{
 
-    string volume = "";
+    string volume = "5";
     if (context.Volume != null)
     {
         volume = ((int)context.Volume).ToString();
@@ -123,6 +123,20 @@
     </div>
 
         }
+        @{
+
+    string temperature = "0";
+    //if (context.Volume != null)
+    //{
+    //    volume = ((int)context.Volume).ToString();
+    //}
+    <div class="boxdata">
+        <label class="boxdata-label-30">Температура воздуха(С°)</label>
+        <input class="boxdata-input-30" type="number" name="volume" value="@temperature" min="-50" max="50" step="1" />
+    </div>
+
+        }
+
 
 
         @if (!mitemgeop.Value.Equals("Forecast.Point"))

@@ -293,6 +293,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\Developer.pubxml" />
+    <None Include="Properties\PublishProfiles\EGH02-TEST.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\datatables.min.js" />
     <Content Include="Scripts\html2canvas.js" />
