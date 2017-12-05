@@ -494,6 +494,7 @@
     <Content Include="Views\EGHGEA\_SoilPollutionCategoriesList - Копировать %282%29.cshtml" />
     <Content Include="Views\EGHMAP\Index.cshtml" />
     <Content Include="Views\Debug\Index.cshtml" />
+    <Content Include="Views\EGHRGE\_ForecastReport0.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

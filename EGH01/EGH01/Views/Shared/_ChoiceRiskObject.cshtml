@@ -61,7 +61,7 @@
                     <input type="hidden" name="riskobjectid" value="@riskobject.id.ToString()" />
                     <p><label class="boxdata-label-30">Идентификатор </label> @riskobject.id.ToString().PadRight(10) </p>
                     <p><label class="boxdata-label-30">Наименование  </label> <span class="boxdata-span">@riskobject.name.PadRight(20)</span> </p>
-                    <p><label class="boxdata-label-30">Адрес         </label> @riskobject.address.PadRight(50) </p>
+                   <p><label class="boxdata-label-30">Адрес         </label> @(riskobject.address.Trim().Length < 1?"---------------":riskobject.address.PadRight(50)) </p>
                       <p><label class="boxdata-label-30">Координаты. Широта</label>@c.lat.d.ToString()°&nbsp;@c.lat.m.ToString()'&nbsp;@c.lat.s.ToString("0.00")"</p>
                       <p><label class="boxdata-label-30">Координаты. Долгота</label>@c.lng.d.ToString()°&nbsp;@c.lng.m.ToString()'&nbsp;@c.lng.s.ToString("0.00")" </p>
                       <p><label class="boxdata-label-30">Координаты в градусах</label>@c.latitude.ToString()°&nbsp;@c.lngitude.ToString()°</p>

@@ -18,7 +18,7 @@ namespace EGH01DB.Points
         public GroundType   groundtype      { get; private set; }   // грунт 
         public float        waterdeep       { get; private set; }   // глубина грунтовых вод    (м)
         public float        height          { get; private set; }   // высота над уровнем моря  (м) 
-        
+        public static Point defaultvalue { get { return new Point(Coordinates.defaultvalue, GroundType.defaulttype, 3.5f, 138f); } }
         public Point()
         {
             this.coordinates = new Coordinates();
@@ -65,6 +65,13 @@ namespace EGH01DB.Points
 
         }
 
+        public static bool GetByMap(IDBContext db, Coordinates coordinates, out Point point)
+        {
+            GroundType groundtype = null;
+           if (!GroundType.GetByMap(db, coordinates, out groundtype)) groundtype = GroundType.defaulttype;
+            point = new Point(coordinates, groundtype, 4.5f, 138f);
+            return true;
+        }
         public XmlNode toXmlNode(string comment = "")
         {
             XmlDocument doc = new XmlDocument();

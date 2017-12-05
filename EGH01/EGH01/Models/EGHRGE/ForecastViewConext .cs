@@ -75,6 +75,7 @@ namespace EGH01.Models.EGHRGE
 
                         string volume = parms["volume"];
                         if (String.IsNullOrEmpty(volume)) viewcontext.Regim = REGIM.ERROR;
+                        else
                         {
                             float v = 0.0f;
                             if (float.TryParse(volume, out v)) viewcontext.Volume = (float?)v;
@@ -83,6 +84,7 @@ namespace EGH01.Models.EGHRGE
 
                         string temperature = parms["temperature"];
                         if (String.IsNullOrEmpty(temperature)) viewcontext.Regim = REGIM.ERROR;
+                        else
                         {
                             float t = 0.0f;
                             if (float.TryParse(temperature, out t)) viewcontext.Temperature = (float?)t;
@@ -91,6 +93,7 @@ namespace EGH01.Models.EGHRGE
 
                         string riskobjectid = parms["riskobjectid"];
                         if (String.IsNullOrEmpty(riskobjectid)) viewcontext.Regim = REGIM.ERROR;
+                        else
                         {
                             int id = 0;
                             if (int.TryParse(riskobjectid, out id)) viewcontext.RiskObjectId = (int?)id;

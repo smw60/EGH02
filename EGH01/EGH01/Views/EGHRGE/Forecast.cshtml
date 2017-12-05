@@ -126,13 +126,13 @@
         @{
 
     string temperature = "0";
-    //if (context.Volume != null)
-    //{
-    //    volume = ((int)context.Volume).ToString();
-    //}
+    if (context.Volume != null)
+    {
+        temperature = ((float)context.Temperature).ToString();
+    }
     <div class="boxdata">
         <label class="boxdata-label-30">Температура воздуха(С°)</label>
-        <input class="boxdata-input-30" type="number" name="volume" value="@temperature" min="-50" max="50" step="1" />
+        <input class="boxdata-input-30" type="number" name="temperature" value="@temperature" min="-50" max="50" step="1" />
     </div>
 
         }
@@ -198,7 +198,12 @@
 
     if (context.Regim == ForecastViewConext.REGIM.REPORT)
     {
-       
+
+
+        <div class="box">
+            @Html.Partial("_ForecastReport0", @context)
+        </div>
+
         <div class="box">
             @Html.Partial("_ForecastReportGB", @context)
         </div>

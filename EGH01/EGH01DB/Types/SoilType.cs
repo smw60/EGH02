@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EGH01DB.Primitives;
 
 namespace EGH01DB.Types
 {
@@ -15,6 +16,7 @@ namespace EGH01DB.Types
         public float gumus_height { get; private set; }             // высота почвенного покрова в см gumus
         public string klass { get; private set; }             // класс почв по классификатору klass
         public string soil_type { get; private set; }         // тип почв по классификатору type
+        public static SoilType defaultype { get { return new SoilType("не определен", 1f, 1f, 1f, 0.2f, "не определен", "не определен"); } }
 
         public SoilType()
         {
@@ -38,6 +40,13 @@ namespace EGH01DB.Types
             this.klass = klass;
             this.soil_type = soil_type;
         }
-       
+        public static bool GetByMap(IDBContext db, Coordinates coordinates, out SoilType soiltype)
+        {
+            // заглушка
+            soiltype = SoilType.defaultype;
+            return true;
+        }
+
+
     }
 }

@@ -30,7 +30,7 @@ namespace EGH01DB.Types
         public bool    Delete()      {return true;}
         public bool    GetByCode(int code)  {return true; }
         public bool    GetByCoordinates(float x, float y) { return true; }
-
+        static public GroundType defaulttype { get { return new GroundType(1000, "не определен", 0.4f, 14f, 4.213E-5f, 0.2f, 0.2f, 0.2f, 0.08f, 0.39f, 4f, 0.2f, 1450f); } }  // выдавать при ошибке  
         public GroundType()
         {
             this.type_code = -1;
@@ -473,6 +473,12 @@ namespace EGH01DB.Types
         {
             return Delete(dbcontext, new GroundType(code));
         }
+        public static bool GetByMap(IDBContext db, Coordinates coordinates, out GroundType groundtype)
+        {
+            //  заглушка
+            groundtype = GroundType.defaulttype;
+            return true;
+        }
         public XmlNode toXmlNode(string comment = "")
         {
              XmlDocument doc = new XmlDocument();
@@ -493,6 +499,8 @@ namespace EGH01DB.Types
              rc.SetAttribute("density",         this.density.ToString());
              return (XmlNode)rc;
         }
+
+
     }
     public class GroundTypeList : List<GroundType>   // список  опорных точек 
     {

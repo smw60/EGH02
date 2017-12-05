@@ -463,6 +463,15 @@ namespace EGH01DB.Objects
                 return rc;
             }
         }
+        static public bool GetByMap(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out EcoObject ecoobject)
+        {
+
+            EcoObject eo = null;
+            ecoobject = eo;
+
+            return false;
+        }
+        
         public XmlNode toXmlNode(string comment = "")
         {
             XmlDocument doc = new XmlDocument();

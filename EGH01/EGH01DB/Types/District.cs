@@ -205,6 +205,12 @@ namespace EGH01DB.Types
             }
             return rc;
         }
+        static public bool GetByMap(EGH01DB.IDBContext dbcontext, Coordinates coorinates, out District district)
+        {
+            // заглушка
+            district = District.defaulttype;
+            return true;
+        }
         public XmlNode toXmlNode(string comment = "")
         {
             XmlDocument doc = new XmlDocument();
