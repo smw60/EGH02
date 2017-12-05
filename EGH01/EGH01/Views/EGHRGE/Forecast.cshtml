@@ -12,8 +12,8 @@
     Layout = "~/Views/Shared/EGHLayout.cshtml";
     
     EGH01DB.RGEContext rge = (EGH01DB.RGEContext)Model;
-    ForecastViewConext context = (ForecastViewConext)Model.GetViewContext("Forecast");
-    if (context == null) { Model.SaveViewContext("Forecast", context = new ForecastViewConext()); };
+    ForecastViewConext context = (ForecastViewConext)Model.GetViewContext(ForecastViewConext.VIEWNAME);
+    if (context == null) {Model.SaveViewContext(ForecastViewConext.VIEWNAME, context = new ForecastViewConext()); };
 
     if (context.ecoforecast != null && !string.IsNullOrEmpty(context.ecoforecast.errormessage))
     {
@@ -21,7 +21,7 @@
     }
 
 
-    Menu.MenuItem mitemgeop = new Menu.MenuItem("Географическая точка", "Forecast.Point", false);
+    Menu.MenuItem mitemgeop = new Menu.MenuItem("Географическая точка", "Forecast.Point", true);
     Menu.MenuItem mitemsave = new Menu.MenuItem("Сохранить отчет",      "Forecast.Save",  false);
     
     Menu start = new Menu(
@@ -31,12 +31,7 @@
                           mitemgeop 
                         );
 
-     
-   
-
-    
-       
-   
+      
 
 }
 
@@ -77,9 +72,9 @@
         {
             ptl.ForEach(o => petrochemicaltype.Add(new SelectListItem { Text = o.name, Value = o.code_type.ToString() }));
         }
-        if (context.Petrochemical_type_code != null)
+        if (context.petrochemicaltype != null && context.petrochemicaltype.code_type >  0)
         {
-            SelectListItem si = petrochemicaltype.FirstOrDefault(s => s.Value == context.Petrochemical_type_code.ToString());
+            SelectListItem si = petrochemicaltype.FirstOrDefault(s => s.Value == context.petrochemicaltype.code_type.ToString());
             si.Selected = true;
         }
 
@@ -159,8 +154,10 @@
         }
         else
         {
-
-            @Html.Action("ChoiceRiskObject", "EGHRGE", new { controller = "EGHRGE", action = "Forecast" });
+             //ChoiceRiskObjectContext rocontext = (ChoiceRiskObjectContext)Model.GetViewContext(ChoiceRiskObjectContext.VIEWNAME);
+             @Html.Partial("_ChoiceRiskObject", @Model)
+                         
+             @*@Html.Action("ChoiceRiskObject", "EGHRGE", new { controller = "EGHRGE", action = "Forecast" })*@;
         }
 
         @if (context.Regim == ForecastViewConext.REGIM.REPORT)
@@ -201,6 +198,7 @@
 
 
         <div class="box">
+            <h3>ОТЧЕТ-ПРОГНОЗ</h3>
             @Html.Partial("_ForecastReport0", @context)
         </div>
 

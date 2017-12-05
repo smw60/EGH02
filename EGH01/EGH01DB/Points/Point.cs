@@ -13,7 +13,7 @@ namespace EGH01DB.Points
 {
     public class Point  // геологическая точка  
     {
-        public enum POINTTYPE { RISK, ANCHOR, ECO, UNDEF }
+        public enum POINTTYPE { RISK, ANCHOR, ECO, UNDEF, GEOPOINT}
         public Coordinates  coordinates     { get; private set; }   // координаты точки 
         public GroundType   groundtype      { get; private set; }   // грунт 
         public float        waterdeep       { get; private set; }   // глубина грунтовых вод    (м)

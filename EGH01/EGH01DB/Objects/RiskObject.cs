@@ -73,7 +73,34 @@ namespace EGH01DB.Objects
             this.productivity = 0.0f;
             this.geodescription = string.Empty;
         }
-
+        public RiskObject(MapePoint mappoint): base(mappoint) 
+        {
+            this.id = 1000000000;                   // потом константу
+            this.type = new RiskObjectType();       // географическая точка  
+            this.cadastretype = CadastreType.defaulttype;
+            this.name = "географическая точка";               
+            this.address =  mappoint.district.name;
+            this.district = mappoint.district;
+            this.region = new Region();
+            this.ownership = string.Empty;
+            this.phone = string.Empty;
+            this.fax = string.Empty;
+            this.email = string.Empty;
+            this.foundationdate = DateTime.MinValue;
+            this.reconstractiondate = DateTime.MinValue;
+            this.numberofrefuel = -1;
+            this.volume = -1;
+            this.watertreatment = false;
+            this.watertreatmentcollect = false;
+            this.map = new byte[0];
+            this.groundtank = 0.0f;
+            this.undergroundtank = 0.0f;
+            this.fueltype = string.Empty;
+            this.numberofthreads = -1;
+            this.tubediameter = 0.0f;
+            this.productivity = 0.0f;
+            this.geodescription = string.Empty;
+        }
         public RiskObject(int id, 
                             Point point, 
                             RiskObjectType type, 
