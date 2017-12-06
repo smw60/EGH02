@@ -205,11 +205,50 @@ namespace EGH01DB.Types
             }
             return rc;
         }
-        static public bool GetByMap(EGH01DB.IDBContext dbcontext, Coordinates coorinates, out District district)
+        
+        static public bool GetByMap(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out District district) // район и область
         {
             // заглушка
-            district = District.defaulttype;
-            return true;
+            //district = District.defaulttype;
+            //return true;
+            
+            bool rc = false;
+            district = new District();
+            using (SqlCommand cmd = new SqlCommand("MAP.InRegionMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.ToString();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    //cmd.ExecuteNonQuery();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        string district_name = (string)reader["district"];
+                        string region_name = (string)reader["region"];
+
+                        Region region = new Region(region_name);
+                        district = new District(-1, region, district_name);
+
+                        rc = true;
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
         }
         public XmlNode toXmlNode(string comment = "")
         {

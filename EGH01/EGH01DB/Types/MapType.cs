@@ -82,51 +82,7 @@ namespace EGH01DB.Types
             }
             return rc;
         }
-        static public bool GetDistrict(MapType point, EGH01DB.IDBContext dbcontext, out District district) // район и область
-        {
-            bool rc = false;
-            district = new District();
-            using (SqlCommand cmd = new SqlCommand("EGH.InRegionMap", dbcontext.connection))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                {
-                    SqlParameter parm = new SqlParameter("@point1", SqlDbType.VarChar);
-                    parm.Value = point.x;
-                    cmd.Parameters.Add(parm);
-                }
-                {
-                    SqlParameter parm = new SqlParameter("@point2", SqlDbType.VarChar);
-                    parm.Value = point.y;
-                    cmd.Parameters.Add(parm);
-                }
-                {
-                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
-                    parm.Direction = ParameterDirection.ReturnValue;
-                    cmd.Parameters.Add(parm);
-                }
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        string district_name = (string)reader["district"];
-                        string region_name = (string)reader["region"];
-
-                        Region region = new Region(region_name);
-                        district = new District(-1, region, district_name);
-
-                    rc = (int)cmd.Parameters["@exitrc"].Value > 0;
-                    }
-                    reader.Close();
-                }
-                catch (Exception e)
-                {
-                    rc = false;
-                };
-            }
-            return rc;
-        }
+        
         static public bool GetSoilType(MapType point, EGH01DB.IDBContext dbcontext, out SoilType soil_type)  // тип почвы, высота почвенного слоя и коэффициенты
         {
             bool rc = false;

@@ -41,6 +41,11 @@ namespace EGH01DB.Primitives
             double lng_2 =  Math.Pow((double)Const.LNGM * ((double)this.latitude - (double)to.latitude), 2);
             return (float)Math.Sqrt(lat_2 + lng_2);
         }
+        public string ToString(Coordinates coordinates)
+        {
+            string point = "Point(" + coordinates.lngitude.ToString() + " " + coordinates.latitude.ToString() + ")";
+            return point;
+        }
         public Coordinates(int latd, int latm, float lats, int lngd, int lngm, float lngs)
         {
             // this.Lat  = new DMS(latd, latm, lats);

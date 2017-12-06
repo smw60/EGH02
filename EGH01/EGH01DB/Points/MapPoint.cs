@@ -12,7 +12,7 @@ namespace EGH01DB.Points
     public class MapePoint : Point
     {
         public District district { get; private set; }         // район область 
-        public Climat climat { get; private set; }             // темпретатура  
+        public Climat climat { get; private set; }             // температура  
         public EcoObject ecoobject { get; private set; }       // информция о природоохр. объекте   
         public SoilType soiltype { get; private set; }         // почва
 

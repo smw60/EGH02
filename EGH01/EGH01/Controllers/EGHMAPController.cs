@@ -285,7 +285,7 @@ namespace EGH01.Controllers
 
 
             EGH01DB.Types.District district = new District();
-            EGH01DB.Types.MapType.GetDistrict(mapPoint, db, out district);
+            //EGH01DB.Types.MapType.GetDistrict(mapPoint, db, out district);
 
 
             string city = "";
