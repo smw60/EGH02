@@ -220,9 +220,9 @@ namespace EGH01.Controllers
 
             float coords = EGH01DB.Primitives.Coordinates.dms_to_d(int.Parse(Latitude), int.Parse(Lat_m), float.Parse(Lat_s));
             float coordm = EGH01DB.Primitives.Coordinates.dms_to_d(int.Parse(Lngitude), int.Parse(Lng_m), float.Parse(Lng_s));
-            EGH01DB.Types.MapType mapPoint = new MapType(coords.ToString("F", CultureInfo.InvariantCulture), coordm.ToString("F", CultureInfo.InvariantCulture));
+            //EGH01DB.Types.MapType mapPoint = new MapType(coords.ToString("F", CultureInfo.InvariantCulture), coordm.ToString("F", CultureInfo.InvariantCulture));
             EGH01DB.Types.GroundType ground = new GroundType();
-            EGH01DB.Types.MapType.GetGroundType(mapPoint, db, out ground);
+            //EGH01DB.Types.MapType.GetGroundType(mapPoint, db, out ground);
             String grounds = "Получено из карты коэффициентов грунта";
             if (String.Compare(ground.name, grounds) == 1)
             {
@@ -234,7 +234,7 @@ namespace EGH01.Controllers
 
             //
             EGH01DB.Types.WaterProtectionArea waterProtectionArea = new WaterProtectionArea();
-            EGH01DB.Types.MapType.GetWaterProtection(mapPoint, db, out waterProtectionArea);
+            //EGH01DB.Types.MapType.GetWaterProtection(mapPoint, db, out waterProtectionArea);
 
             String water = "Не является зоной водозабора";
             if (String.Compare(waterProtectionArea.name, water) == 1)
@@ -247,36 +247,36 @@ namespace EGH01.Controllers
 
 
             EGH01DB.Types.WaterProtectionArea water_intake = new WaterProtectionArea();
-            EGH01DB.Types.MapType.GetWaterIntake(mapPoint, db, out water_intake);
+            //EGH01DB.Types.MapType.GetWaterIntake(mapPoint, db, out water_intake);
 
 
 
 
             float waterdeep = 0.0f;
-            EGH01DB.Types.MapType.GetWaterdeep(mapPoint, db, out waterdeep);
+            //EGH01DB.Types.MapType.GetWaterdeep(mapPoint, db, out waterdeep);
 
 
 
             float height = 0.0f;
-            EGH01DB.Types.MapType.GetHeight(mapPoint, db, out height);
+            //EGH01DB.Types.MapType.GetHeight(mapPoint, db, out height);
 
 
 
 
             EGH01DB.Types.SoilType soilType = new SoilType();
-            EGH01DB.Types.MapType.GetSoilType(mapPoint, db, out soilType);
+            //EGH01DB.Types.MapType.GetSoilType(mapPoint, db, out soilType);
 
 
 
 
             float time_migration = 0.0f;
-            EGH01DB.Types.MapType.GetTimeMigration(mapPoint, db, out time_migration);
+            //EGH01DB.Types.MapType.GetTimeMigration(mapPoint, db, out time_migration);
 
 
 
 
             EGH01DB.Objects.EcoObject ecoW = new EGH01DB.Objects.EcoObject();
-            EGH01DB.Types.MapType.GetWaterObject(mapPoint, db, out ecoW);
+            //EGH01DB.Types.MapType.GetWaterObject(mapPoint, db, out ecoW);
 
 
 
@@ -290,7 +290,7 @@ namespace EGH01.Controllers
 
             string city = "";
 
-            EGH01DB.Types.MapType.GetCity(mapPoint, db, out city);
+            //EGH01DB.Types.MapType.GetCity(mapPoint, db, out city);
 
             if (!String.IsNullOrEmpty(city))
             {
@@ -317,14 +317,14 @@ namespace EGH01.Controllers
             //
 
             string self_cleaning_zone = "";
-            EGH01DB.Types.MapType.GetSelfCleaningZone(mapPoint, db, out self_cleaning_zone);
+            //EGH01DB.Types.MapType.GetSelfCleaningZone(mapPoint, db, out self_cleaning_zone);
 
 
 
 
 
             EGH01DB.Objects.EcoObject eco = new EGH01DB.Objects.EcoObject();
-            EGH01DB.Types.MapType.GetEcoObject(mapPoint, db, out eco);
+           // EGH01DB.Types.MapType.GetEcoObject(mapPoint, db, out eco);
             if (!String.IsNullOrEmpty(eco.name))
             {
 

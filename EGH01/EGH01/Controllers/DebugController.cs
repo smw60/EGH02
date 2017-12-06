@@ -40,15 +40,16 @@ namespace EGH01.Controllers
         {
             RGEContext db = new RGEContext();
             {
-                float x = 27.4421796312367f;
-                float y = 53.9043260781941f;
-                Coordinates coordinates = new Coordinates(x, y);
+                //float x = 27.4421796312367f;
+                //float y = 53.9043260781941f;
+                //Coordinates coordinates = new Coordinates(x, y);
                             
-                District district = new District();
-                if (District.GetByMap(db, coordinates, out district))
-                {
-                    int k = 1;
-                };
+                
+                //District district = new District();
+                //if (District.GetByMap(db, coordinates, out district))
+                //{
+                //    int k = 1;
+                //};
             }
             return View();
         }
@@ -116,30 +117,24 @@ namespace EGH01.Controllers
         {
             RGEContext db = new RGEContext();
             {
-                string x = "27.4421796312367";
-                string y = "53.9043260781941";
-                MapType map_type = new MapType(x, y);
-                float height = 0.0f;
-                if (MapType.GetHeight(map_type, db, out height))
-                {
-                    int k = 1;
-                };
+               
             }
             return View();
         }
+        
         public ActionResult Map_GetEcoObject()// 
         {
-            //RGEContext db = new RGEContext();
-            //{
-            //    string x = "26.4422796312367";
-            //    string y = "53.9033260781941"; // Налибокская пуща
-            //    MapType map_type = new MapType(x, y);
-            //    EcoObject e = new EcoObject();
-            //    if (MapType.GetEcoObject(map_type, db, out e))
-            //    {
-            //        int k = 1;
-            //    };
-            //}
+            RGEContext db = new RGEContext();
+            {
+                //float x = 26.4422796312367f;
+                //float y = 53.9033260781941f; // Налибокская пуща
+                //Coordinates coordinates = new Coordinates(x, y);
+                //EcoObject e = new EcoObject();
+                //if (EcoObject.GetByMap(db, coordinates, out e))
+                //{
+                //    int k = 1;
+                //};
+            }
             return View();
         }
         public ActionResult Map_GetWaterObject()// 

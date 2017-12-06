@@ -206,20 +206,18 @@ namespace EGH01DB.Types
             return rc;
         }
         
-        static public bool GetByMap(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out District district) // район и область
+        static public bool GetByMap(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out District district) // получение района и области из карты
         {
-            // заглушка
-            //district = District.defaulttype;
-            //return true;
-            
+                    
             bool rc = false;
             district = new District();
+            string point = coordinates.GetMapPoint();
             using (SqlCommand cmd = new SqlCommand("MAP.InRegionMap", dbcontext.connection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 {
                     SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
-                    parm.Value = coordinates.ToString();
+                    parm.Value = point;
                     cmd.Parameters.Add(parm);
                 }
                 {
@@ -229,7 +227,6 @@ namespace EGH01DB.Types
                 }
                 try
                 {
-                    //cmd.ExecuteNonQuery();
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {

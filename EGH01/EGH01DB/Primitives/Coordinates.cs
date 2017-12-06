@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Globalization;
 
 
 namespace EGH01DB.Primitives
@@ -41,9 +42,9 @@ namespace EGH01DB.Primitives
             double lng_2 =  Math.Pow((double)Const.LNGM * ((double)this.latitude - (double)to.latitude), 2);
             return (float)Math.Sqrt(lat_2 + lng_2);
         }
-        public string ToString(Coordinates coordinates)
+        public string GetMapPoint()
         {
-            string point = "Point(" + coordinates.lngitude.ToString() + " " + coordinates.latitude.ToString() + ")";
+            string point = "Point(" + latitude.ToString("F5", CultureInfo.InvariantCulture) + " " + lngitude.ToString("F5", CultureInfo.InvariantCulture) + ")";
             return point;
         }
         public Coordinates(int latd, int latm, float lats, int lngd, int lngm, float lngs)

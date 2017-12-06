@@ -465,13 +465,43 @@ namespace EGH01DB.Objects
         }
         static public bool GetByMap(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out EcoObject ecoobject)
         {
+            bool rc = false;
+            ecoobject = new EcoObject();
+            using (SqlCommand cmd = new SqlCommand("MAP.InEcoObjectMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (rc = reader.Read())
+                    {
+                        int id = (int)reader["Obj_Id"];
+                        string name = (string)reader["name"];
+                        string type = (string)reader["type"];
+                        EcoObjectType eco_object_type = new EcoObjectType(type);
+                        CadastreType cadastre_type = new CadastreType("не определено на карте");
 
-            EcoObject eo = null;
-            ecoobject = eo;
-
-            return false;
+                        ecoobject = new EcoObject(name, eco_object_type, cadastre_type);
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
         }
-        
         public XmlNode toXmlNode(string comment = "")
         {
             XmlDocument doc = new XmlDocument();

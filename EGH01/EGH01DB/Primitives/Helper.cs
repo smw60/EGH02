@@ -174,7 +174,7 @@ namespace EGH01DB.Primitives
             }
             return rc;
         }
-   static public EGH01DB.Types.WaterProtectionAreaList GetListWaterProtectionArea(EGH01DB.IDBContext dbcontext)
+        static public EGH01DB.Types.WaterProtectionAreaList GetListWaterProtectionArea(EGH01DB.IDBContext dbcontext)
         {
             List<WaterProtectionArea> list = new List<WaterProtectionArea>();
         EGH01DB.Types.WaterProtectionAreaList rc = new EGH01DB.Types.WaterProtectionAreaList(list);

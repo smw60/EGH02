@@ -96,7 +96,7 @@
     <Compile Include="Primitives\Coordinates.cs" />
     <Compile Include="Primitives\Helper1.cs" />
     <Compile Include="ORTContextModel.cs" />
-    <Compile Include="Types\MapType.cs" />
+    <Compile Include="Primitives\MapHelper.cs" />
     <Compile Include="Types\RehabilitationMethod.cs" />
     <Compile Include="Primitives\Report.cs" />
     <Compile Include="Primitives\WaterProperties.cs" />
