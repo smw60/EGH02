@@ -794,6 +794,11 @@ element.style {
     background: url(/Resources/clear-black.png) no-repeat 2px;
     background-size:20px;
 }
+.Техногенный.объект{
+    padding: 12px;
+    background: url(/Resources/icon_ndt.png) no-repeat 2px;
+    background-size:20px;
+}
 .Центр {
     padding: 12px;
     background: url(/Resources/Home.png) no-repeat 2px;
