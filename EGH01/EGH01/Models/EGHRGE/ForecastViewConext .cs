@@ -6,7 +6,7 @@ using EGH01DB;
 using EGH01DB.Types;
 using System.Collections.Specialized;
 using EGH01DB.Objects;
-
+using EGH01.Core;
 namespace EGH01.Models.EGHRGE
 {
     public class ForecastViewConext
@@ -30,19 +30,20 @@ namespace EGH01.Models.EGHRGE
         public PetrochemicalType petrochemicaltype;
         public RiskObject        riskobject;         
         public RGEContext.ECOForecast ecoforecast {get; set;}
+        public IncidentType      incidenttype; 
         public const string VIEWNAME = "Forecast";
+        public Menu.MenuItem menuitemgeop  = new Menu.MenuItem("Географическая точка", "Forecast.Point", true);
+        public Menu.MenuItem menuitemrobj  = new Menu.MenuItem("Техногенный объект",   "Forecast.Point", true);
+        public Menu.MenuItem menuitempoint = null;
+
+        public ForecastViewConext() 
+        {
+            this.menuitempoint = menuitemgeop;
+        }
         
-        //public ForecastViewConext()
-        //{
-        //    this.petrochemicaltype = null;
-        //    this.riskobject = null;
-        //}
-
-
         public static ForecastViewConext Handler(RGEContext context, NameValueCollection parms)
         {
             ForecastViewConext  viewcontext = null;
-          //  string menuitem  = parms["menuitem"];
             if ((viewcontext = context.GetViewContext(VIEWNAME) as ForecastViewConext) != null)
             {
                         viewcontext.Regim = REGIM.INIT; 
@@ -85,10 +86,17 @@ namespace EGH01.Models.EGHRGE
                         else
                         {
                             int code = -1;
-                            if (int.TryParse(incidenttype, out code)) viewcontext.Incident_type_code = (int?)code;
+                            if (int.TryParse(incidenttype, out code))
+                            {
+                                viewcontext.Incident_type_code = (int?)code;
+                                if (viewcontext.incidenttype == null || viewcontext.incidenttype.type_code != code)
+                                {
+                                 if(!IncidentType.GetByCode(context,code, out viewcontext.incidenttype)) viewcontext.Regim = REGIM.ERROR; 
+                                }
+                            }
                             else viewcontext.Regim = REGIM.ERROR;
                         }
-
+                            
                         string volume = parms["volume"];
                         if (String.IsNullOrEmpty(volume)) viewcontext.Regim = REGIM.ERROR;
                         else
@@ -106,24 +114,6 @@ namespace EGH01.Models.EGHRGE
                             if (float.TryParse(temperature, out t)) viewcontext.Temperature = (float?)t;
                             else viewcontext.Regim = REGIM.ERROR;
                         }
-
-                        //string riskobjectid = parms["riskobjectid"];
-                        //if (String.IsNullOrEmpty(riskobjectid)) viewcontext.Regim = REGIM.ERROR;
-                        //else
-                        //{
-                        //    int id = 0;
-                        //    if (int.TryParse(riskobjectid, out id))
-                        //    {
-                        //        if (viewcontext.riskobject == null || viewcontext.riskobject.id != id) 
-                        //        {
-                        //            viewcontext.riskobject = new RiskObject();
-                        //            if (!RiskObject.GetById(context, id, ref viewcontext.riskobject)) viewcontext.Regim = REGIM.ERROR;
-                        //        }
-                        //    }
-                        //    else viewcontext.Regim = REGIM.ERROR;
-                        //}
-
-                        
            }
             return viewcontext;
         }

@@ -234,6 +234,7 @@
     <Compile Include="Models\EGHGEA\SoilPollutionCategoriesView.cs" />
     <Compile Include="Models\EGHORT\WaterCleaningMethodView.cs" />
     <Compile Include="Models\EGHORT\WaterProtectionAreaView.cs" />
+    <Compile Include="Models\EGHRGE\ChoiceGeoPointViewContext.cs" />
     <Compile Include="Models\EGHRGE\EcoObjectTypeView.cs" />
     <Compile Include="Models\EGHRGE\EcoObjectView.cs" />
     <Compile Include="Models\EGHRGE\ChoiceRiskObjectViewContext.cs" />
@@ -495,6 +496,7 @@
     <Content Include="Views\EGHMAP\Index.cshtml" />
     <Content Include="Views\Debug\Index.cshtml" />
     <Content Include="Views\EGHRGE\_ForecastReport0.cshtml" />
+    <Content Include="Views\Shared\_ChoiceGeoPoint.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

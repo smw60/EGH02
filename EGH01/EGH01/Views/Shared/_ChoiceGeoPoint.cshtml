@@ -1,0 +1,44 @@
+﻿@model EGH01DB.RGEContext
+@using EGH01DB.Objects;
+@using EGH01DB.Primitives;
+@using EGH01.Models.EGHRGE;
+@{
+    
+    EGH01DB.RGEContext rge = (EGH01DB.RGEContext)Model;
+    ChoiceRiskObjectViewContext context = (ChoiceRiskObjectViewContext)Model.GetViewContext("_ChoiceRiskObject");
+    if (context == null) { Model.SaveViewContext("_ChoiceRiskObject", context = new ChoiceRiskObjectViewContext()); };
+    
+    
+}
+
+@using (Html.BeginForm("Forecast", "EGHRGE"))
+{
+               
+    <fieldset  form="ChoiseRiskObject">
+        <legend > Географическая точка </legend>
+        @if (context.Regim == ChoiceRiskObjectViewContext.REGIM.INIT)
+        {
+           {
+                Model.SaveViewContext("_ChoiceRiskObject", context = new ChoiceRiskObjectViewContext());
+           }
+           
+          <h3>INIT</h3>
+          <button type="submit" name="ChoiceRiskObject.choicefind" value="geopchoice">Поиск</button> 
+
+        }
+        else if (context.Regim == ChoiceRiskObjectViewContext.REGIM.CHOICE) 
+        {
+            
+            <h3>CHOICE</h3>
+            <button type="submit" name="ChoiceRiskObject.choicefind" value="geopinit">Повторить поиск </button>
+        }
+        else if (context.Regim == ChoiceRiskObjectViewContext.REGIM.SET)
+        {
+           
+            <h3>SET</h3>
+            <button type="submit" name="ChoiceRiskObject.choicefind" value="geopinit">Повторить поиск </button>            
+        }
+
+    </fieldset>       
+       
+}

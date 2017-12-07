@@ -21,61 +21,41 @@ namespace EGH01.Controllers
        
         public ActionResult Forecast( )
         {
-           RGEContext context = null;
            ActionResult view = View("Index");
            ViewBag.EGHLayout = "RGE.Forecast";
            try
            {
-                context = new RGEContext(this);
-                view = View(context);
+                RGEContext db = new RGEContext(this);
+                view = View(db);
+                
+                ChoiceRiskObjectViewContext coc = ChoiceRiskObjectViewContext.Handler(db, this.HttpContext.Request.Params);
+                ForecastViewConext          fvc =  ForecastViewConext.Handler(db, this.HttpContext.Request.Params);
 
-                ChoiceRiskObjectContext coc = ChoiceRiskObjectContext.Handler(context, this.HttpContext.Request.Params);
-                ForecastViewConext      fvc =  ForecastViewConext.Handler(context, this.HttpContext.Request.Params);
                 string menuitem = this.HttpContext.Request.Params["menuitem"];
-                if (coc.Regim == ChoiceRiskObjectContext.REGIM.SET &&  fvc.Regim != ForecastViewConext.REGIM.ERROR)
+                if (menuitem.Equals("Forecast.Point"))
                 {
-                   
+                    if (fvc.menuitempoint == fvc.menuitemgeop)   fvc.menuitempoint = fvc.menuitemrobj;
+                    else fvc.menuitempoint = fvc.menuitemgeop;
+                    coc.Regim = ChoiceRiskObjectViewContext.REGIM.INIT;
+                }
+                else if (coc.Regim == ChoiceRiskObjectViewContext.REGIM.SET &&  fvc.Regim != ForecastViewConext.REGIM.ERROR)
+                {
+                  
                     if (menuitem.Equals("Forecast.Forecast"))
                     {
-                        
-                            
-                                RiskObject riskobject = coc.riskobject;
-                                PetrochemicalType petrochemicaltype = fvc.petrochemicaltype;
-                                SpreadPoint spreadpoint = new SpreadPoint(riskobject, petrochemicaltype, (float)fvc.Volume, (float)fvc.Temperature);
-                                
-                                IncidentType incidenttype = new IncidentType();
-                                if(EGH01DB.Types.IncidentType.GetByCode(context, (int)fvc.Incident_type_code, out  incidenttype))
-                                {
-                                    Incident incident = new Incident(
-                                                                       (DateTime)fvc.Incident_date,
-                                                                       (DateTime)fvc.Incident_date_message,
-                                                                       incidenttype,
-                                                                       spreadpoint
-                                                                    );
-                                        fvc.ecoforecast = new RGEContext.ECOForecast(incident);
-                                        fvc.Regim = ForecastViewConext.REGIM.REPORT;
-                                }
-                                else fvc.Regim = ForecastViewConext.REGIM.RUNERROR;
-                                                         
-                       }
-                       else if (menuitem.Equals("Forecast.Cancel")) view = View("Index", context); //view = Redirect("Index");
-                       else if (menuitem.Equals("Forecast.Save"))
-                       {
-                            ForecastViewConext viewcontext = context.GetViewContext("Forecast") as ForecastViewConext;
+                              SpreadPoint spreadpoint = new SpreadPoint(coc.riskobject, fvc.petrochemicaltype, (float)fvc.Volume, (float)fvc.Temperature);
+                              Incident incident = new Incident((DateTime)fvc.Incident_date, (DateTime)fvc.Incident_date_message, fvc.incidenttype, spreadpoint);
+                              fvc.ecoforecast = new RGEContext.ECOForecast(incident);
+                              fvc.Regim = ForecastViewConext.REGIM.REPORT;                                     
+                    }
+                    else if (menuitem.Equals("Forecast.Cancel")) view = View("Index", db); 
+                    else if (menuitem.Equals("Forecast.Save"))
+                    {
+                            ForecastViewConext viewcontext = db.GetViewContext("Forecast") as ForecastViewConext;
                             EGH01DB.RGEContext.ECOForecast forecast = viewcontext.ecoforecast;
-                            //XmlNode node =  forecast.toXmlNode("Отладка");
-                            //XmlDocument doc = new XmlDocument();
-                            //doc.AppendChild(doc.ImportNode(node, true));
-                            //doc.Save(@"C:\Report.xml");
-
-                            RGEContext.ECOForecast.Create(context, forecast, "отладка");
-                         
-                           
-                        }
-
+                            RGEContext.ECOForecast.Create(db, forecast, "отладка");
+                     }
                 }
-                 
-               
           }
           catch (RGEContext.Exception e)
           {
@@ -87,33 +67,38 @@ namespace EGH01.Controllers
           }
           return view;
         }
-        
-
-        [ChildActionOnly]
-        public ActionResult ChoiceRiskObject()
-        {
-            RGEContext context = null;
-            try
-            {
-                context = new RGEContext(this);
-               
-            }
-            catch (RGEContext.Exception e)
-            {
-                ViewBag.msg = e.message;
-            }
-            catch (Exception e)
-            {
-                ViewBag.msg = e.Message;
-            }
-
-            return PartialView("_ChoiceRiskObject",context);
-
-        }
-
-
-
-
 
     }
 }
+
+
+//XmlNode node =  forecast.toXmlNode("Отладка");
+//XmlDocument doc = new XmlDocument();
+//doc.AppendChild(doc.ImportNode(node, true));
+//doc.Save(@"C:\Report.xml");
+
+
+
+//[ChildActionOnly]
+//public ActionResult ChoiceRiskObject()
+//{
+//    RGEContext context = null;
+//    try
+//    {
+//        context = new RGEContext(this);
+
+//    }
+//    catch (RGEContext.Exception e)
+//    {
+//        ViewBag.msg = e.message;
+//    }
+//    catch (Exception e)
+//    {
+//        ViewBag.msg = e.Message;
+//    }
+
+//    return PartialView("_ChoiceRiskObject",context);
+
+//}
+
+
