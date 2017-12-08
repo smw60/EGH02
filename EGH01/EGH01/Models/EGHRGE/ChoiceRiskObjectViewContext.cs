@@ -12,11 +12,13 @@ namespace EGH01.Models.EGHRGE
     {
 
         public enum REGIM { INIT, CHOICE, SET, ERROR };
-        
-        public REGIM Regim               {get; set;}
-        public string       Template     {get; set;}
-        public int          RiskObjectID {get; set;}
-        //new Menu.MenuItem("Географическая точка", "Forecast.Point", true);
+
+        public REGIM Regim { get; set; }
+        public string Template { get; set; }
+        public int RiskObjectID { get; set; }
+
+            
+            //new Menu.MenuItem("Географическая точка", "Forecast.Point", true);
               
         public RiskObject   riskobject;
 
@@ -74,7 +76,8 @@ namespace EGH01.Models.EGHRGE
                                             break;
                                     case "geopinit":     viewcontext.Regim = ChoiceRiskObjectViewContext.REGIM.INIT;
                                             break;
-                                    case "geopchoice":   viewcontext.Regim = ChoiceRiskObjectViewContext.REGIM.CHOICE;
+                                    case "geopchoice":
+                             viewcontext.Regim = ChoiceRiskObjectViewContext.REGIM.CHOICE; 
                                             break;
                                     case "geopset":      viewcontext.Regim = ChoiceRiskObjectViewContext.REGIM.SET; 
                                             break;
