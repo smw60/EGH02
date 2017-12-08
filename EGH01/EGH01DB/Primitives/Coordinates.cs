@@ -23,7 +23,7 @@ namespace EGH01DB.Primitives
         public float lngitude {get; private set;}     // долгота  123,123456.. градусы 
         public DMS   lat { get{return new DMS(this.latitude);}}
         public DMS   lng { get{return new DMS(this.lngitude);}}
-        public static Coordinates defaultvalue { get { return new Coordinates(); } }   
+        public static Coordinates defaultvalue { get { return new Coordinates(); } }
         public Coordinates()
         {
             this.latitude = this.lngitude = 0.0f;

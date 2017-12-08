@@ -9,48 +9,63 @@
 
 @{
      
-    EGH01.Models.EGHRGE.ForecastViewConext context = @Model;
+    EGH01.Models.EGHRGE.ForecastViewConext context = Model;
+    EGH01DB.RGEContext.ECOForecast0 level0  = Model.ecoforecastx.level0;
+    
+    
+    //this.date = date;
+    //this.date_message = date_message;
+    //this.incidenttype = incidenttype;
+    //this.petrochemicaltype = petrochemicaltype;  // тип НП
+    //this.volume = volume;
+    //this.temperature = temperature;
+    //this.riskobject = riskobject;
+    
+    
+    
 }
 
 <div class="boxdata">
-  
+    
+
     <h4>0. Исходные данные</h4>
     <fieldset form="ChoiseRiskObject">
         <legend> Ввод данных </legend>
         <p>
             <label class="boxdata-label-40 ">Дата инцидента  </label>
-            2.12.2017
+             @level0.date.ToShortDateString()
         </p>
         <p>
             <label class="boxdata-label-40 ">Дата регистрации) </label>
-            2.12.2017
+            @level0.date_message.ToShortDateString()
         </p>
         <p>
             <label class="boxdata-label-40 ">Тип инцидента) </label>
-            Наземный резервуар
+            @level0.incidenttype.name
         </p>
         <p>
             <label class="boxdata-label-40 ">Тип нефтепродукта </label>
-            Бензин
+             @level0.petrochemicaltype.name
         </p>
 
         <p>
             <label class="boxdata-label-40 ">Объем пролива (м<sup>3</sup>) </label>
-            12
+            @level0.volume
         </p>
        
         <p>
             <label class="boxdata-label-40 ">Температура (С) </label>
-            10
+            @level0.temperature
         </p>  
         <p>
-            <label class="boxdata-label-40 "> Координаты (широта, долгота) </label> 
-            53 22 33     27 27 27       
+            <label class="boxdata-label-40 "> Координаты </label> 
+            @level0.riskobject.coordinates.Line()
+                  
         </p>  
         
         <p>
             <label class="boxdata-label-40 "> Объект </label>
-            географическая точка 
+            @level0.riskobject.name 
         </p>  
         
     </fieldset>
@@ -58,11 +73,11 @@
         <legend> Справочные данные </legend>
         <p>
             <label class="boxdata-label-40 "> Область, район </label>
-            Брест Барановичи
+            @level0.riskobject.district.name
         </p>  
         <p>
             <label class="boxdata-label-40 "> Плотность нефтепродукта (кг/м<sup>3</sup>) </label>
-            1450
+            @level0.petrochemicaltype.density
         </p> 
 
     </fieldset>
@@ -70,12 +85,9 @@
         <legend> Вычисления </legend>
         <p>
             <label class="boxdata-label-40 ">Масса пролива (кг) </label>
-            12
+            @level0.M0
         </p>
     </fieldset>
-
-    
-
 
 </div>
        

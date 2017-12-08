@@ -30,8 +30,9 @@ namespace EGH01.Models.EGHRGE
         public float?    Temperature              {get; set;}
         public PetrochemicalType petrochemicaltype;
         public RiskObject        riskobject;         
-        public RGEContext.ECOForecast ecoforecast {get; set;}
-        public IncidentType      incidenttype; 
+        public RGEContext.ECOForecast  ecoforecast  {get; set;}
+        public RGEContext.ECOForecastX ecoforecastx {get; set;}
+        public IncidentType            incidenttype; 
         public const string VIEWNAME = "Forecast";
         public Menu.MenuItem menuitemgeop  = new Menu.MenuItem("Географическая точка", "Forecast.Point", true);
         public Menu.MenuItem menuitemrobj  = new Menu.MenuItem("Техногенный объект",   "Forecast.Point", true);

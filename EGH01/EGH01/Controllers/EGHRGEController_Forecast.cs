@@ -45,15 +45,16 @@ namespace EGH01.Controllers
                     {
                               SpreadPoint spreadpoint = new SpreadPoint(coc.riskobject, fvc.petrochemicaltype, (float)fvc.Volume, (float)fvc.Temperature);
                               Incident incident = new Incident((DateTime)fvc.Incident_date, (DateTime)fvc.Incident_date_message, fvc.incidenttype, spreadpoint);
-                              fvc.ecoforecast = new RGEContext.ECOForecast(incident);
+                             // fvc.ecoforecast = new RGEContext.ECOForecast(incident);
+                              fvc.ecoforecastx = new RGEContext.ECOForecastX(db, incident);
                               fvc.Regim = ForecastViewConext.REGIM.REPORT;                                     
                     }
                     else if (menuitem.Equals("Forecast.Cancel")) view = View("Index", db); 
                     else if (menuitem.Equals("Forecast.Save"))
                     {
-                            ForecastViewConext viewcontext = db.GetViewContext("Forecast") as ForecastViewConext;
-                            EGH01DB.RGEContext.ECOForecast forecast = viewcontext.ecoforecast;
-                            RGEContext.ECOForecast.Create(db, forecast, "отладка");
+                            //ForecastViewConext viewcontext = db.GetViewContext(ForecastViewConext.VIEWNAME) as ForecastViewConext;
+                            //EGH01DB.RGEContext.ECOForecast forecast = viewcontext.ecoforecast;
+                            //RGEContext.ECOForecast.Create(db, forecast, "отладка");
                      }
                 }
           }

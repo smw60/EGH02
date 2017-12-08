@@ -173,14 +173,21 @@ namespace EGH01DB
           
      public class  ECOForecastX
      {
-         private ECOForecast0   level0;
-         private ECOForecast0   level1;
-         private ECOForecast0   level2;
-         private ECOForecast0   level3;
+         public  ECOForecast0 level0;
+         public  ECOForecast0 level1;
+         public  ECOForecast0 level2;
+         public  ECOForecast0 level3;
          public ECOForecastX(IDBContext db, Incident incident)
          {
 
-             this.level0 = new ECOForecast0(db, incident.coordinates, incident.petrochemicaltype);
+             this.level0 = new ECOForecast0(db, 
+                                            incident.date, 
+                                            incident.date_message,
+                                            incident.type, 
+                                            incident.petrochemicaltype,
+                                            incident.volume,
+                                            incident.temperature,
+                                            incident.riskobject);
 
          }
 
@@ -188,19 +195,37 @@ namespace EGH01DB
 
      public class ECOForecast0     // поверхность 
      {
-         Coordinates         cooordinates               { get; set; }             // координаты  центра пролива
-         PetrochemicalType   petrochemicaltype          { get; set; }             // тип НП
+         public IDBContext db { get; set; }
+         public DateTime date { get; set; }
+         public DateTime date_message { get; set; }
+         public IncidentType incidenttype { get; set; }
+         public PetrochemicalType petrochemicaltype { get; set; }   // тип НП
+         public float volume { get; set; }
+         public float temperature { get; set; }
+         public RiskObject riskobject { get; set; }
+         public float M0 { get; set; }  // масса пролитого НП
+                    
 
-         public  ECOForecast0(
-                                IDBContext          db,
-                                Coordinates         cooordinates,                  // координаты  центра пролива
-                                PetrochemicalType   petrochemicaltype              // тип НП
-                          
-                              )
+         public  ECOForecast0(IDBContext          db,
+                              DateTime            date,
+                              DateTime            date_message,
+                              IncidentType        incidenttype,
+                              PetrochemicalType   petrochemicaltype,              // тип НП
+                              float               volume,
+                              float               temperature,
+                              RiskObject          riskobject)
+ 
          {
-             this.cooordinates      =   cooordinates;
-             this.petrochemicaltype =   petrochemicaltype;
-         
+         this.db                 = db;
+         this.date               = date;
+         this.date_message       = date_message;
+         this.incidenttype       = incidenttype;
+         this.petrochemicaltype  = petrochemicaltype;  // тип НП
+         this.volume             = volume;
+         this.temperature        = temperature;
+         this.riskobject         = riskobject;
+
+         this.M0 = this.volume * this.petrochemicaltype.density; // масса пролитого НП 
          }
            
 
