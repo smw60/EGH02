@@ -37,6 +37,7 @@ namespace EGH01.Models.EGHRGE
         public Menu.MenuItem menuitemrobj  = new Menu.MenuItem("Техногенный объект",   "Forecast.Point", true);
         public Menu.MenuItem menuitempoint = null;
         public string JSONCanv; 
+
         public ForecastViewConext() 
         {
             this.menuitempoint = menuitemgeop;
@@ -45,15 +46,13 @@ namespace EGH01.Models.EGHRGE
         public static ForecastViewConext Handler(RGEContext context, NameValueCollection parms)
         {
 
+         
 
-            Canv canv = new Canv(10, new Canv.XY[3]{new Canv.XY(10,20), new Canv.XY(20,10), new Canv.XY(40,50)}) ;  
 
 
             ForecastViewConext  viewcontext = null;
             if ((viewcontext = context.GetViewContext(VIEWNAME) as ForecastViewConext) != null)
             {
-
-                        viewcontext.JSONCanv = new JavaScriptSerializer().Serialize(canv); 
                         viewcontext.Regim = REGIM.INIT; 
                         string date = parms["date"];
                         if (String.IsNullOrEmpty(date)) viewcontext.Regim = REGIM.ERROR;
@@ -122,6 +121,19 @@ namespace EGH01.Models.EGHRGE
                             if (float.TryParse(temperature, out t)) viewcontext.Temperature = (float?)t;
                             else viewcontext.Regim = REGIM.ERROR;
                         }
+
+                        Canv canv = new Canv(12, new Canv.XY[7]
+                            {
+                                new Canv.XY(70,250),
+                                new Canv.XY(80,70), 
+                                new Canv.XY(100,50),
+                                new Canv.XY(200,80), 
+                                new Canv.XY(370,230),
+                                new Canv.XY(220,360), 
+                                new Canv.XY(70,250)
+                            });
+                        viewcontext.JSONCanv = new JavaScriptSerializer().Serialize(canv); 
+
            }
             return viewcontext;
         }

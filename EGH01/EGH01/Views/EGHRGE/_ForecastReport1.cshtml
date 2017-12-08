@@ -59,7 +59,7 @@
 
         </canvas>
         <script type="text/javascript">
-            var JSONCanv = '@Model.JSONCanv';
+            var JSONCanv = JSON.parse("@Model.JSONCanv".split('&quot;').join('"'));  
             var DarkOliveGray = '#556B2F';
             var DarkStateGray = '#2F4F4F';
             var Red =  '#FF0000';
@@ -69,15 +69,17 @@
             
             console.log(JSONCanv);
 
-            var canvas = document.getElementById('topblure');
-            var canvasW = canvas.width;
-            var canvasH = canvas.height;
+            var canvas = document.getElementById('topblure'); // canvas
+            var canvasW = canvas.width;    // граница canvas
+            var canvasH = canvas.height;   // граница canvas
             var context = canvas.getContext('2d');
             //console.log('WH', canvasW, canvasH);
-            var cx = canvasW / 2;
-            var cy = canvasH / 2;
-            var R = Math.min(cx, cy) - 50;
+                       
+            var cx = canvasW / 2;           // коорд. цетра
+            var cy = canvasH / 2;           // коорд. цетра
+            var R = Math.min(cx, cy) - 50;  // радиус окружности 
 
+            // сетка 
             context.beginPath();
             context.strokeStyle = Grid;
             for (var x = 10; x < canvasW; x += 10)
@@ -94,22 +96,22 @@
 
             
 
-
+            // пятно 
             context.beginPath();
             context.fillStyle = DarkStateGray;            //'#FF000';
-            context.moveTo(70, 250);
-            context.lineTo(80, 70);
-            context.lineTo(100, 50);
-            context.lineTo(200, 80);
-            context.lineTo(370, 230);
-            context.lineTo(220, 360);
-            context.lineTo(70, 250);
+            context.moveTo(JSONCanv.xy[0].x, JSONCanv.xy[0].y);
+            for (var i = 1; i < JSONCanv.xy.length; i++)
+            {
+                context.lineTo(JSONCanv.xy[i].x, JSONCanv.xy[i].y);
+            }
             context.closePath();
             context.fill();
 
+            // окружность 
             context.beginPath();
             context.strokeStyle = Red;
             context.arc(cx, cy, R, 0, 2 * Math.PI, true);
+            // оси  
             context.moveTo(200, 0);
             context.lineTo(200, 400);
             context.moveTo(0, 200);
@@ -117,21 +119,16 @@
             context.closePath();
             context.stroke();
 
+            // надпись 
             context.textBaseline = "middle";
             context.fillStyle = Red;
             context.font = 'bold 30px Arial';             // Courier New';
-            context.fillText(' 10м ', cx + R, cy-15, 30);
-
+            context.fillText(' '+JSONCanv.r + 'м', cx + R, cy-15, 30);
             context.beginPath();
             context.fillStyle = Red;
             context.arc(cx, cy, 2, 0, 2 * Math.PI, true);
-                        
             context.closePath();
-
-
             context.fill();
-
-           
 
         </script>
 
