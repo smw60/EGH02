@@ -180,13 +180,26 @@
             <h3>ОТЧЕТ-ПРОГНОЗ</h3>
             @Html.Partial("_ForecastReport0", @context)
         </div>
-
         <div class="box">
+           @Html.Partial("_ForecastReport1", @context)
+        </div>
+        <div class="box">
+            @Html.Partial("_ForecastReport2", @context)
+        </div>
+       <div class="box">
+            @Html.Partial("_ForecastReport3", @context)
+        </div>
+        <div class="box">
+            @Html.Partial("_ForecastReport4", @context)
+        </div>
+    
+    
+        @*<div class="box">
             @Html.Partial("_ForecastReportGB", @context)
         </div>
         <div class="box">
             @Html.Partial("_ForecastReportWB", @context)
-        </div>
+        </div>*@
     }
 
 }

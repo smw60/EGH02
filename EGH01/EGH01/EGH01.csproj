@@ -498,6 +498,10 @@
     <Content Include="Views\Debug\Index.cshtml" />
     <Content Include="Views\EGHRGE\_ForecastReport0.cshtml" />
     <Content Include="Views\Shared\_ChoiceGeoPoint.cshtml" />
+    <Content Include="Views\EGHRGE\_ForecastReport1.cshtml" />
+    <Content Include="Views\EGHRGE\_ForecastReport2.cshtml" />
+    <Content Include="Views\EGHRGE\_ForecastReport3.cshtml" />
+    <Content Include="Views\EGHRGE\_ForecastReport4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

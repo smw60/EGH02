@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using EGH01DB;
 using EGH01DB.Types;
 using System.Collections.Specialized;
@@ -35,7 +36,7 @@ namespace EGH01.Models.EGHRGE
         public Menu.MenuItem menuitemgeop  = new Menu.MenuItem("Географическая точка", "Forecast.Point", true);
         public Menu.MenuItem menuitemrobj  = new Menu.MenuItem("Техногенный объект",   "Forecast.Point", true);
         public Menu.MenuItem menuitempoint = null;
-
+        public string JSONCanv; 
         public ForecastViewConext() 
         {
             this.menuitempoint = menuitemgeop;
@@ -43,9 +44,16 @@ namespace EGH01.Models.EGHRGE
         
         public static ForecastViewConext Handler(RGEContext context, NameValueCollection parms)
         {
+
+
+            Canv canv = new Canv(10, new Canv.XY[3]{new Canv.XY(10,20), new Canv.XY(20,10), new Canv.XY(40,50)}) ;  
+
+
             ForecastViewConext  viewcontext = null;
             if ((viewcontext = context.GetViewContext(VIEWNAME) as ForecastViewConext) != null)
             {
+
+                        viewcontext.JSONCanv = new JavaScriptSerializer().Serialize(canv); 
                         viewcontext.Regim = REGIM.INIT; 
                         string date = parms["date"];
                         if (String.IsNullOrEmpty(date)) viewcontext.Regim = REGIM.ERROR;
@@ -118,5 +126,23 @@ namespace EGH01.Models.EGHRGE
             return viewcontext;
         }
     }
+    public class Canv
+    {
+        public class XY
+        {
+            public int x;
+            public int y;
+            public XY(int x, int y) {this.x = x; this.y = y;}
+        }
+        public int   r;
+        public XY[]  xy;
+        public Canv(int r,  XY[] xy)
+        {
+            this.r = r;
+            this.xy = xy;
+        }
+    } 
+
+
 }
 
