@@ -302,6 +302,7 @@
     <Content Include="Scripts\html2canvas.svg.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\LoadFile.js" />
+    <Content Include="Scripts\Map.js" />
     <Content Include="Scripts\stickynotes.js" />
     <Content Include="Scripts\time.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
