@@ -38,7 +38,7 @@ namespace EGH01.Controllers
                     else fvc.menuitempoint = fvc.menuitemgeop;
                     coc.Regim = ChoiceRiskObjectViewContext.REGIM.INIT;
                 }
-                else if (coc.Regim == ChoiceRiskObjectViewContext.REGIM.SET &&  fvc.Regim != ForecastViewConext.REGIM.ERROR)
+                else if (coc.Regim == ChoiceRiskObjectViewContext.REGIM.SET &&  fvc.Regim == ForecastViewConext.REGIM.SET)
                 {
                   
                     if (menuitem.Equals("Forecast.Forecast"))
