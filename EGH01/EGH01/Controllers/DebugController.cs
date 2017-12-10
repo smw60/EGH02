@@ -54,60 +54,23 @@ namespace EGH01.Controllers
             }
             return View();
         }
-        public ActionResult Map_GetWaterdeep()// 
-        {
-            //RGEContext db = new RGEContext();
-            //{
-            //    string x = "27.4421796312367";
-            //    string y = "53.9043260781941";
-            //    MapType map_type = new MapType(x, y);
-            //    float waterdeep = 0.0f;
-            //    if (MapType.GetWaterdeep(map_type, db, out waterdeep))
-            //    {
-            //        int k = 1;
-            //    };
-            //}
-            return View();
-        }
-        public ActionResult Map_GetSelfCleaningZone()// 
-        {
-            //RGEContext db = new RGEContext();
-            //{
-            //    string x = "27.4421796312367";
-            //    string y = "53.9043260781941";
-            //    MapType map_type = new MapType(x, y);
-            //    string self_cleaning_zone = "";
-            //    if (MapType.GetSelfCleaningZone(map_type, db, out self_cleaning_zone))
-            //    {
-            //        int k = 1;
-            //    };
-            //}
-            return View();
-        }
-        public ActionResult Map_GetCity()// 
-        {
-            //RGEContext db = new RGEContext();
-            //{
-            //    string x = "27.44227963123";
-            //    string y = "53.90432607819";
-            //    MapType map_type = new MapType(x, y);
-            //    string city = " ";
-            //    if (MapType.GetCity(map_type, db, out city))
-            //    {
-            //        int k = 1;
-            //    };
-            //}
-            return View();
-        }
+  
         public ActionResult Map_GetHeight()// 
         {
             RGEContext db = new RGEContext();
             {
-               
+                //float x = 26.4422796312367f;
+                //float y = 53.9033260781941f; // Налибокская пуща
+                //Coordinates coordinates = new Coordinates(x, y);
+                //float height = 0.0f;
+                //if (MapHelper.GetHeight(db, coordinates, out height))
+                //{
+                //    int k = 1;
+                //};
             }
             return View();
         }
-        
+
         public ActionResult Map_GetEcoObject()// 
         {
             RGEContext db = new RGEContext();
@@ -121,67 +84,6 @@ namespace EGH01.Controllers
                 //    int k = 1;
                 //};
             }
-            return View();
-        }
-        public ActionResult Map_GetWaterObject()// 
-        {
-            //RGEContext db = new RGEContext();
-            //{
-            //    string x = "26.75642";
-            //    string y = "54.85963"; // озеро Нарочь
-            //    MapType map_type = new MapType(x, y);
-            //    EcoObject e = new EcoObject();
-            //    if (MapType.GetWaterObject(map_type, db, out e))
-            //    {
-            //        int k = 1;
-            //    };
-            //}
-            return View();
-        }
-        public ActionResult Map_GetTimeMigration()// 
-        {
-            //RGEContext db = new RGEContext();
-            //{
-
-            //    string x = "26.75642";
-            //    string y = "54.85963";
-            //    MapType map_type = new MapType(x, y);
-            //    float time_migration = 0.0f;
-            //    if (MapType.GetTimeMigration(map_type, db, out time_migration))
-            //    {
-            //        int k = 1;
-            //    };
-            //}
-            return View();
-        }
-        public ActionResult Map_GetWaterProtection()// 
-        {
-            //RGEContext db = new RGEContext();
-            //{
-            //    string x = "26.4422796312367";
-            //    string y = "53.9033260781941"; 
-            //    MapType map_type = new MapType(x, y);
-            //    WaterProtectionArea wpa = new WaterProtectionArea();
-            //    if (MapType.GetWaterProtection(map_type, db, out wpa))
-            //    {
-            //        int k = 1;
-            //    };
-            //}
-            return View();
-        }
-        public ActionResult Map_GetWaterIntake()// 
-        {
-            //RGEContext db = new RGEContext();
-            //{
-            //    string x = "31.147923";
-            //    string y = "52.416785"; // Ипуть
-            //    MapType map_type = new MapType(x, y);
-            //    WaterProtectionArea wpa = new WaterProtectionArea();
-            //    if (MapType.GetWaterIntake(map_type, db, out wpa))
-            //    {
-            //        int k = 1;
-            //    };
-            //}
             return View();
         }
         public ActionResult MapGetGroundType()// 
@@ -199,7 +101,21 @@ namespace EGH01.Controllers
             }
             return View();
         }
-
+        public ActionResult Map_GetSun()// 
+        {
+            RGEContext db = new RGEContext();
+            //{
+            //    float x = 27.4421796312367f;
+            //    float y = 53.9043260781941f;
+            //    Coordinates coordinates = new Coordinates(x, y);
+            //    SunRadiation[] sr = new SunRadiation[2];
+            //    if (MapHelper.GetSunRadiation(db, coordinates, out sr))
+            //    {
+            //        int k = 1;
+            //    };
+            //}
+            return View();
+        }
 
 
         public ActionResult Map_GetClimat()// 
@@ -215,6 +131,32 @@ namespace EGH01.Controllers
             //        int k = 1;
             //    };
             //}
+            return View();
+        }
+
+        public ActionResult Map_GetVegetation()// 
+        {
+            RGEContext db = new RGEContext();
+            {
+                //float x = 27.4421796312367f;
+                //float y = 53.9043260781941f;
+                //Coordinates coordinates = new Coordinates(x, y);
+                //string assoc_gr_1 = "";
+                //string shtrih_cod = "";
+                //string code_legen = "";
+                //string class_form = "";
+                //string associatio = "";
+                //string code_rgb = "";
+                //string type_rasty = "";
+                //string krap_code = "";
+                //string dop_code = "";
+                //if (MapHelper.GetVegetation(db, coordinates, out  assoc_gr_1,
+                //                        out  shtrih_cod, out  code_legen, out  class_form, 
+                //                        out  associatio, out  code_rgb, out  type_rasty, out  krap_code, out dop_code))
+                //{
+                //    int k = 1;
+                //};
+            }
             return View();
         }
 
