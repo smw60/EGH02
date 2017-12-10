@@ -40,7 +40,8 @@ namespace EGH01DB.Objects
         public float tubediameter { get; private set; } //  диаметр трубы
         public float productivity { get; private set; } // производительность тонн в сутки для участка нефтедобычи 
         public string geodescription { get; private set; } // географическое описание
-        public static readonly string PREFIX = "OО"; 
+        public static readonly string PREFIX = "OО";
+        public SoilType soiltype { get; private set; }  // почва
 
         // дополнительная инфомация из паспорта объекта 
 
@@ -72,6 +73,9 @@ namespace EGH01DB.Objects
             this.tubediameter = 0.0f;
             this.productivity = 0.0f;
             this.geodescription = string.Empty;
+            //this.soiltype = SoilType.GetByMap()
+
+
         }
         public RiskObject(MapePoint mappoint): base(mappoint) 
         {
@@ -100,6 +104,7 @@ namespace EGH01DB.Objects
             this.tubediameter = 0.0f;
             this.productivity = 0.0f;
             this.geodescription = string.Empty;
+            this.soiltype  = mappoint.soiltype;
         }
         public RiskObject(int id, 
                             Point point, 
@@ -154,6 +159,7 @@ namespace EGH01DB.Objects
             this.tubediameter = tubediameter;
             this.productivity = productivity;
             this.geodescription = geodescription;
+            this.soiltype = SoilType.defaultype;
         }
         public RiskObject(int id)
         {
@@ -182,6 +188,7 @@ namespace EGH01DB.Objects
             this.tubediameter = 0.0f;
             this.productivity = 0.0f;
             this.geodescription = string.Empty;
+            this.soiltype = SoilType.defaultype;
         }
         public RiskObject(int id, Point point)
             : base(point)
@@ -211,6 +218,7 @@ namespace EGH01DB.Objects
             this.tubediameter = 0.0f;
             this.productivity = 0.0f;
             this.geodescription = string.Empty;
+            this.soiltype = SoilType.defaultype;
         }
         
         public RiskObject(XmlNode node)

@@ -29,7 +29,7 @@ namespace EGH01.Models.EGHRGE
 
         public RiskObject   riskobject;
 
-        public const string VIEWNAME = "_ChoiceRiskObject";
+        public static readonly string VIEWNAME = "_ChoiceRiskObject";
 
         public ChoiceRiskObjectViewContext()
         {
@@ -46,22 +46,18 @@ namespace EGH01.Models.EGHRGE
 
         }
         
-        public static ChoiceRiskObjectViewContext Handler(RGEContext context, NameValueCollection parms)
-        {
-           
-            ChoiceRiskObjectViewContext viewcontext = HandlerRiskObject(context, parms);
-                    
-            return (viewcontext);
-        }
         
-        private static ChoiceRiskObjectViewContext HandlerRiskObject(RGEContext context, NameValueCollection parms)
+        
+       public  static ChoiceRiskObjectViewContext Handler(RGEContext context, NameValueCollection parms)
         { 
-            ChoiceRiskObjectViewContext viewcontext = null;
-            if ((viewcontext = context.GetViewContext(VIEWNAME) as ChoiceRiskObjectViewContext) != null)
+            ChoiceRiskObjectViewContext viewcontext = context.GetViewContext(VIEWNAME) as ChoiceRiskObjectViewContext;
+
+
+            if (viewcontext  != null)
             {
-                    string choicefind = parms["ChoiceRiskObject.choicefind"];
-                    if  (!string.IsNullOrEmpty(choicefind))
-                    {
+                string choicefind = parms["ChoiceRiskObject.choicefind"];
+                if (!string.IsNullOrEmpty(choicefind))
+                {
                     switch (choicefind)
                     {
                         case "init": viewcontext.Regim = ChoiceRiskObjectViewContext.REGIM.INIT;
@@ -75,10 +71,10 @@ namespace EGH01.Models.EGHRGE
                             }
                             break;
                         case "set":
-                             int id = 0;
-                             string formid = parms["ChoiceRiskObject.id"];
-                             if (!string.IsNullOrEmpty(formid) && int.TryParse(formid, out id))
-                             {
+                            int id = 0;
+                            string formid = parms["ChoiceRiskObject.id"];
+                            if (!string.IsNullOrEmpty(formid) && int.TryParse(formid, out id))
+                            {
                                 viewcontext.Regim = ChoiceRiskObjectViewContext.REGIM.SET;
                                 viewcontext.RiskObjectID = id;
                                 if (viewcontext.riskobject == null || viewcontext.riskobject.id != id)
@@ -86,21 +82,26 @@ namespace EGH01.Models.EGHRGE
                                     viewcontext.riskobject = new RiskObject();
                                     if (!RiskObject.GetById(context, id, ref viewcontext.riskobject)) viewcontext.Regim = REGIM.ERROR;
                                 }
-                             }
-                             break;
+                            }
+                            break;
                         case "geopinit": viewcontext.Regim = ChoiceRiskObjectViewContext.REGIM.INIT;
-                             break;
+                            break;
                         case "geopchoice": viewcontext.Regim = ChoiceRiskObjectViewContext.REGIM.CHOICE;
-                             viewcontext.coordinates = viewcontext.getCoordinatesParm(viewcontext, parms);
-                             break;
-                        case "geopset": viewcontext.Regim =  REGIM.SET;
-                             viewcontext.coordinates = viewcontext.getCoordinatesParm(viewcontext, parms);
-                             MapePoint mp = new MapePoint(context, viewcontext.coordinates);
-                             viewcontext.riskobject = new RiskObject(mp); 
-                             break;
+                            viewcontext.coordinates = viewcontext.getCoordinatesParm(viewcontext, parms);
+                            break;
+                        case "geopset": viewcontext.Regim = REGIM.SET;
+                            viewcontext.coordinates = viewcontext.getCoordinatesParm(viewcontext, parms);
+                            MapePoint mp = new MapePoint(context, viewcontext.coordinates);
+                            viewcontext.riskobject = new RiskObject(mp);
+                            break;
                         default: break;
-                       }
                     }
+                }
+            }
+            else
+            {
+               viewcontext = new ChoiceRiskObjectViewContext();
+               viewcontext.Regim = REGIM.INIT;
             }
             return (viewcontext);
         }
@@ -133,7 +134,13 @@ namespace EGH01.Models.EGHRGE
 
     }
 }
+//public static ChoiceRiskObjectViewContext Handler(RGEContext context, NameValueCollection parms)
+//{
 
+//    ChoiceRiskObjectViewContext viewcontext = HandlerRiskObject(context, parms);
+
+//    return (viewcontext);
+//}
 
 //string choicefind = parms["ChoiceRiskObject.choicefind"];
 //if  (!string.IsNullOrEmpty(choicefind))

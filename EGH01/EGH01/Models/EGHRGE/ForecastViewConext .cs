@@ -47,114 +47,119 @@ namespace EGH01.Models.EGHRGE
         public static ForecastViewConext Handler(RGEContext context, NameValueCollection parms)
         {
 
-         
-            ForecastViewConext  viewcontext = null;
-            
-            if ((viewcontext = context.GetViewContext(VIEWNAME) as ForecastViewConext) != null)
+
+            ForecastViewConext viewcontext = context.GetViewContext(VIEWNAME) as ForecastViewConext;
+           
+            if (viewcontext != null)
             {
-                        viewcontext.Regim = REGIM.INIT; 
-                        string date = parms["date"];
-                        if (String.IsNullOrEmpty(date)) viewcontext.Regim = REGIM.ERROR;
-                        else
-                        {
-                            DateTime incident_date = DateTime.MinValue;
-                            if (DateTime.TryParse(date, out incident_date)) viewcontext.Incident_date = (DateTime?)incident_date;
-                            else viewcontext.Regim = REGIM.ERROR;
-                        }
+                viewcontext.Regim = REGIM.INIT;
+                string date = parms["date"];
+                if (String.IsNullOrEmpty(date)) viewcontext.Regim = REGIM.ERROR;
+                else
+                {
+                    DateTime incident_date = DateTime.MinValue;
+                    if (DateTime.TryParse(date, out incident_date)) viewcontext.Incident_date = (DateTime?)incident_date;
+                    else viewcontext.Regim = REGIM.ERROR;
+                }
 
-                        string date_message = parms["date_message"];
-                        if (String.IsNullOrEmpty(date_message)) viewcontext.Regim = REGIM.ERROR;
-                        else
-                        {
-                            DateTime incident_date_message = DateTime.MinValue;
-                            if (DateTime.TryParse(date_message, out incident_date_message)) viewcontext.Incident_date_message = (DateTime?)incident_date_message;
-                            else viewcontext.Regim = REGIM.ERROR;
-                        }
+                string date_message = parms["date_message"];
+                if (String.IsNullOrEmpty(date_message)) viewcontext.Regim = REGIM.ERROR;
+                else
+                {
+                    DateTime incident_date_message = DateTime.MinValue;
+                    if (DateTime.TryParse(date_message, out incident_date_message)) viewcontext.Incident_date_message = (DateTime?)incident_date_message;
+                    else viewcontext.Regim = REGIM.ERROR;
+                }
 
-                        string parmpetrochemicaltype = parms["petrochemicaltype"];
-                        if (String.IsNullOrEmpty(parmpetrochemicaltype)) viewcontext.Regim = REGIM.ERROR;
-                        else
+                string parmpetrochemicaltype = parms["petrochemicaltype"];
+                if (String.IsNullOrEmpty(parmpetrochemicaltype)) viewcontext.Regim = REGIM.ERROR;
+                else
+                {
+                    int code = -1;
+                    if (int.TryParse(parmpetrochemicaltype, out code))
+                    {
+                        if (viewcontext.petrochemicaltype == null || viewcontext.petrochemicaltype.code_type != code)
                         {
-                            int code = -1;
-                            if (int.TryParse(parmpetrochemicaltype, out code))
-                            {
-                                if (viewcontext.petrochemicaltype == null || viewcontext.petrochemicaltype.code_type != code)
-                                {
-                                    viewcontext.petrochemicaltype = new PetrochemicalType();
-                                    if (!PetrochemicalType.GetByCode(context, code, ref viewcontext.petrochemicaltype)) viewcontext.Regim = REGIM.ERROR;
-                                }
-                            }
-                            else viewcontext.Regim = REGIM.ERROR;
+                            viewcontext.petrochemicaltype = new PetrochemicalType();
+                            if (!PetrochemicalType.GetByCode(context, code, ref viewcontext.petrochemicaltype)) viewcontext.Regim = REGIM.ERROR;
                         }
+                    }
+                    else viewcontext.Regim = REGIM.ERROR;
+                }
 
-                        string incidenttype = parms["incidenttype"];
-                        if (String.IsNullOrEmpty(incidenttype)) viewcontext.Regim = REGIM.ERROR;
-                        else
+                string incidenttype = parms["incidenttype"];
+                if (String.IsNullOrEmpty(incidenttype)) viewcontext.Regim = REGIM.ERROR;
+                else
+                {
+                    int code = -1;
+                    if (int.TryParse(incidenttype, out code))
+                    {
+                        viewcontext.Incident_type_code = (int?)code;
+                        if (viewcontext.incidenttype == null || viewcontext.incidenttype.type_code != code)
                         {
-                            int code = -1;
-                            if (int.TryParse(incidenttype, out code))
-                            {
-                                viewcontext.Incident_type_code = (int?)code;
-                                if (viewcontext.incidenttype == null || viewcontext.incidenttype.type_code != code)
-                                {
-                                 if(!IncidentType.GetByCode(context,code, out viewcontext.incidenttype)) viewcontext.Regim = REGIM.ERROR; 
-                                }
-                            }
-                            else viewcontext.Regim = REGIM.ERROR;
+                            if (!IncidentType.GetByCode(context, code, out viewcontext.incidenttype)) viewcontext.Regim = REGIM.ERROR;
                         }
-                            
-                        string volume = parms["volume"];
-                        if (String.IsNullOrEmpty(volume)) viewcontext.Regim = REGIM.ERROR;
-                        else
-                        {
-                            float v = 0.0f;
-                            if (float.TryParse(volume, out v)) viewcontext.Volume = (float?)v;
-                            else viewcontext.Regim = REGIM.ERROR;
-                        }
+                    }
+                    else viewcontext.Regim = REGIM.ERROR;
+                }
 
-                        string temperature = parms["temperature"];
-                        if (String.IsNullOrEmpty(temperature)) viewcontext.Regim = REGIM.ERROR;
-                        else
-                        {
-                            float t = 0.0f;
-                            if (float.TryParse(temperature, out t)) viewcontext.Temperature = (float?)t;
-                            else viewcontext.Regim = REGIM.ERROR;
-                        }
+                string volume = parms["volume"];
+                if (String.IsNullOrEmpty(volume)) viewcontext.Regim = REGIM.ERROR;
+                else
+                {
+                    float v = 0.0f;
+                    if (float.TryParse(volume, out v)) viewcontext.Volume = (float?)v;
+                    else viewcontext.Regim = REGIM.ERROR;
+                }
 
-                        //Canv canv = new Canv(12, new Canv.XY[7]
-                        //                            {
-                        //                                new Canv.XY(70,250),
-                        //                                new Canv.XY(80,70), 
-                        //                                new Canv.XY(100,50),
-                        //                                new Canv.XY(200,80), 
-                        //                                new Canv.XY(370,230),
-                        //                                new Canv.XY(220,360), 
-                        //                                new Canv.XY(70,250)
-                        //                            });
-                        //viewcontext.JSONCanv = new JavaScriptSerializer().Serialize(canv);
-                       if (viewcontext.Regim == REGIM.INIT) viewcontext.Regim = REGIM.SET; 
+                string temperature = parms["temperature"];
+                if (String.IsNullOrEmpty(temperature)) viewcontext.Regim = REGIM.ERROR;
+                else
+                {
+                    float t = 0.0f;
+                    if (float.TryParse(temperature, out t)) viewcontext.Temperature = (float?)t;
+                    else viewcontext.Regim = REGIM.ERROR;
+                }
 
-           }
+                //Canv canv = new Canv(12, new Canv.XY[7]
+                //                            {
+                //                                new Canv.XY(70,250),
+                //                                new Canv.XY(80,70), 
+                //                                new Canv.XY(100,50),
+                //                                new Canv.XY(200,80), 
+                //                                new Canv.XY(370,230),
+                //                                new Canv.XY(220,360), 
+                //                                new Canv.XY(70,250)
+                //                            });
+                //viewcontext.JSONCanv = new JavaScriptSerializer().Serialize(canv);
+                if (viewcontext.Regim == REGIM.INIT) viewcontext.Regim = REGIM.SET;
+
+            }
+            else
+            {
+                 viewcontext = new ForecastViewConext();
+                 viewcontext.Regim = REGIM.INIT;
+            }
             return viewcontext;
         }
     }
 
-    public class Canv
-    {
-        public class XY
-        {
-            public int x;
-            public int y;
-            public XY(int x, int y) {this.x = x; this.y = y;}
-        }
-        public int   r;
-        public XY[]  xy;
-        public Canv(int r,  XY[] xy)
-        {
-            this.r = r;
-            this.xy = xy;
-        }
-    } 
+    //public class Canv
+    //{
+    //    public class XY
+    //    {
+    //        public int x;
+    //        public int y;
+    //        public XY(int x, int y) {this.x = x; this.y = y;}
+    //    }
+    //    public int   r;
+    //    public XY[]  xy;
+    //    public Canv(int r,  XY[] xy)
+    //    {
+    //        this.r = r;
+    //        this.xy = xy;
+    //    }
+    //} 
 
 
 }

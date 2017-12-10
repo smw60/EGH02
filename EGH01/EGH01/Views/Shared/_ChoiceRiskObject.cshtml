@@ -5,8 +5,8 @@
 @{
     
     EGH01DB.RGEContext rge = (EGH01DB.RGEContext)Model;
-    ChoiceRiskObjectViewContext context = (ChoiceRiskObjectViewContext)Model.GetViewContext("_ChoiceRiskObject");
-    if (context == null) { Model.SaveViewContext("_ChoiceRiskObject", context = new ChoiceRiskObjectViewContext()); };
+    ChoiceRiskObjectViewContext context = (ChoiceRiskObjectViewContext)Model.GetViewContext(ChoiceRiskObjectViewContext.VIEWNAME);
+    if (context == null) {Model.SaveViewContext(ChoiceRiskObjectViewContext.VIEWNAME, context = new ChoiceRiskObjectViewContext()); };
     List<SelectListItem> riskobjectlist = null;
   
     

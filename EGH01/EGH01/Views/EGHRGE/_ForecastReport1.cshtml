@@ -12,7 +12,7 @@
     EGH01DB.RGEContext.ECOForecast0 level0 = @Model.ecoforecastx.level0;
     EGH01DB.RGEContext.ECOForecast1 level1 = @Model.ecoforecastx.level1;
 
-     string JSONCanv = new JavaScriptSerializer().Serialize(level1.bb);
+    string JSONCanv = new JavaScriptSerializer().Serialize(level1.bb);
     
     
  }
@@ -60,7 +60,7 @@
     <fieldset form="ChoiseRiskObject">
         <legend>Форма  назменого пятна загрязнения</legend>
 
-        <canvas id="topblure" width="400" height="400" style="border-style:solid;border-width:1px; background-color:white;">
+        <canvas id="topblure" width="@level1.bb.CanvaX" height="@level1.bb.CanvaY" style="border-style:solid;border-width:1px; background-color:white;">
 
         </canvas>
         <script type="text/javascript">
@@ -75,20 +75,7 @@
             var canvasH = canvas.height;   // граница canvas
             var context = canvas.getContext('2d');
 
-
-            var maxb = 0
-            for (var i = 1; i < JSONCanv.xy.length; i++) {
-
-                if (JSONCanv.xy[i].x > maxb) maxb = JSONCanv.xy[i].x;
-                if (JSONCanv.xy[i].y > maxb) maxb = JSONCanv.xy[i].y;
-             }
-             maxb = Math.max(maxb, JSONCanv.r);
-             var KS = Math.min(canvasW / 2, canvasH / 2) / maxb;
-                                             
-
-             var R = KS * JSONCanv.r   // радиус окружности 
                         
-            // сетка 
             context.beginPath();
             context.strokeStyle = Grid;
             for (var x = 10; x < canvasW; x += 10)
@@ -104,22 +91,36 @@
             context.stroke();
 
             
-
+            //console.log(JSONCanv.LimitR);
+            //console.log(JSONCanv.R);
             // пятно 
-            context.beginPath();
-            context.fillStyle = DarkStateGray;            //'#FF000';
-            context.moveTo(KS*JSONCanv.xy[0].x, KS*JSONCanv.xy[0].y);
-            for (var i = 1; i < JSONCanv.xy.length; i++)
-            {
-                context.lineTo(KS*JSONCanv.xy[i].x, KS*JSONCanv.xy[i].y);
+            if (JSONCanv.nr >= JSONCanv.LimitR) {
+                context.beginPath();
+                context.fillStyle = DarkStateGray;            //'#FF000';
+                context.moveTo(JSONCanv.xy[0].x, JSONCanv.xy[0].y);
+                for (var i = 1; i < JSONCanv.xy.length; i++) {
+                    context.lineTo(JSONCanv.xy[i].x, JSONCanv.xy[i].y);
+                }
+                context.closePath();
+                context.fill();
             }
-            context.closePath();
-            context.fill();
+            else
+            {
+                context.beginPath();
+                context.fillStyle = DarkStateGray;
+                context.arc(JSONCanv.center.x, JSONCanv.center.y, JSONCanv.R, 0, 2 * Math.PI, true);
+                context.closePath();
+                context.fill();
+            }
+
+
+
+
 
             // окружность 
             context.beginPath();
             context.strokeStyle = Red;
-            context.arc(canvasW / 2, canvasH / 2, KS*R, 0, 2 * Math.PI, true);
+            context.arc(JSONCanv.center.x, JSONCanv.center.y, JSONCanv.R, 0, 2 * Math.PI, true);
 
             // оси  
             context.moveTo(200, 0);
@@ -133,12 +134,24 @@
             context.textBaseline = "middle";
             context.fillStyle = Red;
             context.font = 'bold 30px Arial';             // Courier New';
-            context.fillText(' '+JSONCanv.r + 'м', cx + R, cy-15, 30);
+            context.fillText(' ' + JSONCanv.nr + 'м', JSONCanv.center.x + JSONCanv.R + 2, JSONCanv.center.y - 15, 30);
             context.beginPath();
             context.fillStyle = Red;
-            context.arc(canvasW / 2, canvasH / 2, 2, 0, 2 * Math.PI, true);
+            context.arc(JSONCanv.center.x, JSONCanv.center.y, 2, 0, 2 * Math.PI, true);
             context.closePath();
             context.fill();
+
+
+            //var maxb = 0
+            //for (var i = 1; i < JSONCanv.xy.length; i++) {
+            //    if (JSONCanv.xy[i].x > maxb) maxb = JSONCanv.xy[i].x;
+            //    if (JSONCanv.xy[i].y > maxb) maxb = JSONCanv.xy[i].y;
+            // }
+            // maxb = Math.max(maxb, JSONCanv.r);
+            // var KS = Math.min(canvasW / 2, canvasH / 2) / maxb;
+            // var R = KS * JSONCanv.r   // радиус окружности 
+            // сетка 
+
 
         </script>
 

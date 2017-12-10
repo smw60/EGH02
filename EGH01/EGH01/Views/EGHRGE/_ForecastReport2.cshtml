@@ -10,6 +10,10 @@
 @{
      
     EGH01.Models.EGHRGE.ForecastViewConext context = @Model;
+    EGH01DB.RGEContext.ECOForecast0 level0 = @Model.ecoforecastx.level0;
+    EGH01DB.RGEContext.ECOForecast1 level1 = @Model.ecoforecastx.level1;
+    EGH01DB.RGEContext.ECOForecast2 level2 = @Model.ecoforecastx.level2;
+    
 }
 
 <div class="boxdata">
@@ -20,30 +24,27 @@
         <legend> Справочные данные </legend>
         <p>
             <label class="boxdata-label-40 ">Нефтеемкость почвы </label>
-            22
+            @level2.u2
+
         </p>
         <p>
            <label class="boxdata-label-40 ">Средняя высота почвенного слоя (м) </label>
-            0.25
+            @level2.h2 
         </p>
     </fieldset>
     <fieldset form="ChoiseRiskObject">
         <legend> Вычисления </legend>
         <p>
             <label class="boxdata-label-40 ">Масса нефтепродукта на поверностности почвы (кг) </label>
-            2000
+            @(level0.M0 - level1.M1)
         </p>
         <p>
             <label class="boxdata-label-40 ">Масса адсорбированного почвой нефтепродукта (кг) </label>
-             2000
-        </p>
-        <p>
-            <label class="boxdata-label-40 ">Толщина наземного пятна загрязнения (м) </label>
-            400
+             @level2.M2
         </p>
         <p>
             <label class="boxdata-label-40 ">Максимальная глубина проникновения нефтепродукта в почву (м) </label>
-            0.25
+            @level2.H2
         </p>
     </fieldset>
 
