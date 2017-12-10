@@ -25,8 +25,8 @@ namespace EGH01DB
      {
          public  ECOForecast0 level0  {get; private set;}
          public  ECOForecast1 level1  {get; private set;}
-         public  ECOForecast0 level2  {get; private set;}
-         public  ECOForecast0 level3  {get; private set;}
+         public  ECOForecast2 level2  {get; private set;}
+         public  ECOForecast3 level3  {get; private set;}
          public ECOForecastX(IDBContext db, Incident incident)
          {
 
@@ -40,16 +40,15 @@ namespace EGH01DB
                                             incident.riskobject);
 
              this.level1 = new ECOForecast1(this.level0);
-
-             //this.level2 = new ECOForecast2(this.level1); 
-
+             this.level2 = new ECOForecast2(this.level1);
+             this.level3 = new ECOForecast3(this.level2); 
 
 
          }
 
      }
 
-     public class ECOForecast0     // поверхность 
+    public class ECOForecast0     // поверхность 
      {
          public IDBContext db { get; set; }
          public DateTime date { get; set; }
@@ -118,7 +117,7 @@ namespace EGH01DB
              this.R1 =  (float)Math.Round((float)Math.Sqrt(this.S1 / Math.PI),1);
              this.H1 = f0.V0 / this.S1;
              this.M1 = this.S1 * this.q1;
-             this.bb =  new BlurBorder(this.R1, new BlurBorder.XY[7]   // отладка 
+             this.bb =  new BlurBorder(this.R1, new BlurBorder.XY[]   // отладка 
                                                     {
                                                         new BlurBorder.XY(7,25),
                                                         new BlurBorder.XY(8,7), 
@@ -135,23 +134,69 @@ namespace EGH01DB
      }
      public  class ECOForecast2     // грунт   
      {
+
          public ECOForecast0 f0 { get; private set; }
-         public ECOForecast1 f1 { get; private set; } 
+         public ECOForecast1 f1 { get; private set; }
+         public float        u2 { get; private set; }    // нефтеемкость 
+         public float        h2 { get; private set; }    // средняя толщина почвенного слоя
+         public float        H2 { get; private set; }    // глубина проникновения  
+         public float        M2 { get; private set; }    // адсорбированная почвой масса
 
          public ECOForecast2(ECOForecast1 f1)
          {
              this.f0 = f1.f0;
              this.f1 = f1;
-
-         
+             this.u2 = OilCapacity.defaultvalue.ocapacity; 
+             this.h2 = f0.riskobject.soiltype.gumus_depth;
+             this.M2 = f1.S1 * this.h2 * this.u2 * f0.petrochemicaltype.density;
+             this.H2 = (this.h2 * (f0.M0 - f1.M1) / this.M2) > this.h2 ? this.h2 : (this.h2 * (f0.M0 - f1.M1) / this.M2);    
+           
          }
-
-
-
-
      }
-     protected class ECOForecast3     // грунтовые воды 
+     public class ECOForecast3     // грунтовые воды 
      {
+         public ECOForecast0 f0  { get; private set; }
+         public ECOForecast1 f1  { get; private set; }
+         public ECOForecast2 f2  { get; private set; }
+         public float        h3  { get; private set; }   // толщина грунта
+         public float        rov { get; private set; }   // плотность воды 
+         public float        dv  { get; private set; }   // коэффициент поверностного натяжения  воды 
+         public float        k3 { get; private set; }   // коэффициент фильтрации воды 
+         public float        r3  { get; private set; }   // коэффициент задержки НП
+         public float        m3  { get; private set; }   // пористость грунта
+         public float        w3  { get; private set; }   // капилярная влагоемкость грунта
+         public float        ro3 { get; private set; }   // плотность грунта 
+         public float        H3  { get; private set; }   // грубина проникновения НП в грунт 
+         public float        M3  { get; private set; }   // масса абсорбированного в грунте НП  
+         public float        С3  { get; private set; }   // максимальная концентрация нп в грунте 
+
+        
+
+         public ECOForecast3(ECOForecast2 f2)
+         {
+            this.f0 = f2.f0;
+            this.f1 = f2.f1;
+            {
+                this.ro3 = 1000; 
+                WaterProperties wp = null;
+                float delta = 0;
+                if (WaterProperties.Get(f0.db, f0.temperature, out wp, out delta))
+                {
+                    this.ro3 = wp.density;                
+                }
+             }
+            
+             this.h3 =  this.f0.riskobject.waterdeep;
+             this.k3  = this.f0.riskobject.groundtype.waterfilter;
+             this.r3  = this.f0.riskobject.groundtype.holdmigration;
+             this.m3  = this.f0.riskobject.groundtype.porosity;
+             this.w3  = this.f0.riskobject.groundtype.watercapacity;
+             this.ro3 = this.f0.riskobject.groundtype.density;
+                         
+             //this.M3  = this.h3 * this.f1.S1  
+             //his.this.C3  = 
+
+         }
 
      }
 
@@ -163,14 +208,45 @@ namespace EGH01DB
              public int y;
              public XY(int x, int y) { this.x = x; this.y = y; }
          }
-         public float r;
+         public int R;
+         public int LimitR = 7;
+         public int nr;  
+         public int   CanvaX = 400;
+         public int   CanvaY = 400;
+         public XY center = null;
+         public float KS = 1.0f;
          public XY[] xy;
         
          public BlurBorder(float r, XY[] xy)
          {
-             this.r = (float)Math.Round(r,1);
              this.xy = xy;
+             this.KS = getKS();
+             this.nr = (int)Math.Ceiling(r);
+             this.R =  (int)Math.Ceiling(r*KS);
+            
+             this.center = new XY(this.CanvaX / 2, this.CanvaY / 2);
+             for (int k = 0; k < this.xy.Length; k++)
+             {
+                 this.xy[k].x = (int)(this.KS * (float)this.xy[k].x);
+                 this.xy[k].y = (int)(this.KS * (float)this.xy[k].y); 
+             }
+             
          }
+         private float getKS()
+         {
+             float rc = 1.0f;
+             int   mxy = 1;
+             for (int k = 0; k < this.xy.Length; k++)
+             {
+                 mxy = xy[k].x > mxy ? xy[k].x : mxy;
+                 mxy = xy[k].y > mxy ? xy[k].y : mxy;
+             }
+             rc = ((float)Math.Min(this.CanvaX, this.CanvaY)) / ((float)mxy); 
+
+             return rc;
+         }
+
+
      } 
 
 
