@@ -199,6 +199,22 @@ namespace EGH01.Controllers
             return View();
         }
 
+        public ActionResult Map_GetClimat()// 
+        {
+            //RGEContext db = new RGEContext();
+            //{
+            //    float x = 27.4421796312367f;
+            //    float y = 53.9043260781941f;
+            //    Coordinates coordinates = new Coordinates(x, y);
+            //    Climat climat = new Climat(coordinates);
+            //    if (Climat.GetByMap(db, coordinates, out climat))
+            //    {
+            //        int k = 1;
+            //    };
+            //}
+            return View();
+        }
+
         public ActionResult XML()
         {
             {
