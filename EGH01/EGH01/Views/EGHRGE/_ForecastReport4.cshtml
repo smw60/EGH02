@@ -1,0 +1,46 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Types;
+@using EGH01DB.Blurs;
+@using EGH01DB.Objects;
+@using EGH01.Models.EGHRGE;
+@model  EGH01.Models.EGHRGE.ForecastViewConext
+
+@{
+     
+    EGH01.Models.EGHRGE.ForecastViewConext context = @Model;
+}
+
+<div class="boxdata">
+
+    <h4>4. Слой грунтовых вод </h4>
+        
+    <fieldset form="ChoiseRiskObject">
+        <legend> Вычисления </legend>
+        <p>
+            <label class="boxdata-label-40 ">Масса нефтепродукта достигшая грунтовых вод (кг)</label>
+            400
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Время достижения максимальной концентрации (с) </label>
+            2000
+        </p>
+
+        <p>
+            <label class="boxdata-label-40 ">Максимальное расстояние распространения фронта загрзнения (м) </label>
+             2000
+        </p>
+        
+    </fieldset>
+    
+    <fieldset form="ChoiseRiskObject">
+        <legend> Природоохранные объекты </legend>
+        
+
+    </fieldset>
+
+
+
+</div>
+       

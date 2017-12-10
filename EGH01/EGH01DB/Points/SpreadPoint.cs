@@ -17,6 +17,7 @@ namespace EGH01DB.Points
     {
         public PetrochemicalType petrochemicaltype {get;  private set;}                   // нефтепродукт 
         public float             volume            {get;  private set;}                   // объем разлива м3
+        public float             temperature       {get; private set; }                   // температура воздуха С
         public RiskObject        riskobject        {get;  private set;}                   // техногенный объект
         public CadastreType      cadastretype      {get; private set; }                   // кадастровый тип земли
         public bool              isriskobject      {get {return riskobject != null;} }    // разлив на техногенном объекте?
@@ -36,6 +37,7 @@ namespace EGH01DB.Points
             this.volume = volume;
             this.riskobject = null;         //  разлив не связан с техногенным объектом 
             this.cadastretype = cadastretype;
+            this.temperature = temperature;
         }
         // разлив на техногенном объекте 
         public SpreadPoint(RiskObject riskobject, PetrochemicalType petrochemicaltype, float volume, float temperature = 0)

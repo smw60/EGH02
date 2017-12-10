@@ -25,7 +25,7 @@ namespace EGH01.Controllers
             try
             {
                 db = new RGEContext();
-                ViewBag.msg = "Соединение с базой данных установлено";  // debug
+                //ViewBag.msg = "Соединение с базой данных установлено";  // debug
                 view = View("IncidentType",db);
                 if (menuitem.Equals("IncidentType.Create"))
                 {

@@ -1,0 +1,88 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Types;
+@using EGH01DB.Blurs;
+@using EGH01DB.Objects;
+@using EGH01.Models.EGHRGE;
+@model  EGH01.Models.EGHRGE.ForecastViewConext
+
+@{
+     
+    EGH01.Models.EGHRGE.ForecastViewConext context = @Model;
+}
+
+<div class="boxdata">
+
+    <h4>3. Грунтовый слой</h4>
+    
+    <fieldset form="ChoiseRiskObject">
+        <legend> Справочные данные </legend>
+         <p>
+            <label class="boxdata-label-40 ">Средняя плотность грунта (кг/м<sup>3</sup>)</label>
+            1450
+        </p>
+        <p>
+           <label class="boxdata-label-40 ">Коэффициент фильтрации грунтом воды (м/с)</label>
+            22
+        </p>
+        <p>
+           <label class="boxdata-label-40 ">Коэффициент задержки нефтепродукта в грунте </label>
+            0.25
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Пористость грунта </label>
+            0.25
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Капилярная влагомкость  грунта</label>
+            0.25
+        </p>
+
+        <p>
+            <label class="boxdata-label-40 ">Плотность воды (кг/м<sup>3</sup>)</label>
+            1000
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Коэффициент поверностного натяжения воды (кг/с<sup>2</sup>)</label>
+            0.33
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Толщина грунтового слоя  (м)</label>
+            3.5
+        </p>
+        
+    </fieldset>
+    <fieldset form="ChoiseRiskObject">
+        <legend> Вычисления </legend>
+        <p>
+            <label class="boxdata-label-40 ">Масса нефтепродукта достигшая грунтового слоя (кг) </label>
+            2000
+        </p>
+
+        <p>
+            <label class="boxdata-label-40 ">Скорость вертикального проникновенния нефтепродукта в грунт(м/с) </label>
+             2000
+        </p>
+        
+        <p>
+            <label class="boxdata-label-40 ">Максимальная глубина проникновения нефтепродукта в почву (м) </label>
+            0.25
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Максимальная концентрация нефтеродукта в грунте</label>
+            400
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Масса нефтепродукта адсорбированная грунтом (кг)</label>
+            400
+        </p>
+
+
+    </fieldset>
+
+
+
+
+</div>
+       

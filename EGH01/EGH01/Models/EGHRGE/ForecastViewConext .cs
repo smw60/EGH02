@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using EGH01DB;
 using EGH01DB.Types;
 using System.Collections.Specialized;
 using EGH01DB.Objects;
-
+using EGH01.Core;
 namespace EGH01.Models.EGHRGE
 {
     public class ForecastViewConext
     {
-        public enum REGIM {INIT, ERROR, RUNERROR, REPORT};
+        public enum REGIM {INIT, SET, ERROR, RUNERROR, REPORT};
         
         public REGIM Regim                        {get; set;}
         public DateTime? Incident_date            {get; set;}
@@ -29,20 +30,26 @@ namespace EGH01.Models.EGHRGE
         public float?    Temperature              {get; set;}
         public PetrochemicalType petrochemicaltype;
         public RiskObject        riskobject;         
-        public RGEContext.ECOForecast ecoforecast {get; set;}
+        public RGEContext.ECOForecast  ecoforecast  {get; set;}
+        public RGEContext.ECOForecastX ecoforecastx {get; set;}
+        public IncidentType            incidenttype; 
         public const string VIEWNAME = "Forecast";
+        public Menu.MenuItem menuitemgeop  = new Menu.MenuItem("Географическая точка", "Forecast.Point", true);
+        public Menu.MenuItem menuitemrobj  = new Menu.MenuItem("Техногенный объект",   "Forecast.Point", true);
+        public Menu.MenuItem menuitempoint = null;
+        public string JSONCanv; 
+
+        public ForecastViewConext() 
+        {
+            this.menuitempoint = menuitemgeop;
+        }
         
-        //public ForecastViewConext()
-        //{
-        //    this.petrochemicaltype = null;
-        //    this.riskobject = null;
-        //}
-
-
         public static ForecastViewConext Handler(RGEContext context, NameValueCollection parms)
         {
+
+         
             ForecastViewConext  viewcontext = null;
-          //  string menuitem  = parms["menuitem"];
+            
             if ((viewcontext = context.GetViewContext(VIEWNAME) as ForecastViewConext) != null)
             {
                         viewcontext.Regim = REGIM.INIT; 
@@ -85,10 +92,17 @@ namespace EGH01.Models.EGHRGE
                         else
                         {
                             int code = -1;
-                            if (int.TryParse(incidenttype, out code)) viewcontext.Incident_type_code = (int?)code;
+                            if (int.TryParse(incidenttype, out code))
+                            {
+                                viewcontext.Incident_type_code = (int?)code;
+                                if (viewcontext.incidenttype == null || viewcontext.incidenttype.type_code != code)
+                                {
+                                 if(!IncidentType.GetByCode(context,code, out viewcontext.incidenttype)) viewcontext.Regim = REGIM.ERROR; 
+                                }
+                            }
                             else viewcontext.Regim = REGIM.ERROR;
                         }
-
+                            
                         string volume = parms["volume"];
                         if (String.IsNullOrEmpty(volume)) viewcontext.Regim = REGIM.ERROR;
                         else
@@ -107,26 +121,41 @@ namespace EGH01.Models.EGHRGE
                             else viewcontext.Regim = REGIM.ERROR;
                         }
 
-                        //string riskobjectid = parms["riskobjectid"];
-                        //if (String.IsNullOrEmpty(riskobjectid)) viewcontext.Regim = REGIM.ERROR;
-                        //else
-                        //{
-                        //    int id = 0;
-                        //    if (int.TryParse(riskobjectid, out id))
-                        //    {
-                        //        if (viewcontext.riskobject == null || viewcontext.riskobject.id != id) 
-                        //        {
-                        //            viewcontext.riskobject = new RiskObject();
-                        //            if (!RiskObject.GetById(context, id, ref viewcontext.riskobject)) viewcontext.Regim = REGIM.ERROR;
-                        //        }
-                        //    }
-                        //    else viewcontext.Regim = REGIM.ERROR;
-                        //}
+                        //Canv canv = new Canv(12, new Canv.XY[7]
+                        //                            {
+                        //                                new Canv.XY(70,250),
+                        //                                new Canv.XY(80,70), 
+                        //                                new Canv.XY(100,50),
+                        //                                new Canv.XY(200,80), 
+                        //                                new Canv.XY(370,230),
+                        //                                new Canv.XY(220,360), 
+                        //                                new Canv.XY(70,250)
+                        //                            });
+                        //viewcontext.JSONCanv = new JavaScriptSerializer().Serialize(canv);
+                       if (viewcontext.Regim == REGIM.INIT) viewcontext.Regim = REGIM.SET; 
 
-                        
            }
             return viewcontext;
         }
     }
+
+    public class Canv
+    {
+        public class XY
+        {
+            public int x;
+            public int y;
+            public XY(int x, int y) {this.x = x; this.y = y;}
+        }
+        public int   r;
+        public XY[]  xy;
+        public Canv(int r,  XY[] xy)
+        {
+            this.r = r;
+            this.xy = xy;
+        }
+    } 
+
+
 }
 

@@ -94,6 +94,7 @@
     <Compile Include="Primitives\Climat.cs" />
     <Compile Include="Primitives\Const.cs" />
     <Compile Include="Primitives\Coordinates.cs" />
+    <Compile Include="Primitives\EvaporationCoefficient.cs" />
     <Compile Include="Primitives\Helper1.cs" />
     <Compile Include="ORTContextModel.cs" />
     <Compile Include="Primitives\MapHelper.cs" />

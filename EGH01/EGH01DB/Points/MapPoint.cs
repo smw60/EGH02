@@ -36,7 +36,7 @@ namespace EGH01DB.Points
         public static District getDistrict(IDBContext db, Coordinates coordinates)
         {
             District rc = null;
-            if (!District.GetByMap(db, coordinates, out rc)) rc = District.defaulttype;
+            if (!District.GetByMap(db, coordinates, out rc))  rc = District.defaulttype;
             return rc;
         }
         public static Climat getClimat(IDBContext db, Coordinates coordinates)

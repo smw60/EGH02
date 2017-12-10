@@ -1,0 +1,54 @@
+﻿@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Types;
+@using EGH01DB.Blurs;
+@using EGH01DB.Objects;
+@using EGH01.Models.EGHRGE;
+@model  EGH01.Models.EGHRGE.ForecastViewConext
+
+@{
+     
+    EGH01.Models.EGHRGE.ForecastViewConext context = @Model;
+}
+
+<div class="boxdata">
+
+    <h4>2. Почвенный слой</h4>
+    
+    <fieldset form="ChoiseRiskObject">
+        <legend> Справочные данные </legend>
+        <p>
+            <label class="boxdata-label-40 ">Нефтеемкость почвы </label>
+            22
+        </p>
+        <p>
+           <label class="boxdata-label-40 ">Средняя высота почвенного слоя (м) </label>
+            0.25
+        </p>
+    </fieldset>
+    <fieldset form="ChoiseRiskObject">
+        <legend> Вычисления </legend>
+        <p>
+            <label class="boxdata-label-40 ">Масса нефтепродукта на поверностности почвы (кг) </label>
+            2000
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Масса адсорбированного почвой нефтепродукта (кг) </label>
+             2000
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Толщина наземного пятна загрязнения (м) </label>
+            400
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Максимальная глубина проникновения нефтепродукта в почву (м) </label>
+            0.25
+        </p>
+    </fieldset>
+
+
+
+
+</div>
+       

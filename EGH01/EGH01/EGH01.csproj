@@ -234,6 +234,7 @@
     <Compile Include="Models\EGHGEA\SoilPollutionCategoriesView.cs" />
     <Compile Include="Models\EGHORT\WaterCleaningMethodView.cs" />
     <Compile Include="Models\EGHORT\WaterProtectionAreaView.cs" />
+    <Compile Include="Models\EGHRGE\ChoiceGeoPointViewContext.cs" />
     <Compile Include="Models\EGHRGE\EcoObjectTypeView.cs" />
     <Compile Include="Models\EGHRGE\EcoObjectView.cs" />
     <Compile Include="Models\EGHRGE\ChoiceRiskObjectViewContext.cs" />
@@ -284,6 +285,7 @@
     <Content Include="Resources\create.jpg" />
     <Content Include="Resources\delete-ico.png" />
     <Content Include="Resources\edit-ico.png" />
+    <Content Include="Resources\icon_ndt.png" />
     <Content Include="Resources\Layout_Mobile_Whiteframe.png" />
     <Content Include="Resources\logo_bstu_v.png" />
     <Content Include="Resources\map.png" />
@@ -300,6 +302,7 @@
     <Content Include="Scripts\html2canvas.svg.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\LoadFile.js" />
+    <Content Include="Scripts\Map.js" />
     <Content Include="Scripts\stickynotes.js" />
     <Content Include="Scripts\time.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -495,6 +498,11 @@
     <Content Include="Views\EGHMAP\Index.cshtml" />
     <Content Include="Views\Debug\Index.cshtml" />
     <Content Include="Views\EGHRGE\_ForecastReport0.cshtml" />
+    <Content Include="Views\Shared\_ChoiceGeoPoint.cshtml" />
+    <Content Include="Views\EGHRGE\_ForecastReport1.cshtml" />
+    <Content Include="Views\EGHRGE\_ForecastReport2.cshtml" />
+    <Content Include="Views\EGHRGE\_ForecastReport3.cshtml" />
+    <Content Include="Views\EGHRGE\_ForecastReport4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

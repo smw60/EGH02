@@ -1089,7 +1089,7 @@ namespace EGH01DB.Objects
                                 listobj.Add(o);
                             }
                         }
-                        rc = (listid.Count == listobj.Count());
+                        rc = (listid.Count >= listobj.Count()); // smw60:было == , теперь не работает 
                     }
 
                 }

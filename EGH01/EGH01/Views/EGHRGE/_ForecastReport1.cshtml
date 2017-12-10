@@ -1,0 +1,157 @@
+﻿@using System.Web.Script.Serialization;
+@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Types;
+@using EGH01DB.Blurs;
+@using EGH01DB.Objects;
+@using EGH01.Models.EGHRGE;
+@model  EGH01.Models.EGHRGE.ForecastViewConext
+
+@{
+    EGH01DB.RGEContext.ECOForecast0 level0 = @Model.ecoforecastx.level0;
+    EGH01DB.RGEContext.ECOForecast1 level1 = @Model.ecoforecastx.level1;
+
+     string JSONCanv = new JavaScriptSerializer().Serialize(level1.bb);
+    
+    
+ }
+
+<div class="boxdata">
+
+    <h4>1. Поверхносный слой</h4>
+    
+    <fieldset form="ChoiseRiskObject">
+        <legend> Справочные данные </legend>
+        <p>
+            <label class="boxdata-label-40 ">Коэффициент растекания (м<sup>-1</sup>) </label>
+            @level1.d1
+        </p>
+        <p>
+           <label class="boxdata-label-40 ">Удельная величина выбросов нефтепродукта (кг/м<sup>2</sup>) </label>
+            @level1.q1
+        </p>
+    </fieldset>
+    <fieldset form="ChoiseRiskObject">
+        <legend> Вычисления </legend>
+        <p>
+            <label class="boxdata-label-40 ">Масса нефтепродукта на поверностном  слое (кг) </label>
+            @level0.M0
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Площадь наземного пятна загрязнения (м<sup>2</sup>) </label>
+            @level1.S1
+        </p>
+
+        <p>
+            <label class="boxdata-label-40 "> Радиус пятна при равномерном растекании (м) </label>
+            @level1.R1
+        </p>
+
+        <p>
+            <label class="boxdata-label-40 ">Толщина наземного пятна загрязнения (м) </label>
+            @level1.H1
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Масса испарившегося нефтепродукта (кг) </label>
+            @level1.M1
+        </p>
+    </fieldset>
+    <fieldset form="ChoiseRiskObject">
+        <legend>Форма  назменого пятна загрязнения</legend>
+
+        <canvas id="topblure" width="400" height="400" style="border-style:solid;border-width:1px; background-color:white;">
+
+        </canvas>
+        <script type="text/javascript">
+            var JSONCanv = JSON.parse("@JSONCanv".split('&quot;').join('"'));  
+            var DarkOliveGray = '#556B2F';
+            var DarkStateGray = '#2F4F4F';
+            var Red =  '#FF0000';
+            var Grid = '#6495ED';
+            var White = '#FFFFFF';
+            var canvas = document.getElementById('topblure'); // canvas
+            var canvasW = canvas.width;    // граница canvas
+            var canvasH = canvas.height;   // граница canvas
+            var context = canvas.getContext('2d');
+
+
+            var maxb = 0
+            for (var i = 1; i < JSONCanv.xy.length; i++) {
+
+                if (JSONCanv.xy[i].x > maxb) maxb = JSONCanv.xy[i].x;
+                if (JSONCanv.xy[i].y > maxb) maxb = JSONCanv.xy[i].y;
+             }
+             maxb = Math.max(maxb, JSONCanv.r);
+             var KS = Math.min(canvasW / 2, canvasH / 2) / maxb;
+                                             
+
+             var R = KS * JSONCanv.r   // радиус окружности 
+                        
+            // сетка 
+            context.beginPath();
+            context.strokeStyle = Grid;
+            for (var x = 10; x < canvasW; x += 10)
+            {
+                context.moveTo(x, 0);
+                context.lineTo(x, canvasH);
+            }
+            for (var y = 10; y < canvasH; y += 10) {
+                context.moveTo(0, y);
+                context.lineTo(canvasW, y);
+            }
+            context.closePath();
+            context.stroke();
+
+            
+
+            // пятно 
+            context.beginPath();
+            context.fillStyle = DarkStateGray;            //'#FF000';
+            context.moveTo(KS*JSONCanv.xy[0].x, KS*JSONCanv.xy[0].y);
+            for (var i = 1; i < JSONCanv.xy.length; i++)
+            {
+                context.lineTo(KS*JSONCanv.xy[i].x, KS*JSONCanv.xy[i].y);
+            }
+            context.closePath();
+            context.fill();
+
+            // окружность 
+            context.beginPath();
+            context.strokeStyle = Red;
+            context.arc(canvasW / 2, canvasH / 2, KS*R, 0, 2 * Math.PI, true);
+
+            // оси  
+            context.moveTo(200, 0);
+            context.lineTo(200, 400);
+            context.moveTo(0, 200);
+            context.lineTo(400, 200);
+            context.closePath();
+            context.stroke();
+
+            // надпись 
+            context.textBaseline = "middle";
+            context.fillStyle = Red;
+            context.font = 'bold 30px Arial';             // Courier New';
+            context.fillText(' '+JSONCanv.r + 'м', cx + R, cy-15, 30);
+            context.beginPath();
+            context.fillStyle = Red;
+            context.arc(canvasW / 2, canvasH / 2, 2, 0, 2 * Math.PI, true);
+            context.closePath();
+            context.fill();
+
+        </script>
+
+    </fieldset>
+
+
+    <fieldset form="ChoiseRiskObject">
+        <legend> Природоохранные объекты </legend>
+
+
+    </fieldset>
+
+
+
+</div>
+       
