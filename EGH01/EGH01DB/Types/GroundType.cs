@@ -475,14 +475,17 @@ namespace EGH01DB.Types
         }
         public static bool GetByMap(IDBContext db, Coordinates coordinates, out GroundType groundtype)
         {
-            //  заглушка
-            // groundtype = GroundType.defaulttype;
-           
-            // отладка 
-            bool rc = true;
-            if (!(rc = GroundType.GetByCode(db, 9, out groundtype))) groundtype = GroundType.defaulttype; 
+            bool rc = false;
+            groundtype = new GroundType();
+            string  aeration_power;
+            float average_aeration_power;
+            float max_aeration_power;
+            string litology;
+            if (rc = MapHelper.GetAerationZone(db, coordinates, out aeration_power, out average_aeration_power, out max_aeration_power, out litology))
+                if (!(rc = MapHelper.GetGroundCoef(db, coordinates, out groundtype))) groundtype = GroundType.defaulttype;
+                else groundtype.name = litology;
                         
-            return true;
+            return rc;
         }
         public XmlNode toXmlNode(string comment = "")
         {

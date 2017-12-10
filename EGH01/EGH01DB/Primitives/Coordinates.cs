@@ -35,6 +35,21 @@ namespace EGH01DB.Primitives
             //this.Lat  = new DMS(latitude);
             //this.Lng  = new DMS(lngitude);
         }
+
+        public Coordinates getByAngle(Coordinates coordinates, float angle, float distance)
+        { 
+            float LatM = 111321.4f;
+            float LngM  = 111134.9f;
+
+            double dy = distance*Math.Sin(angle*Math.PI/180.0)/LngM;
+            double dx = distance * Math.Cos(angle * Math.PI/ 180.0) / (LatM * Math.Cos(coordinates.latitude * Math.PI/180.0));
+
+            float lat = (float)Math.Round(coordinates.latitude + dy, 6); 
+            float lng = (float)Math.Round(coordinates.lngitude + dx, 6);
+            Coordinates rc = new Coordinates(lat,lng);
+ 
+            return rc;
+        }
         public float Distance(Coordinates to)
         {
             // проверить 

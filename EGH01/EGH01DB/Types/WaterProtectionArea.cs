@@ -16,22 +16,33 @@ namespace EGH01DB.Types
     {
         public int                 type_code   {get; private set; }   // код водоохранной категории 
         public string              name        {get; private set; }   // наименование водоохранной категории
-        static public WaterProtectionArea defaulttype { get { return new WaterProtectionArea(0, "Не определен"); } }  // выдавать при ошибке  
+        public int                 buffer      {get; private set; }   // величина буферной зоны
+                                
+        static public WaterProtectionArea defaulttype { get { return new WaterProtectionArea(0, "Не определен", 0); } }  // выдавать при ошибке  
       
         public WaterProtectionArea()
         {
             this.type_code = -1;
             this.name = string.Empty;
+            this.buffer = 0;
         }
         public WaterProtectionArea(int code)
         {
             this.type_code = code;
             this.name = "";
+            this.buffer = 0;
         }
         public WaterProtectionArea(int code, String name)
         {
             this.type_code = code;
             this.name = name;
+            this.buffer = 0;
+        }
+        public WaterProtectionArea(int code, String name, int buffer)
+        {
+            this.type_code = code;
+            this.name = name;
+            this.buffer = buffer;
         }
         public WaterProtectionArea(XmlNode node)
         {
