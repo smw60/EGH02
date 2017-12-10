@@ -1,0 +1,860 @@
+﻿@using EGH01.Models.EGHRGE;
+@using EGH01DB.Primitives;
+@using EGH01DB.Objects;
+@using EGH01DB.Types;
+@using EGH01.Core;
+@using EGH01.Core;
+@using EGH01.Models.EGH;
+@using EGH01DB.Primitives;
+@using EGH01DB.Objects;
+@using EGH01DB.Types;
+
+@model EGH01DB.RGEContext
+@{
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    ViewBag.Title = "MapPoint";
+    Menu head = new Menu(
+                             );
+
+    Menu create = new Menu(
+                  new Menu.MenuItem("Создать", "IndexCreate", true)
+                );
+
+}
+
+<head>
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.4.2/css/ol.css" type="text/css">
+    <!--<script src="https://code.jquery.com/jquery-1.11.2.js" integrity="sha256-WMJwNbei5YnfOX5dfgVCS5C4waqvc+/0fV7W2uy3DyU=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script src="https://openlayers.org/en/v4.4.2/build/ol.js"></script>
+</head>
+
+
+<div class="box">
+    <form>
+
+        <input type="checkbox" id="Layer8" onclick="toggleLayer(layer8)" onchecked><label for="Layer8">Карта времени миграции</label>
+        <input type="checkbox" id="Layer10" onclick="toggleLayer(layer10)" onchecked><label for="Layer10">Карта грунтовых вод</label>
+        <input type="checkbox" id="Layer13" onclick="toggleLayer(layer13)" onchecked><label for="Layer13">Карта зоны аэрации</label>
+
+        <input type="checkbox" id="Layer15" onclick="toggleLayer(layer15)" onchecked><label for="Layer15">Карта почв</label>
+
+        <input type="checkbox" id="Layer17" onclick="toggleLayer(layer17)" onchecked><label for="Layer17">Карта рельефа</label>
+       
+        <input type="checkbox" id="Layer20" onclick="toggleLayer(layer20)" onchecked><label for="Layer20">Карта среднемесячных температур</label>
+        <input type="checkbox" id="Layer21" onclick="toggleLayer(layer21)" onchecked><label for="Layer21">Карта четвертичных отложений</label>
+    </form>
+    <div>
+        <label class="boxdata-label-20">Тип объекта:&nbsp; Точка</label>
+        <label class="boxdata-label-20">Проекция:&nbsp; EPSG:4326</label>
+    </div>
+    <div class="row">
+        <div class="col-xs-8">
+
+            <div id="map" class="map"></div>
+            <div id="mouse-position"></div>
+            <form id="options-form">
+
+                <div class="form-inline">
+                    <select name="geom-type" id="type" style="display:none">
+                        <option value="Point"></option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-4 sidebar">
+
+            <div class="boxdata">
+                <p>
+                    <label class="boxdata-label-20">Широта</label>
+                    <input readonly class="boxdata-input-10" type="text" id="Latitude" name="Latitude" value="@ViewData["Latitude"]" />&deg;
+                    <input readonly class="boxdata-input-10" type="text" id="Lat_m" name="Lat_m" value="@ViewData["Lat_m"]" />&acute;
+                    <input readonly class="boxdata-input-10" type="text" id="Lat_s" name="Lat_s" value="@ViewData["Lat_s"]" />&quot;
+                </p>
+                <p>
+                    <label class="boxdata-label-20">Долгота</label>
+                    <input readonly class="boxdata-input-10" type="text" id="Lngitude" name="Lngitude" value="@ViewData["Lngitude"]" />&deg;
+                    <input readonly class="boxdata-input-10" type="text" id="Lng_m" name="Lng_m" value="@ViewData["Lng_m"]" />&acute;
+                    <input readonly class="boxdata-input-10" type="text" id="Lng_s" name="Lng_s" value="@ViewData["Lng_s"]" />&quot;
+
+                </p>
+            </div>
+
+            <div style="display:none" id="divv">
+
+              
+          
+                <div class="box">
+                    <label id="regionn"></label><span id="region"></span>
+                    <br>
+                    <label id="districtt"></label><span id="district"></span>
+                </div>
+
+                <div class="box">
+                    <label id="aeration_powerr"></label><span id="aeration_power"></span>
+                    <br>
+                    <label id="average_aeration_powerr"></label><span id="average_aeration_power"></span>
+                   <br>
+                    <label id="max_aeration_powerr"></label><span id="max_aeration_power"></span>
+                    <br>
+                    <label id="litologyy"></label><span id="litology"></span>
+              </div>
+        
+                <div class="box">
+                    <label id="time_migrationn"></label><span id="time_migration"></span>
+                </div>
+                <div class="box">
+                    <label id="heightt"></label><span id="height"></span>
+                </div>
+
+             
+
+                <div class="box">
+                    <label id="soilnamee"></label><span id="soilname"></span>
+                    <br>
+                    <label id="soilmehsostt"></label><span id="soilmehsost"></span>
+                    <br>
+                    <label id="soiltypee"></label><span id="soiltype"></span>
+                    <br>
+                    <label id="soilsubtypee"></label><span id="soilsubtype"></span>
+                    <br>
+                    <label id="humidityy"></label><span id="humidity"></span>%
+                    <br>
+                    <label id="gumusdepthh"></label><span id="gumusdepth"></span>
+                    <br>
+                    <label id="capmoisturecapacityy"></label><span id="capmoisturecapacity"></span>%
+                    <br>
+                    <label id="petrolfiltrationcoeff"></label><span id="petrolfiltrationcoef"></span>м/сут
+                    <br>
+                    <label id="fueloilfiltrationcoeff"></label><span id="fueloilfiltrationcoef"></span>м/сут
+                    <br>
+                    <label id="dieselfiltrationcoeff"></label><span id="dieselfiltrationcoef"></span>м/сут
+                    <br>
+                    <label id="hydrolyticacidityy"></label><span id="hydrolyticacidity"></span>м-экв. на 100 г почвы
+                    <br>
+                    <label id="oilcapacityy"></label><span id="oilcapacity"></span>
+                    <br>
+                    <label id="densityy"></label><span id="density"></span> г/см³
+                    <br>
+                    <label id="carboncontentt"></label><span id="carboncontent"></span>%
+                    <br>
+                    <label id="filtercoefintervall"></label><span id="filtercoefinterval"></span>м/сут
+                    <br>
+                    <label id="porosityintervall"></label><span id="porosityinterval"></span>%
+                    <br>
+                    <label id="glinaintervall"></label><span id="glinainterval"></span>
+                    <br>
+                    <label id="mgintervall"></label><span id="mginterval"></span>%
+                    <br>
+                    <label id="phintervall"></label><span id="phinterval"></span>
+                    <br>
+                    <label id="densityintervall"></label><span id="densityinterval"></span>г/см³
+                    <br>
+                    <label id="maxmoisturecapacityintervall"></label><span id="maxmoisturecapacityinterval"></span>%
+                    <br>
+                    <label id="gumuspercentageintervall"></label><span id="gumuspercentageinterval"></span>%
+                    <br>
+                    <label id="klasss"></label><span id="klass"></span>
+                    <br>
+                    <label id="soiltypecodee"></label><span id="soiltypecode"></span>
+                    <br>
+                    <label id="wrbcodee"></label><span id="wrbcode"></span>
+                    <br>
+                    <label id="rgbcodee"></label><span id="rgbcode"></span>
+                    <br>
+                    <label id="shtrihovkaa"></label><span id="shtrihovka"></span>
+                    <br>
+                    <label id="wrbnewcodee"></label><span id="wrbnewcode"></span>
+                </div>
+            </div>
+
+            <div class="radio">
+                <label>
+                    <input type="radio" name="interaction_type" value="draw" id="interection_type_draw" checked>
+                    Создать &nbsp;
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="interaction_type" value="modify" id="interaction_type_modify" />
+                    Изменить &nbsp;
+                </label>
+            </div>
+
+
+            <div id="buttons">
+                <div class="box">
+                    @*@Html.Partial("_TypeLineMenu", create)*@
+
+                    <button id="clear" class="Очистить" title="Очистить"></button>
+                    <span id="result"></span>
+                    <input type="hidden" id="coords" value="27,54">
+                    <button type="button" class="Центр" title="Центр" value="Центр" onclick="centerMap()"></button>
+                </div>
+            </div>
+            <canvas class="ol-unselectable" width="1000" height="5" style="width: 100%; height: 100%;"></canvas>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var str = 'http://195.50.2.82:8080/geoserver/EGH/wms?';
+    var raster = new ol.layer.Tile({
+        source: new ol.source.OSM(),
+        name: 'OSM'
+    });
+    var vector = new ol.layer.Vector({
+        source: new ol.source.Vector({
+        }),
+        style: new ol.style.Style({
+            fill: new ol.style.Fill({
+                color: 'rgba(255, 255, 255, 0.2)'
+            }),
+            stroke: new ol.style.Stroke({
+                color: '#ffcc33',
+                width: 2
+            }),
+            image: new ol.style.Circle({
+                radius: 7,
+                fill: new ol.style.Fill({
+                    color: '#ffcc33'
+                })
+            })
+        })
+    });
+
+    var layer1 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_экообъектов_лок',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer1.setVisible(false);
+
+
+    var layer3 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_экообъектов_респ_знач',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer3.setVisible(false);
+
+    var layer5 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': '	EGH:Карта_водоемов',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer5.setVisible(false);
+
+    var layer6 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_водозаборов_и_санит_зон',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer6.setVisible(false);
+
+    var layer7 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': '	EGH:Карта_водоохранных_зон_поверх_вод',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer7.setVisible(false);
+
+    var layer8 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_времени_миграции',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer8.setVisible(false);
+
+    var layer9 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_геологическая',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer9.setVisible(false);
+
+    var layer10 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_грунтовых вод',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer10.setVisible(false);
+
+    var layer11 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': '	EGH:Карта_густота_речной_сети',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer11.setVisible(false);
+
+    var layer12 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_защищенности_подземных_вод',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer12.setVisible(false);
+
+    var layer13 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_зоны_аэрации',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer13.setVisible(false);
+
+    var layer14 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_населенных_пунктов',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer14.setVisible(false);
+
+    var layer15 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_почв',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer15.setVisible(false);
+
+    var layer16 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_растительности',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer16.setVisible(false);
+
+    var layer17 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': '	EGH:Карта_рельефа',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer17.setVisible(false);
+
+    var layer18 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_самоочищения',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer18.setVisible(false);
+
+    var layer19 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': '	EGH:Карта_солн_радиации',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer19.setVisible(false);
+
+    var layer20 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': '	EGH:Карта_среднемес_температур',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer20.setVisible(false);
+
+    var layer21 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_четвертичных_отложений',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer21.setVisible(false);
+
+    var layer22 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_административного_деления',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer22.setVisible(true);
+
+    var layers = [raster, layer1, layer3, layer5, layer6, layer7, layer8, layer9, layer10, layer11, layer12, layer13, layer14, layer15, layer16, layer17, layer18, layer19, layer20, layer21, layer22, vector];
+    var myFormat = function (dgts) {
+        return (
+            function (coord1) {
+                var coord2 = [coord1[1], coord1[0]];
+                return ol.coordinate.toStringHDMS(coord2, dgts);
+            });
+    }
+    var mousePositionControl = new ol.control.MousePosition({
+        coordinateFormat: myFormat(0),
+        projection: 'EPSG:4326',
+        className: 'custom-mouse-position',
+        target: document.getElementById('mouse-position'),
+        undefinedHTML: '&nbsp;'
+    });
+    var scaleLineControl = new ol.control.ScaleLine();
+    var view = new ol.View({
+        center: [3200000, 7100000],
+        zoom: 6.8
+    })
+    var map = new ol.Map({
+        controls: ol.control.defaults({
+            attributionOptions:
+            ({
+                collapsible: false
+            }),
+        }).extend([mousePositionControl, scaleLineControl]),
+        layers: layers,
+        target: 'map',
+        view: view
+
+    });
+
+    function hideLayer(layerName) {
+        layerName.setVisible(false);
+    }
+
+    function toggleLayer(layerName) {
+        if (layerName.getVisible() == true) {
+            layerName.setVisible(false);
+        } else {
+            layerName.setVisible(true);
+        }
+    }
+
+    map.on('click', function (evt) {
+        var coordinate = evt.coordinate;
+        var template = '{x}';
+        var hdms = ol.coordinate.format(ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326'), template, 4);
+        var res = "";
+        var template = '{y}';
+        document.getElementById('Latitude').value = deg_to_dms(hdms);
+        document.getElementById('Lat_m').value = deg_to_dmsm(hdms);
+        document.getElementById('Lat_s').value = deg_to_dmss(hdms);
+        var hdms2 = ol.coordinate.format(ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326'), template, 4);
+        document.getElementById('Lngitude').value = deg_to_dms(hdms2);
+        document.getElementById('Lng_m').value = deg_to_dmsm(hdms2);
+        document.getElementById('Lng_s').value = deg_to_dmss(hdms2);
+
+
+        var Latitude = {
+            Lngitude: deg_to_dms(hdms2),
+            Lng_m: deg_to_dmsm(hdms2),
+            Lng_s: deg_to_dmss(hdms2),
+            Latitude: deg_to_dms(hdms),
+            Lat_m: deg_to_dmsm(hdms),
+            Lat_s: deg_to_dmss(hdms)
+        };
+
+        $.ajax({
+            url: '/EGHMAP/CreateFromSoil',
+            type: 'POST',
+            dataType: 'application/json',
+            data: JSON.stringify(Latitude),
+            contentType: 'application/json; charset=utf-8',
+            dataFilter: function (data) {
+                data = JSON.parse(data);
+                var obj = document.getElementById('divv');
+                obj.style.display = "block";
+
+                $("#district").html(data.District);
+                $("#region").html(data.Region);
+                $("#time_migration").html(data.Time_migration);
+                $("#aeration_power").html(data.Aeration_power);
+                $("#average_aeration_power").html(data.Average_aeration_power);
+                $("#max_aeration_power").html(data.Max_aeration_power);
+                $("#litology").html(data.Litology);
+                $("#height").html(data.Height);
+
+
+                $("#soilname").html(data.Soilname);
+                $("#soilmehsost").html(data.Soilmehsost);
+                $("#soiltype").html(data.Soiltype);
+                $("#soilsubtype").html(data.Soilsubtype);
+                $("#humidity").html(data.Humidity);
+                $("#gumusdepth").html(data.Gumusdepth);
+                $("#capmoisturecapacity").html(data.Capmoisturecapacity);
+                $("#petrolfiltrationcoef").html(data.Petrolfiltrationcoef);
+                $("#fueloilfiltrationcoef").html(data.Fueloilfiltrationcoef);
+                $("#dieselfiltrationcoef").html(data.Dieselfiltrationcoef);
+                $("#hydrolyticacidity").html(data.Hydrolyticacidity);
+                $("#oilcapacity").html(data.Oilcapacity);
+                $("#density").html(data.Density);
+                $("#carboncontent").html(data.Carboncontent);
+                $("#filtercoefinterval").html(data.Filtercoefinterval);
+                $("#porosityinterval").html(data.Porosityinterval);
+                $("#glinainterval").html(data.Glinainterval);
+                $("#mginterval").html(data.Mginterval);
+                $("#phinterval").html(data.Phinterval);
+                $("#densityinterval").html(data.Densityinterval);
+                $("#maxmoisturecapacityinterval").html(data.Maxmoisturecapacityinterval);
+                $("#gumuspercentageinterval").html(data.Gumuspercentageinterval);
+                $("#klass").html(data.Klass);
+                $("#soiltypecode").html(data.Soiltypecode);
+                $("#wrbcode").html(data.Wrbcode);
+                $("#wrbnewcode").html(data.Wrbnewcode);
+                $("#rgbcode").html(data.Rgbcode);
+                $("#shtrihovka").html(data.Shtrihovka);
+            
+
+
+               
+                $("#waterdeep").html(data.Waterdeep);
+                $("#waterProtectionArea").html(data.WaterProtectionArea);
+                $("#time_migration").html(data.Time_migration);
+                $("#ecoW").html(data.EcoW);
+                $("#eco").html(data.Eco);
+                $("#self_cleaning_zone").html(data.Self_cleaning_zone);
+                $("#ground").html(data.Ground);
+                $("#soil").html(data.Soil);
+                $("#water_intake").html(data.Water_intake);
+                $("#waterfilter").html(data.Waterfilter);
+                $("#porosity").html(data.Porosity);
+                $("#watercapacity").html(data.Watercapacity);
+
+
+                $("#districtt").html("Область:");
+                $("#regionn").html("Регион:");
+                $("#time_migrationn").html("Время миграции в сутках:");
+                $("#aeration_powerr").html("Мощность зоны аэрации:");
+                $("#average_aeration_powerr").html("Усредненная мощность зоны аэрации:");
+                $("#max_aeration_powerr").html("Максимальная мощность зоны аэрации:");
+                $("#litologyy").html("Литология зоны аэрации:");
+                $("#heightt").html("Высота");
+
+
+                $("#soilnamee").html("Наименование типа почв:");
+                $("#soilmehsostt").html("Механический состав почвы:");
+                $("#soiltypee").html("Тип почв:");
+                $("#soilsubtypee").html("Подтип почв:");
+                $("#humidityy").html("Влажность полевая:");
+                $("#gumusdepthh").html("Мощность гумусового горизонта:");
+                $("#capmoisturecapacityy").html("Капиллярная влагоёмкость:");
+                $("#petrolfiltrationcoeff").html("Коэффициент фильтрации бензина:");
+                $("#fueloilfiltrationcoeff").html("Коэффициент фильтрации  мазута:");
+                $("#dieselfiltrationcoeff").html("Коэффициент фильтрации дизельного топлива:");
+                $("#hydrolyticacidityy").html("Гидролитическая кислотность:");
+                $("#oilcapacityy").html("Коэффициент нефтеёмкости:");
+                $("#densityy").html("Объёмная плотность:");
+                $("#carboncontentt").html("Содержание органического углерода:");
+                $("#filtercoefintervall").html("Коэффициент фильтрации:");
+                $("#porosityintervall").html("Пористость в интервале");
+                $("#glinaintervall").html("Содержание глины в породе:");
+                $("#mgintervall").html("Максимальная гигроскопичность:");
+                $("#phintervall").html("Кислотность почвы:");
+                $("#densityintervall").html("Удельная плотность:");
+                $("#maxmoisturecapacityintervall").html("Предельная полевая влагоёмкость:");
+                $("#gumuspercentageintervall").html("Содержание гумуса:");
+                $("#klasss").html("класс:");
+                $("#soiltypecodee").html("Код почвы помеждународной классификации:");
+                $("#wrbcodee").html("Код почвы в международной классификационной системе WRB (уточнённые):");
+                $("#wrbnewcodee").html("Код почвы в международной классификационной системе WRB:");
+                $("#rgbcodee").html("Код цветового обозначения:");
+                $("#shtrihovkaa").html("Тип штриховки:");
+
+
+
+
+
+
+               
+                $("#waterdeepp").html("Глубина грунтовых вод:");
+                $("#waterProtectionAreaa").html("Водоохранная область:");
+                $("#time_migrationn").html("Время миграции нефтепродукта:");
+                $("#ecoWW").html("Экологический объект:");
+                $("#ecoo").html("Заповедники и парки:");
+                $("#self_cleaning_zonee").html("Способность к самоочищению:");
+                $("#groundd").html("Тип грунта:");
+                $("#soill").html("Тип почвы:");
+                $("#water_intakee").html("Зона водозабора:");
+                $("#waterfilterr").html("Коэффициент фильтрации воды:");
+                $("#porosityy").html("Пористость:");
+                $("#watercapacityy").html(" Влагоемкость:");
+
+
+                alert(data.Высота);
+
+
+            }
+        });
+
+
+    });
+
+
+    function deg_to_dms(hdms) {
+        var d = Math.floor(hdms);
+        var minfloat = (hdms - d) * 60;
+        var m = Math.floor(minfloat);
+        var secfloat = (minfloat - m) * 60;
+        var s = Math.round(secfloat);
+        if (s == 60) {
+            m++;
+            s = 0;
+        }
+        if (m == 60) {
+            d++;
+            m = 0;
+        }
+        return (d);
+    }
+    function deg_to_dmsm(hdms) {
+        var d = Math.floor(hdms);
+        var minfloat = (hdms - d) * 60;
+        var m = Math.floor(minfloat);
+        var secfloat = (minfloat - m) * 60;
+        var s = Math.round(secfloat);
+        if (s == 60) {
+            m++;
+            s = 0;
+        }
+        if (m == 60) {
+            d++;
+            m = 0;
+        }
+        return (m);
+    }
+    function deg_to_dmss(hdms) {
+        var d = Math.floor(hdms);
+        var minfloat = (hdms - d) * 60;
+        var m = Math.floor(minfloat);
+        var secfloat = (minfloat - m) * 60;
+        var s = Math.round(secfloat);
+        if (s == 60) {
+            m++;
+            s = 0;
+        }
+        if (m == 60) {
+            d++;
+            m = 0;
+        }
+        return (s);
+    }
+    function centerMap() {
+        var lonlat = document.getElementById('coords').value;
+        var lonlat1 = lonlat.split(",");
+        var lonlat2 = lonlat.split(",").map(Number);
+
+        map.getView().setCenter(ol.proj.transform(lonlat2, 'EPSG:4326', 'EPSG:3857'));
+        map.getView().setZoom(7.0);
+    }
+    var Modify = {
+        init: function () {
+            this.select = new ol.interaction.Select();
+            map.addInteraction(this.select);
+
+            this.modify = new ol.interaction.Modify({
+                features: this.select.getFeatures()
+            });
+            map.addInteraction(this.modify);
+
+            this.setEvents();
+        },
+        setEvents: function () {
+            var selectedFeatures = this.select.getFeatures();
+
+            this.select.on('change:active', function () {
+                selectedFeatures.forEach(selectedFeatures.remove, selectedFeatures);
+            });
+        },
+        setActive: function (active) {
+            this.select.setActive(active);
+            this.modify.setActive(active);
+        }
+    };
+    Modify.init();
+
+    var optionsForm = document.getElementById('options-form');
+
+    var Draw = {
+        init: function () {
+            map.addInteraction(this.Point);
+            this.Point.setActive(false);
+
+
+        },
+        Point: new ol.interaction.Draw({
+            source: vector.getSource(),
+            type: ('Point'),
+
+        }),
+
+        getActive: function () {
+            return this.activeType ? this[this.activeType].getActive() : false;
+        },
+        setActive: function (active) {
+            var type = optionsForm.elements['geom-type'].value;
+            if (active) {
+                this.activeType && this[this.activeType].setActive(false);
+                this[type].setActive(true);
+                this.activeType = type;
+            } else {
+                this.activeType && this[this.activeType].setActive(false);
+                this.activeType = null;
+            }
+        }
+    };
+    Draw.init();
+
+    optionsForm.onchange = function (e) {
+        var type = e.target.getAttribute('name');
+        var value = e.target.value;
+        if (type == 'geom-type') {
+            Draw.getActive() && Draw.setActive(true);
+        } else if (type == 'interaction') {
+            if (value == 'modify') {
+                Draw.setActive(false);
+                Modify.setActive(true);
+            } else if (value == 'draw') {
+                Draw.setActive(true);
+                Modify.setActive(false);
+            }
+        }
+    };
+
+    Draw.setActive(true);
+    Modify.setActive(false);
+
+    var snap = new ol.interaction.Snap({
+        source: vector.getSource()
+    });
+    map.addInteraction(snap);
+
+
+    var clearButton = document.getElementById('clear');
+    clearButton.addEventListener('click', function (event) {
+        vector.getSource().clear();
+
+    });
+
+</script>
+
