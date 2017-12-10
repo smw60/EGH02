@@ -506,6 +506,59 @@ namespace EGH01DB.Primitives
         }
 
         // #13 Получение карты растительности
+        static public bool GetVegetation(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out string assoc_gr_1,
+                                        out string shtrih_cod, out string code_legen, out string class_form, 
+                                        out string associatio, out string code_rgb, out string type_rasty, out string krap_code, out string dop_code)
+        {
+                     
+            bool rc = false;
+            assoc_gr_1 = "";
+            shtrih_cod = "";
+            code_legen = "";
+            class_form = "";
+            associatio = "";
+            code_rgb = "";
+            type_rasty = "";
+            krap_code = "";
+            dop_code = "";
+
+            using (SqlCommand cmd = new SqlCommand("MAP.InVegetationMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (rc = reader.Read())
+                    {
+                        assoc_gr_1 = (string)reader["assoc_gr_1"];
+                        shtrih_cod = (string)reader["shtrih_cod"];
+                        code_legen = (string)reader["code_legen"];
+                        class_form = (string)reader["class_form"];
+                        associatio = (string)reader["associatio"];
+                        code_rgb = (string)reader["code_rgb"];
+                        type_rasty = (string)reader["type_rasty"];
+                        krap_code = (string)reader["krap_code"];
+                        dop_code = (string)reader["dop_code"];
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
 
         // #14 Получение карты рельефа
         static public bool GetHeight(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out float height)  // Высота над уровнем моря
@@ -543,6 +596,48 @@ namespace EGH01DB.Primitives
         }
 
         // #15 Получение карты геологической
+        static public bool GetGeology(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out string aeration_power,
+                                       out float average_aeration_power, out float max_aeration_power, out string litology) // Карта зоны аэрации
+        {
+            bool rc = false;
+            aeration_power = "";
+            average_aeration_power = 0.0f;
+            max_aeration_power = 0.0f;
+            litology = "";
+
+            using (SqlCommand cmd = new SqlCommand("MAP.InAerationrMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (rc = reader.Read())
+                    {
+                        aeration_power = (string)reader["aeration_power"];
+                        average_aeration_power = (float)reader["average_aeration_power"];
+                        max_aeration_power = (float)reader["max_aeration_power"];
+                        litology = (string)reader["litology"];
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
+        
 
         // #16 Получение карты самоочищения почв
         static public bool GetSelfCleaningZone(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out string self_cleaning_zone) // Способность к самоочищению почв
@@ -581,6 +676,47 @@ namespace EGH01DB.Primitives
         }
         
         // #17 Получение карты солнечной радиации
+        public static bool GetSunRadiation(IDBContext dbcontext, Coordinates coordinates, out SunRadiation[] sunradiation)
+        {
+            bool rc = false;
+            sunradiation = new SunRadiation[2];
+
+            using (SqlCommand cmd = new SqlCommand("MAP.InSunRadiationMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int id = (int)reader["Obj_Id"];
+                        int period = (int)reader["period"];
+                        string layer = (string)reader["layer"];
+                        int from_rad = (int)reader["from_rad"];
+                        int to_rad = (int)reader["to_rad"];
+                        float average_rad = (float)reader["average_rad"];
+                        sunradiation[period - 1] = new SunRadiation(layer, from_rad, to_rad, average_rad);
+                    }
+                    reader.Close();
+                    rc = true;
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
 
         // #18 Получение карты среднемесячных температур
         public static bool GetMonthTemperature(IDBContext dbcontext, Coordinates coordinates, out Climat climat)
