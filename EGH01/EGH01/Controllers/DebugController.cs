@@ -21,21 +21,7 @@ namespace EGH01.Controllers
         }
 
         // проверка процедур  Map
-        public ActionResult Map_GetGroundType()// 
-        {
-            //RGEContext db = new RGEContext();
-            //{
-            //    string x = "27.4421796312367";
-            //    string y = "53.9043260781941";
-            //    MapType map_type = new MapType(x, y);
-            //    GroundType g = new GroundType(1);
-            //    if (MapType.GetGroundType(map_type, db, out g))
-            //    {
-            //        int k = 1;
-            //    };
-            //}
-            return View();
-        }
+        
         public ActionResult Map_GetDistrict()// 
         {
             RGEContext db = new RGEContext();
@@ -198,6 +184,23 @@ namespace EGH01.Controllers
             //}
             return View();
         }
+        public ActionResult MapGetGroundType()// 
+        {
+            RGEContext db = new RGEContext();
+            {
+                //float x = 27.4421796312367f;
+                //float y = 53.9043260781941f;
+                //Coordinates coordinates = new Coordinates(x, y);
+                //GroundType type = new GroundType();
+                //if (GroundType.GetByMap(db, coordinates, out type))
+                //{
+                //    int k = 1;
+                //};
+            }
+            return View();
+        }
+
+
 
         public ActionResult Map_GetClimat()// 
         {
