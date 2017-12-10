@@ -71,7 +71,11 @@ namespace EGH01.Controllers
             EGH01DB.Primitives.MapHelper.GetHeight( db,mapPoint, out height);
             EGH01DB.Types.SoilType soilType = new SoilType();
             EGH01DB.Primitives.MapHelper.GetSoil(db,mapPoint, out soilType);
-            
+
+            EGH01DB.Primitives.Climat climat = new Climat(db,mapPoint);
+            EGH01DB.Primitives.MapHelper.GetMonthTemperature(db,mapPoint, out climat);
+          
+
             var heights = new
             {
                 Soilname = soilType.name,
@@ -79,37 +83,39 @@ namespace EGH01.Controllers
                 Soiltype = soilType.soil_type,
                 Soilsubtype = soilType.soil_subtype,
                 Humidity = soilType.humidity,
-                Gumusdepth =soilType.gumus_depth,
-                Capmoisturecapacity=soilType.watercapacity,
+                Gumusdepth = soilType.gumus_depth,
+                Capmoisturecapacity = soilType.watercapacity,
                 Petrolfiltrationcoef = soilType.petrol_filtration_coef,
-                Fueloilfiltrationcoef= soilType.fuel_oil_filtration_coef,
-                Dieselfiltrationcoef=soilType.diesel_filtration_coef,
-                Hydrolyticacidity=soilType.hydrolytic_acidity,
-                Oilcapacity=soilType.oil_capacity,
-                Density=soilType.density,
-                Carboncontent=soilType.carbon_content,
-                Filtercoefinterval=soilType.filter_coef_interval,
-                Porosityinterval=soilType.porosity_interval,
-                Glinainterval=soilType.glina_interval,
-                Mginterval=soilType.mg_interval,
-                Phinterval=soilType.ph_interval,
-                Densityinterval=soilType.density,
-                Maxmoisturecapacityinterval=soilType.max_moisture_capacity_interval,
-                Gumuspercentageinterval=soilType.gumus_percentage_interval,
-                Klass=soilType.klass,
-                Soiltypecode=soilType.soil_class_code,
-                Wrbcode=soilType.wrb_code,
-                Wrbnewcode=soilType.wrb_new_code,
-                Rgbcode=soilType.rgb_code,
-                Shtrihovka=soilType.shtrihovka,
+                Fueloilfiltrationcoef = soilType.fuel_oil_filtration_coef,
+                Dieselfiltrationcoef = soilType.diesel_filtration_coef,
+                Hydrolyticacidity = soilType.hydrolytic_acidity,
+                Oilcapacity = soilType.oil_capacity,
+                Density = soilType.density,
+                Carboncontent = soilType.carbon_content,
+                Filtercoefinterval = soilType.filter_coef_interval,
+                Porosityinterval = soilType.porosity_interval,
+                Glinainterval = soilType.glina_interval,
+                Mginterval = soilType.mg_interval,
+                Phinterval = soilType.ph_interval,
+                Densityinterval = soilType.density,
+                Maxmoisturecapacityinterval = soilType.max_moisture_capacity_interval,
+                Gumuspercentageinterval = soilType.gumus_percentage_interval,
+                Klass = soilType.klass,
+                Soiltypecode = soilType.soil_class_code,
+                Wrbcode = soilType.wrb_code,
+                Wrbnewcode = soilType.wrb_new_code,
+                Rgbcode = soilType.rgb_code,
+                Shtrihovka = soilType.shtrihovka,
                 Height = height,
-                 Aeration_power = aeration_power,
-                 Average_aeration_power = average_aeration_power,
-                 Max_aeration_power = max_aeration_power,
-                 Litology = litology,
-                 Time_migration = time_migration,
-                 District = district.name,
-                 Region = district.region.name
+                Aeration_power = aeration_power,
+                Average_aeration_power = average_aeration_power,
+                Max_aeration_power = max_aeration_power,
+                Litology = litology,
+                Time_migration = time_migration,
+                District = district.name,
+                Region = district.region.name,
+                CLimattemperature = climat.temperature
+             
 
             };
 
