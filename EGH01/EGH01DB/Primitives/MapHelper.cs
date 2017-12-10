@@ -64,11 +64,11 @@ namespace EGH01DB.Primitives
         }
 
         // #2 Получение карты водоемов
-        static public bool GetWaterObject(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out EcoObject water_object) // водные объекты - реки, озера, каналы, водохранилища
+        static public bool GetWaterPond(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out EcoObject water_object) // водные объекты - озера, водохранилища
         {
             bool rc = false;
             water_object = new EcoObject();
-            using (SqlCommand cmd = new SqlCommand("MAP.InWaterObjectMap", dbcontext.connection))
+            using (SqlCommand cmd = new SqlCommand("MAP.InPondMap", dbcontext.connection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 {
@@ -87,8 +87,9 @@ namespace EGH01DB.Primitives
                     if (rc = reader.Read())
                     {
                         int id = (int)reader["Obj_Id"];
-                        string name = (string)reader["name"];
                         string type = (string)reader["type"];
+                        string name = (string)reader["name"];
+                        
                         EcoObjectType eco_object_type = new EcoObjectType(type);
                         CadastreType cadastre_type = new CadastreType("Водный объект");
 
@@ -128,8 +129,9 @@ namespace EGH01DB.Primitives
                     if (rc = reader.Read())
                     {
                         int id = (int)reader["Obj_Id"];
-                        string name = (string)reader["vodozabor"];
-                        water_intake = new WaterProtectionArea(-1, name);
+                        string name = (string)reader["name"];
+                        int buffer = (int)reader["buff_distance"];
+                        water_intake = new WaterProtectionArea(-1, name, buffer);
 
                     }
                     reader.Close();
@@ -167,7 +169,8 @@ namespace EGH01DB.Primitives
                     {
                         int id = (int)reader["Obj_Id"];
                         string name = (string)reader["name"];
-                        water_protection = new WaterProtectionArea(-1, name);
+                        int buffer = (int)reader["buff_distance"];
+                        water_protection = new WaterProtectionArea(-1, name, buffer);
                     }
                     reader.Close();
                 }
@@ -215,10 +218,97 @@ namespace EGH01DB.Primitives
         }
 
         // #6 Получение карты уровней грунтовых вод
-
+        
         // #7 Получение карты густоты речной сети
+        static public bool GetCity(EGH01DB.IDBContext dbcontext, Coordinates coordinates,
+                                    out string district, out string region, out string type,
+                                    out float network_density, out float length, out float district_area)  // карта густоты речной сети
+        {
+            bool rc = false;
+            district = "";
+            region = "";
+            type = "";
 
+            network_density = 0.0f;
+            length = 0.0f;
+            district_area = 0.0f;
+
+            using (SqlCommand cmd = new SqlCommand("MAP.InRiverDensityMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (rc = reader.Read())
+                    {
+                        int city_name_code = (int)reader["Obj_Id"];
+
+                        district = (string)reader["district"];
+                        region = (string)reader["region"];
+                        type = (string)reader["type"];
+
+                        network_density = (float)reader["network_density"];
+                        length = (float)reader["length"];
+                        district_area = (float)reader["district_area"];
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
+        
         // #8 Получение карты защищенности подземных вод
+        static public bool GetGroundWaterMapProtectLevel(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out string protection_level)  // карта защищенности подземных вод
+        {
+            bool rc = false;
+            protection_level = "";
+
+            using (SqlCommand cmd = new SqlCommand("MAP.InProtectGroundWaterMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (rc = reader.Read())
+                    {
+                        int city_name_code = (int)reader["Obj_Id"];
+                        protection_level = (string)reader["protect"];
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
 
         // #9 Получение карты зон аэрации
         static public bool GetAerationZone(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out string aeration_power,
@@ -302,8 +392,44 @@ namespace EGH01DB.Primitives
         }
 
         // #11 Получение карты осадков
+        public static bool GetDownfall(IDBContext dbcontext, Coordinates coordinates, out int[] downfall)
+        {
+            bool rc = false;
+            downfall = new int[4];
 
-
+            using (SqlCommand cmd = new SqlCommand("MAP.InDownfallMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int id = (int)reader["Obj_Id"];
+                        int period = (int)reader["period"];
+                        downfall[period - 1] = (int)reader["height"];
+                    }
+                    reader.Close();
+                    rc = true;
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
+        
         // #12 Получение карты почв
         static public bool GetSoil(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out SoilType soiltype)  // Тип почвы, высота почвенного слоя и коэффициенты
         {
@@ -457,7 +583,45 @@ namespace EGH01DB.Primitives
         // #17 Получение карты солнечной радиации
 
         // #18 Получение карты среднемесячных температур
-
+        public static bool GetMonthTemperature(IDBContext dbcontext, Coordinates coordinates, out Climat climat)
+        {
+            bool rc = false;
+            climat = new Climat(dbcontext, coordinates);
+            using (SqlCommand cmd = new SqlCommand("MAP.InMonthTempMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    float[] temperature = new float[12];
+                    while (reader.Read())
+                    {
+                        int id = (int)reader["Obj_Id"];
+                        string period = (string)reader["period"];
+                        int p = Convert.ToInt32(period);
+                        temperature[p - 1] = (float)reader["temperature"];
+                    }
+                    reader.Close();
+                    climat = new Climat(dbcontext, coordinates, temperature);
+                    rc = true;
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
 
         // #19 Получение карты четвертичных отложений
 

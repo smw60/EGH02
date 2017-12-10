@@ -13,7 +13,7 @@ namespace EGH01DB.Points
     {
         public District district { get; private set; }         // район область 
         public Climat climat { get; private set; }             // температура  
-        public EcoObject ecoobject { get; private set; }       // информция о природоохранном объекте, если точка попала в объект   
+        public EcoObject ecoobject { get; private set; }       // информация о природоохранном объекте, если точка попала в объект   
         public SoilType soiltype { get; private set; }         // почва
         public GroundType groundtype { get; private set; }     // информация о грунте
         public float height { get; private set; }              // высота над уровнем моря
