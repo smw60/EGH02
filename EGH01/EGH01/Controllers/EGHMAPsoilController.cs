@@ -115,6 +115,7 @@ namespace EGH01.Controllers
                 District = district.name,
                 Region = district.region.name,
                 CLimattemperature = climat.temperature
+                
              
 
             };
