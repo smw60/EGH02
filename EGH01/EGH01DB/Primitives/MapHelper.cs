@@ -181,6 +181,7 @@ namespace EGH01DB.Primitives
             }
             return rc;
         }
+        
         // #5 Получение карты времени миграции нефтепродуктов
         static public bool GetTimeMigration(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out float time_migration)  // время миграции до грунтовых вод
         {
@@ -220,7 +221,7 @@ namespace EGH01DB.Primitives
         // #6 Получение карты уровней грунтовых вод
         
         // #7 Получение карты густоты речной сети
-        static public bool GetCity(EGH01DB.IDBContext dbcontext, Coordinates coordinates,
+        static public bool GetRiverDensity(EGH01DB.IDBContext dbcontext, Coordinates coordinates,
                                     out string district, out string region, out string type,
                                     out float network_density, out float length, out float district_area)  // карта густоты речной сети
         {
@@ -760,27 +761,309 @@ namespace EGH01DB.Primitives
         }
 
         // #19 Получение карты четвертичных отложений
+        static public bool GetQuatSediments(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out string gorizont_power,
+                                       out string gorizont_name, out string litology, out string genеtic_type, out float genesys_code,
+                                       out string otdel, out string podotdel, out string podgorizon, out float litology_code,
+                                       out string geology_index, out string rgb, out string sistema)
+        {
+            
+            bool rc = false;
+            gorizont_power = "";
+            gorizont_name = "";
+            litology = "";
+            genеtic_type = "";
+            genesys_code = 0.0f;
+            otdel = "";
+            podotdel = "";
+            podgorizon = "";
+            litology_code = 0.0f;
+            geology_index = "";
+            rgb = "";
+            sistema = "";
+            
+            using (SqlCommand cmd = new SqlCommand("MAP.QuatSedimentsMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (rc = reader.Read())
+                    {
+                        gorizont_power = (string)reader["gorizont_power"];
+                        gorizont_name = (string)reader["gorizont_name"];
+                        litology = (string)reader["litology"];
+                        genеtic_type = (string)reader["genеtic_type"];
+
+                        genesys_code = (float)reader["genesys_code"];
+
+                        otdel = (string)reader["otdel"];
+                        podotdel = (string)reader["podotdel"];
+                        podgorizon = (string)reader["podgorizon"];
+                        litology_code = (float)reader["litology_code"];
+                        geology_index = (string)reader["geology_index"];
+
+                        rgb = (string)reader["rgb"];
+                        sistema = (string)reader["sistema"];
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
 
 
         // #20 Получение карты особо охраняемых природных территорий локального значения (point)
+        static public bool GetEcoLocalPoint(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out string localpoint)  
+        {
+            bool rc = false;
+            localpoint = "Не является особо охраняемой природной территорией локального значения";
 
+            using (SqlCommand cmd = new SqlCommand("MAP.EcoObjectLocalPoint", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        int code = (int)reader["Obj_Id"];
+                        localpoint = (string)reader["name"];
+                    }
+                    reader.Close();
+                    rc = true;
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
 
         // #21 Получение карты особо охраняемых природных территорий локального значения (polygon)
+        static public bool GetEcoLocalPoly(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out string localpoly)
+        {
+            bool rc = false;
+            localpoly = "Не является особо охраняемой природной территорией локального значения";
 
+            using (SqlCommand cmd = new SqlCommand("MAP.EcoObjectLocalPoly", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        int code = (int)reader["Obj_Id"];
+                        localpoly = (string)reader["name"];
+                    }
+                    reader.Close();
+                    rc = true;
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
 
         // #22 Получение карты особо охраняемых природных территорий национального значения (polygon)
+        static public bool GetEcoNational(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out string nationalpark)
+        {
+            bool rc = false;
+            nationalpark = "Не является особо охраняемой природной территорией национального значения";
+
+            using (SqlCommand cmd = new SqlCommand("MAP.EcoObjectNational", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        int code = (int)reader["Obj_Id"];
+                        nationalpark = (string)reader["name"];
+                    }
+                    reader.Close();
+                    rc = true;
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
 
 
         // #23 Получение карты особо охраняемых природных территорий республиканского значения (point)
+        static public bool GetEcoRepublicPoint(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out string republicpoint)
+        {
+            bool rc = false;
+            republicpoint = "Не является особо охраняемой природной территорией республиканского значения";
 
+            using (SqlCommand cmd = new SqlCommand("MAP.EcoObjectRepublicPoint", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        int code = (int)reader["Obj_Id"];
+                        republicpoint = (string)reader["name"];
+                        
+                    }
+                    reader.Close();
+                    rc = true;
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
 
 
         // #24 Получение карты особо охраняемых природных территорий республиканского значения (polygon)
+        static public bool GetEcoRepublicPoly(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out string republicpoly)
+        {
+            bool rc = false;
+            republicpoly = "Не является особо охраняемой природной территорией республиканского значения";
 
+            using (SqlCommand cmd = new SqlCommand("MAP.EcoObjectRepublicPoly", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        int code = (int)reader["Obj_Id"];
+                        republicpoly = (string)reader["name"];
+
+                    }
+                    reader.Close();
+                    rc = true;
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
 
 
         // #25 Получение карты районированной защищенности геологической среды
+        static public bool GetGroundProtectZone(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out string protect_zone, out int protect_grade) 
+        {
+            bool rc = false;
+            protect_zone = "";
+            protect_grade = 0;
 
+            using (SqlCommand cmd = new SqlCommand("MAP.InGroundProtectMap", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (rc = reader.Read())
+                    {
+                        int code = (int)reader["Obj_Id"];
+                        protect_zone = (string)reader["protection_name"];
+                        protect_grade = (int)reader["protection_grade"];
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
 
         // #26 Получение карты коэффициентов грунта
         static public bool GetGroundCoef(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out GroundType ground_type)

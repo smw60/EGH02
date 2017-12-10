@@ -71,6 +71,39 @@ namespace EGH01.Controllers
             return View();
         }
 
+        public ActionResult Map_GetEcoLocalPoint()// 
+        {
+            RGEContext db = new RGEContext();
+            {
+                //float x = 26.4422796312367f;
+                //float y = 53.9033260781941f; // Налибокская пуща
+                //Coordinates coordinates = new Coordinates(x, y);
+                //string lp = "";
+                //if (MapHelper.GetEcoRepublicPoly(db, coordinates, out lp))
+                //{
+                //    int k = 1;
+                //};
+            }
+            return View();
+        }
+
+        public ActionResult Map_GetGroundProtectZone()// 
+        {
+            RGEContext db = new RGEContext();
+            {
+                //float x = 26.4422796312367f;
+                //float y = 53.9033260781941f; // Налибокская пуща
+                //Coordinates coordinates = new Coordinates(x, y);
+                //string lp = "";
+                //int pg = 0;
+                //if (MapHelper.GetGroundProtectZone(db, coordinates, out lp, out pg))
+                //{
+                //    int k = 1;
+                //};
+            }
+            return View();
+        }
+
         public ActionResult Map_GetEcoObject()// 
         {
             RGEContext db = new RGEContext();
@@ -159,6 +192,37 @@ namespace EGH01.Controllers
             }
             return View();
         }
+
+        public ActionResult Map_GetQuatSediments()// 
+        {
+            RGEContext db = new RGEContext();
+            {
+                //float x = 27.4421796312367f;
+                //float y = 53.9043260781941f;
+                //Coordinates coordinates = new Coordinates(x, y);
+                //string gorizont_power = "";
+                //string gorizont_name = "";
+                //string litology = "";
+                //string genеtic_type = "";
+                //float genesys_code = 0.0f;
+                //string otdel = "";
+                //string podotdel = "";
+                //string podgorizon = "";
+                //float litology_code = 0.0f;
+                //string geology_index = "";
+                //string rgb = "";
+                //string sistema = "";
+                //if (MapHelper.GetQuatSediments(db, coordinates, out gorizont_power,
+                //                       out  gorizont_name, out  litology, out  genеtic_type, out genesys_code,
+                //                       out  otdel, out  podotdel, out  podgorizon, out litology_code,
+                //                       out  geology_index, out  rgb, out  sistema))
+                //{
+                //    int k = 1;
+                //};
+            }
+            return View();
+        }
+
 
         public ActionResult XML()
         {
