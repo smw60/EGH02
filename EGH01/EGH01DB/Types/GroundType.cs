@@ -476,7 +476,12 @@ namespace EGH01DB.Types
         public static bool GetByMap(IDBContext db, Coordinates coordinates, out GroundType groundtype)
         {
             //  заглушка
-            groundtype = GroundType.defaulttype;
+            // groundtype = GroundType.defaulttype;
+           
+            // отладка 
+            bool rc = true;
+            if (!(rc = GroundType.GetByCode(db, 9, out groundtype))) groundtype = GroundType.defaulttype; 
+                        
             return true;
         }
         public XmlNode toXmlNode(string comment = "")

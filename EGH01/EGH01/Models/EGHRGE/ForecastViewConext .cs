@@ -121,17 +121,17 @@ namespace EGH01.Models.EGHRGE
                             else viewcontext.Regim = REGIM.ERROR;
                         }
 
-                        Canv canv = new Canv(12, new Canv.XY[7]
-                                                    {
-                                                        new Canv.XY(70,250),
-                                                        new Canv.XY(80,70), 
-                                                        new Canv.XY(100,50),
-                                                        new Canv.XY(200,80), 
-                                                        new Canv.XY(370,230),
-                                                        new Canv.XY(220,360), 
-                                                        new Canv.XY(70,250)
-                                                    });
-                        viewcontext.JSONCanv = new JavaScriptSerializer().Serialize(canv);
+                        //Canv canv = new Canv(12, new Canv.XY[7]
+                        //                            {
+                        //                                new Canv.XY(70,250),
+                        //                                new Canv.XY(80,70), 
+                        //                                new Canv.XY(100,50),
+                        //                                new Canv.XY(200,80), 
+                        //                                new Canv.XY(370,230),
+                        //                                new Canv.XY(220,360), 
+                        //                                new Canv.XY(70,250)
+                        //                            });
+                        //viewcontext.JSONCanv = new JavaScriptSerializer().Serialize(canv);
                        if (viewcontext.Regim == REGIM.INIT) viewcontext.Regim = REGIM.SET; 
 
            }

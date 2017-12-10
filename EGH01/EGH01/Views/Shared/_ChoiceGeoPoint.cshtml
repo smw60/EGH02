@@ -189,14 +189,15 @@
 
                             map.on('click', function (evt) {
                                 var coordinate = evt.coordinate;
-                                var template = '{x}';
-                                var hdms = ol.coordinate.format(ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326'), template, 4);
                                 var res = "";
-                                var template = '{y}';
+                               
+                                var template = '{y}';  //smw60
+                                var hdms = ol.coordinate.format(ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326'), template, 4);
                                 document.getElementById('Latitude').value = deg_to_dms(hdms);
-                
                                 document.getElementById('Lat_m').value = deg_to_dmsm(hdms);
                                 document.getElementById('Lat_s').value = deg_to_dmss(hdms);
+
+                                var template = '{x}'; //smw60
                                 var hdms2 = ol.coordinate.format(ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326'), template, 4);
                                 document.getElementById('Lngitude').value = deg_to_dms(hdms2);
                                 document.getElementById('Lng_m').value = deg_to_dmsm(hdms2);
