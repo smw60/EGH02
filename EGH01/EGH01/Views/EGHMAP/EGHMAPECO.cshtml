@@ -37,6 +37,8 @@
 
         <input type="checkbox" id="Layer1" onclick="toggleLayer(layer1)" onchecked> <label for="Layer1">Карта особо охраняемых природных территорий локального значения</label>
         <input type="checkbox" id="Layer3" onclick="toggleLayer(layer3)" onchecked><label for="Layer3">Карта особо охраняемых природных территорий республиканского значения</label>
+        <br>
+        <input type="checkbox" id="Layer2" onclick="toggleLayer(layer2)" onchecked><label for="Layer2">Карта особо охраняемых природных территорий национального значения</label>
     </form>
     <div>
         <label class="boxdata-label-20">Тип объекта:&nbsp; Точка</label>
@@ -168,7 +170,19 @@
         })
     });
     layer1.setVisible(false);
-
+    var layer2 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_Экообъектов_нацпарки',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer2.setVisible(false);
 
     var layer3 = new ol.layer.Tile({
         source: new ol.source.TileWMS({
@@ -436,7 +450,7 @@
     });
     layer22.setVisible(true);
 
-    var layers = [raster, layer1, layer3, layer5, layer6, layer7, layer8, layer9, layer10, layer11, layer12, layer13, layer14, layer15, layer16, layer17, layer18, layer19, layer20, layer21, layer22, vector];
+    var layers = [raster, layer1, layer2, layer3, layer5, layer6, layer7, layer8, layer9, layer10, layer11, layer12, layer13, layer14, layer15, layer16, layer17, layer18, layer19, layer20, layer21, layer22, vector];
     var myFormat = function (dgts) {
         return (
             function (coord1) {
