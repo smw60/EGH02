@@ -32,7 +32,7 @@
 </head>
 
 
-<div class="box">
+<div class="boxMap">
     <form>
 
         <input type="checkbox" id="Layer8" onclick="toggleLayer(layer8)" onchecked><label for="Layer8">Карта времени миграции</label>
@@ -40,7 +40,7 @@
         <input type="checkbox" id="Layer13" onclick="toggleLayer(layer13)" onchecked><label for="Layer13">Карта зоны аэрации</label>
 
         <input type="checkbox" id="Layer15" onclick="toggleLayer(layer15)" onchecked><label for="Layer15">Карта почв</label>
-
+        <br/>
         <input type="checkbox" id="Layer17" onclick="toggleLayer(layer17)" onchecked><label for="Layer17">Карта рельефа</label>
        
         <input type="checkbox" id="Layer20" onclick="toggleLayer(layer20)" onchecked><label for="Layer20">Карта среднемесячных температур</label>
@@ -51,7 +51,7 @@
         <label class="boxdata-label-20">Проекция:&nbsp; EPSG:4326</label>
     </div>
     <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-12">
 
             <div id="map" class="map"></div>
             <div id="mouse-position"></div>
@@ -64,7 +64,9 @@
                 </div>
             </form>
         </div>
-        <div class="col-xs-4 sidebar">
+    </div>
+    <div class="row">
+        <div class="col-xs-12 sidebar">
 
             <div class="boxdata">
                 <p>
@@ -84,36 +86,36 @@
 
             <div style="display:none" id="divv">
 
-              
-          
-                <div class="box">
+
+
+                <div class="boxMap">
                     <label id="regionn"></label><span id="region"></span>
                     <br>
                     <label id="districtt"></label><span id="district"></span>
                 </div>
 
-                <div class="box">
+                <div class="boxMap">
                     <label id="aeration_powerr"></label><span id="aeration_power"></span>
                     <br>
                     <label id="average_aeration_powerr"></label><span id="average_aeration_power"></span>
-                   <br>
+                    <br>
                     <label id="max_aeration_powerr"></label><span id="max_aeration_power"></span>
                     <br>
                     <label id="litologyy"></label><span id="litology"></span>
-              </div>
-        
-                <div class="box">
+                </div>
+
+                <div class="boxMap">
                     <label id="time_migrationn"></label><span id="time_migration"></span>
                 </div>
-                <div class="box">
+                <div class="boxMap">
                     <label id="heightt"></label><span id="height"></span>
                 </div>
 
-                <div class="box">
+                <div class="boxMap">
                     <label id="cLimattemperaturee"></label><span id="cLimattemperature"></span>
                 </div>
 
-                <div class="box">
+                <div class="boxMap">
                     <label id="soilnamee"></label><span id="soilname"></span>
                     <br>
                     <label id="soilmehsostt"></label><span id="soilmehsost"></span>
@@ -170,7 +172,7 @@
                     <br>
                     <label id="wrbnewcodee"></label><span id="wrbnewcode"></span>
                 </div>
-                <div class="box">
+                <div class="boxMap">
                     <label id="gorizont_powerr"></label><span id="gorizont_power"></span>
                     <br>
                     <label id="gorizont_namee"></label><span id="gorizont_name"></span>
@@ -193,7 +195,7 @@
                     <br>
                     <label id="rgbb"></label><span id="rgb"></span>
                     <br>
-                    <label id="sistemaa"></label><span id="sistema"></span> 
+                    <label id="sistemaa"></label><span id="sistema"></span>
                 </div>
             </div>
 
@@ -212,7 +214,7 @@
 
 
             <div id="buttons">
-                <div class="box">
+                <div class="boxMap-noborder">
                     @*@Html.Partial("_TypeLineMenu", create)*@
 
                     <button id="clear" class="Очистить" title="Очистить"></button>
