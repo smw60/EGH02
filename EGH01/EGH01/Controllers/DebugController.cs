@@ -75,17 +75,17 @@ namespace EGH01.Controllers
         {
             RGEContext db = new RGEContext();
             {
-                float x = 26.4422796312367f;
-                float y = 53.9033260781941f; // Налибокская пуща
-                Coordinates coordinates = new Coordinates(x, y);
-                string lp = "";
-                string c;
-                string b;
-                string a;
-                if (MapHelper.GetEcoNational(db, coordinates, out lp, out c, out b, out a))
-                {
-                    int k = 1;
-                };
+                //float x = 26.4422796312367f;
+                //float y = 53.9033260781941f; // Налибокская пуща
+                //Coordinates coordinates = new Coordinates(x, y);
+                //string lp = "";
+                //string c;
+                //string b;
+                //string a;
+                //if (MapHelper.GetEcoNational(db, coordinates, out lp, out c, out b, out a))
+                //{
+                //    int k = 1;
+                //};
             }
             return View();
         }
@@ -226,6 +226,22 @@ namespace EGH01.Controllers
             return View();
         }
 
+        public ActionResult Map_GetEcoList()// 
+        {
+            RGEContext db = new RGEContext();
+            {
+                //float x = 27.4421796312367f;
+                //float y = 53.9043260781941f;
+                //Coordinates coordinates = new Coordinates(x, y);
+                //int buffer = 15200;
+                //EcoObjectsList ecolist = new EcoObjectsList();
+                //if (EcoObjectsList.FindAtDistance(db, coordinates, buffer, out ecolist))
+                //{
+                //    int k = 1;
+                //};
+            }
+            return View();
+        }
 
         public ActionResult XML()
         {
