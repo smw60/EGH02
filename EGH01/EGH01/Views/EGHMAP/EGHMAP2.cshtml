@@ -32,26 +32,18 @@
 </head>
 
 
-<div class="boxMap">
+<div class="box">
     <form>
 
-        <input type="checkbox" id="Layer8" onclick="toggleLayer(layer8)" onchecked><label for="Layer8">Карта времени миграции</label>
-        <input type="checkbox" id="Layer10" onclick="toggleLayer(layer10)" onchecked><label for="Layer10">Карта грунтовых вод</label>
-        <input type="checkbox" id="Layer13" onclick="toggleLayer(layer13)" onchecked><label for="Layer13">Карта зоны аэрации</label>
-
-        <input type="checkbox" id="Layer15" onclick="toggleLayer(layer15)" onchecked><label for="Layer15">Карта почв</label>
-        <br />
-        <input type="checkbox" id="Layer17" onclick="toggleLayer(layer17)" onchecked><label for="Layer17">Карта рельефа</label>
-
-        <input type="checkbox" id="Layer20" onclick="toggleLayer(layer20)" onchecked><label for="Layer20">Карта среднемесячных температур</label>
-        <input type="checkbox" id="Layer21" onclick="toggleLayer(layer21)" onchecked><label for="Layer21">Карта четвертичных отложений</label>
+        <input type="checkbox" id="Layer12" onclick="toggleLayer(layer12)" onchecked><label for="Layer12">Карта защищенности подземных вод</label>
+        <input type="checkbox" id="Layer18" onclick="toggleLayer(layer18)" onchecked><label for="Layer18">Карта самоочищения</label>
     </form>
     <div>
         <label class="boxdata-label-20">Тип объекта:&nbsp; Точка</label>
         <label class="boxdata-label-20">Проекция:&nbsp; EPSG:4326</label>
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-8">
 
             <div id="map" class="map"></div>
             <div id="mouse-position"></div>
@@ -64,9 +56,7 @@
                 </div>
             </form>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 sidebar">
+        <div class="col-xs-4 sidebar">
 
             <div class="boxdata">
                 <p>
@@ -88,90 +78,24 @@
 
 
 
-                <div class="boxMap">
+                <div class="box">
                     <label id="regionn"></label><span id="region"></span>
                     <br>
                     <label id="districtt"></label><span id="district"></span>
                 </div>
-
-                <div class="boxMap">
-                    <label id="aeration_powerr"></label><span id="aeration_power"></span>
-                    <br>
-                    <label id="average_aeration_powerr"></label><span id="average_aeration_power"></span>
-                    <br>
-                    <label id="max_aeration_powerr"></label><span id="max_aeration_power"></span>
-                    <br>
-                    <label id="litologyy"></label><span id="litology"></span>
+                <div class="box">
+                    <label id="protectionlevell"></label><span id="protectionlevel"></span>
+                </div>
+                <div class="box">
+                    <label id="selfcleaningzonee"></label><span id="selfcleaningzone"></span>
+                </div>
+                <div class="box">
+                    <label id="protectzonee"></label><span id="protectzone"></span>
+                </div>
+                <div class="box">
+                    <label id="protectgradee"></label><span id="protectgrade"></span>
                 </div>
 
-                <div class="boxMap">
-                    <label id="time_migrationn"></label><span id="time_migration"></span>
-                </div>
-                <div class="boxMap">
-                    <label id="heightt"></label><span id="height"></span>
-                </div>
-
-                <div class="boxMap">
-                    <label id="cLimattemperaturee"></label><span id="cLimattemperature"></span>
-                </div>
-
-                <div class="boxMap">
-                    <label id="soilnamee"></label><span id="soilname"></span>
-                    <br>
-                    <label id="soilmehsostt"></label><span id="soilmehsost"></span>
-                    <br>
-                    <label id="soiltypee"></label><span id="soiltype"></span>
-                    <br>
-                    <label id="soilsubtypee"></label><span id="soilsubtype"></span>
-                    <br>
-                    <label id="humidityy"></label><span id="humidity"></span>%
-                    <br>
-                    <label id="gumusdepthh"></label><span id="gumusdepth"></span>
-                    <br>
-                    <label id="capmoisturecapacityy"></label><span id="capmoisturecapacity"></span>%
-                    <br>
-                    <label id="petrolfiltrationcoeff"></label><span id="petrolfiltrationcoef"></span>м/сут
-                    <br>
-                    <label id="fueloilfiltrationcoeff"></label><span id="fueloilfiltrationcoef"></span>м/сут
-                    <br>
-                    <label id="dieselfiltrationcoeff"></label><span id="dieselfiltrationcoef"></span>м/сут
-                    <br>
-                    <label id="hydrolyticacidityy"></label><span id="hydrolyticacidity"></span>м-экв. на 100 г почвы
-                    <br>
-                    <label id="oilcapacityy"></label><span id="oilcapacity"></span>
-                    <br>
-                    <label id="densityy"></label><span id="density"></span> г/см³
-                    <br>
-                    <label id="carboncontentt"></label><span id="carboncontent"></span>%
-                    <br>
-                    <label id="filtercoefintervall"></label><span id="filtercoefinterval"></span>м/сут
-                    <br>
-                    <label id="porosityintervall"></label><span id="porosityinterval"></span>%
-                    <br>
-                    <label id="glinaintervall"></label><span id="glinainterval"></span>
-                    <br>
-                    <label id="mgintervall"></label><span id="mginterval"></span>%
-                    <br>
-                    <label id="phintervall"></label><span id="phinterval"></span>
-                    <br>
-                    <label id="densityintervall"></label><span id="densityinterval"></span>г/см³
-                    <br>
-                    <label id="maxmoisturecapacityintervall"></label><span id="maxmoisturecapacityinterval"></span>%
-                    <br>
-                    <label id="gumuspercentageintervall"></label><span id="gumuspercentageinterval"></span>%
-                    <br>
-                    <label id="klasss"></label><span id="klass"></span>
-                    <br>
-                    <label id="soiltypecodee"></label><span id="soiltypecode"></span>
-                    <br>
-                    <label id="wrbcodee"></label><span id="wrbcode"></span>
-                    <br>
-                    <label id="rgbcodee"></label><span id="rgbcode"></span>
-                    <br>
-                    <label id="shtrihovkaa"></label><span id="shtrihovka"></span>
-                    <br>
-                    <label id="wrbnewcodee"></label><span id="wrbnewcode"></span>
-                </div>
             </div>
 
             <div class="radio">
@@ -189,7 +113,7 @@
 
 
             <div id="buttons">
-                <div class="boxMap-noborder">
+                <div class="box">
                     @*@Html.Partial("_TypeLineMenu", create)*@
 
                     <button id="clear" class="Очистить" title="Очистить"></button>
@@ -580,7 +504,7 @@
         };
 
         $.ajax({
-            url: '/EGHMAP/CreateFromSoil',
+            url: '/EGHMAP/CreateFrom2',
             type: 'POST',
             dataType: 'application/json',
             data: JSON.stringify(Latitude),
@@ -592,111 +516,20 @@
 
                 $("#district").html(data.District);
                 $("#region").html(data.Region);
-                $("#time_migration").html(data.Time_migration);
-                $("#aeration_power").html(data.Aeration_power);
-                $("#average_aeration_power").html(data.Average_aeration_power);
-                $("#max_aeration_power").html(data.Max_aeration_power);
-                $("#litology").html(data.Litology);
-                $("#height").html(data.Height);
-
-
-                $("#soilname").html(data.Soilname);
-                $("#soilmehsost").html(data.Soilmehsost);
-                $("#soiltype").html(data.Soiltype);
-                $("#soilsubtype").html(data.Soilsubtype);
-                $("#humidity").html(data.Humidity);
-                $("#gumusdepth").html(data.Gumusdepth);
-                $("#capmoisturecapacity").html(data.Capmoisturecapacity);
-                $("#petrolfiltrationcoef").html(data.Petrolfiltrationcoef);
-                $("#fueloilfiltrationcoef").html(data.Fueloilfiltrationcoef);
-                $("#dieselfiltrationcoef").html(data.Dieselfiltrationcoef);
-                $("#hydrolyticacidity").html(data.Hydrolyticacidity);
-                $("#oilcapacity").html(data.Oilcapacity);
-                $("#density").html(data.Density);
-                $("#carboncontent").html(data.Carboncontent);
-                $("#filtercoefinterval").html(data.Filtercoefinterval);
-                $("#porosityinterval").html(data.Porosityinterval);
-                $("#glinainterval").html(data.Glinainterval);
-                $("#mginterval").html(data.Mginterval);
-                $("#phinterval").html(data.Phinterval);
-                $("#densityinterval").html(data.Densityinterval);
-                $("#maxmoisturecapacityinterval").html(data.Maxmoisturecapacityinterval);
-                $("#gumuspercentageinterval").html(data.Gumuspercentageinterval);
-                $("#klass").html(data.Klass);
-                $("#soiltypecode").html(data.Soiltypecode);
-                $("#wrbcode").html(data.Wrbcode);
-                $("#wrbnewcode").html(data.Wrbnewcode);
-                $("#rgbcode").html(data.Rgbcode);
-                $("#shtrihovka").html(data.Shtrihovka);
-                $("#cLimattemperature").html(data.CLimattemperature);
-
-                $("#gorizont_power").html(data.Gorizont_power);
-                $("#gorizont_name").html(data.Gorizont_name);
-                $("#litologyQuat").html(data.LitologyQuat);
-                $("#genesys_code").html(data.Genesys_code);
-                $("#genetic_type").html(data.Genetic_type);
-                $("#otdel").html(data.Otdel);
-                $("#podotdel").html(data.Podotdel);
-                $("#podgorizon").html(data.Podgorizon);
-                $("#litology_code").html(data.Litology_code);
-                $("#geology_index").html(data.Geology_index);
-                $("#rgb").html(data.Rgb);
-                $("#sistema").html(data.Sistema);
+                $("#protectionlevel").html(data.Protectionlevel);
+                $("#selfcleaningzone").html(data.Selfcleaningzone);
+                $("#protectzone").html(data.Protectzone);
+                $("#protectgrade").html(data.Protectgrade);
 
 
                 $("#districtt").html("Область:");
                 $("#regionn").html("Регион:");
-                $("#time_migrationn").html("Время миграции в сутках:");
-                $("#aeration_powerr").html("Мощность зоны аэрации:");
-                $("#average_aeration_powerr").html("Усредненная мощность зоны аэрации:");
-                $("#max_aeration_powerr").html("Максимальная мощность зоны аэрации:");
-                $("#litologyy").html("Литология зоны аэрации:");
-                $("#heightt").html("Высота:");
+                $("#protectionlevell").html("Степень защищённости:");
+                $("#selfcleaningzonee").html("Способность к самоочищению:");
+                $("#protectzonee").html("Наименование степени защищённости:");
+                $("#protectgradee").html("Степень защищённости от 1 до 5:");
 
 
-                $("#soilnamee").html("Наименование типа почв:");
-                $("#soilmehsostt").html("Механический состав почвы:");
-                $("#soiltypee").html("Тип почв:");
-                $("#soilsubtypee").html("Подтип почв:");
-                $("#humidityy").html("Влажность полевая:");
-                $("#gumusdepthh").html("Мощность гумусового горизонта:");
-                $("#capmoisturecapacityy").html("Капиллярная влагоёмкость:");
-                $("#petrolfiltrationcoeff").html("Коэффициент фильтрации бензина:");
-                $("#fueloilfiltrationcoeff").html("Коэффициент фильтрации  мазута:");
-                $("#dieselfiltrationcoeff").html("Коэффициент фильтрации дизельного топлива:");
-                $("#hydrolyticacidityy").html("Гидролитическая кислотность:");
-                $("#oilcapacityy").html("Коэффициент нефтеёмкости:");
-                $("#densityy").html("Объёмная плотность:");
-                $("#carboncontentt").html("Содержание органического углерода:");
-                $("#filtercoefintervall").html("Коэффициент фильтрации:");
-                $("#porosityintervall").html("Пористость в интервале");
-                $("#glinaintervall").html("Содержание глины в породе:");
-                $("#mgintervall").html("Максимальная гигроскопичность:");
-                $("#phintervall").html("Кислотность почвы:");
-                $("#densityintervall").html("Удельная плотность:");
-                $("#maxmoisturecapacityintervall").html("Предельная полевая влагоёмкость:");
-                $("#gumuspercentageintervall").html("Содержание гумуса:");
-                $("#klasss").html("Класс:");
-                $("#soiltypecodee").html("Код почвы помеждународной классификации:");
-                $("#wrbcodee").html("Код почвы в международной классификационной системе WRB (уточнённые):");
-                $("#wrbnewcodee").html("Код почвы в международной классификационной системе WRB:");
-                $("#rgbcodee").html("Код цветового обозначения:");
-                $("#shtrihovkaa").html("Тип штриховки:");
-                $("#cLimattemperaturee").html("Значение средних температур:");
-
-
-                //$("#gorizont_powerr").html("Мощность первого горизонта:");
-                //$("#gorizont_namee").html("Наименование горизонта:");
-                //$("#litologyQuatt").html("Литология:");
-                //$("#genesys_codee").html("Код генезиса:");
-                //$("#genetic_typee").html("Генетический тип:");
-                //$("#otdell").html("Геологический отдел:");
-                //$("#podotdell").html("Подраздел геологического отдела:");
-                //$("#podgorizonn").html("Наименование горизонта:");
-                //$("#litology_codee").html("Код литологии:");
-                //$("#geology_indexx").html("Геологический индекс:");
-                //$("#rgbb").html("Код цветового обозначения:");
-                //$("#sistemaa").html("Геологическая система:");
 
 
                 alert(data.Высота);

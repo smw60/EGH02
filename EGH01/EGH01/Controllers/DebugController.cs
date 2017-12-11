@@ -75,14 +75,17 @@ namespace EGH01.Controllers
         {
             RGEContext db = new RGEContext();
             {
-                //float x = 26.4422796312367f;
-                //float y = 53.9033260781941f; // Налибокская пуща
-                //Coordinates coordinates = new Coordinates(x, y);
-                //string lp = "";
-                //if (MapHelper.GetEcoRepublicPoly(db, coordinates, out lp))
-                //{
-                //    int k = 1;
-                //};
+                float x = 26.4422796312367f;
+                float y = 53.9033260781941f; // Налибокская пуща
+                Coordinates coordinates = new Coordinates(x, y);
+                string lp = "";
+                string c;
+                string b;
+                string a;
+                if (MapHelper.GetEcoNational(db, coordinates, out lp, out c, out b, out a))
+                {
+                    int k = 1;
+                };
             }
             return View();
         }

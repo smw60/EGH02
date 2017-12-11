@@ -18,8 +18,6 @@ namespace EGH01DB
     {
 
 
-    
-
           
      public class  ECOForecastX
      {
@@ -50,15 +48,17 @@ namespace EGH01DB
 
     public class ECOForecast0     // поверхность 
      {
-         public IDBContext db { get; set; }
-         public DateTime date { get; set; }
-         public DateTime date_message { get; set; }
-         public IncidentType incidenttype { get; set; }
+         public IDBContext        db                { get; set; }
+         public DateTime          date              { get; set; }
+         public DateTime          date_message      { get; set; }
+         public IncidentType      incidenttype      { get; set; }
          public PetrochemicalType petrochemicaltype { get; set; }   // тип НП
-         public float V0   { get; set; }
-         public float temperature { get; set; }
-         public RiskObject riskobject { get; set; }
-         public float M0 { get; set; }  // масса пролитого НП
+         public float             V0                { get; set; }
+         public float             temperature       { get; set; }
+         public RiskObject        riskobject        { get; set; }
+         public float             delta0            { get; set; }
+         public float             ro0               { get; set; }   
+         public float             M0                { get; set; }  // масса пролитого НП
                     
 
          public  ECOForecast0(IDBContext          db,
@@ -79,7 +79,9 @@ namespace EGH01DB
          this.V0                 = volume;
          this.temperature        = temperature;
          this.riskobject         = riskobject;
-         this.M0 = this.V0 * this.petrochemicaltype.density; // масса пролитого НП 
+         this.delta0             = this.petrochemicaltype.tension;
+         this.ro0                = this.petrochemicaltype.density;
+         this.M0                 = this.V0 * this.ro0;                 // масса пролитого НП 
          }
 
          public ECOForecast0(ECOForecast0 f0)
@@ -148,7 +150,7 @@ namespace EGH01DB
              this.f1 = f1;
              this.u2 = OilCapacity.defaultvalue.ocapacity; 
              this.h2 = f0.riskobject.soiltype.gumus_depth;
-             this.M2 = f1.S1 * this.h2 * this.u2 * f0.petrochemicaltype.density;
+             this.M2 = f1.S1 * this.h2 * this.u2 * this.f0.delta0;
              this.H2 = (this.h2 * (f0.M0 - f1.M1) / this.M2) > this.h2 ? this.h2 : (this.h2 * (f0.M0 - f1.M1) / this.M2);    
            
          }
@@ -158,17 +160,18 @@ namespace EGH01DB
          public ECOForecast0 f0  { get; private set; }
          public ECOForecast1 f1  { get; private set; }
          public ECOForecast2 f2  { get; private set; }
+         public string       groundtypename { get; private set; }   // название грунта
          public float        h3  { get; private set; }   // толщина грунта
          public float        rov { get; private set; }   // плотность воды 
-         public float        dv  { get; private set; }   // коэффициент поверностного натяжения  воды 
-         public float        k3 { get; private set; }   // коэффициент фильтрации воды 
+         public float        deltav  { get; private set; }   // коэффициент поверностного натяжения  воды 
+         public float        k3  { get; private set; }   // коэффициент фильтрации воды 
          public float        r3  { get; private set; }   // коэффициент задержки НП
          public float        m3  { get; private set; }   // пористость грунта
          public float        w3  { get; private set; }   // капилярная влагоемкость грунта
          public float        ro3 { get; private set; }   // плотность грунта 
          public float        H3  { get; private set; }   // грубина проникновения НП в грунт 
          public float        M3  { get; private set; }   // масса абсорбированного в грунте НП  
-         public float        С3  { get; private set; }   // максимальная концентрация нп в грунте 
+         public float        C3  { get; private set; }   // максимальная концентрация нп в грунте 
 
         
 
@@ -182,19 +185,28 @@ namespace EGH01DB
                 float delta = 0;
                 if (WaterProperties.Get(f0.db, f0.temperature, out wp, out delta))
                 {
-                    this.ro3 = wp.density;                
+                    this.ro3 = wp.density;
+                    this.deltav = wp.tension; 
                 }
              }
-            
+
+             this.groundtypename = this.f0.riskobject.groundtype.name; 
              this.h3 =  this.f0.riskobject.waterdeep;
              this.k3  = this.f0.riskobject.groundtype.waterfilter;
              this.r3  = this.f0.riskobject.groundtype.holdmigration;
              this.m3  = this.f0.riskobject.groundtype.porosity;
              this.w3  = this.f0.riskobject.groundtype.watercapacity;
              this.ro3 = this.f0.riskobject.groundtype.density;
-                         
-             //this.M3  = this.h3 * this.f1.S1  
-             //his.this.C3  = 
+             this.M3  = this.h3 * this.f1.S1 * this.rov * this.m3 * this.w3 * this.f0.delta0 / this.deltav;
+             {
+                 if (this.f0.M0 - this.f1.M1 - this.f2.M2 <= this.M3) this.H3 = this.h3 * (this.f0.M0 - this.f1.M1 - this.f2.M2) / this.M3;
+                 else this.H3 = this.h3;
+             }
+             
+             this.C3 = this.M3 / (this.f1.S1 * this.ro3);
+             
+
+            
 
          }
 
@@ -355,9 +367,6 @@ namespace EGH01DB
                  this.errormessage = e.ehgmessage;
 
              }
-
-
-
 
              return true;
          }

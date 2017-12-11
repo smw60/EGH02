@@ -76,7 +76,16 @@ exec MAP.InGroundProtectMap @point = 'Point(27.4421796312367 53.9043260781941)';
 ---26 -- 2 секунды
 exec MAP.InGroundCoefMap @point = 'Point(27.4421796312367 53.9043260781941)';
 
+<<<<<<< HEAD
 exec MAP.EcoObjectInBuffer @point = 'Point(27.4421796312367 53.9043260781941)', @buffer = 1520;
+=======
+---27 -- 5 секунд
+exec MAP.EcoRepublic @point = 'Point(27.4421796312367 53.9043260781941)';
+
+---28 -- 2 секунды
+exec MAP.EcoLocal @point = 'Point(27.4421796312367 53.9043260781941)';
+
+>>>>>>> 7d637de02f634c99531221ef8b82155da2e1c787
 
 
 

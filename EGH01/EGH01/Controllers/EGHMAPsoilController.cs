@@ -74,7 +74,24 @@ namespace EGH01.Controllers
 
             EGH01DB.Primitives.Climat climat = new Climat(db,mapPoint);
             EGH01DB.Primitives.MapHelper.GetMonthTemperature(db,mapPoint, out climat);
-          
+           
+
+            //string gorizont_power = "";
+            //string gorizont_name = "";
+            //string litologyQuat = "";
+            //float genesys_code = 0.0f;
+            //string genetic_type = "";
+            //string otdel = "";
+            //string podotdel = "";
+            //string podgorizon = "";
+            //float litology_code = 0.0f;
+            //string geology_index = "";
+            //string rgb = "";
+            //string sistema = "";
+            
+            //EGH01DB.Primitives.MapHelper.GetQuatSediments(db,mapPoint,out gorizont_power, out gorizont_name,
+            //    out litologyQuat, out genetic_type, out  genesys_code,
+            //    out otdel,out podotdel,out podgorizon,out litology_code,out geology_index,out rgb, out sistema);
 
             var heights = new
             {
@@ -114,9 +131,22 @@ namespace EGH01.Controllers
                 Time_migration = time_migration,
                 District = district.name,
                 Region = district.region.name,
-                CLimattemperature = climat.temperature
-                
-             
+                CLimattemperature = climat.temperature,
+
+                //Gorizont_power = gorizont_power,
+                //Gorizont_name = gorizont_name,
+                //LitologyQuat = litologyQuat,
+                //Genesys_code = genesys_code,
+                //Genetic_type = genetic_type,
+                //Otdel = otdel,
+                //Podotdel = podotdel,
+                //Podgorizon = podgorizon,
+                //Litology_code = litology_code,
+                //Geology_index = geology_index,
+                //Rgb = rgb,
+                //Sistema = sistema
+
+
 
             };
 
