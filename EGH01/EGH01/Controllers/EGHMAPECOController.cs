@@ -64,7 +64,10 @@ namespace EGH01.Controllers
             EGH01DB.Primitives.MapHelper.GetEcoLocalPoly(db,mapPoint, out localpoly);
 
             string nationalpark = "";
-            EGH01DB.Primitives.MapHelper.GetEcoNational(db,mapPoint, out nationalpark);
+            string nationalpark_type = "";
+            string nationalpark_subtype = "";
+            string nationalpark_city = "";
+            EGH01DB.Primitives.MapHelper.GetEcoNational(db, mapPoint, out nationalpark, out nationalpark_type, out nationalpark_subtype, out nationalpark_city); // blinova - поправить метод
 
             string republicpoint = "";
             string republicpoly = "";
