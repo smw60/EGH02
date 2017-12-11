@@ -418,6 +418,17 @@ label[aria-required]::after {
         border: 2px solid #000;
     }
 
+    .box-map {
+    box-sizing: border-box; /* границу включить в размер .box*/
+    overflow: hidden; /* все что вылезает за границу .box  - скрывать*/
+    border: 1px solid #000;
+    width: 100%;
+    background-color: #ccc; /* меню основные в таблицах*/
+    margin: 12px 0px 12px 2px;
+    padding: 0.5%;
+    /*min-width: 800px;*/
+}
+
 .box {
     box-sizing: border-box; /* границу включить в размер .box*/
     overflow: hidden; /* все что вылезает за границу .box  - скрывать*/
@@ -901,6 +912,16 @@ element.style {
         background: linear-gradient(to top, #aaa, #ddd);
         width:100%;
     }
+
+    .sidebar .box-map{
+    width:99.8%;
+    padding:5px;
+}
+
+.box-map-noborder {
+    border:none;
+}
+}
 
 .sidebar .box{
     width:95%;
