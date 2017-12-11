@@ -55,7 +55,7 @@
                     </select>
                 </div>
             </form>
-        </div>
+            </div>
         <div class="col-xs-4 sidebar">
             @*@using (Html.BeginForm("IndexCreate", "EGHMAP"))
                 {*@
@@ -96,13 +96,13 @@
                 </div>
 
                 @*@if ()
-                {*@
+                    {*@
                 <div class="box">
                     <label id="ecoWW"></label><span id="ecoW"></span>
                 </div>
                 @*}*@
-               
-                    @*@if (ViewData["eco"] != null)
+
+                @*@if (ViewData["eco"] != null)
                     {*@
                 <div class="box">
                     <label id="ecoo"></label><span id="eco"></span>
@@ -136,7 +136,7 @@
                     @*@if (@ViewData["ground"] != null)
                         {*@
                     @*<label id="groundd" style="display:none"></label><span id="ground"></span>
-                    <br>*@
+                        <br>*@
                     @*}*@
                     <label id="waterfilterr"></label><span id="waterfilter"></span>
                     <br>
@@ -160,7 +160,7 @@
             </div>
 
 
-            <div id="buttons">
+            <div id="buttons-map">
                 <div class="box">
                     @*@Html.Partial("_TypeLineMenu", create)*@
 
@@ -174,7 +174,8 @@
 
         </div>
     </div>
-</div>
+    </div>
+
         <script type="text/javascript">
 
             var raster = new ol.layer.Tile({

@@ -191,7 +191,10 @@
     <Compile Include="Controllers\EGHCEQController_CadastreType.cs" />
     <Compile Include="Controllers\EGHGEAController_Report.cs" />
     <Compile Include="Controllers\EGHGEAController_SoilPollutionCategories.cs" />
+    <Compile Include="Controllers\EGHMAPECOController.cs" />
+    <Compile Include="Controllers\EGHMAP2Controller.cs" />
     <Compile Include="Controllers\EGHMAPsoilController.cs" />
+    <Compile Include="Controllers\EGHMAPWATERController.cs" />
     <Compile Include="Controllers\EGHORTController.cs" />
     <Compile Include="Controllers\EGHORTController_EmergencyClass.cs" />
     <Compile Include="Controllers\EGHORTController_RehabilitationMethods.cs" />
@@ -505,6 +508,9 @@
     <Content Include="Views\EGHRGE\_ForecastReport3.cshtml" />
     <Content Include="Views\EGHRGE\_ForecastReport4.cshtml" />
     <Content Include="Views\EGHMAP\EGHMAPsoil.cshtml" />
+    <Content Include="Views\EGHMAP\EGHMAP2.cshtml" />
+    <Content Include="Views\EGHMAP\EGHMAPECO.cshtml" />
+    <Content Include="Views\EGHMAP\EGHMAPWATER.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
