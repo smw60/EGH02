@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Globalization;
+using EGH01DB.Types;
 
 
 namespace EGH01DB.Primitives
@@ -62,6 +63,8 @@ namespace EGH01DB.Primitives
             string point = "Point(" + latitude.ToString("F5", CultureInfo.InvariantCulture) + " " + lngitude.ToString("F5", CultureInfo.InvariantCulture) + ")";
             return point;
         }
+
+   
         public Coordinates(int latd, int latm, float lats, int lngd, int lngm, float lngs)
         {
             // this.Lat  = new DMS(latd, latm, lats);

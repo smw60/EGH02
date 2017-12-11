@@ -71,10 +71,12 @@ exec MAP.EcoObjectRepublicPoint @point = 'Point(27.4421796312367 53.904326078194
 exec MAP.EcoObjectRepublicPoly @point = 'Point(27.4421796312367 53.9043260781941)';
 
 ---25 -- 5 секунд
-exec MAP.InGroundProtectpMap @point = 'Point(27.4421796312367 53.9043260781941)';
+exec MAP.InGroundProtectMap @point = 'Point(27.4421796312367 53.9043260781941)';
 
 ---26 -- 2 секунды
 exec MAP.InGroundCoefMap @point = 'Point(27.4421796312367 53.9043260781941)';
+
+exec MAP.EcoObjectInBuffer @point = 'Point(27.4421796312367 53.9043260781941)', @buffer = 1520;
 
 
 
