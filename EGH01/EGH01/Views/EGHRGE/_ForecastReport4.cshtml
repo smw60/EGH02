@@ -10,6 +10,12 @@
 @{
      
     EGH01.Models.EGHRGE.ForecastViewConext context = @Model;
+    EGH01DB.RGEContext.ECOForecast0 level0 = @Model.ecoforecastx.level0;
+    EGH01DB.RGEContext.ECOForecast1 level1 = @Model.ecoforecastx.level1;
+    EGH01DB.RGEContext.ECOForecast2 level2 = @Model.ecoforecastx.level2;
+    EGH01DB.RGEContext.ECOForecast3 level3 = @Model.ecoforecastx.level3;
+    EGH01DB.RGEContext.ECOForecast4 level4 = @Model.ecoforecastx.level4;
+    
 }
 
 <div class="boxdata">
@@ -20,16 +26,21 @@
         <legend> Вычисления </legend>
         <p>
             <label class="boxdata-label-40 ">Масса нефтепродукта достигшая грунтовых вод (кг)</label>
-            400
+            @level4.dM4 
         </p>
         <p>
             <label class="boxdata-label-40 ">Время достижения максимальной концентрации (с) </label>
-            2000
+            @level4.t4
         </p>
+        <p>
+            <label class="boxdata-label-40 ">Средняя концентрация в грунтовых водах (кг/м<sup>3</sup>) </label>
+            @level4.C4
+        </p>
+        
 
         <p>
             <label class="boxdata-label-40 ">Максимальное расстояние распространения фронта загрзнения (м) </label>
-             2000
+             @level4.l4
         </p>
         
     </fieldset>

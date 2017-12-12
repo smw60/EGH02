@@ -14,6 +14,10 @@
     EGH01DB.RGEContext.ECOForecast1 level1 = @Model.ecoforecastx.level1;
     EGH01DB.RGEContext.ECOForecast2 level2 = @Model.ecoforecastx.level2;
     EGH01DB.RGEContext.ECOForecast3 level3 = @Model.ecoforecastx.level3;
+    
+    //float dM2 = (level0.M0 - level1.M1 - level2.M2 > 0)?(level0.M0 - level1.M1 - level2.M2):0.0f;
+    
+    
 }
 
 <div class="boxdata">
@@ -66,28 +70,30 @@
         <legend> Вычисления </legend>
         <p>
             <label class="boxdata-label-40 ">Масса нефтепродукта достигшая грунтового слоя (кг) </label>
-            2000
+            @Math.Round(level3.dM3,1)
         </p>
 
-        <p>
-            <label class="boxdata-label-40 ">Скорость вертикального проникновенния нефтепродукта в грунт(м/с) </label>
-             2000
-        </p>
+        @if (Math.Round(level3.dM3, 0) > 0)
+        { 
+                 <p>
+                    <label class="boxdata-label-40 ">Скорость вертикального проникновенния нефтепродукта в грунт(м/с) </label>
+                     @Math.Round(level3.v3, 8)  =  @(Math.Round(86400.0f * level3.v3,2)) (м/сутки)    
+                </p>
         
-        <p>
-            <label class="boxdata-label-40 ">Максимальная глубина проникновения нефтепродукта в почву (м) </label>
-            0.25
-        </p>
-        <p>
-            <label class="boxdata-label-40 ">Максимальная концентрация нефтеродукта в грунте</label>
-            400
-        </p>
-        <p>
-            <label class="boxdata-label-40 ">Масса нефтепродукта адсорбированная грунтом (кг)</label>
-            400
-        </p>
-
-
+                <p>
+                    <label class="boxdata-label-40 ">Максимальная глубина проникновения нефтепродукта в грунт(м) </label>
+                    @Math.Round(level3.H3, 1)
+                </p>
+                <p>
+                   <label class="boxdata-label-40 ">Максимальная концентрация нефтеродукта в грунте</label>
+                   @level3.C3
+                </p>
+                <p>
+                   <label class="boxdata-label-40 ">Масса нефтепродукта адсорбированная грунтом (кг)</label>
+                   @Math.Round(level3.M3) 
+                </p>
+        } 
+        
     </fieldset>
 
 
