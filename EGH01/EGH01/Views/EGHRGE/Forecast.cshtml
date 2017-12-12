@@ -96,7 +96,7 @@
             if (context.Incident_type_code != null)
             {
                 SelectListItem si = incidenttype.FirstOrDefault(s => s.Value == context.Incident_type_code.ToString());
-                si.Selected = true;
+                if (si != null) { si.Selected = true; }
             }
             <div class="boxdata">
                 <label class="boxdata-label-30">Тип инцидента</label>@Html.DropDownList("incidenttype", incidenttype)
