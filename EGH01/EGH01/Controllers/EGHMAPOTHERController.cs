@@ -134,7 +134,7 @@ namespace EGH01.Controllers
                 Geology_index = geology_index,
                 Rgb = rgb,
                 Sistema = sistema,
-                Sunradiation= sunradiation
+                Sunradiation= sunradiation[1]
 
 
 

@@ -147,6 +147,13 @@
 
                         </div>
                     </div>
+                <div class="col-xs-8">
+                    <div class="boxMap">
+                        <div class="row"><div class="col-xs-7 bold" id="watercapacityy"></div><div class="col-xs-5"><span id="watercapacity"></span></div></div>
+                        <div class="row"><div class="col-xs-7 bold" id="porosityy"></div><div class="col-xs-5"><span id="porosity"></span></div></div>
+                        <div class="row"><div class="col-xs-7 bold" id="waterfilterr"></div><div class="col-xs-5"><span id="waterfilter"></span></div></div>
+                    </div>
+                </div>
                     <div class="col-xs-8">
                         <div class="boxMap">
                             <div class="row"><div class="col-xs-7 bold" id="soilnamee"></div><div class="col-xs-5"><span id="soilname"></span></div></div>
@@ -206,11 +213,13 @@
                                 <div class="row"><div class="col-xs-7 bold" id="wrbnewcodee"></div><div class="col-xs-5"><span id="wrbnewcode"></span></div></div>
                         </div>
                     </div>
+                
                 </div>
+
+
                 <span id="buttons">
                     <span class="boxMap-noborder">
-                        @*@Html.Partial("_TypeLineMenu", create)*@
-
+              
                         <button id="clear" class="Очистить" title="Очистить"></button>
                         <span id="result"></span>
                         <input type="hidden" id="coords" value="27,54">
@@ -677,7 +686,10 @@
                 $("#geology_index").html(data.Geology_index);
                 $("#rgb").html(data.Rgb);
                 $("#sistema").html(data.Sistema);
-
+                $("#watercapacity").html(data.Watercapacity);
+                $("#porosity").html(data.Porosity);
+                $("#waterfilter").html(data.Waterfilter);
+  
 
                 $("#districtt").html("Регион:");
                 $("#regionn").html("Область:");
@@ -732,20 +744,11 @@
                 $("#Decemberr").html("Декабрь:");
              
 
+                $("#watercapacityy").html("Коэффициент влагоемкости:");
+                $("#porosityy").html("Коэффициент фильтрации:");
+                $("#waterfilterr").html("Коэффициент пористости:");
 
 
-                //$("#gorizont_powerr").html("Мощность первого горизонта:");
-                //$("#gorizont_namee").html("Наименование горизонта:");
-                //$("#litologyQuatt").html("Литология:");
-                //$("#genesys_codee").html("Код генезиса:");
-                //$("#genetic_typee").html("Генетический тип:");
-                //$("#otdell").html("Геологический отдел:");
-                //$("#podotdell").html("Подраздел геологического отдела:");
-                //$("#podgorizonn").html("Наименование горизонта:");
-                //$("#litology_codee").html("Код литологии:");
-                //$("#geology_indexx").html("Геологический индекс:");
-                //$("#rgbb").html("Код цветового обозначения:");
-                //$("#sistemaa").html("Геологическая система:");
 
 
                 alert(data.Высота);

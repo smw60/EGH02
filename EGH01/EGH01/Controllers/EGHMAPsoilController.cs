@@ -76,8 +76,9 @@ namespace EGH01.Controllers
             EGH01DB.Primitives.MapHelper.GetMonthTemperature(db,mapPoint, out climat);
             float[] period = climat.temperature;
 
-        
 
+            EGH01DB.Types.GroundType ground_type = new GroundType();
+            EGH01DB.Primitives.MapHelper.GetGroundCoef(db, mapPoint, out ground_type);
             var heights = new
             {
                 Soilname = soilType.name,
@@ -116,7 +117,9 @@ namespace EGH01.Controllers
                 Time_migration = time_migration,
                 District = district.name,
                 Region = district.region.name,
-                
+                Watercapacity = ground_type.watercapacity,
+                Porosity=ground_type.porosity,
+                Waterfilter =ground_type.waterfilter,
                 Period = period
 
               
