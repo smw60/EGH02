@@ -70,146 +70,156 @@
 
             <div class="boxdata">
                 <p>
-                    <label class="boxdata-label-20">Широта</label>
-                    <input readonly class="boxdata-input-10" type="text" id="Latitude" name="Latitude" value="@ViewData["Latitude"]" />&deg;
-                    <input readonly class="boxdata-input-10" type="text" id="Lat_m" name="Lat_m" value="@ViewData["Lat_m"]" />&acute;
-                    <input readonly class="boxdata-input-10" type="text" id="Lat_s" name="Lat_s" value="@ViewData["Lat_s"]" />&quot;
+                    <div class="col-xs-2"><strong>Широта</strong></div>
+                    <div class="col-xs-10">
+                        <input readonly class="boxdata-input-10" type="text" id="Latitude" name="Latitude" value="@ViewData["Latitude"]" />&deg;
+                        <input readonly class="boxdata-input-10" type="text" id="Lat_m" name="Lat_m" value="@ViewData["Lat_m"]" />&acute;
+                        <input readonly class="boxdata-input-10" type="text" id="Lat_s" name="Lat_s" value="@ViewData["Lat_s"]" />&quot;
+                    </div>
                 </p>
                 <p>
-                    <label class="boxdata-label-20">Долгота</label>
-                    <input readonly class="boxdata-input-10" type="text" id="Lngitude" name="Lngitude" value="@ViewData["Lngitude"]" />&deg;
-                    <input readonly class="boxdata-input-10" type="text" id="Lng_m" name="Lng_m" value="@ViewData["Lng_m"]" />&acute;
-                    <input readonly class="boxdata-input-10" type="text" id="Lng_s" name="Lng_s" value="@ViewData["Lng_s"]" />&quot;
+                    <div class="col-xs-2"><strong>Долгота</strong></div>
+                    <div class="col-xs-10">
+                        <input readonly class="boxdata-input-10" type="text" id="Lngitude" name="Lngitude" value="@ViewData["Lngitude"]" />&deg;
+                        <input readonly class="boxdata-input-10" type="text" id="Lng_m" name="Lng_m" value="@ViewData["Lng_m"]" />&acute;
+                        <input readonly class="boxdata-input-10" type="text" id="Lng_s" name="Lng_s" value="@ViewData["Lng_s"]" />&quot;
+                    </div>
 
                 </p>
             </div>
 
-            <div style="display:none" id="divv">
+            <div style="display:none" id="divv" class="row">
 
+                <div class="col-xs-4">
 
+                    <div class="boxMap">
+                        <div class="row"><div class="col-xs-7 bold" id="regionn"></div><div class="col-xs-5"><span  id="region"></span></div></div>
+                        
+                        <div class="row"><div class="col-xs-7 bold" id="districtt"></div><div class="col-xs-5"><span id="district"></span></div></div>
+                    </div>
 
-                <div class="boxMap">
-                    <label id="regionn"></label><span id="region"></span>
-                    <br>
-                    <label id="districtt"></label><span id="district"></span>
+                    <div class="boxMap">
+                        <div class="row"><div class="col-xs-7 bold" id="aeration_powerr"></div><div class="col-xs-5"><span id="aeration_power"></span></div></div>
+                        
+                        <div class="row"><div class="col-xs-7 bold" id="average_aeration_powerr"></div><div class="col-xs-5"><span id="average_aeration_power"></span></div></div>
+                        
+                        <div class="row"><div class="col-xs-7 bold" id="max_aeration_powerr"></div><div class="col-xs-5"><span id="max_aeration_power"></span></div></div>
+                        
+                        <div class="row"><div class="col-xs-7 bold" id="litologyy"></div><div class="col-xs-5"><span id="litology"></span></div></div>
+                    </div>
+
+                    <div class="boxMap">
+                        <div class="row"><div class="col-xs-7 bold" id="time_migrationn"></div><div class="col-xs-5"><span id="time_migration"></span></div></div>
+                    </div>
+                    <div class="boxMap">
+                        <div class="row"><div class="col-xs-7 bold" id="heightt"></div><div class="col-xs-5"><span id="height"></span></div></div>
+                    </div>
+
+                    <div class="boxMap">
+                        <div class="row">
+                            <div class="col-xs-12 bold">
+                                Среднемесячные температуры:
+                            </div>
+                            </div>
+                            <div class="row"><div class="col-xs-7 bold" id="JANUARYY"></div><div class="col-xs-5"><span id="JANUARY"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="Februaryy"></div><div class="col-xs-5"><span id="February"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="Marchh"></div><div class="col-xs-5"><span id="March"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="Aprill"></div><div class="col-xs-5"><span id="April"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="Mayy"></div><div class="col-xs-5"><span id="May"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="Junee"></div><div class="col-xs-5"><span id="June"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="Julyy"></div><div class="col-xs-5"><span id="July"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="Augustt"></div><div class="col-xs-5"><span id="August"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="Septemberr"></div><div class="col-xs-5"><span id="September"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="Octoberr"></div><div class="col-xs-5"><span id="October"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="Novemberr"></div><div class="col-xs-5"><span id="November"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="Decemberr"></div><div class="col-xs-5"><span id="December"></span></div></div>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="boxMap">
+                            <div class="row"><div class="col-xs-7 bold" id="soilnamee"></div><div class="col-xs-5"><span id="soilname"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="soilmehsostt"></div><div class="col-xs-5"><span id="soilmehsost"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="soiltypee"></div><div class="col-xs-5"><span id="soiltype"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="soilsubtypee"></div><div class="col-xs-5"><span id="soilsubtype"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="humidityy"></div><div class="col-xs-5"><span id="humidity"></span> %</div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="gumusdepthh"></div><div class="col-xs-5"><span id="gumusdepth"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="capmoisturecapacityy"></div><div class="col-xs-5"><span id="capmoisturecapacity"></span> %</div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="petrolfiltrationcoeff"></div><div class="col-xs-5"><span id="petrolfiltrationcoef"></span> м/сут</div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="fueloilfiltrationcoeff"></div><div class="col-xs-5"><span id="fueloilfiltrationcoef"></span> м/сут</div></div>
+                             
+                            <div class="row"><div class="col-xs-7 bold" id="dieselfiltrationcoeff"></div><div class="col-xs-5"><span id="dieselfiltrationcoef"></span> м/сут</div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="hydrolyticacidityy"></div><div class="col-xs-5"><span id="hydrolyticacidity"></span> м-экв. на 100 г почвы</div></div>
+                            
+                                <div class="row"><div class="col-xs-7 bold" id="oilcapacityy"></div><div class="col-xs-5"><span id="oilcapacity"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="densityy"></div><div class="col-xs-5"><span id="density"></span> г/см³</div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="carboncontentt"></div><div class="col-xs-5"><span id="carboncontent"></span> %</div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="filtercoefintervall"></div><div class="col-xs-5"><span id="filtercoefinterval"></span> м/сут</div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="porosityintervall"></div><div class="col-xs-5"><span id="porosityinterval"></span> %</div></div>
+                            
+                                <div class="row"><div class="col-xs-7 bold" id="glinaintervall"></div><div class="col-xs-5"><span id="glinainterval"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="mgintervall"></div><div class="col-xs-5"><span id="mginterval"></span> %</div></div>
+                            
+                                <div class="row"><div class="col-xs-7 bold" id="phintervall"></div><div class="col-xs-5"><span id="phinterval"></span></div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="densityintervall"></div><div class="col-xs-5"><span id="densityinterval"></span> г/см³</div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="maxmoisturecapacityintervall"></div><div class="col-xs-5"><span id="maxmoisturecapacityinterval"></span> %</div></div>
+                            
+                            <div class="row"><div class="col-xs-7 bold" id="gumuspercentageintervall"></div><div class="col-xs-5"><span id="gumuspercentageinterval"></span> %</div></div>
+                            
+                                <div class="row"><div class="col-xs-7 bold" id="klasss"></div><div class="col-xs-5"><span id="klass"></span></div></div>
+                            
+                                <div class="row"><div class="col-xs-7 bold" id="soiltypecodee"></div><div class="col-xs-5"><span id="soiltypecode"></span></div></div>
+                            
+                                <div class="row"><div class="col-xs-7 bold" id="wrbcodee"></div><div class="col-xs-5"><span id="wrbcode"></span></div></div>
+                            
+                                <div class="row"><div class="col-xs-7 bold" id="rgbcodee"></div><div class="col-xs-5"><span id="rgbcode"></span></div></div>
+                            
+                                <div class="row"><div class="col-xs-7 bold" id="shtrihovkaa"></div><div class="col-xs-5"><span id="shtrihovka"></span></div></div>
+                            
+                                <div class="row"><div class="col-xs-7 bold" id="wrbnewcodee"></div><div class="col-xs-5"><span id="wrbnewcode"></span></div></div>
+                        </div>
+                    </div>
                 </div>
+                <span id="buttons">
+                    <span class="boxMap-noborder">
+                        @*@Html.Partial("_TypeLineMenu", create)*@
 
-                <div class="boxMap">
-                    <label id="aeration_powerr"></label><span id="aeration_power"></span>
-                    <br>
-                    <label id="average_aeration_powerr"></label><span id="average_aeration_power"></span>
-                    <br>
-                    <label id="max_aeration_powerr"></label><span id="max_aeration_power"></span>
-                    <br>
-                    <label id="litologyy"></label><span id="litology"></span>
-                </div>
+                        <button id="clear" class="Очистить" title="Очистить"></button>
+                        <span id="result"></span>
+                        <input type="hidden" id="coords" value="27,54">
+                        <button type="button" class="Центр" title="Центр" value="Центр" onclick="centerMap()"></button>
+                    </span>
+                </span>
+                <canvas class="ol-unselectable" width="1000" height="5" style="width: 100%; height: 100%;"></canvas>
 
-                <div class="boxMap">
-                    <label id="time_migrationn"></label><span id="time_migration"></span>
-                </div>
-                <div class="boxMap">
-                    <label id="heightt"></label><span id="height"></span>
-                </div>
-
-                <div class="boxMap">
-                   
-                    <label>Среднемесячные температуры:</label>
-                    <br>
-                    <label id="JANUARYY"></label><span id="JANUARY"></span>
-                    <br>
-                    <label id="Februaryy"></label><span id="February"></span>
-                    <br>
-                    <label id="Marchh"></label><span id="March"></span>
-                    <br>
-                    <label id="Aprill"></label><span id="April"></span>
-                    <br>
-                    <label id="Mayy"></label><span id="May"></span>
-                    <br>
-                    <label id="Junee"></label><span id="June"></span>
-                    <br>
-                    <label id="Julyy"></label><span id="July"></span>
-                    <br>
-                    <label id="Augustt"></label><span id="August"></span>
-                    <br>
-                    <label id="Septemberr"></label><span id="September"></span>
-                    <br>
-                    <label id="Octoberr"></label><span id="October"></span>
-                    <br>
-                    <label id="Novemberr"></label><span id="November"></span>
-                    <br>
-                    <label id="Decemberr"></label><span id="December"></span>
-
-                </div>
-                <div class="boxMap">
-                    <label id="soilnamee"></label><span id="soilname"></span>
-                    <br>
-                    <label id="soilmehsostt"></label><span id="soilmehsost"></span>
-                    <br>
-                    <label id="soiltypee"></label><span id="soiltype"></span>
-                    <br>
-                    <label id="soilsubtypee"></label><span id="soilsubtype"></span>
-                    <br>
-                    <label id="humidityy"></label><span id="humidity"></span>%
-                    <br>
-                    <label id="gumusdepthh"></label><span id="gumusdepth"></span>
-                    <br>
-                    <label id="capmoisturecapacityy"></label><span id="capmoisturecapacity"></span>%
-                    <br>
-                    <label id="petrolfiltrationcoeff"></label><span id="petrolfiltrationcoef"></span>м/сут
-                    <br>
-                    <label id="fueloilfiltrationcoeff"></label><span id="fueloilfiltrationcoef"></span>м/сут
-                    <br>
-                    <label id="dieselfiltrationcoeff"></label><span id="dieselfiltrationcoef"></span>м/сут
-                    <br>
-                    <label id="hydrolyticacidityy"></label><span id="hydrolyticacidity"></span>м-экв. на 100 г почвы
-                    <br>
-                    <label id="oilcapacityy"></label><span id="oilcapacity"></span>
-                    <br>
-                    <label id="densityy"></label><span id="density"></span> г/см³
-                    <br>
-                    <label id="carboncontentt"></label><span id="carboncontent"></span>%
-                    <br>
-                    <label id="filtercoefintervall"></label><span id="filtercoefinterval"></span>м/сут
-                    <br>
-                    <label id="porosityintervall"></label><span id="porosityinterval"></span>%
-                    <br>
-                    <label id="glinaintervall"></label><span id="glinainterval"></span>
-                    <br>
-                    <label id="mgintervall"></label><span id="mginterval"></span>%
-                    <br>
-                    <label id="phintervall"></label><span id="phinterval"></span>
-                    <br>
-                    <label id="densityintervall"></label><span id="densityinterval"></span>г/см³
-                    <br>
-                    <label id="maxmoisturecapacityintervall"></label><span id="maxmoisturecapacityinterval"></span>%
-                    <br>
-                    <label id="gumuspercentageintervall"></label><span id="gumuspercentageinterval"></span>%
-                    <br>
-                    <label id="klasss"></label><span id="klass"></span>
-                    <br>
-                    <label id="soiltypecodee"></label><span id="soiltypecode"></span>
-                    <br>
-                    <label id="wrbcodee"></label><span id="wrbcode"></span>
-                    <br>
-                    <label id="rgbcodee"></label><span id="rgbcode"></span>
-                    <br>
-                    <label id="shtrihovkaa"></label><span id="shtrihovka"></span>
-                    <br>
-                    <label id="wrbnewcodee"></label><span id="wrbnewcode"></span>
-                </div>
             </div>
-            <div id="buttons">
-                <div class="boxMap-noborder">
-                    @*@Html.Partial("_TypeLineMenu", create)*@
-
-                    <button id="clear" class="Очистить" title="Очистить"></button>
-                    <span id="result"></span>
-                    <input type="hidden" id="coords" value="27,54">
-                    <button type="button" class="Центр" title="Центр" value="Центр" onclick="centerMap()"></button>
-                </div>
-            </div>
-            <canvas class="ol-unselectable" width="1000" height="5" style="width: 100%; height: 100%;"></canvas>
-
         </div>
     </div>
 </div>
