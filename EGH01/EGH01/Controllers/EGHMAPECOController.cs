@@ -57,11 +57,6 @@ namespace EGH01.Controllers
             ViewData["district"] = district.name;
             ViewData["region"] = district.region.name;
 
-            string localpoint = "";
-            EGH01DB.Primitives.MapHelper.GetEcoLocalPoint(db, mapPoint, out localpoint);
-
-            string localpoly = "";
-            EGH01DB.Primitives.MapHelper.GetEcoLocalPoly(db,mapPoint, out localpoly);
 
             string nationalpark = "";
             string nationalpark_type = "";
@@ -71,17 +66,23 @@ namespace EGH01.Controllers
 
             string republicpoint = "";
             string republicpoly = "";
-            EGH01DB.Primitives.MapHelper.GetEcoRepublicPoint(db, mapPoint, out republicpoint);
-            
-            EGH01DB.Primitives.MapHelper.GetEcoRepublicPoly(db,mapPoint, out republicpoly);
+
+            string republic = "";
+            EGH01DB.Primitives.MapHelper.GetEcoRepublic(db, mapPoint, out republic);
+
+            string local = "";
+            EGH01DB.Primitives.MapHelper.GetEcoLocal(db, mapPoint, out local);
             var heights = new
             {
              
                 District = district.name,
                 Region = district.region.name,
-                Localpoint= localpoint,
-                Localpoly= localpoly,
+                Republic = republic,
+                Local = local,
                 Nationalpark= nationalpark,
+                Nationalparktype = nationalpark_type,
+                Nationalparksubtype = nationalpark_subtype,
+                Nationalparkcity = nationalpark_city,
                 Republicpoint = republicpoint,
             Republicpoly = republicpoly
 

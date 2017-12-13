@@ -86,25 +86,25 @@
                     <label id="districtt"></label><span id="district"></span>
                 </div>
                 <div class="box">
-                    <label id="localpointt"></label><span id="localpoint"></span>         
+                    <label id="locall"></label><span id="local"></span>         
                 </div>
                 <div class="box">
-                    <label id="localpolyy"></label><span id="localpoly"></span>
+                    <label id="republicc"></label><span id="republic"></span>
                 </div>
                 <div class="box">
                     <label id="nationalparkk"></label><span id="nationalpark"></span>
-                </div>
-                <div class="box">
-                    <label id="republicpointt"></label><span id="republicpoint"></span>
-                </div>
-                <div class="box">
-                    <label id="republicpolyy"></label><span id="republicpoly"></span>
-                </div>
+                    <br>
+                    <label id="nationalpark_typee"></label><span id="nationalpark_type"></span>
+                    <br>
+                    <label id="nationalpark_subtypee"></label><span id="nationalpark_subtype"></span>
+                    <br>
+                    <label id="nationalpark_cityy"></label><span id="nationalpark_city"></span>
+                </div>            
             </div>
 
             <div id="buttons">
                 <div class="box">
-                    @*@Html.Partial("_TypeLineMenu", create)*@
+              
 
                     <button id="clear" class="Очистить" title="Очистить"></button>
                     <span id="result"></span>
@@ -518,23 +518,26 @@
 
                 $("#district").html(data.District);
                 $("#region").html(data.Region);
-                $("#localpoint").html(data.Localpoint);
-                $("#localpoly").html(data.Localpoly);
+                $("#republic").html(data.Republic);
+                $("#local").html(data.Local);
                 $("#nationalpark").html(data.Nationalpark);
-                $("#republicpoint").html(data.Republicpoint);
-                $("#republicpoly").html(data.Republicpoly);
-                
-                
-  
+                $("#nationalpark_type").html(data.Nationalparktype);
+                $("#nationalpark_subtype").html(data.Nationalparksubtype);
+                $("#nationalpark_city").html(data.Nationalparkcity);
 
+               
 
                 $("#districtt").html("Регион:");
                 $("#regionn").html("Область:");
-                $("#localpointt").html("Наименование особо охраняемой природной территории локального значения(точка):");
-                $("#localpolyy").html("Наименование особо охраняемой природной территории локального значения(полигон):");
-                $("#nationalparkk").html("Наименование особо охраняемой природной территории национального значения (полигон):");
-                $("#republicpointt").html("Наименование особо охраняемой природной территории республиканского значения (точка):");
-                $("#republicpolyy").html("Наименование особо охраняемой природной территории республиканского значения (полигон):");
+                $("#locall").html("Наименование особо охраняемой природной территории локального значения(точка):");
+                $("#republicc").html("Наименование особо охраняемой природной территории локального значения(полигон):");
+
+                $("#nationalparkk").html("Наименование особо охраняемой природной территории национального значения:");
+
+
+                $("#nationalpark_typee").html("Тип парка:");
+                $("#nationalpark_subtypee").html("Подтип парка:");
+                $("#nationalpark_cityy").html("Город:");
 
 
 
