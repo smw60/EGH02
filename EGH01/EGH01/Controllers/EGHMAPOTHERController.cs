@@ -78,10 +78,10 @@ namespace EGH01.Controllers
 
 
 
-            string aeration_power = "";
+            float aeration_power = 0.0f;
             float average_aeration_power = 0.0f;
             float max_aeration_power= 0.0f;
-            string litology = "";
+            float litology = 0.0f;
             EGH01DB.Primitives.MapHelper.GetGeology(db, mapPoint, out aeration_power, out average_aeration_power, out max_aeration_power, out litology);
 
             string gorizont_power = "";
