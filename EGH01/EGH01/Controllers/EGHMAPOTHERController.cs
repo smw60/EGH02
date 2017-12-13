@@ -103,6 +103,7 @@ namespace EGH01.Controllers
 
             SunRadiation[] sunradiation;
             EGH01DB.Primitives.MapHelper.GetSunRadiation(db, mapPoint, out sunradiation);
+            sunradiation.ToString();
             var heights = new
             {
 
@@ -134,7 +135,12 @@ namespace EGH01.Controllers
                 Geology_index = geology_index,
                 Rgb = rgb,
                 Sistema = sistema,
-                Sunradiation= sunradiation[1]
+                Average_rad0 = sunradiation[0].average_rad,
+                From_rad0=sunradiation[0].from_rad,
+                To_rad0 = sunradiation[0].to_rad,
+                Average1 = sunradiation[1].average_rad,
+                //From1 = sunradiation[1].from_rad,
+                //To1 = sunradiation[1].to_rad
 
 
 

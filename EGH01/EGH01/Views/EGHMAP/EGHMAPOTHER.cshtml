@@ -145,7 +145,23 @@
                     <label id="sistemaa"></label><span id="sistema"></span>
                 </div>
                 <div class="box">
-                    <label id="sunradiationn"></label><span id="sunradiation"></span>
+                    Период 1: Апрель-сентябрь
+                    <br>
+                    <label id="to_rad00"></label><span id="to_rad0"></span>
+                    <br>
+                    <label id="average_rad00"></label><span id="average_rad0"></span>
+                    <br>
+                    <label id="from_rad00"></label><span id="from_rad0"></span>
+                 <br>
+                    Период 2: Октябрь-Март
+                    <br>
+                    <label id="to_rad11"></label><span id="to_rad1"></span>
+                    <br>
+                    <label id="average_rad11"></label><span id="average_rad1"></span>
+                    <br>
+                    <label id="from_rad11"></label><span id="from_rad1"></span>
+                  
+                    
                 </div>
                
 
@@ -597,9 +613,15 @@
                 $("#litology_code").html(data.Litology_code);
                 $("#geology_index").html(data.Geology_index);
                 $("#rgb").html(data.Rgb);
-                $("#sistema").html(data.Sunradiation);
-                $("#sunradiation").html(data.Sunradiation);
-             
+                $("#sistema").html(data.Sistema);
+                $("#average_rad0").html(data.Average_rad0);
+                $("#from_rad0").html(data.From_rad0);
+                $("#to_rad0").html(data.To_rad0);
+
+                $("#average_rad1").html(data.Average1);
+                //$("#from_rad1").html(data.From1);
+                //$("#to_rad1").html(data.To1);
+
    
 
                 $("#districtt").html("Регион:");
@@ -632,11 +654,14 @@
                 $("#geology_indexx").html("Геологический индекс:");
                 $("#rgbb").html("Код цветового обозначения:");
                 $("#sistemaa").html("Геологическая система:");
-                $("#sunradiationn").html("солнечная радиация:");
+                $("#average_rad00").html("Среднее значение:");
+                $("#to_rad00").html("Верхняя граница:");
+                $("#from_rad00").html("Нижняя граница:");
+               
+                $("#average_rad11").html("Среднее значение:");
+                $("#to_rad11").html("Верхняя граница:");
+                $("#from_rad11").html("Нижняя граница:");
 
-
-
-                
 
 
                 alert(data.Высота);
