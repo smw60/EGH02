@@ -284,20 +284,33 @@
     <Content Include="Content\site.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\background.png" />
     <Content Include="Resources\clear-black.png" />
+    <Content Include="Resources\clear.png" />
     <Content Include="Resources\create-2.jpg" />
+    <Content Include="Resources\create-2.png" />
     <Content Include="Resources\create.jpg" />
+    <Content Include="Resources\create.png" />
     <Content Include="Resources\delete-ico.png" />
     <Content Include="Resources\edit-ico.png" />
+    <Content Include="Resources\eye-ico.png" />
+    <Content Include="Resources\geo-point.PNG" />
+    <Content Include="Resources\Home.png" />
     <Content Include="Resources\icon_ndt.png" />
     <Content Include="Resources\Layout_Mobile_Whiteframe.png" />
     <Content Include="Resources\logo_bstu_v.png" />
     <Content Include="Resources\map.png" />
     <Content Include="Resources\Layout_Mobile_Whiteframe1.png" />
+    <Content Include="Resources\reject.PNG" />
+    <Content Include="Resources\save-ico.PNG" />
+    <Content Include="Resources\select.PNG" />
+    <Content Include="Resources\trend.PNG" />
+    <Content Include="Resources\up.png" />
     <Content Include="Resources\главная нефтевышка.jpg" />
     <Content Include="Resources\завод.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\195.50.2.82.pubxml" />
     <None Include="Properties\PublishProfiles\Developer.pubxml" />
     <None Include="Properties\PublishProfiles\EGH02-TEST.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -500,7 +513,6 @@
     <Content Include="Views\EGHGEA\_SoilPollutionCategoriesList - Копировать.cshtml" />
     <Content Include="Views\EGHGEA\_SoilPollutionCategoriesList - Копировать %282%29.cshtml" />
     <Content Include="Views\EGHMAP\Index.cshtml" />
-    <Content Include="Views\Debug\Index.cshtml" />
     <Content Include="Views\EGHRGE\_ForecastReport0.cshtml" />
     <Content Include="Views\Shared\_ChoiceGeoPoint.cshtml" />
     <Content Include="Views\EGHRGE\_ForecastReport1.cshtml" />

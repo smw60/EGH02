@@ -5,19 +5,49 @@
 @using EGH01;
 @model EGH01DB.CEQContext
 @{
-      Layout = "~/Views/Shared/EGHLayout.cshtml";
-      EGH01DB.CEQContext ceq = (EGH01DB.CEQContext)Model;
-      CEQViewContext context = null;
-      if (Model != null)
-      {
-          context = (CEQViewContext)Model.GetViewContext(CEQViewContext.VIEWNAME);
-          if (context == null) { Model.SaveViewContext(CEQViewContext.VIEWNAME, context = new CEQViewContext()); };
-      }   
-         
-      
+    Layout = "~/Views/Shared/EGHLayout.cshtml";
+    EGH01DB.CEQContext ceq = (EGH01DB.CEQContext)Model;
+    CEQViewContext context = null;
+    if (Model != null)
+    {
+        context = (CEQViewContext)Model.GetViewContext(CEQViewContext.VIEWNAME);
+        if (context == null) { Model.SaveViewContext(CEQViewContext.VIEWNAME, context = new CEQViewContext()); };
+    }
+
+
 }
 
-@if (Model != null &&  context.ecoevalution!= null)
+@if (Model != null && context.ecoevalution != null)
 {
-  @Html.Partial("_ConfirmChoiceForecastResult", @Model)
+    @Html.Partial("_ConfirmChoiceForecastResult", @Model)
 }
+
+<div class="box main">
+    <div class="boxdata">
+        <div class="col-xs-4"><h3>Оценка прогнозируемого состояния </h3></div>
+        <div class="col-xs-8">&ndash; сравнение прогнозируемых значений показателей загрязнения геологической среды с нормативными значениями (ПДК).</div>
+    </div>
+        <div class="box main">
+            <div class="boxdata">
+                <div class="row">
+                <div class="row">
+                    <div class="col-xs-4"><h3>Результаты прогнозирования </h3></div>
+                    <div class="col-xs-8">&ndash; форма выбора результата прогнозирования, полученного в модуле <strong>Прогноз</strong>.</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4"><h3>Оценка прогнозируемого состояния </h3></div>
+                    <div class="col-xs-8">&ndash; сравнение прогнозируемых концентраций нефтепродуктов в грунте и грунтовых водах с предельно-допустимыми значениями.</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4"><h3>Предельно-допустимые концентрации </h3></div>
+                    <div class="col-xs-8">&ndash; просмотр, корректировка электронного справочника предельно-допустимых концентраций нефтепродуктов в грунте и воде.</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4"><h3>Отчеты </h3></div>
+                    <div class="col-xs-8">&ndash; просмотр отчетов, сформированных модулем <strong>Оценка прогнозируемого состояния</strong>.</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

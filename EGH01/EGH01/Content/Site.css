@@ -957,24 +957,25 @@ element.style {
 
 }
 .main h1{
-    font-size: 24px;
+    font-size: 48px;
     font-weight:bold;
     margin:0 0 5px 0;
+    text-align:center;
 }
 .main h2{
-    font-size: 20px;
+    font-size: 26px;
     font-weight:bold;
     margin:0;
 }
 .main h3{
-    font-size: 16px;
+    font-size: 22px;
     text-align:left;
     margin:0;
 }
 .main .boxdata div{
     vertical-align:top;
     padding:5px 15px;
-    font-size: 14px;
+    font-size: 18px;
     text-align:left;
 }
 .main .boxdata{
@@ -983,6 +984,14 @@ element.style {
 .main .row{
     min-height:initial;
 }
-.underline{
+.main h2.underline{
+    font-size:28px;
+    padding:10px 0;
     border-bottom:solid 2px #090;
+}
+.dataTables_wrapper .row{
+    min-height:0;
+}
+.sorting_asc{
+    display:none;
 }
