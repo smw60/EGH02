@@ -63,12 +63,77 @@ namespace EGH01.Controllers
 
                 city = "Города нет";
             }
+
+            String assoc_gr_1 = "";
+            String shtrih_cod = "";
+            String code_legen = "";
+            String class_form = "";
+            String associastion = "";
+            String code_rgb = "";
+            String type_resty = "";
+            String krap_code = "";
+            String dop_code = "";
+            EGH01DB.Primitives.MapHelper.GetVegetation(db,mapPoint, out assoc_gr_1, out shtrih_cod, out code_legen, out class_form, out associastion, out code_rgb, out type_resty, out krap_code, out dop_code);
+
+
+
+
+            string aeration_power = "";
+            float average_aeration_power = 0.0f;
+            float max_aeration_power= 0.0f;
+            string litology = "";
+            EGH01DB.Primitives.MapHelper.GetGeology(db, mapPoint, out aeration_power, out average_aeration_power, out max_aeration_power, out litology);
+
+            string gorizont_power = "";
+            string gorizont_name = "";
+            string litologyQuat = "";
+            float genesys_code = 0.0f;
+            string genetic_type = "";
+            string otdel = "";
+            string podotdel = "";
+            string podgorizon = "";
+            float litology_code = 0.0f;
+            string geology_index = "";
+            string rgb = "";
+            string sistema = "";
+
+            EGH01DB.Primitives.MapHelper.GetQuatSediments(db, mapPoint, out gorizont_power, out gorizont_name,
+                out litologyQuat, out genetic_type, out genesys_code,
+                out otdel, out podotdel, out podgorizon, out litology_code, out geology_index, out rgb, out sistema);
+
+            SunRadiation[] sunradiation ;
+            EGH01DB.Primitives.MapHelper.GetSunRadiation(db, mapPoint, out sunradiation);
             var heights = new
             {
 
                 District = district.name,
                 Region = district.region.name,
-                City= city
+                City= city,
+                Assoc_gr_1 = assoc_gr_1,
+                Shtrih_cod = shtrih_cod,
+                Code_legen = code_legen,
+                Class_form = class_form,
+                Associastion = associastion,
+                Code_rgb = code_rgb,
+                Type_resty = type_resty,
+                Krap_code = krap_code,
+                Dop_code = dop_code,
+                Aeration_power = aeration_power,
+                Average_aeration_power = average_aeration_power,
+                Max_aeration_power = max_aeration_power,
+                Litology = litology,
+                Gorizont_power = gorizont_power,
+                Gorizont_name = gorizont_name,
+                LitologyQuat = litologyQuat,
+                Genesys_code = genesys_code,
+                Genetic_type = genetic_type,
+                Otdel = otdel,
+                Podotdel = podotdel,
+                Podgorizon = podgorizon,
+                Litology_code = litology_code,
+                Geology_index = geology_index,
+                Rgb = rgb,
+                Sistema = sistema
 
 
 
