@@ -81,6 +81,8 @@ exec MAP.EcoRepublic @point = 'Point(27.4421796312367 53.9043260781941)';
 
 ---28 -- 2 секунды
 exec MAP.EcoLocal @point = 'Point(27.4421796312367 53.9043260781941)';
+--29 buffer
+exec [MAP].[EcoObjectInBuffer] @point = 'Point(27.4421796312367 53.9043260781941)', @buffer = 12000;
 
 
 

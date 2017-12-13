@@ -321,7 +321,7 @@ namespace EGH01DB.Primitives
             max_aeration_power = 0.0f;
             litology = "";
 
-            using (SqlCommand cmd = new SqlCommand("MAP.InAerationrMap", dbcontext.connection))
+            using (SqlCommand cmd = new SqlCommand("MAP.InAerationMap", dbcontext.connection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 {
@@ -597,16 +597,16 @@ namespace EGH01DB.Primitives
         }
 
         // #15 Получение карты геологической
-        static public bool GetGeology(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out string aeration_power,
-                                       out float average_aeration_power, out float max_aeration_power, out string litology) // Карта зоны аэрации
+        static public bool GetGeology(EGH01DB.IDBContext dbcontext, Coordinates coordinates, out float volume_weight,
+                                       out float genesys_code, out float litology_code, out float delay_coef) 
         {
             bool rc = false;
-            aeration_power = "";
-            average_aeration_power = 0.0f;
-            max_aeration_power = 0.0f;
-            litology = "";
+            volume_weight = 0.0f;
+            genesys_code = 0.0f;
+            litology_code = 0.0f;
+            delay_coef = 0.0f;
 
-            using (SqlCommand cmd = new SqlCommand("MAP.InAerationrMap", dbcontext.connection))
+            using (SqlCommand cmd = new SqlCommand("MAP.InGeologyMap", dbcontext.connection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 {
@@ -624,10 +624,10 @@ namespace EGH01DB.Primitives
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (rc = reader.Read())
                     {
-                        aeration_power = (string)reader["aeration_power"];
-                        average_aeration_power = (float)reader["average_aeration_power"];
-                        max_aeration_power = (float)reader["max_aeration_power"];
-                        litology = (string)reader["litology"];
+                        volume_weight = (float)reader["volume_weight"];
+                        genesys_code = (float)reader["genesys_code"];
+                        litology_code = (float)reader["litology_code"];
+                        delay_coef = (float)reader["delay_coef"];
                     }
                     reader.Close();
                 }
