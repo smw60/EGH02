@@ -101,7 +101,7 @@ namespace EGH01.Controllers
                 out litologyQuat, out genetic_type, out genesys_code,
                 out otdel, out podotdel, out podgorizon, out litology_code, out geology_index, out rgb, out sistema);
 
-            SunRadiation[] sunradiation ;
+            SunRadiation[] sunradiation;
             EGH01DB.Primitives.MapHelper.GetSunRadiation(db, mapPoint, out sunradiation);
             var heights = new
             {
@@ -133,7 +133,8 @@ namespace EGH01.Controllers
                 Litology_code = litology_code,
                 Geology_index = geology_index,
                 Rgb = rgb,
-                Sistema = sistema
+                Sistema = sistema,
+                Sunradiation= sunradiation
 
 
 

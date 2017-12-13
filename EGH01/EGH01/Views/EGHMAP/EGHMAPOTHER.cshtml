@@ -144,6 +144,11 @@
                     <br>
                     <label id="sistemaa"></label><span id="sistema"></span>
                 </div>
+                <div class="box">
+                    <label id="sunradiationn"></label><span id="sunradiation"></span>
+                </div>
+               
+
             </div>
 
 
@@ -592,12 +597,13 @@
                 $("#litology_code").html(data.Litology_code);
                 $("#geology_index").html(data.Geology_index);
                 $("#rgb").html(data.Rgb);
-                $("#sistema").html(data.Sistema);
-  
+                $("#sistema").html(data.Sunradiation);
+                $("#sunradiation").html(data.Sunradiation);
+             
    
 
-                $("#districtt").html("Область:");
-                $("#regionn").html("Регион:");
+                $("#districtt").html("Регион:");
+                $("#regionn").html("Область:");
                 $("#cityy").html("Наименование населеного пункта:");
                 $("#assoc_gr_11").html("Группы ассоциации:");
                 $("#shtrih_codd").html("Код штриховки:");
@@ -626,9 +632,11 @@
                 $("#geology_indexx").html("Геологический индекс:");
                 $("#rgbb").html("Код цветового обозначения:");
                 $("#sistemaa").html("Геологическая система:");
+                $("#sunradiationn").html("солнечная радиация:");
 
 
 
+                
 
 
                 alert(data.Высота);
