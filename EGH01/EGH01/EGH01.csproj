@@ -194,6 +194,7 @@
     <Compile Include="Controllers\EGHMAPECOController.cs" />
     <Compile Include="Controllers\EGHMAP2Controller.cs" />
     <Compile Include="Controllers\EGHMAPsoilController.cs" />
+    <Compile Include="Controllers\EGHMAPOTHERController.cs" />
     <Compile Include="Controllers\EGHMAPWATERController.cs" />
     <Compile Include="Controllers\EGHORTController.cs" />
     <Compile Include="Controllers\EGHORTController_EmergencyClass.cs" />
@@ -511,6 +512,7 @@
     <Content Include="Views\EGHMAP\EGHMAP2.cshtml" />
     <Content Include="Views\EGHMAP\EGHMAPECO.cshtml" />
     <Content Include="Views\EGHMAP\EGHMAPWATER.cshtml" />
+    <Content Include="Views\EGHMAP\EGHMAPOTHER.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
