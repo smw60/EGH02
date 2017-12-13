@@ -167,7 +167,7 @@ navbar-nav nav {
     touch-action: manipulation;
     cursor: pointer;
     background-image: none;
-    #000-space: nowrap;
+    white-space: nowrap;
     padding: 6px 16px;
     font-size: 13px;
     line-height: 1.846;
@@ -994,4 +994,10 @@ element.style {
 }
 .sorting_asc{
     display:none;
+}
+.bold{
+    font-weight:bold;
+}
+.row{
+    min-height:0;
 }
