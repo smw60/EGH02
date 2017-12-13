@@ -32,7 +32,7 @@
 
             @if (ViewBag.EGHLayout == "RGE")
             {
-                <h2>Прогноз</h2>
+                <h2>Прогнозирование</h2>
             }
             else if (ViewBag.EGHLayout == "EGH")
             {
@@ -65,53 +65,53 @@
 
             else if (ViewBag.EGHLayout == "RGE.AnchorPoint")
             {
-                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Опорные точки</span></h2>
+                <h2><span>@Html.ActionLink("Прогнозирование", "Index", "EGHRGE") </span><span class="big">Опорные точки</span></h2>
             }
             else if (ViewBag.EGHLayout == "RGE.EcoObject")
             {
-                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Природоохранные объекты</span></h2>
+                <h2><span>@Html.ActionLink("Прогнозирование", "Index", "EGHRGE") </span><span class="big">Природоохранные объекты</span></h2>
             }
             else if (ViewBag.EGHLayout == "RGE.IncidentType")
             {
-                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Типы инцидентов</span></h2>
+                <h2><span>@Html.ActionLink("Прогнозирование", "Index", "EGHRGE") </span><span class="big">Типы инцидентов</span></h2>
             }
             else if (ViewBag.EGHLayout == "RGE.Forecast")
             {
-                <h2>Прогноз</h2>
+                <h2>Прогнозирование</h2>
             }
 
             else if (ViewBag.EGHLayout == "RGE.GroundType")
             {
-                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Типы грунтов</span></h2>
+                <h2><span>@Html.ActionLink("Прогнозирование", "Index", "EGHRGE") </span><span class="big">Типы грунтов</span></h2>
             }
        
             else if (ViewBag.EGHLayout == "RGE.Report")
             {
-                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Отчеты</span></h2>
+                <h2><span>@Html.ActionLink("Прогнозирование", "Index", "EGHRGE") </span><span class="big">Отчеты</span></h2>
             }
 
             else if (ViewBag.EGHLayout == "RGE.CadastreType")
             {
-                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Категории земли</span></h2>
+                <h2><span>@Html.ActionLink("Прогнозирование", "Index", "EGHRGE") </span><span class="big">Категории земли</span></h2>
             }
 
             else if (ViewBag.EGHLayout == "RGE.SpreadingCoefficient")
             {
-                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Коэффициент растекания</span></h2>
+                <h2><span>@Html.ActionLink("Прогнозирование", "Index", "EGHRGE") </span><span class="big">Коэффициент растекания</span></h2>
             }
             else if (ViewBag.EGHLayout == "RGE.EcoObjectType")
             {
-                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Типы природоохранных объектов</span></h2>
+                <h2><span>@Html.ActionLink("Прогнозирование", "Index", "EGHRGE") </span><span class="big">Типы природоохранных объектов</span></h2>
             }
 
             else if (ViewBag.EGHLayout == "RGE.WaterProperties")
             {
-                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Свойства воды</span></h2>
+                <h2><span>@Html.ActionLink("Прогнозирование", "Index", "EGHRGE") </span><span class="big">Свойства воды</span></h2>
                 
             }
              else if (ViewBag.EGHLayout == "RGE.RiskObjectType")
             {
-                <h2><span>@Html.ActionLink("Прогноз", "Index", "EGHRGE") </span><span class="big">Тип техногенного объекта</span></h2>
+                <h2><span>@Html.ActionLink("Прогнозирование", "Index", "EGHRGE") </span><span class="big">Тип техногенного объекта</span></h2>
                 
             }
             
@@ -193,7 +193,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle btn btn-link" id="main_menu" data-toggle="dropdown" role="button" aria-expanded="false">Главное меню <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li>@Html.ActionLink("Прогноз", "Index", "EGHRGE")  </li>
+                        <li>@Html.ActionLink("Прогнозирование", "Index", "EGHRGE")  </li>
                         <li>@Html.ActionLink("Оценка прогнозируемого состояния", "Index", "EGHCEQ")  </li>
                         <li>@Html.ActionLink("Классификация прогнозируемого состояния", "Index", "EGHGEA")  </li>
                         <li>@Html.ActionLink("Выбор технологий реабилитации", "Index", "EGHORT")  </li>
@@ -208,7 +208,7 @@
         <ul class="navbar-nav nav navbar-right">
             <li class="dropdown">
                 <ul class="dropdown-menu" role="menu">
-                    <li>@Html.ActionLink("EGHRGE - Прогноз", "Index", "EGHRGE")  </li>
+                    <li>@Html.ActionLink("EGHRGE - Прогнозирование", "Index", "EGHRGE")  </li>
                     <li>@Html.ActionLink("EGHCEQ - Оценка прогнозируемого состояния", "Index", "EGHCEQ")  </li>
                     <li>@Html.ActionLink("EGHGEA - Классификация прогнозируемого состояния", "Index", "EGHGEA")  </li>
                     <li>@Html.ActionLink("EGHORT - Выбор технологий реабилитации", "Index", "EGHORT")  </li>
@@ -309,7 +309,7 @@
                      <li>@Html.ActionLink("Карта2", "EGHMAP2")</li>
                     <li>@Html.ActionLink("Карта особо охраняемых природных территорий", "EGHMAPECO")</li>
                     <li>@Html.ActionLink("Водные объекты", "EGHMAPWATER")</li>
-                    <li>@Html.ActionLink("Остальные", "EGHMAP")</li>
+                    <li>@Html.ActionLink("Остальные", "EGHMAPOTHER")</li>
                    
                 }
                            

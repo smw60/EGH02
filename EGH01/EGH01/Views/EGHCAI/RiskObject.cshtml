@@ -22,7 +22,14 @@
 
 }
 
-
+<div class="box main">
+    <div class="boxdata">
+        <div class="row">
+            <div class="col-xs-4"><h3>Техногенные объекты</h3></div>
+            <div class="col-xs-8">&ndash; электронный справочник техногенных объектов, деятельность которых связана с использованием нефтепродуктов.</div>
+        </div>
+    </div>
+</div>
 @Html.Partial("_TypeHeadMenu", new TypeViewMenu {Controller = "EGHCAI", Action = "RiskObject", Menu = head})
 @Html.Partial("_RiskObjectList", list)
 

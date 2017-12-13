@@ -72,7 +72,7 @@ namespace EGH01.Controllers
             string republicpoint = "";
             string republicpoly = "";
             EGH01DB.Primitives.MapHelper.GetEcoRepublicPoint(db, mapPoint, out republicpoint);
-
+            
             EGH01DB.Primitives.MapHelper.GetEcoRepublicPoly(db,mapPoint, out republicpoly);
             var heights = new
             {

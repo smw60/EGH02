@@ -522,7 +522,7 @@ namespace EGH01DB.Objects
     }
      
 
-    public class EcoObjectsList : List<EcoObject>      // список объектов  с координами 
+    public class EcoObjectsList : List<EcoObject>      // список объектов  с координатами 
     {
         public EcoObjectsList()
         {
@@ -588,6 +588,58 @@ namespace EGH01DB.Objects
                 }
             }
             return rc;
+        }
+
+        static public bool  FindAtDistance(EGH01DB.IDBContext dbcontext, Coordinates coordinates, int buffer, out EcoObjectsList ecolist)
+        {
+            bool rc = false; 
+            ecolist = new EcoObjectsList();
+            //List<EcoObject> ecolist = new List<EcoObject>();
+
+            using (SqlCommand cmd = new SqlCommand("MAP.EcoObjectInBuffer", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = coordinates.GetMapPoint(); ;
+                    cmd.Parameters.Add(parm);
+                }
+               
+                {
+                    SqlParameter parm = new SqlParameter("@buffer", SqlDbType.Int);
+                    parm.Value = buffer;
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                     rc = true; 
+
+                    while (reader.Read())
+                    {
+                        int id = (int)reader["Obj_Id"];
+                        string name = (string)reader["name"];
+                        string type = (string)reader["type"];
+                        EcoObjectType eco_object_type = new EcoObjectType(type);
+                        CadastreType cadastre_type = new CadastreType("Не определено на карте");
+
+                        EcoObject ecoobject = new EcoObject(name, eco_object_type, cadastre_type);
+                        ecolist.Add(ecoobject);
+                    }
+                    reader.Close();
+                    
+                }
+                catch (Exception e)
+                {
+                    rc = false; 
+                };
+                return rc;
+            }
         }
     }
 

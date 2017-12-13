@@ -18,8 +18,6 @@ namespace EGH01DB
     {
 
 
-    
-
           
      public class  ECOForecastX
      {
@@ -27,6 +25,7 @@ namespace EGH01DB
          public  ECOForecast1 level1  {get; private set;}
          public  ECOForecast2 level2  {get; private set;}
          public  ECOForecast3 level3  {get; private set;}
+         public  ECOForecast4 level4  {get; private set;}
          public ECOForecastX(IDBContext db, Incident incident)
          {
 
@@ -41,8 +40,8 @@ namespace EGH01DB
 
              this.level1 = new ECOForecast1(this.level0);
              this.level2 = new ECOForecast2(this.level1);
-             this.level3 = new ECOForecast3(this.level2); 
-
+             this.level3 = new ECOForecast3(this.level2);
+             this.level4 = new ECOForecast4(this.level3); 
 
          }
 
@@ -50,15 +49,17 @@ namespace EGH01DB
 
     public class ECOForecast0     // поверхность 
      {
-         public IDBContext db { get; set; }
-         public DateTime date { get; set; }
-         public DateTime date_message { get; set; }
-         public IncidentType incidenttype { get; set; }
+         public IDBContext        db                { get; set; }
+         public DateTime          date              { get; set; }
+         public DateTime          date_message      { get; set; }
+         public IncidentType      incidenttype      { get; set; }
          public PetrochemicalType petrochemicaltype { get; set; }   // тип НП
-         public float V0   { get; set; }
-         public float temperature { get; set; }
-         public RiskObject riskobject { get; set; }
-         public float M0 { get; set; }  // масса пролитого НП
+         public float             V0                { get; set; }
+         public float             temperature       { get; set; }
+         public RiskObject        riskobject        { get; set; }
+         public float             delta0            { get; set; }
+         public float             ro0               { get; set; }   
+         public float             M0                { get; set; }  // масса пролитого НП
                     
 
          public  ECOForecast0(IDBContext          db,
@@ -79,7 +80,9 @@ namespace EGH01DB
          this.V0                 = volume;
          this.temperature        = temperature;
          this.riskobject         = riskobject;
-         this.M0 = this.V0 * this.petrochemicaltype.density; // масса пролитого НП 
+         this.delta0             = this.petrochemicaltype.tension;
+         this.ro0                = this.petrochemicaltype.density;
+         this.M0                 = this.V0 * this.ro0;                 // масса пролитого НП 
          }
 
          public ECOForecast0(ECOForecast0 f0)
@@ -96,7 +99,7 @@ namespace EGH01DB
          }
 
      }
-    public class ECOForecast1      // почва
+    public class ECOForecast1      //  поверхность
      {
          public ECOForecast0 f0     { get; private set; } 
          public float        d1     { get; private set; }       // коэффициент разлива (1/м) 
@@ -106,12 +109,14 @@ namespace EGH01DB
          public float        M1     { get; private set; }       // масса испарившегося нп   
          public float        R1     { get; private set; }       // радиус  пятна при равномерном растекании   
          public BlurBorder   bb     { get; private set; }       // границы пятна 
+         public float        dM1    { get; private set; }       // остаток НП достигший поверхности
 
-        
          public ECOForecast1(ECOForecast0 f0)  
          {
              this.f0 = f0;
+             this.dM1 = f0.M0 > 0 ? f0.M0 : 0.0f;
              this.d1 = SpreadingCoefficient.GetByData(f0.db, f0.riskobject.groundtype, f0.petrochemicaltype, f0.V0, 0.0f);
+             this.d1 = this.d1 <= 0 ? 5.0f : this.d1;   // заглушка
              this.q1 = EvaporationCoefficient.GetByData(f0.temperature);
              this.S1 = this.d1 * this.f0.V0;
              this.R1 =  (float)Math.Round((float)Math.Sqrt(this.S1 / Math.PI),1);
@@ -132,7 +137,7 @@ namespace EGH01DB
          }
 
      }
-     public  class ECOForecast2     // грунт   
+     public  class ECOForecast2     // почва  
      {
 
          public ECOForecast0 f0 { get; private set; }
@@ -141,63 +146,108 @@ namespace EGH01DB
          public float        h2 { get; private set; }    // средняя толщина почвенного слоя
          public float        H2 { get; private set; }    // глубина проникновения  
          public float        M2 { get; private set; }    // адсорбированная почвой масса
-
+         public float       dM2 { get; private set; }    // остаток НП достигший почвы 
+        
          public ECOForecast2(ECOForecast1 f1)
          {
              this.f0 = f1.f0;
              this.f1 = f1;
+             this.dM2 = this.f1.dM1 - this.f1.M1 > 0? this.f1.dM1 - this.f1.M1: 0.0f;
              this.u2 = OilCapacity.defaultvalue.ocapacity; 
              this.h2 = f0.riskobject.soiltype.gumus_depth;
-             this.M2 = f1.S1 * this.h2 * this.u2 * f0.petrochemicaltype.density;
-             this.H2 = (this.h2 * (f0.M0 - f1.M1) / this.M2) > this.h2 ? this.h2 : (this.h2 * (f0.M0 - f1.M1) / this.M2);    
-           
+             this.M2 = f1.S1 * this.h2 * this.u2 * this.f0.ro0;
+             this.H2 = (this.h2 * this.dM2/this.M2) > this.h2 ? this.h2 : (this.h2 * this.dM2 / this.M2);    
+             
          }
      }
-     public class ECOForecast3     // грунтовые воды 
+     public class ECOForecast3     // грунт  
      {
          public ECOForecast0 f0  { get; private set; }
          public ECOForecast1 f1  { get; private set; }
          public ECOForecast2 f2  { get; private set; }
+         public string       groundtypename { get; private set; }   // название грунта
          public float        h3  { get; private set; }   // толщина грунта
          public float        rov { get; private set; }   // плотность воды 
-         public float        dv  { get; private set; }   // коэффициент поверностного натяжения  воды 
-         public float        k3 { get; private set; }   // коэффициент фильтрации воды 
+         public float        deltav  { get; private set; }   // коэффициент поверностного натяжения  воды 
+         public float        k3  { get; private set; }   // коэффициент фильтрации воды 
          public float        r3  { get; private set; }   // коэффициент задержки НП
          public float        m3  { get; private set; }   // пористость грунта
          public float        w3  { get; private set; }   // капилярная влагоемкость грунта
          public float        ro3 { get; private set; }   // плотность грунта 
          public float        H3  { get; private set; }   // грубина проникновения НП в грунт 
          public float        M3  { get; private set; }   // масса абсорбированного в грунте НП  
-         public float        С3  { get; private set; }   // максимальная концентрация нп в грунте 
+         public float        C3  { get; private set; }   // максимальная концентрация нп в грунте 
+         public float        v3  { get; private set; }   // горизонтальная скорость проникновения нп в грунте 
 
-        
+         public float        dM3 { get; private set; }    // остаток НП достигший грунта
 
          public ECOForecast3(ECOForecast2 f2)
          {
-            this.f0 = f2.f0;
-            this.f1 = f2.f1;
-            {
-                this.ro3 = 1000; 
-                WaterProperties wp = null;
-                float delta = 0;
-                if (WaterProperties.Get(f0.db, f0.temperature, out wp, out delta))
-                {
-                    this.ro3 = wp.density;                
-                }
+             this.f0 = f2.f0;
+             this.f1 = f2.f1;
+             this.f2 = f2;
+             this.dM3 = this.f2.dM2 - this.f2.M2 > 0 ? this.f2.dM2 - this.f2.M2 : 0;
+             {
+                 this.ro3 = 1000;
+                 WaterProperties wp = null;
+                 float delta = 0;
+                 if (WaterProperties.Get(f0.db, 20.0f, out wp, out delta))   //f0.temperature
+                 {
+                     this.rov = wp.density;
+                     this.deltav = wp.tension;
+                 }
              }
-            
-             this.h3 =  this.f0.riskobject.waterdeep;
-             this.k3  = this.f0.riskobject.groundtype.waterfilter;
-             this.r3  = this.f0.riskobject.groundtype.holdmigration;
-             this.m3  = this.f0.riskobject.groundtype.porosity;
-             this.w3  = this.f0.riskobject.groundtype.watercapacity;
+
+             this.groundtypename = this.f0.riskobject.groundtype.name;
+             this.h3 = this.f0.riskobject.waterdeep;
+             this.k3 = this.f0.riskobject.groundtype.waterfilter;
+             this.r3 = this.f0.riskobject.groundtype.holdmigration;
+             this.m3 = this.f0.riskobject.groundtype.porosity;
+             this.w3 = this.f0.riskobject.groundtype.watercapacity;
              this.ro3 = this.f0.riskobject.groundtype.density;
-                         
-             //this.M3  = this.h3 * this.f1.S1  
-             //his.this.C3  = 
+
+             this.v3 = this.k3 / this.r3;
+
+             this.M3 = this.h3 * this.f1.S1 * this.rov * this.m3 * this.w3 * this.f0.delta0 / this.deltav;
+             
+             if (this.dM3 <= this.M3) this.H3 = this.h3 * this.dM3 / this.M3;
+                 else this.H3 = this.h3;
+            
+             if (this.H3 > 0) this.C3 = this.M3 / (this.f1.S1 * this.H3 * this.ro3);
+             else this.C3 = 0;
 
          }
 
+     }
+     public class ECOForecast4     // грунтовые воды  
+     {
+         public ECOForecast0 f0 { get; private set; }
+         public ECOForecast1 f1 { get; private set; }
+         public ECOForecast2 f2 { get; private set; }
+         public ECOForecast3 f3 { get; private set; }
+        
+         public float t4        { get; private set; }   //  интервал достижения грунтовых вод
+         public float l4        { get; private set; }   //  максимальный радиус распространения загрязнения 
+         public float v4        { get; private set; }   //  горизонтальная скорость распространения загрязнения
+         public float C4        { get; private set; }   //  концентрация в гр. водах 
+         public float h4 { get { return 1.0f; } }   //  толщина слоя грунтовых вод
+         public float dM4       { get; private set; }    // остаток НП достигший грунтовых вод 
+
+
+
+         public ECOForecast4(ECOForecast3 f3)
+         { 
+          this.f0 =  f3.f0;
+          this.f1 =  f3.f1;  
+          this.f2 =  f3.f2;
+          this.f3 =  f3;
+          this.dM4 =  this.f3.dM3 - this.f3.M3 > 0? this.f3.dM3 - this.f3.M3: 0.0f;
+          this.t4  = (this.f2.h2+this.f3.h3)/this.f3.v3;                  // у насти ошибка !!!            
+          this.l4  = this.dM4/(2*this.f1.R1 * this.h4 * this.f3.rov* this.f3.m3* this.f3.w3* this.f0.delta0/this.f3.deltav);
+          this.C4  = this.dM4/(2*this.f1.R1*this.l4);                     // у насти ошибка !!! 
+
+         }
+         
      }
 
      public class BlurBorder
@@ -248,8 +298,6 @@ namespace EGH01DB
 
 
      } 
-
-
 
      #region ECOForecast [старая версия]
      public partial class ECOForecast         //  модель прогнозирования 
@@ -355,9 +403,6 @@ namespace EGH01DB
                  this.errormessage = e.ehgmessage;
 
              }
-
-
-
 
              return true;
          }

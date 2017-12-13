@@ -77,6 +77,7 @@ namespace EGH01.Controllers
 
             int[] downfall;
             EGH01DB.Primitives.MapHelper.GetDownfall(db,mapPoint, out downfall);
+           
             if (water_Object.iswaterobject) {
 
                 watername = water_Object.name;
@@ -87,7 +88,9 @@ namespace EGH01.Controllers
             {
                 watername = "Не является водным объектом";
             }
-
+            EGH01DB.Types.WaterProtectionArea water_area = new WaterProtectionArea();
+            EGH01DB.Primitives.MapHelper.GetWaterProtectionZone(db, mapPoint, out water_area);
+            
             var heights = new
             {
 
@@ -103,8 +106,9 @@ namespace EGH01.Controllers
                 Network_density = network_density,
                 Lenght = lenght,
                 District_area = district_area,
-                Downfall = downfall
-
+                Downfall = downfall,
+                WaterAreaName = water_area.name,
+                WaterAreaBuff = water_area.buffer
 
 
 

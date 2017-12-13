@@ -74,7 +74,7 @@
                 if (context.petrochemicaltype != null && context.petrochemicaltype.code_type >  0)
                 {
                     SelectListItem si = petrochemicaltype.FirstOrDefault(s => s.Value == context.petrochemicaltype.code_type.ToString());
-                    si.Selected = true;
+                    if (si != null) { si.Selected = true; }
                 }
             }
 
@@ -96,7 +96,7 @@
             if (context.Incident_type_code != null)
             {
                 SelectListItem si = incidenttype.FirstOrDefault(s => s.Value == context.Incident_type_code.ToString());
-                si.Selected = true;
+                if (si != null) { si.Selected = true; }
             }
             <div class="boxdata">
                 <label class="boxdata-label-30">Тип инцидента</label>@Html.DropDownList("incidenttype", incidenttype)

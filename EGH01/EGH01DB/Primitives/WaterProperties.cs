@@ -283,9 +283,8 @@ namespace EGH01DB.Primitives
                 }
                 try
                 {
-                    cmd.ExecuteNonQuery();
                     SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read())
+                    if (rc = reader.Read())
                     {
                         int code = (int)reader["КодПоказателяВоды"];
                         float temperature = (float)reader["Температура"];
@@ -295,7 +294,7 @@ namespace EGH01DB.Primitives
 
                         delta = (float)reader["delta"];
 
-                        if (rc = (int)cmd.Parameters["@exitrc"].Value > 0) waterproperties = new WaterProperties(code, (float)temperature, (float)viscocity, (float)density, (float)tension);
+                        waterproperties = new WaterProperties(code, (float)temperature, (float)viscocity, (float)density, (float)tension);
                     }
                     reader.Close();
                 }
