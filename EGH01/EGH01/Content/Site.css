@@ -435,7 +435,7 @@ label[aria-required]::after {
     border: 1px solid #000;
     width: 100%;
     background-color: #ccc; /* меню основные в таблицах*/
-    margin: 12px 0px 12px 2px;
+    margin: 12px 0px 12px 0px;
     padding: 0.5%;
     /*min-width: 800px;*/
 }
