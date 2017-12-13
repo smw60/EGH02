@@ -35,10 +35,11 @@
 <div class="box">
     <form>
 
-        <input type="checkbox" id="Layer5" onclick="toggleLayer(layer5)" onchecked><label for="Layer5">Карта водоемов</label>
-        <input type="checkbox" id="Layer6" onclick="toggleLayer(layer6)" onchecked><label for="Layer6">Карта водозаборов и санитарных зон</label>
-        <input type="checkbox" id="Layer7" onclick="toggleLayer(layer7)" onchecked><label for="Layer7">Карта водоохранных зон поверх вод</label>
-        <input type="checkbox" id="Layer11" onclick="toggleLayer(layer11)" onchecked><label for="Layer11">Карта густоты речной сети</label>
+        <input type="checkbox" id="Layer14" onclick="toggleLayer(layer14)" onchecked><label for="Layer14">Карта населенных пунктов</label>
+        <input type="checkbox" id="Layer16" onclick="toggleLayer(layer16)" onchecked><label for="Layer16">Карта растительности</label>
+        <input type="checkbox" id="Layer9" onclick="toggleLayer(layer9)" onchecked><label for="Layer9">Геологическая</label>
+        <input type="checkbox" id="Layer19" onclick="toggleLayer(layer19)" onchecked><label for="Layer19">Карта солнечной радиации</label>
+        <input type="checkbox" id="Layer21" onclick="toggleLayer(layer21)" onchecked><label for="Layer21">Карта четвертичных отложений</label>
     </form>
     <div>
         <label class="boxdata-label-20">Тип объекта:&nbsp; Точка</label>
@@ -86,56 +87,16 @@
                     <label id="districtt"></label><span id="district"></span>
                 </div>
                 <div class="box">
-                    <label id="waternamee"></label><span id="watername"></span>         
+                    <label id="cityy"></label><span id="city"></span>         
                 </div>
-                <div class="box">
-                    <label id="watertypee"></label><span id="watertype"></span>
-                </div>
-                <div class="box">
-                    <label id="waterintakeNamee"></label><span id="waterintakeName"></span>
-                </div>
-                <div class="box">
-                    <label id="waterintakebufferr"></label><span id="waterintakebuffer"></span>
-                </div>
-                <div class="box">
-                    <label id="regionWW"></label><span id="regionW"></span>
-                    <br>
-                    <label id="typee"></label><span id="type"></span>
-                    <br>
-                    <label id="districtWW"></label><span id="districtW"></span>
-                    <br>
-                    <label id="network_densityy"></label><span id="network_density"></span>
-                    <br>
-                    <label id="lenghtt"></label><span id="lenght"></span>
-                    <br>
-                    <label id="district_areaa"></label><span id="district_area"></span>
-                </div>
-
-             
-                <div class="box">
-                    <label id="waterAreaNamee"></label><span id="waterAreaName"></span>
-                    <br>
-                    <label id="waterAreaBuff"></label><span id="waterAreaBuf"></span>
-                </div>
-                <div class="box">
-                    Осадки:
-                    <br>
-                    <label id="winterr"></label><span id="winter"></span>
-                    <br>
-                    <label id="springg"></label><span id="spring"></span>
-                    <br>
-                    <label id="summerr"></label><span id="summer"></span>
-                    <br>
-                    <label id="autumnn"></label><span id="autumn"></span>
-                    
-                </div>
-
+               
             </div>
           
-        
+           
 
             <div id="buttons">
                 <div class="box">
+
                     <button id="clear" class="Очистить" title="Очистить"></button>
                     <span id="result"></span>
                     <input type="hidden" id="coords" value="27,54">
@@ -186,7 +147,19 @@
         })
     });
     layer1.setVisible(false);
-
+    var layer2 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Карта_Экообъектов_нацпарки',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer2.setVisible(false);
 
     var layer3 = new ol.layer.Tile({
         source: new ol.source.TileWMS({
@@ -454,7 +427,7 @@
     });
     layer22.setVisible(true);
 
-    var layers = [raster, layer1, layer3, layer5, layer6, layer7, layer8, layer9, layer10, layer11, layer12, layer13, layer14, layer15, layer16, layer17, layer18, layer19, layer20, layer21, layer22, vector];
+    var layers = [raster, layer1, layer2, layer3, layer5, layer6, layer7, layer8, layer9, layer10, layer11, layer12, layer13, layer14, layer15, layer16, layer17, layer18, layer19, layer20, layer21, layer22, vector];
     var myFormat = function (dgts) {
         return (
             function (coord1) {
@@ -524,7 +497,7 @@
         };
 
         $.ajax({
-            url: '/EGHMAP/CreateFromWATER',
+            url: '/EGHMAP/CreateFromOTHER',
             type: 'POST',
             dataType: 'application/json',
             data: JSON.stringify(Latitude),
@@ -536,46 +509,22 @@
 
                 $("#district").html(data.District);
                 $("#region").html(data.Region);
-                $("#watername").html(data.Watername);
-                $("#watertype").html(data.Watertype);
-                $("#waterintakeName").html(data.WaterintakeName);
-                $("#waterintakebuffer").html(data.Waterintakebuffer);
+                $("#city").html(data.City);
 
-                $("#regionW").html(data.RegionW);
-                $("#type").html(data.Type);
-                $("#districtW").html(data.DistrictW);
-                $("#network_density").html(data.Network_density);
-                $("#lenght").html(data.Lenght);
-                $("#district_area").html(data.District_area);
-                $("#winter").html(data.Downfall[0]);
-                $("#spring").html(data.Downfall[1]);
-                $("#summer").html(data.Downfall[2]);
-                $("#autumn").html(data.Downfall[3]);
+                
+                
+  
 
-             
-                $("#waterAreaName").html(data.WaterAreaName);
-                $("#waterAreaBuff").html(data.WaterAreaBuff);
 
-               
                 $("#districtt").html("Область:");
                 $("#regionn").html("Регион:");
-                $("#waternamee").html("Наименование водоема:");
-                $("#watertypee").html("Тип водоема:");
-                $("#waterintakeNamee").html("Наименование водозабора:");
-                $("#waterintakebufferr").html("Величина буферной зоны:");
+                $("#cityy").html("Наименование населеного пункта:");
 
-                $("#regionWW").html("Область:");
-                $("#typee").html("Тип реки:");
-                $("#districtWW").html("Район:");
-                $("#network_densityy").html("Густота сети:");
-                $("#lenghtt").html("Протяженность:");
-                $("#district_areaa").html("Площадь района:");
-                $("#winterr").html("Зима:");
-                $("#springg").html("Весна:");
-                $("#summerr").html("Лето:");
-                $("#autumnn").html("Осень:");
-                $("#waterAreaBuff").html("Величина буферной зоны");
-                $("#waterAreaNamee").html("Наименование водоохранной зоны");
+
+
+
+
+
                 alert(data.Высота);
 
 

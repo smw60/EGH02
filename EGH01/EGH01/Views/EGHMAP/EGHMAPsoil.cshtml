@@ -112,9 +112,34 @@
                 </div>
 
                 <div class="boxMap">
-                    <label id="cLimattemperaturee"></label><span id="cLimattemperature"></span>
-                </div>
+                   
+                    <label>Среднемесячные температуры:</label>
+                    <br>
+                    <label id="JANUARYY"></label><span id="JANUARY"></span>
+                    <br>
+                    <label id="Februaryy"></label><span id="February"></span>
+                    <br>
+                    <label id="Marchh"></label><span id="March"></span>
+                    <br>
+                    <label id="Aprill"></label><span id="April"></span>
+                    <br>
+                    <label id="Mayy"></label><span id="May"></span>
+                    <br>
+                    <label id="Junee"></label><span id="June"></span>
+                    <br>
+                    <label id="Julyy"></label><span id="July"></span>
+                    <br>
+                    <label id="Augustt"></label><span id="August"></span>
+                    <br>
+                    <label id="Septemberr"></label><span id="September"></span>
+                    <br>
+                    <label id="Octoberr"></label><span id="October"></span>
+                    <br>
+                    <label id="Novemberr"></label><span id="November"></span>
+                    <br>
+                    <label id="Decemberr"></label><span id="December"></span>
 
+                </div>
                 <div class="boxMap">
                     <label id="soilnamee"></label><span id="soilname"></span>
                     <br>
@@ -173,21 +198,6 @@
                     <label id="wrbnewcodee"></label><span id="wrbnewcode"></span>
                 </div>
             </div>
-
-            <div class="radio">
-                <label>
-                    <input type="radio" name="interaction_type" value="draw" id="interection_type_draw" checked>
-                    Создать &nbsp;
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="interaction_type" value="modify" id="interaction_type_modify" />
-                    Изменить &nbsp;
-                </label>
-            </div>
-
-
             <div id="buttons">
                 <div class="boxMap-noborder">
                     @*@Html.Partial("_TypeLineMenu", create)*@
@@ -628,7 +638,22 @@
                 $("#wrbnewcode").html(data.Wrbnewcode);
                 $("#rgbcode").html(data.Rgbcode);
                 $("#shtrihovka").html(data.Shtrihovka);
-                $("#cLimattemperature").html(data.CLimattemperature);
+               
+                $("#JANUARY").html(data.Period[0]);
+                $("#February").html(data.Period[1]);
+                $("#March").html(data.Period[2]);
+                $("#April").html(data.Period[3]);
+                $("#May").html(data.Period[4]);
+                $("#June").html(data.Period[5]);
+                $("#July").html(data.Period[6]);
+                $("#August").html(data.Period[7]);
+                $("#September").html(data.Period[8]);
+                $("#October").html(data.Period[9]);
+                $("#November").html(data.Period[10]);
+                $("#December").html(data.Period[11]);
+              
+             
+             
 
                 $("#gorizont_power").html(data.Gorizont_power);
                 $("#gorizont_name").html(data.Gorizont_name);
@@ -682,7 +707,21 @@
                 $("#wrbnewcodee").html("Код почвы в международной классификационной системе WRB:");
                 $("#rgbcodee").html("Код цветового обозначения:");
                 $("#shtrihovkaa").html("Тип штриховки:");
-                $("#cLimattemperaturee").html("Значение средних температур:");
+               
+                $("#JANUARYY").html("Январь:");
+                $("#Februaryy").html("Февраль:");
+                $("#Marchh").html("Март:");
+                $("#Aprill").html("Апрель:");
+                $("#Mayy").html("Май:");
+                $("#Junee").html("Июнь:");
+                $("#Julyy").html("Июль:");
+                $("#Augustt").html("Август:");
+                $("#Septemberr").html("Сентябрь:");
+                $("#Octoberr").html("Октябрь:");
+                $("#Novemberr").html("Ноябрь:");
+                $("#Decemberr").html("Декабрь:");
+             
+
 
 
                 //$("#gorizont_powerr").html("Мощность первого горизонта:");

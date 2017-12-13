@@ -74,7 +74,7 @@ namespace EGH01.Controllers
 
             EGH01DB.Primitives.Climat climat = new Climat(db,mapPoint);
             EGH01DB.Primitives.MapHelper.GetMonthTemperature(db,mapPoint, out climat);
-           
+            float[] period = climat.temperature;
 
             //string gorizont_power = "";
             //string gorizont_name = "";
@@ -131,7 +131,8 @@ namespace EGH01.Controllers
                 Time_migration = time_migration,
                 District = district.name,
                 Region = district.region.name,
-                CLimattemperature = climat.temperature,
+                
+                Period = period
 
                 //Gorizont_power = gorizont_power,
                 //Gorizont_name = gorizont_name,
