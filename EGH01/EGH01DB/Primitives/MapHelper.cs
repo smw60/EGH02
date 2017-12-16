@@ -912,7 +912,7 @@ namespace EGH01DB.Primitives
             nationalpark = "Не является особо охраняемой природной территорией национального значения";
             type = "Не является национальным парком";
             subtype = "Не является национальным парком";
-            city = "";
+            city = "Не является национальным парком";
 
 
             using (SqlCommand cmd = new SqlCommand("MAP.EcoObjectNational", dbcontext.connection))

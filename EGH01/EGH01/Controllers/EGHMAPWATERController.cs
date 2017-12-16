@@ -95,7 +95,12 @@ namespace EGH01.Controllers
             }
             EGH01DB.Types.WaterProtectionArea water_area = new WaterProtectionArea();
             EGH01DB.Primitives.MapHelper.GetWaterProtectionZone(db, mapPoint, out water_area);
+            int WaterAreaBuff = 0;
+            if (water_area.type_code!=-1) {
 
+             WaterAreaBuff = water_area.buffer;
+
+            } 
             var heights = new
             {
 
@@ -113,7 +118,7 @@ namespace EGH01.Controllers
                 District_area = district_area,
                 Downfall = downfall,
                 WaterAreaName = water_area.name,
-                WaterAreaBuff = water_area.buffer
+                WaterAreaBuff = WaterAreaBuff
 
 
 
