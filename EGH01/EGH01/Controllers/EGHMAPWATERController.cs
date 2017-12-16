@@ -75,6 +75,10 @@ namespace EGH01.Controllers
 
             EGH01DB.Primitives.MapHelper.GetRiverDensity(db,mapPoint, out districtW, out regionW, out type, out network_density, out lenght, out district_area);
 
+            if (type == string.Empty) {
+                type = "Не является водным объектом";
+
+            }
             int[] downfall;
             EGH01DB.Primitives.MapHelper.GetDownfall(db,mapPoint, out downfall);
            
@@ -87,10 +91,11 @@ namespace EGH01.Controllers
             else
             {
                 watername = "Не является водным объектом";
+                watertype = "Не является водным объектом";
             }
             EGH01DB.Types.WaterProtectionArea water_area = new WaterProtectionArea();
             EGH01DB.Primitives.MapHelper.GetWaterProtectionZone(db, mapPoint, out water_area);
-            
+
             var heights = new
             {
 

@@ -139,8 +139,8 @@ namespace EGH01.Controllers
                 From_rad0=sunradiation[0].from_rad,
                 To_rad0 = sunradiation[0].to_rad,
                 Average1 = sunradiation[1].average_rad,
-                //From1 = sunradiation[1].from_rad,
-                //To1 = sunradiation[1].to_rad
+                From = sunradiation[1].from_rad,
+                To = sunradiation[1].to_rad
 
 
 
