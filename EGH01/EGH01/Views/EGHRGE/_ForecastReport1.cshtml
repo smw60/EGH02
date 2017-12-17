@@ -5,6 +5,7 @@
 @using EGH01DB.Types;
 @using EGH01DB.Blurs;
 @using EGH01DB.Objects;
+@using EGH01DB;
 @using EGH01.Models.EGHRGE;
 @model  EGH01.Models.EGHRGE.ForecastViewConext
 
@@ -161,7 +162,13 @@
     <fieldset form="ChoiseRiskObject">
         <legend> Природоохранные объекты </legend>
 
-
+        @foreach (RGEContext.F1EcoObjectsList.F1EcoObject eo in level1.f1ecoobjectslist)
+        {
+          <p>
+            <label class="boxdata-label-40 "> </label> @eo.line
+         </p>
+        } 
+       
     </fieldset>
 
 

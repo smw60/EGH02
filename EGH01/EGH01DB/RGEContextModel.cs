@@ -101,15 +101,18 @@ namespace EGH01DB
      }
     public class ECOForecast1      //  поверхность
      {
-         public ECOForecast0 f0     { get; private set; } 
-         public float        d1     { get; private set; }       // коэффициент разлива (1/м) 
-         public float        q1     { get; private set; }       // удельная коэффициент выбросов  
-         public float        S1     { get; private set; }       // площадь пятна  
-         public float        H1     { get; private set; }       // толщина пятна  
-         public float        M1     { get; private set; }       // масса испарившегося нп   
-         public float        R1     { get; private set; }       // радиус  пятна при равномерном растекании   
-         public BlurBorder   bb     { get; private set; }       // границы пятна 
-         public float        dM1    { get; private set; }       // остаток НП достигший поверхности
+        
+         public ECOForecast0      f0               { get; private set; } 
+         public float             d1               { get; private set; }       // коэффициент разлива (1/м) 
+         public float             q1               { get; private set; }       // удельная коэффициент выбросов  
+         public float             S1               { get; private set; }       // площадь пятна  
+         public float             H1               { get; private set; }       // толщина пятна  
+         public float             M1               { get; private set; }       // масса испарившегося нп   
+         public float             R1               { get; private set; }       // радиус  пятна при равномерном растекании   
+         public BlurBorder        bb               { get; private set; }       // границы пятна 
+         public float             dM1              { get; private set; }       // остаток НП достигший поверхности
+         public F1EcoObjectsList f1ecoobjectslist  { get; private set; }       // перечень экологических объектов в пятне загрязнения
+         
 
          public ECOForecast1(ECOForecast0 f0)  
          {
@@ -122,7 +125,18 @@ namespace EGH01DB
              this.R1 =  (float)Math.Round((float)Math.Sqrt(this.S1 / Math.PI),1);
              this.H1 = f0.V0 / this.S1;
              this.M1 = this.S1 * this.q1;
-             this.bb =  new BlurBorder(this.R1, new BlurBorder.XY[]   // отладка 
+             this.f1ecoobjectslist = new F1EcoObjectsList("BASE", f0.riskobject, EcoObjectsList.CreateEcoObjectsList(this.f0.db, f0.riskobject, this.R1));
+             {
+                 EcoObjectsList ecoobjectslist = null;
+                if (EcoObjectsList.FindAtDistance(f0.db, f0.riskobject.coordinates, (int)this.R1, out ecoobjectslist))
+                {
+                   this.f1ecoobjectslist.AddRange("MAPE", f0.riskobject, ecoobjectslist);
+                }
+             }
+              
+
+                   
+             this.bb = new BlurBorder(this.R1, new BlurBorder.XY[]   // отладка 
                                                     {
                                                         new BlurBorder.XY(7,25),
                                                         new BlurBorder.XY(8,7), 
@@ -132,6 +146,7 @@ namespace EGH01DB
                                                         new BlurBorder.XY(22,36), 
                                                         new BlurBorder.XY(7,25)
                                                     }); 
+              // public static EcoObjectsList CreateEcoObjectsList(EGH01DB.IDBContext dbcontext, Point center, float distance1 = 0.0f, float distance2 = float.MaxValue)
 
 
          }
@@ -178,7 +193,6 @@ namespace EGH01DB
          public float        M3  { get; private set; }   // масса абсорбированного в грунте НП  
          public float        C3  { get; private set; }   // максимальная концентрация нп в грунте 
          public float        v3  { get; private set; }   // горизонтальная скорость проникновения нп в грунте 
-
          public float        dM3 { get; private set; }    // остаток НП достигший грунта
 
          public ECOForecast3(ECOForecast2 f2)
@@ -249,6 +263,76 @@ namespace EGH01DB
          }
          
      }
+     public class F1EcoObjectsList : List<F1EcoObjectsList.F1EcoObject>
+     {
+         public class F1EcoObject
+         {
+             public string prefix = "BAS";
+             public int    id;
+             public float  distance;
+             public float  height;
+             public float  angle;
+             public string line
+             {
+                 get
+                 {
+                     return String.Format("{0}-{1,5}: расстояние:{2,6}м,  высота:{3,4}м,  угол:{4, 5}",
+                                          this.prefix,
+                                          this.id,
+                                          Math.Round(this.distance, 1),
+                                          this.height,
+                                          Math.Round(Math.Atan(this.angle), 3));
+                                       }
+             }
+         }
+
+         public F1EcoObjectsList(string px, Point center,  EcoObjectsList ecojbjectslist)
+         {
+             if (ecojbjectslist != null)
+             {    
+                 foreach (EcoObject eo in ecojbjectslist)
+                 {
+                     this.Add(new F1EcoObject()
+                                 {
+                                     prefix = px, 
+                                     id = eo.id,
+                                     height = eo.height,
+                                     distance = center.coordinates.Distance(eo.coordinates),
+                                     angle = center.coordinates.Distance(eo.coordinates) != 0?(center.height - eo.height) / center.coordinates.Distance(eo.coordinates): 0
+                                   }
+                             );
+                 }
+             }              
+         }
+         public bool  AddRange(string px, Point center, EcoObjectsList ecojbjectslist)
+         {
+             bool rc = false;
+             if   (rc  = (ecojbjectslist != null))
+             {
+                 foreach (EcoObject eo in ecojbjectslist)
+                 {
+                     this.Add(new F1EcoObject()
+                                     {
+                                         prefix = px,
+                                         id = eo.id,
+                                         height = eo.height,
+                                         distance = center.coordinates.Distance(eo.coordinates),
+                                         angle = center.coordinates.Distance(eo.coordinates) != 0 ? (center.height - eo.height) / center.coordinates.Distance(eo.coordinates) : 0
+                                     }
+                              );
+                }
+             }
+             return rc;
+          }
+
+
+     }
+
+ //angle = Math.Max(
+ //                                                     (center.height - eo.height) / center.coordinates.Distance(eo.coordinates),
+ //                                                     (eo.waterdeep -  center.waterdeep) / center.coordinates.Distance(eo.coordinates)
+ //                                                     )
+
 
      public class BlurBorder
      {

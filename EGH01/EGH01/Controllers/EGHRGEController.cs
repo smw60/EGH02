@@ -14,58 +14,7 @@ namespace EGH01.Controllers
 {
     public partial class EGHRGEController : Controller
     {
-        //public class InputDate
-        //{
-        //    //Входные данные
-        //    public DateTime DateIncident { get; set; }
-        //    public DateTime DateMessage { get; set; }
-        //    public int volumeNNP { get; set; }
-        //    public string TypeNNP { get; set; }
-        //    public int Temp { get; set; }
-        //    public List<string> TypeInccident = new List<string> { "Нефтепровод", "Резервуар Наземный", "Резервуар подземный", "Транспорт автомобильный", "Транспорт железнодорожный" };
-        //    public List<string> TypeNNP2 = new List<string> { "Нефть", "Бензин", "Мазут" };
-        //    public List<string> AccidentObj = new List<string> { "АЗС 28", "Нефтебаза", "Хранилище 4" };
-        //    public int Coordlatitudedegr { get; set; }//градусов
-        //    public int Coordlatitudemin { get; set; }//широта минут
-        //    public int Coordlatitudesec { get; set; }//широта секунды
-        //    public int Coordlongitudedegr { get; set; }//градсов
-        //    public int Coordlongitudemin { get; set; }//долготоа минут
-        //    public int Coordlongitudesec { get; set; }//долготоа секунды
-        //    public int Depth { get; set; } //глубина протечки
-
-        //    //Выходные данные
-        //    public List<Object> TypeObj = new List<Object> { "Река", "Лес", "Болото" };
-        //    public DateTime DateRеportWriting { get; set; }
-        //    public int AreaLand { get; set; }
-        //}
-        //public class XMLEX
-        //{
-
-        //    //Входные данные
-        //    public DateTime DateIncident { get; set; }
-        //    public DateTime DateMessage { get; set; }
-        //    public int volumeNNP { get; set; }
-        //    public string TypeNNP { get; set; }
-        //    public int Temp { get; set; }
-        //    public string TypeInccident = "Резервуар подземный";
-        //    public string TypeNNP2 = "Бензин";
-        //    public string AccidentObj = "АЗС 28";
-        //    public int Coordlatitudedegr { get; set; }//градусов
-        //    public int Coordlatitudemin { get; set; }//широта минут
-        //    public int Coordlatitudesec { get; set; }//широта секунды
-        //    public int Coordlongitudedegr { get; set; }//градсов
-        //    public int Coordlongitudemin { get; set; }//долготоа минут
-        //    public int Coordlongitudesec { get; set; }//долготоа секунды
-        //    public string location { get; set; }
-        //    public string area { get; set; }
-        //    public string region { get; set; }
-
-        //    public string density { get; set; }
-
-        //    public string viscosity { get; set; }
-
-        //    public string solubility { get; set; }
-        //}
+       
 
         
               //написать фильтр на открытие БД

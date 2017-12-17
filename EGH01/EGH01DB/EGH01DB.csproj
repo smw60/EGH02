@@ -91,7 +91,7 @@
     <Compile Include="Points\AnchorPoint.cs" />
     <Compile Include="Points\MapPoint.cs" />
     <Compile Include="Points\SpreadPoint.cs" />
-    <Compile Include="Primitives\Climat - Копировать.cs" />
+    <Compile Include="Primitives\OilCapacity.cs" />
     <Compile Include="Primitives\Climat.cs" />
     <Compile Include="Primitives\Const.cs" />
     <Compile Include="Primitives\Coordinates.cs" />

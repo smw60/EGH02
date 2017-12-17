@@ -237,6 +237,7 @@ namespace EGH01DB.Types
                     cmd.ExecuteNonQuery();
                     string name = (string)cmd.Parameters["@Наименование"].Value;
                     if (rc = (int)cmd.Parameters["@exitrc"].Value > 0) type = new IncidentType(type_code, name);
+                   
                 }
                 catch (Exception e)
                 {

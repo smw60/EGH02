@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
+using System.Collections.Specialized;
+using EGH01.Core;
 using EGH01DB;
 using EGH01DB.Types;
-using System.Collections.Specialized;
+using EGH01DB.Primitives;
 using EGH01DB.Objects;
-using EGH01.Core;
 namespace EGH01.Models.EGHRGE
 {
     public class ForecastViewConext
     {
-        public enum REGIM {INIT, SET, ERROR, RUNERROR, REPORT};
+        public enum REGIM {INIT, SET, CHOICE, ERROR, RUNERROR, REPORT};
         
         public REGIM Regim                        {get; set;}
         public DateTime? Incident_date            {get; set;}
@@ -28,20 +29,29 @@ namespace EGH01.Models.EGHRGE
         public int?      Lng_min                  {get; set;}
         public float?    Lng_sec                  {get; set;}
         public float?    Temperature              {get; set;}
-        public PetrochemicalType petrochemicaltype;
-        public RiskObject        riskobject;         
-        public RGEContext.ECOForecast  ecoforecast  {get; set;}
-        public RGEContext.ECOForecastX ecoforecastx {get; set;}
-        public IncidentType            incidenttype; 
+        public PetrochemicalType                  petrochemicaltype;
+        public RiskObject                         riskobject;         
+        public RGEContext.ECOForecast     ecoforecast  {get; set;}
+        public RGEContext.ECOForecastX   ecoforecastx {get; set;}
+        public IncidentType              incidenttype; 
+        public IncidentTypeList          incidenttypelist;
+        public List<PetrochemicalType> petrochemicaltypelist;
+        
         public const string VIEWNAME = "Forecast";
         public Menu.MenuItem menuitemgeop  = new Menu.MenuItem("Географическая точка", "Forecast.Point", true);
         public Menu.MenuItem menuitemrobj  = new Menu.MenuItem("Техногенный объект",   "Forecast.Point", true);
         public Menu.MenuItem menuitempoint = null;
         public string JSONCanv; 
 
-        public ForecastViewConext() 
+        public ForecastViewConext(IDBContext db) 
         {
             this.menuitempoint = menuitemgeop;
+            this.Regim = REGIM.INIT;
+            List<PetrochemicalType> ptl = new List<EGH01DB.Types.PetrochemicalType>();
+            if (!Helper.GetListPetrochemicalType(db, ref petrochemicaltypelist)) this.Regim = REGIM.RUNERROR;
+            this.incidenttypelist = new EGH01DB.Types.IncidentTypeList(db);
+            if (this.incidenttypelist == null) this.Regim = REGIM.RUNERROR;
+
         }
         
         public static ForecastViewConext Handler(RGEContext context, NameValueCollection parms)
@@ -49,10 +59,11 @@ namespace EGH01.Models.EGHRGE
 
 
             ForecastViewConext viewcontext = context.GetViewContext(VIEWNAME) as ForecastViewConext;
-           
-            if (viewcontext != null)
+            if  (viewcontext == null)  context.SaveViewContext(new RGEContext.ViewContextEntry(ForecastViewConext.VIEWNAME, viewcontext = new ForecastViewConext(context)));
+
+            if (viewcontext.Regim != REGIM.INIT)
             {
-                viewcontext.Regim = REGIM.INIT;
+                viewcontext.Regim = REGIM.CHOICE;
                 string date = parms["date"];
                 if (String.IsNullOrEmpty(date)) viewcontext.Regim = REGIM.ERROR;
                 else
@@ -120,30 +131,33 @@ namespace EGH01.Models.EGHRGE
                     if (float.TryParse(temperature, out t)) viewcontext.Temperature = (float?)t;
                     else viewcontext.Regim = REGIM.ERROR;
                 }
-
-                //Canv canv = new Canv(12, new Canv.XY[7]
-                //                            {
-                //                                new Canv.XY(70,250),
-                //                                new Canv.XY(80,70), 
-                //                                new Canv.XY(100,50),
-                //                                new Canv.XY(200,80), 
-                //                                new Canv.XY(370,230),
-                //                                new Canv.XY(220,360), 
-                //                                new Canv.XY(70,250)
-                //                            });
-                //viewcontext.JSONCanv = new JavaScriptSerializer().Serialize(canv);
-                if (viewcontext.Regim == REGIM.INIT) viewcontext.Regim = REGIM.SET;
+                                                
+                if (viewcontext.Regim == REGIM.CHOICE) viewcontext.Regim = REGIM.SET; 
 
             }
-            else
-            {
-                 viewcontext = new ForecastViewConext();
-                 viewcontext.Regim = REGIM.INIT;
-            }
+            else  viewcontext.Regim = REGIM.CHOICE;
             return viewcontext;
         }
     }
 
+
+
+    //if (viewcontext.incidenttypelist == null) viewcontext.incidenttypelist = new IncidentTypeList(context);
+    //if (viewcontext.incidenttypelist == null) viewcontext.Regim = REGIM.ERROR;
+
+
+
+    //Canv canv = new Canv(12, new Canv.XY[7]
+    //                            {
+    //                                new Canv.XY(70,250),
+    //                                new Canv.XY(80,70), 
+    //                                new Canv.XY(100,50),
+    //                                new Canv.XY(200,80), 
+    //                                new Canv.XY(370,230),
+    //                                new Canv.XY(220,360), 
+    //                                new Canv.XY(70,250)
+    //                            });
+    //viewcontext.JSONCanv = new JavaScriptSerializer().Serialize(canv);
     //public class Canv
     //{
     //    public class XY

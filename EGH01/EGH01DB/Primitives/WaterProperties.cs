@@ -290,9 +290,9 @@ namespace EGH01DB.Primitives
                         float temperature = (float)reader["Температура"];
                         float viscocity = (float)reader["Вязкость"];
                         float density = (float)reader["Плотность"];
-                        float tension = (float)reader["КоэфПовНат"];
+                        float tension = (float) reader["КоэфПовНат"];
 
-                        delta = (float)reader["delta"];
+                        delta = (float)((double)reader["delta"]);
 
                         waterproperties = new WaterProperties(code, (float)temperature, (float)viscocity, (float)density, (float)tension);
                     }

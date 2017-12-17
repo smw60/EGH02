@@ -13,7 +13,7 @@
     
     EGH01DB.RGEContext rge = (EGH01DB.RGEContext)Model;
     ForecastViewConext context = (ForecastViewConext)Model.GetViewContext(ForecastViewConext.VIEWNAME);
-    if (context == null) {Model.SaveViewContext(ForecastViewConext.VIEWNAME, context = new ForecastViewConext()); };
+    if (context == null) {Model.SaveViewContext(ForecastViewConext.VIEWNAME, context = new ForecastViewConext(Model)); };
 
     if (context.ecoforecast != null && !string.IsNullOrEmpty(context.ecoforecast.errormessage))
     {
@@ -63,14 +63,12 @@
         }
 
         @{
-            List<EGH01DB.Types.PetrochemicalType> ptl = new List<EGH01DB.Types.PetrochemicalType>();
+            
             List<SelectListItem> petrochemicaltype = new List<SelectListItem>();
-            if (Model != null)
+            if (context != null)
             {
-                if (Helper.GetListPetrochemicalType(Model, ref ptl))
-                {
-                    ptl.ForEach(o => petrochemicaltype.Add(new SelectListItem { Text = o.name, Value = o.code_type.ToString() }));
-                }
+                 context.petrochemicaltypelist.ForEach(o => petrochemicaltype.Add(new SelectListItem { Text = o.name, Value = o.code_type.ToString() }));
+                
                 if (context.petrochemicaltype != null && context.petrochemicaltype.code_type >  0)
                 {
                     SelectListItem si = petrochemicaltype.FirstOrDefault(s => s.Value == context.petrochemicaltype.code_type.ToString());
@@ -87,11 +85,10 @@
         @{
 
             List<SelectListItem> incidenttype = new List<SelectListItem>();
-            if (Model != null)
+            if (context != null)
             {
 
-                EGH01DB.Types.IncidentTypeList itl = new EGH01DB.Types.IncidentTypeList(Model);
-                itl.ForEach(o => incidenttype.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
+                context.incidenttypelist.ForEach(o => incidenttype.Add(new SelectListItem { Text = o.name, Value = o.type_code.ToString() }));
             }
             if (context.Incident_type_code != null)
             {
@@ -203,20 +200,3 @@
     }
 
 }
-
- 
-@*<fieldset style="border:1px solid black; width:95%; margin:5px">
-        <legend style="margin:10px;"></legend>
-        <div class="boxdata">
-            <label class="boxdata-label-30">Широта</label>
-            <input class="boxdata-input-20" type="number" name="latitude_grad" min="-90" max="90" step="1" />
-            <input class="boxdata-input-20" type="number" name="latitude_min" min="0" max="60" step="1" />
-            <input class="boxdata-input-20" type="number" name="latitude_sec" min="0" max="60" step="0.01" />
-        </div>
-        <div class="boxdata">
-            <label class="boxdata-label-30">Долгота</label>
-            <input class="boxdata-input-20" type="number" name="lngitude_grad" min="-180" max="1800" step="1" />
-            <input class="boxdata-input-20" type="number" name="lngitude_min" min="0" max="60" step="1" />
-            <input class="boxdata-input-20" type="number" name="lngitude_sec" min="0" max="60" step="0.01" />
-        </div>
-    </fieldset>*@

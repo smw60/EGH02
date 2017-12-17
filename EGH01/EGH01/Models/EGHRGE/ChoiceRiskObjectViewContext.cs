@@ -90,9 +90,11 @@ namespace EGH01.Models.EGHRGE
                             viewcontext.coordinates = viewcontext.getCoordinatesParm(viewcontext, parms);
                             break;
                         case "geopset": viewcontext.Regim = REGIM.SET;
-                            viewcontext.coordinates = viewcontext.getCoordinatesParm(viewcontext, parms);
-                            MapePoint mp = new MapePoint(context, viewcontext.coordinates);
-                            viewcontext.riskobject = new RiskObject(mp);
+                            if ((viewcontext.coordinates = viewcontext.getCoordinatesParm(viewcontext, parms)) != null)
+                            {
+                                MapePoint mp = new MapePoint(context, viewcontext.coordinates);
+                                viewcontext.riskobject = new RiskObject(mp);
+                            } 
                             break;
                         default: break;
                     }

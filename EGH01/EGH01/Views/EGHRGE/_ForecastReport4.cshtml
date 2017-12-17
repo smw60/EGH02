@@ -28,27 +28,27 @@
             <label class="boxdata-label-40 ">Масса нефтепродукта достигшая грунтовых вод (кг)</label>
             @level4.dM4 
         </p>
-        <p>
-            <label class="boxdata-label-40 ">Время достижения максимальной концентрации (с) </label>
-            @level4.t4
-        </p>
-        <p>
-            <label class="boxdata-label-40 ">Средняя концентрация в грунтовых водах (кг/м<sup>3</sup>) </label>
-            @level4.C4
-        </p>
-        
 
-        <p>
-            <label class="boxdata-label-40 ">Максимальное расстояние распространения фронта загрзнения (м) </label>
-             @level4.l4
-        </p>
-        
+        @if (Math.Round(level4.dM4, 0) > 0)
+        {
+            <p>
+                <label class="boxdata-label-40 ">Время достижения максимальной концентрации (с) </label>
+                @level4.t4
+            </p>
+            <p>
+                <label class="boxdata-label-40 ">Средняя концентрация в грунтовых водах (кг/м<sup>3</sup>) </label>
+                @level4.C4
+            </p>
+            <p>
+                <label class="boxdata-label-40 ">Максимальное расстояние распространения фронта загрзнения (м) </label>
+                 @level4.l4
+            </p>
+        }
     </fieldset>
     
     <fieldset form="ChoiseRiskObject">
         <legend> Природоохранные объекты </legend>
         
-
     </fieldset>
 
 

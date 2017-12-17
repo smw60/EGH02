@@ -26,21 +26,23 @@ namespace EGH01DB.Primitives
                 cmd.CommandType = CommandType.StoredProcedure;
                 try
                 {
-                    SqlDataReader reader = cmd.ExecuteReader();
-
                     list_type = new List<IncidentType>();
-                    while (reader.Read())
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        list_type.Add(new IncidentType((int)reader["КодТипа"], (string)reader["Наименование"]));
+                        while (reader.Read())
+                        {
+                            list_type.Add(new IncidentType((int)reader["КодТипа"], (string)reader["Наименование"]));
+                        }
+                        rc = list_type.Count > 0;
+                        reader.Close();
                     }
-                    rc = list_type.Count > 0;
-                    reader.Close();
-                }
-                catch (Exception e)
-                {
+
+               }
+               catch (Exception e)
+               {
                     rc = false;
-                };
-                return rc;
+               };
+               return rc;
 
             }
         }
