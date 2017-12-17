@@ -664,7 +664,7 @@ namespace EGH01DB.Primitives
                     if (rc = reader.Read())
                     {
                         int region_name_code = (int)reader["Obj_Id"];
-                        self_cleaning_zone = (string)reader["type"];
+                        self_cleaning_zone = (string)reader["self_clean_zone"];
                     }
                     reader.Close();
                 }
