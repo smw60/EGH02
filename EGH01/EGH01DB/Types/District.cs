@@ -228,7 +228,7 @@ namespace EGH01DB.Types
                 try
                 {
                     SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.Read())
+                    if (rc = reader.Read())
                     {
                         string district_name = (string)reader["district"];
                         string region_name = (string)reader["region"];
@@ -236,7 +236,7 @@ namespace EGH01DB.Types
                         Region region = new Region(region_name);
                         district = new District(-1, region, district_name);
 
-                        rc = true;
+                        //rc = true;
                     }
                     reader.Close();
                 }

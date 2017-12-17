@@ -29,8 +29,8 @@ namespace EGH01.Controllers
                 //float x = 27.4421796312367f;
                 //float y = 53.9043260781941f;
                 //Coordinates coordinates = new Coordinates(x, y);
-                            
-                
+
+
                 //District district = new District();
                 //if (District.GetByMap(db, coordinates, out district))
                 //{

@@ -60,7 +60,7 @@ namespace EGH01DB.Primitives
         }
         public string GetMapPoint()
         {
-            string point = "Point(" + latitude.ToString("F5", CultureInfo.InvariantCulture) + " " + lngitude.ToString("F5", CultureInfo.InvariantCulture) + ")";
+            string point = "Point(" + lngitude.ToString("F5", CultureInfo.InvariantCulture) + " " + latitude.ToString("F5", CultureInfo.InvariantCulture) + ")";
             return point;
         }
 

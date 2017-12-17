@@ -15,7 +15,7 @@ SELECT Obj_Id
  FROM EGH_spatial.dbo.Карта_водоемов;
 GO
 
-SELECT Obj_Id, type, name, GEOMETRY::STGeomFromText((geom.STAsText()), 0) AS geom 
+SELECT Obj_Id, type, name, GEOMETRY::STGeomFromText((geom.STAsText()), 4326) AS geom 
 INTO EGH.PondMap
  FROM EGH.Pond_Map;
 GO
