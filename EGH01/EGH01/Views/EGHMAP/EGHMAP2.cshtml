@@ -421,11 +421,11 @@
     });
     layer22.setVisible(true);
 
-    var layer23 = new ol.layer.Tile({
+    var layer25 = new ol.layer.Tile({
         source: new ol.source.TileWMS({
             url: str,
             params: {
-                'LAYERS': 'EGH:защищенности',
+                'LAYERS': 'EGH:Карта_защищенности',
                 'VERSION': '1.1.1',
                 'FORMAT': 'image/png',
                 'TILED': true
@@ -433,9 +433,9 @@
             serverType: 'geoserver',
         })
     });
-    layer23.setVisible(false);
+    layer25.setVisible(false);
 
-    var layers = [raster, layer1, layer3, layer5, layer6, layer7, layer8, layer9, layer10, layer11, layer12, layer13, layer14, layer15, layer16, layer17, layer18, layer19, layer20, layer21, layer22, layer23, vector];
+    var layers = [raster, layer1, layer3, layer5, layer6, layer7, layer8, layer9, layer10, layer11, layer12, layer13, layer14, layer15, layer16, layer17, layer18, layer19, layer20, layer21, layer22, layer25, vector];
     var myFormat = function (dgts) {
         return (
             function (coord1) {

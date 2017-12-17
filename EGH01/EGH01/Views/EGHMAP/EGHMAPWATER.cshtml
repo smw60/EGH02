@@ -39,6 +39,7 @@
         <input type="checkbox" id="Layer6" onclick="toggleLayer(layer6)" onchecked><label for="Layer6">Карта водозаборов и санитарных зон</label>
         <input type="checkbox" id="Layer7" onclick="toggleLayer(layer7)" onchecked><label for="Layer7">Карта водоохранных зон поверх вод</label>
         <input type="checkbox" id="Layer11" onclick="toggleLayer(layer11)" onchecked><label for="Layer11">Карта густоты речной сети</label>
+        <input type="checkbox" id="Layer11" onclick="toggleLayer(layer26)" onchecked><label for="Layer26">Карта осадков</label>
     </form>
     <div>
         <label class="boxdata-label-20">Тип объекта:&nbsp; Точка</label>
@@ -454,7 +455,21 @@
     });
     layer22.setVisible(true);
 
-    var layers = [raster, layer1, layer3, layer5, layer6, layer7, layer8, layer9, layer10, layer11, layer12, layer13, layer14, layer15, layer16, layer17, layer18, layer19, layer20, layer21, layer22, vector];
+    var layer26 = new ol.layer.Tile({
+        source: new ol.source.TileWMS({
+            url: str,
+            params: {
+                'LAYERS': 'EGH:Осадки',
+                'VERSION': '1.1.1',
+                'FORMAT': 'image/png',
+                'TILED': true
+            },
+            serverType: 'geoserver',
+        })
+    });
+    layer26.setVisible(false);
+
+    var layers = [raster, layer1, layer3, layer5, layer6, layer7, layer8, layer9, layer10, layer11, layer12, layer13, layer14, layer15, layer16, layer17, layer18, layer19, layer20, layer21, layer22, layer26, vector];
     var myFormat = function (dgts) {
         return (
             function (coord1) {

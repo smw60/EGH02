@@ -51,7 +51,7 @@ namespace EGH01.Controllers
 
             float coords = EGH01DB.Primitives.Coordinates.dms_to_d(int.Parse(Latitude), int.Parse(Lat_m), float.Parse(Lat_s));
             float coordm = EGH01DB.Primitives.Coordinates.dms_to_d(int.Parse(Lngitude), int.Parse(Lng_m), float.Parse(Lng_s));
-            EGH01DB.Primitives.Coordinates mapPoint = new Coordinates(coords, coordm);
+            EGH01DB.Primitives.Coordinates mapPoint = new Coordinates(coordm, coords);
             EGH01DB.Types.District district = new District();
             EGH01DB.Primitives.MapHelper.GetRegion(db, mapPoint, out district);
             ViewData["district"] = district.name;
@@ -61,7 +61,7 @@ namespace EGH01.Controllers
             EGH01DB.Primitives.MapHelper.GetCity(db,mapPoint, out city);
             if (city == string.Empty) {
 
-                city = "Города нет";
+                city = "Не найдено на карте";
             }
 
             String assoc_gr_1 = "";
