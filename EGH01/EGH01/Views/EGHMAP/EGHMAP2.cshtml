@@ -30,7 +30,18 @@
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
     <script src="https://openlayers.org/en/v4.4.2/build/ol.js"></script>
 </head>
+<style>
+    #myProgress {
+        width: 100%;
+        background-color: #ddd;
+    }
 
+    #myBar {
+        width: 1%;
+        height: 30px;
+        background-color: #4CAF50;
+    }
+</style>
 
 <div class="box">
     <form>
@@ -75,6 +86,10 @@
                 </p>
             </div>
 
+            <div style="display:none" id="prog">
+                <label id="prog"></label>
+            </div>
+
             <div style="display:none" id="divv">
 
 
@@ -99,7 +114,8 @@
 
             </div>
 
-          
+         
+
 
             <div id="buttons">
                 <div class="box">
@@ -114,7 +130,12 @@
         </div>
     </div>
 </div>
+
+
 <script type="text/javascript">
+
+
+
     var str = 'http://195.50.2.82:8080/geoserver/EGH/wms?';
     var raster = new ol.layer.Tile({
         source: new ol.source.OSM(),
@@ -481,6 +502,9 @@
     }
 
     map.on('click', function (evt) {
+        var obj = document.getElementById('prog');
+        obj.style.display = "block";
+        $("#prog").html("Идёт загрузка данных, пожалуйста подождите.");
         var coordinate = evt.coordinate;
         var template = '{x}';
         var hdms = ol.coordinate.format(ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326'), template, 4);
@@ -503,18 +527,24 @@
             Lat_m: deg_to_dmsm(hdms),
             Lat_s: deg_to_dmss(hdms)
         };
-
+ 
         $.ajax({
+
+
             url: '/EGHMAP/CreateFrom2',
             type: 'POST',
             dataType: 'application/json',
             data: JSON.stringify(Latitude),
             contentType: 'application/json; charset=utf-8',
+        
+     
+
             dataFilter: function (data) {
                 data = JSON.parse(data);
                 var obj = document.getElementById('divv');
                 obj.style.display = "block";
-
+                var obj = document.getElementById('prog');
+                obj.style.display = "none";
                 $("#district").html(data.District);
                 $("#region").html(data.Region);
                 $("#protectionlevel").html(data.Protectionlevel);
@@ -537,6 +567,7 @@
 
 
             }
+                
         });
 
 

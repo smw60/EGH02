@@ -77,7 +77,9 @@
 
                 </p>
             </div>
-
+            <div style="display:none" id="prog">
+                <label id="prog"></label>
+            </div>
             <div style="display:none" id="divv">
 
               
@@ -516,6 +518,9 @@
     }
 
     map.on('click', function (evt) {
+        var obj = document.getElementById('prog');
+        obj.style.display = "block";
+        $("#prog").html("Идёт загрузка данных, пожалуйста подождите.");
         var coordinate = evt.coordinate;
         var template = '{x}';
         var hdms = ol.coordinate.format(ol.proj.transform(coordinate, 'EPSG:3857', 'EPSG:4326'), template, 4);
@@ -547,6 +552,8 @@
             contentType: 'application/json; charset=utf-8',
             dataFilter: function (data) {
                 data = JSON.parse(data);
+                var obj = document.getElementById('prog');
+                obj.style.display = "none";
                 var obj = document.getElementById('divv');
                 obj.style.display = "block";
 
