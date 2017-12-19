@@ -170,7 +170,17 @@
         } 
        
     </fieldset>
+    <fieldset form="ChoiseRiskObject">
+        <legend> Опорные точки </legend>
 
+        @foreach (RGEContext.F1AnchorPointList.F1AnchorPoint ap in level1.f1anchorpointlist)
+        {
+            <p>
+                <label class="boxdata-label-40 "> </label> @ap.line
+            </p>
+        }
+
+    </fieldset>
 
 
 </div>
