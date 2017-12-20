@@ -133,6 +133,8 @@ namespace EGH01DB
                 if (EcoObjectsList.FindAtDistance(f0.db, f0.riskobject.coordinates, (int)this.R1, out ecoobjectslist))
                 {
                    this.f1ecoobjectslist.AddRange("MAPE", f0.riskobject, ecoobjectslist);
+                   
+                    
                 }
              }
              {
@@ -141,6 +143,7 @@ namespace EGH01DB
                  if (alist != null )
                  {
                        this.f1anchorpointlist = new F1AnchorPointList("BASE", f0.riskobject, alist);
+
                  }
              }
  
@@ -286,17 +289,20 @@ namespace EGH01DB
              public float  distance;
              public float  height;
              public float  angle;
+             public string name;
              public string line
              {
                  get
                  {
-                     return String.Format("{0}-{1,5}: расстояние:{2,6}м,  высота:{3,4}м,  угол:{4, 5}",
+                     return String.Format("{0}-{1,5}: расстояние:{2,6}м,  высота:{3,4}м,  угол:{4, 5}, наименование: {5}",
                                           this.prefix,
                                           this.id,
                                           Math.Round(this.distance, 1),
                                           this.height,
-                                          Math.Round(Math.Atan(this.angle), 3));
-                                       }
+                                          Math.Round(Math.Atan(this.angle), 3),
+                                          name
+                                         );
+              }
              }
          }
 
@@ -334,7 +340,8 @@ namespace EGH01DB
                                          id = eo.id,
                                          height = eo.height,
                                          distance = center.coordinates.Distance(eo.coordinates),
-                                         angle = center.coordinates.Distance(eo.coordinates) != 0 ? (center.height - eo.height) / center.coordinates.Distance(eo.coordinates) : 0
+                                         angle = center.coordinates.Distance(eo.coordinates) != 0 ? (center.height - eo.height) / center.coordinates.Distance(eo.coordinates) : 0,
+                                         name = eo.name
                                      }
                               );
                  }
