@@ -67,7 +67,7 @@
             List<SelectListItem> petrochemicaltype = new List<SelectListItem>();
             if (context != null)
             {
-                 context.petrochemicaltypelist.ForEach(o => petrochemicaltype.Add(new SelectListItem { Text = o.name, Value = o.code_type.ToString() }));
+              //   context.petrochemicaltypelist.ForEach(o => petrochemicaltype.Add(new SelectListItem { Text = o.name, Value = o.code_type.ToString() }));
                 
                 if (context.petrochemicaltype != null && context.petrochemicaltype.code_type >  0)
                 {
