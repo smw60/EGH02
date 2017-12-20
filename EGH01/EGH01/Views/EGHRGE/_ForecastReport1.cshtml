@@ -98,20 +98,28 @@
             if (JSONCanv.nr >= JSONCanv.LimitR) {
                 context.beginPath();
                 context.fillStyle = DarkStateGray;            //'#FF000';
-                context.moveTo(JSONCanv.xy[0].x, JSONCanv.xy[0].y);
-                for (var i = 1; i < JSONCanv.xy.length; i++) {
-                    context.lineTo(JSONCanv.xy[i].x, JSONCanv.xy[i].y);
+                context.moveTo(JSONCanv.newborder3[0].x, JSONCanv.newborder3[0].y);
+                for (var i = 1; i < JSONCanv.newborder3.length; i++) {
+                    context.lineTo(JSONCanv.newborder3[i].x, JSONCanv.newborder3[i].y);
                 }
                 context.closePath();
                 context.fill();
+                context.beginPath();
+                context.arc(JSONCanv.center2.x, JSONCanv.center2.y, JSONCanv.R, 0, 2 * Math.PI, false);
+                context.closePath();
+                context.stroke()
             }
-            else
-            {
+            else {
                 context.beginPath();
                 context.fillStyle = DarkStateGray;
-                context.arc(JSONCanv.center.x, JSONCanv.center.y, JSONCanv.R, 0, 2 * Math.PI, true);
+                context.arc(JSONCanv.center2.x, JSONCanv.center2.y, JSONCanv.R, 0, 2 * Math.PI, true);
                 context.closePath();
                 context.fill();
+                context.beginPath();
+                context.strokeStyle = Red;
+                context.arc(JSONCanv.center2.x, JSONCanv.center2.y, JSONCanv.R, 0, 2 * Math.PI, false);
+                context.closePath();
+                context.stroke()
             }
 
 
@@ -119,15 +127,15 @@
 
 
             // окружность 
-            context.beginPath();
-            context.strokeStyle = Red;
-            context.arc(JSONCanv.center.x, JSONCanv.center.y, JSONCanv.R, 0, 2 * Math.PI, true);
+            //context.beginPath();
+            //context.strokeStyle = Red;
+            //context.arc(JSONCanv.center.x, JSONCanv.center.y, JSONCanv.R, 0, 2 * Math.PI, true);
 
             // оси  
-            context.moveTo(200, 0);
-            context.lineTo(200, 400);
-            context.moveTo(0, 200);
-            context.lineTo(400, 200);
+            context.moveTo(JSONCanv.center2.x, 0);
+            context.lineTo(JSONCanv.center2.x, JSONCanv.center2.x * 2);
+            context.moveTo(0, JSONCanv.center2.y);
+            context.lineTo(JSONCanv.center2.y * 2, JSONCanv.center2.y);
             context.closePath();
             context.stroke();
 
@@ -135,13 +143,12 @@
             context.textBaseline = "middle";
             context.fillStyle = Red;
             context.font = 'bold 30px Arial';             // Courier New';
-            context.fillText(' ' + JSONCanv.nr + 'м', JSONCanv.center.x + JSONCanv.R + 2, JSONCanv.center.y - 15, 30);
+            context.fillText(' ' + JSONCanv.nr + 'м', JSONCanv.center2.x + JSONCanv.R - 50, JSONCanv.center2.y - 15, 30);
             context.beginPath();
             context.fillStyle = Red;
-            context.arc(JSONCanv.center.x, JSONCanv.center.y, 2, 0, 2 * Math.PI, true);
+            context.arc(JSONCanv.center2.x, JSONCanv.center2.y, 2, 0, 2 * Math.PI, true);
             context.closePath();
             context.fill();
-
 
             //var maxb = 0
             //for (var i = 1; i < JSONCanv.xy.length; i++) {
