@@ -618,17 +618,23 @@ namespace EGH01DB.Objects
                 try
                 {
                     SqlDataReader reader = cmd.ExecuteReader();
-                     rc = true; 
+                     rc = true;
+                     //EcoObject(int id, Point point, EcoObjectType ecoobjecttype, CadastreType cadastretype, string name, bool iswaterobject)
 
                     while (reader.Read())
                     {
                         int id = (int)reader["Obj_Id"];
                         string name = (string)reader["name"];
                         string type = (string)reader["type"];
+                        float dist = (float)reader["distance"];
+                        float x = (float)reader["yPoint"];
+                        float y = (float)reader["xPoint"];
+                        Coordinates nearbypoint = new Coordinates(x, y);
+                        Point point = new Point(nearbypoint);
                         EcoObjectType eco_object_type = new EcoObjectType(type);
                         CadastreType cadastre_type = new CadastreType("Не определено на карте");
 
-                        EcoObject ecoobject = new EcoObject(name, eco_object_type, cadastre_type);
+                        EcoObject ecoobject = new EcoObject(id, point, eco_object_type, cadastre_type, name, true); // уточнить насчет iswaterobject! blinova
                         ecolist.Add(ecoobject);
                     }
                     reader.Close();

@@ -9,6 +9,7 @@ using EGH01DB.Types;
 using EGH01DB.Points;
 using EGH01DB.Objects;
 using EGH01DB;
+using System.Data.SqlClient;
 
 namespace EGH01.Controllers
 {
@@ -68,6 +69,21 @@ namespace EGH01.Controllers
                 //    int k = 1;
                 //};
             }
+            return View();
+        }
+        public ActionResult Map_IsHome()// 
+        {
+            RGEContext db = new RGEContext();
+            //{
+            //    float x = 53.9f;
+            //    float y =27.56659f; // Налибокская пуща
+                
+            //    Coordinates coordinates = new Coordinates(x, y);
+            //    if (coordinates.IsHome(db, coordinates))
+            //    {
+            //        int k = 1;
+            //    };
+            //}
             return View();
         }
 
@@ -230,8 +246,8 @@ namespace EGH01.Controllers
         {
             RGEContext db = new RGEContext();
             {
-                //float x = 27.4421796312367f;
-                //float y = 53.9043260781941f;
+                //float y = 27.4421796312367f;
+                //float x = 53.9043260781941f;
                 //Coordinates coordinates = new Coordinates(x, y);
                 //int buffer = 15200;
                 //EcoObjectsList ecolist = new EcoObjectsList();
