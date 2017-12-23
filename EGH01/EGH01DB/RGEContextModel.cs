@@ -238,11 +238,38 @@ namespace EGH01DB
              this.v3 = this.k3 / this.r3;
 
              this.M3 = this.h3 * this.f1.S1 * this.rov * this.m3 * this.w3 * this.f0.delta0 / this.deltav;
+
+             if (this.dM3 <= this.M3) 
+             {
+                 this.H3 = this.h3 * this.dM3 / this.M3;
+                 this.M3 = this.dM3;
+             }
+             else  this.H3 = this.h3;
+               
              
-             if (this.dM3 <= this.M3) this.H3 = this.h3 * this.dM3 / this.M3;
-                 else this.H3 = this.h3;
+                
             
-             if (this.H3 > 0) this.C3 = this.M3 / (this.f1.S1 * this.H3 * this.ro3);
+             if (this.H3 > 0) 
+             {
+                 this.C3 = this.M3 / (this.f1.S1 * this.H3 * this.ro3);
+                 float norm = 0.0001f;     //0.0f;
+                 foreach (F1EcoObjectsList.F1EcoObject o in f1.f1ecoobjectslist)
+                 {
+                     float  d = (o.distance > Const.ZERO ? o.distance : Const.ZERO);
+                     d *= d;
+                     norm += (o.angle > Const.ZERO ? o.angle : Const.ZERO) / d;
+                 }
+                 if (norm > 0.0f)
+                 {
+                     float d = 0.0f;
+                     foreach (F1EcoObjectsList.F1EcoObject o in f1.f1ecoobjectslist)
+                     {
+                         d = (o.distance > Const.ZERO ? o.distance : Const.ZERO);
+                         d *= d;
+                         o.c = this.C3 * (o.angle > Const.ZERO ? o.angle : Const.ZERO) / d / norm;
+                     }
+                 }
+             }
              else this.C3 = 0;
 
          }
@@ -290,6 +317,7 @@ namespace EGH01DB
              public float  height;
              public float  angle;
              public string name;
+             public float  c;
              public string line
              {
                  get
@@ -304,46 +332,49 @@ namespace EGH01DB
                                          );
               }
              }
+             public string linex
+             {
+                 get
+                 {
+                     return String.Format("{0}, концентрация: {1} = {2} мг/кг", this.line, this.c, this.c*Const.KG_to_MG);
+                                         
+                 }
+             }
+
+
          }
 
          public F1EcoObjectsList(string px, Point center,  EcoObjectsList ecojbjectslist)
          {
 
-             AddRange(px, center, ecojbjectslist);
-             //if (ecojbjectslist != null)
-             //{    
-             //    foreach (EcoObject eo in ecojbjectslist)
-             //    {
-                   
-             //        this.Add(new F1EcoObject()
-             //                    {
-             //                        prefix = px, 
-             //                        id = eo.id,
-             //                        height = eo.height,
-             //                        distance = center.coordinates.Distance(eo.coordinates),
-             //                        angle = center.coordinates.Distance(eo.coordinates) != 0?(center.height - eo.height) / center.coordinates.Distance(eo.coordinates): 0
-             //                      }
-             //                );
-             //    }
-             //}              
+           AddRange(px, center, ecojbjectslist);
+                    
          }
          public bool  AddRange(string px, Point center, EcoObjectsList ecojbjectslist)
          {
+                         
              bool rc = false;
              if   (rc  = (ecojbjectslist != null))
              {
                  foreach (EcoObject eo in ecojbjectslist)
                  {
-                     this.Add(new F1EcoObject()
+                     if (center.height - eo.height > 0)
+                     {
+                         this.Add(
+                                     new F1EcoObject()
                                      {
                                          prefix = px,
                                          id = eo.id,
                                          height = eo.height,
                                          distance = center.coordinates.Distance(eo.coordinates),
                                          angle = center.coordinates.Distance(eo.coordinates) != 0 ? (center.height - eo.height) / center.coordinates.Distance(eo.coordinates) : 0,
-                                         name = eo.name
+                                         name = eo.name,
+                                         c =  eo.pollutionecoobject
                                      }
-                              );
+                                  );
+                     
+                   }
+                     
                  }
              }
              return rc;
@@ -375,10 +406,29 @@ namespace EGH01DB
                  }
              }
          }
+         public class C : IEqualityComparer<AnchorPoint>
+         {
+
+             public bool Equals(AnchorPoint x, AnchorPoint y)
+             {
+                 return x.id == y.id;
+             }
+
+             public int GetHashCode(AnchorPoint obj)
+             {
+                return   obj.id;
+             }
+         }
 
          public F1AnchorPointList(string px, Point center,   AnchorPointList anchorslist)
          {
 
+
+            List<AnchorPoint> oo = anchorslist.Distinct(new C()).ToList(); ;
+
+             anchorslist.Clear();
+             anchorslist.AddRange(oo);
+            
              AddRange(px, center, anchorslist);
             
          }
@@ -389,15 +439,18 @@ namespace EGH01DB
              {
                  foreach (AnchorPoint ap in anchorslist)
                  {
-                     this.Add(new F1AnchorPoint()
-                                     {
-                                         prefix = px,
-                                         id = ap.id,
-                                         height = ap.height,
-                                         distance = center.coordinates.Distance(ap.coordinates),
-                                         angle = center.coordinates.Distance(ap.coordinates) != 0 ? (center.height - ap.height) / center.coordinates.Distance(ap.coordinates) : 0
-                                     }
-                              );
+                     if (center.height - ap.height > 0)
+                     {
+                         this.Add(new F1AnchorPoint()
+                                         {
+                                             prefix = px,
+                                             id = ap.id,
+                                             height = ap.height,
+                                             distance = center.coordinates.Distance(ap.coordinates),
+                                             angle = center.coordinates.Distance(ap.coordinates) != 0 ? (center.height - ap.height) / center.coordinates.Distance(ap.coordinates) : 0
+                                         }
+                                  );
+                     }
                  }
              }
              return rc;

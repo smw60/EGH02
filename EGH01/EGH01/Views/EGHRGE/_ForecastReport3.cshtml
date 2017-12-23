@@ -4,6 +4,7 @@
 @using EGH01DB.Types;
 @using EGH01DB.Blurs;
 @using EGH01DB.Objects;
+@using EGH01DB;
 @using EGH01.Models.EGHRGE;
 @model  EGH01.Models.EGHRGE.ForecastViewConext
 
@@ -86,17 +87,26 @@
                 </p>
                 <p>
                    <label class="boxdata-label-40 ">Максимальная концентрация нефтеродукта в грунте</label>
-                   @level3.C3
+                   @level3.C3 = @(Math.Round(level3.C3 * Const.KG_to_MG,3)) (мг/кг) 
                 </p>
                 <p>
                    <label class="boxdata-label-40 ">Масса нефтепродукта адсорбированная грунтом (кг)</label>
                    @Math.Round(level3.M3) 
                 </p>
+               
         } 
         
     </fieldset>
+    <fieldset form="ChoiseRiskObject">
+        <legend> Природоохранные объекты </legend>
 
-
+        @foreach (RGEContext.F1EcoObjectsList.F1EcoObject eo in level1.f1ecoobjectslist)
+        {
+            <p>
+                <label class="boxdata-label-40 "> </label> @eo.linex
+            </p>
+        }
+    </fieldset>
 
 
 </div>
