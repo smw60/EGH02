@@ -301,6 +301,7 @@ namespace EGH01DB.Primitives
                 catch (Exception e)
                 {
                     rc = false;
+                    
                 };
             }
             return rc;

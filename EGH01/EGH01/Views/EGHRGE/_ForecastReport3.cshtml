@@ -98,12 +98,12 @@
         
     </fieldset>
     <fieldset form="ChoiseRiskObject">
-        <legend> Природоохранные объекты </legend>
+        <legend> Природоохранные объекты (радиус: @(level1.R1.ToString() + "м)") </legend>
 
-        @foreach (RGEContext.F1EcoObjectsList.F1EcoObject eo in level1.f1ecoobjectslist)
+        @foreach (RGEContext.FEcoObjectsList.FEcoObject eo in level1.f1ecoobjectslist)
         {
             <p>
-                <label class="boxdata-label-40 "> </label> @eo.linex
+                <label class="boxdata-label-40 "> </label> @eo.line
             </p>
         }
     </fieldset>
