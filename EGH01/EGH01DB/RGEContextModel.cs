@@ -111,7 +111,8 @@ namespace EGH01DB
          public float             R1               { get; private set; }       // радиус  пятна при равномерном растекании   
          public BlurBorder        bb               { get; private set; }       // границы пятна 
          public float             dM1              { get; private set; }       // остаток НП достигший поверхности
-         public F1EcoObjectsList f1ecoobjectslist  { get; private set; }       // перечень экологических объектов в пятне загрязнения
+         public F1EcoObjectsList  f1ecoobjectslist  { get; private set; }       // перечень экологических объектов в пятне загрязнения
+         public F1AnchorPointList f1anchorpointlist { get; private set; }       // перечень  объектов в пятне загрязнения
          
 
          public ECOForecast1(ECOForecast0 f0)  
@@ -126,6 +127,7 @@ namespace EGH01DB
              this.H1 = f0.V0 / this.S1;
              this.M1 = this.S1 * this.q1;
              this.f1ecoobjectslist = new F1EcoObjectsList("BASE", f0.riskobject, EcoObjectsList.CreateEcoObjectsList(this.f0.db, f0.riskobject, this.R1));
+           
              {
                  EcoObjectsList ecoobjectslist = null;
                 if (EcoObjectsList.FindAtDistance(f0.db, f0.riskobject.coordinates, (int)this.R1, out ecoobjectslist))
@@ -133,6 +135,19 @@ namespace EGH01DB
                    this.f1ecoobjectslist.AddRange("MAPE", f0.riskobject, ecoobjectslist);
                 }
              }
+
+             {
+                 AnchorPointList alist = AnchorPointList.CreateNear(f0.db, f0.riskobject.coordinates, 0.0f, this.R1);  
+                                  
+                 if (alist != null )
+                 {
+                       this.f1anchorpointlist = new F1AnchorPointList("BASE", f0.riskobject, alist);
+                 }
+             }
+ 
+
+
+
 
 
 
@@ -246,7 +261,7 @@ namespace EGH01DB
          public float l4        { get; private set; }   //  максимальный радиус распространения загрязнения 
          public float v4        { get; private set; }   //  горизонтальная скорость распространения загрязнения
          public float C4        { get; private set; }   //  концентрация в гр. водах 
-         public float h4 { get { return 1.0f; } }   //  толщина слоя грунтовых вод
+         public float h4       { get { return 1.0f; } }   //  толщина слоя грунтовых вод
          public float dM4       { get; private set; }    // остаток НП достигший грунтовых вод 
 
 
@@ -265,6 +280,8 @@ namespace EGH01DB
          }
          
      }
+
+
      public class F1EcoObjectsList : List<F1EcoObjectsList.F1EcoObject>
      {
          public class F1EcoObject
@@ -290,21 +307,24 @@ namespace EGH01DB
 
          public F1EcoObjectsList(string px, Point center,  EcoObjectsList ecojbjectslist)
          {
-             if (ecojbjectslist != null)
-             {    
-                 foreach (EcoObject eo in ecojbjectslist)
-                 {
-                     this.Add(new F1EcoObject()
-                                 {
-                                     prefix = px, 
-                                     id = eo.id,
-                                     height = eo.height,
-                                     distance = center.coordinates.Distance(eo.coordinates),
-                                     angle = center.coordinates.Distance(eo.coordinates) != 0?(center.height - eo.height) / center.coordinates.Distance(eo.coordinates): 0
-                                   }
-                             );
-                 }
-             }              
+
+             AddRange(px, center, ecojbjectslist);
+             //if (ecojbjectslist != null)
+             //{    
+             //    foreach (EcoObject eo in ecojbjectslist)
+             //    {
+                   
+             //        this.Add(new F1EcoObject()
+             //                    {
+             //                        prefix = px, 
+             //                        id = eo.id,
+             //                        height = eo.height,
+             //                        distance = center.coordinates.Distance(eo.coordinates),
+             //                        angle = center.coordinates.Distance(eo.coordinates) != 0?(center.height - eo.height) / center.coordinates.Distance(eo.coordinates): 0
+             //                      }
+             //                );
+             //    }
+             //}              
          }
          public bool  AddRange(string px, Point center, EcoObjectsList ecojbjectslist)
          {
@@ -322,7 +342,7 @@ namespace EGH01DB
                                          angle = center.coordinates.Distance(eo.coordinates) != 0 ? (center.height - eo.height) / center.coordinates.Distance(eo.coordinates) : 0
                                      }
                               );
-                }
+                 }
              }
              return rc;
           }
@@ -330,10 +350,59 @@ namespace EGH01DB
 
      }
 
- //angle = Math.Max(
- //                                                     (center.height - eo.height) / center.coordinates.Distance(eo.coordinates),
- //                                                     (eo.waterdeep -  center.waterdeep) / center.coordinates.Distance(eo.coordinates)
- //                                                     )
+
+     public class F1AnchorPointList : List<F1AnchorPointList.F1AnchorPoint>
+     {
+         public class F1AnchorPoint
+         {
+             public string prefix = "ANCH";
+             public int id;
+             public float distance;
+             public float height;
+             public float angle;
+             public string line
+             {
+                 get
+                 {
+                     return String.Format("{0}-{1,5}: расстояние:{2,6}м,  высота:{3,4}м,  угол:{4, 5}",
+                                          this.prefix,
+                                          this.id,
+                                          Math.Round(this.distance, 1),
+                                          this.height,
+                                          Math.Round(Math.Atan(this.angle), 3));
+                 }
+             }
+         }
+
+         public F1AnchorPointList(string px, Point center,   AnchorPointList anchorslist)
+         {
+
+             AddRange(px, center, anchorslist);
+            
+         }
+         public bool AddRange(string px, Point center, AnchorPointList anchorslist)
+         {
+             bool rc = false;
+             if (rc = (anchorslist != null))
+             {
+                 foreach (AnchorPoint ap in anchorslist)
+                 {
+                     this.Add(new F1AnchorPoint()
+                                     {
+                                         prefix = px,
+                                         id = ap.id,
+                                         height = ap.height,
+                                         distance = center.coordinates.Distance(ap.coordinates),
+                                         angle = center.coordinates.Distance(ap.coordinates) != 0 ? (center.height - ap.height) / center.coordinates.Distance(ap.coordinates) : 0
+                                     }
+                              );
+                 }
+             }
+             return rc;
+         }
+
+     }
+
 
 
      public class BlurBorder

@@ -30,7 +30,10 @@
             {
                 <div class="box">
                     <form></form>
-
+                    <input type="checkbox" id="Layer1" onclick="toggleLayer(layer1)" onchecked> <label for="Layer1">Карта особо охраняемых природных территорий локального значения</label>
+                    <input type="checkbox" id="Layer3" onclick="toggleLayer(layer3)" onchecked><label for="Layer3">Карта особо охраняемых природных территорий республиканского значения</label>
+                    <br>
+                    <input type="checkbox" id="Layer2" onclick="toggleLayer(layer2)" onchecked><label for="Layer2">Карта особо охраняемых природных территорий национального значения</label>
                     <div class="row">
 
 
@@ -50,9 +53,9 @@
                     <div class="boxdata">
                         <p>
                             <label class="boxdata-label-20">Широта</label>
-                            <input readonly class="boxdata-input-10" type="text" id="Latitude" name="ChoiceRiskObject.Latitude" value="" />&deg;
-                            <input readonly class="boxdata-input-10" type="text" id="Lat_m" name="ChoiceRiskObject.Lat_m" value="" />&acute;
-                            <input readonly class="boxdata-input-10" type="text" id="Lat_s" name="ChoiceRiskObject.Lat_s" value="" />&quot;
+                            <input  class="boxdata-input-10" type="text" id="Latitude" name="ChoiceRiskObject.Latitude" value="" />&deg;
+                            <input class="boxdata-input-10" type="text" id="Lat_m" name="ChoiceRiskObject.Lat_m" value="" />&acute;
+                            <input  class="boxdata-input-10" type="text" id="Lat_s" name="ChoiceRiskObject.Lat_s" value="" />&quot;
 
 
 
@@ -60,9 +63,9 @@
                        
                         <p>
                             <label class="boxdata-label-20">Долгота</label>
-                            <input readonly class="boxdata-input-10" type="text" id="Lngitude" name="ChoiceRiskObject.Lngitude" value="" />&deg;
-                            <input readonly class="boxdata-input-10" type="text" id="Lng_m" name="ChoiceRiskObject.Lng_m" value="" />&acute;
-                            <input readonly class="boxdata-input-10" type="text" id="Lng_s" name="ChoiceRiskObject.Lng_s" value="" />&quot;
+                            <input class="boxdata-input-10" type="text" id="Lngitude" name="ChoiceRiskObject.Lngitude" value="" />&deg;
+                            <input class="boxdata-input-10" type="text" id="Lng_m" name="ChoiceRiskObject.Lng_m" value="" />&acute;
+                            <input class="boxdata-input-10" type="text" id="Lng_s" name="ChoiceRiskObject.Lng_s" value="" />&quot;
 
                         </p>
                     </div>
@@ -77,11 +80,12 @@
                             <button type="button" class="Центр" title="Центр" value="Центр" onclick="centerMap()"></button>
                         </div>
                     </div>
-                    <canvas class="ol-unselectable" width="1000" height="5" style="width: 100%; height: 100%;"></canvas>
+                      <canvas class="ol-unselectable" width="1000" height="5" style="width: 100%; height: 100%;"></canvas>
 
                 </div>
                         <script type="text/javascript">
 
+                            var str = 'http://195.50.2.82:8080/geoserver/EGH/wms?';
                             var raster = new ol.layer.Tile({
                                 source: new ol.source.OSM(),
                                 name: 'OSM'
@@ -106,46 +110,300 @@
                                 })
                             });
 
-                            var layers1 = new ol.layer.Tile({
+                            var layer1 = new ol.layer.Tile({
                                 source: new ol.source.TileWMS({
-                                    url: 'http://195.50.2.82:8080/geoserver/EGH/wms?',
+                                    url: str,
                                     params: {
-                                        'LAYERS': 'EGH:RegionMap',
+                                        'LAYERS': 'EGH:Карта_экообъектов_лок',
                                         'VERSION': '1.1.1',
                                         'FORMAT': 'image/png',
                                         'TILED': true
                                     },
-                                    serverType: 'geoserver'
+                                    serverType: 'geoserver',
                                 })
                             });
-                            var layers2 = new ol.layer.Tile({
+                            layer1.setVisible(false);
+                            var layer2 = new ol.layer.Tile({
                                 source: new ol.source.TileWMS({
-                                    url: 'http://195.50.2.82:8080/geoserver/EGH/wms?',
+                                    url: str,
                                     params: {
-                                        'LAYERS': 'EGH:EcoLocalPolyMap',
+                                        'LAYERS': 'EGH:Карта_Экообъектов_нацпарки',
                                         'VERSION': '1.1.1',
                                         'FORMAT': 'image/png',
                                         'TILED': true
                                     },
-                                    visible: false,
-                                    serverType: 'geoserver'
+                                    serverType: 'geoserver',
                                 })
                             });
+                            layer2.setVisible(false);
 
-                            var layers3 = new ol.layer.Tile({
+                            var layer3 = new ol.layer.Tile({
                                 source: new ol.source.TileWMS({
-                                    url: 'http://195.50.2.82:8080/geoserver/EGH/wms?',
+                                    url: str,
                                     params: {
-                                        'LAYERS': 'EGH:EcoRepublicPolyMap',
+                                        'LAYERS': 'EGH:Карта_экообъектов_респ_знач',
                                         'VERSION': '1.1.1',
                                         'FORMAT': 'image/png',
                                         'TILED': true
                                     },
-                                    serverType: 'geoserver'
+                                    serverType: 'geoserver',
                                 })
                             });
+                            layer3.setVisible(false);
 
-                            var layers = [raster, layers1, layers2, layers3, vector];
+                            var layer5 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': '	EGH:Карта_водоемов',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer5.setVisible(false);
+
+                            var layer6 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': 'EGH:Карта_водозаборов_и_санит_зон',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer6.setVisible(false);
+
+                            var layer7 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': '	EGH:Карта_водоохранных_зон_поверх_вод',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer7.setVisible(false);
+
+                            var layer8 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': 'EGH:Карта_времени_миграции',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer8.setVisible(false);
+
+                            var layer9 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': 'EGH:Карта_геологическая',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer9.setVisible(false);
+
+                            var layer10 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': 'EGH:Карта_грунтовых вод',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer10.setVisible(false);
+
+                            var layer11 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': '	EGH:Карта_густота_речной_сети',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer11.setVisible(false);
+
+                            var layer12 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': 'EGH:Карта_защищенности_подземных_вод',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer12.setVisible(false);
+
+                            var layer13 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': 'EGH:Карта_зоны_аэрации',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer13.setVisible(false);
+
+                            var layer14 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': 'EGH:Карта_населенных_пунктов',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer14.setVisible(false);
+
+                            var layer15 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': 'EGH:Карта_почв',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer15.setVisible(false);
+
+                            var layer16 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': 'EGH:Карта_растительности',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer16.setVisible(false);
+
+                            var layer17 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': '	EGH:Карта_рельефа',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer17.setVisible(false);
+
+                            var layer18 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': 'EGH:Карта_самоочищения',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer18.setVisible(false);
+
+                            var layer19 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': '	EGH:Карта_солн_радиации',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer19.setVisible(false);
+
+                            var layer20 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': '	EGH:Карта_среднемес_температур',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer20.setVisible(false);
+
+                            var layer21 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': 'EGH:Карта_четвертичных_отложений',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer21.setVisible(false);
+
+                            var layer22 = new ol.layer.Tile({
+                                source: new ol.source.TileWMS({
+                                    url: str,
+                                    params: {
+                                        'LAYERS': 'EGH:Карта_административного_деления',
+                                        'VERSION': '1.1.1',
+                                        'FORMAT': 'image/png',
+                                        'TILED': true
+                                    },
+                                    serverType: 'geoserver',
+                                })
+                            });
+                            layer22.setVisible(true);
+
+                            var layers = [raster, layer1, layer2, layer3, layer5, layer6, layer7, layer8, layer9, layer10, layer11, layer12, layer13, layer14, layer15, layer16, layer17, layer18, layer19, layer20, layer21, layer22, vector];
                             var myFormat = function (dgts) {
                                 return (
                                     function (coord1) {

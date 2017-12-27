@@ -456,6 +456,7 @@ namespace EGH01DB.Points
         {
             bool rc = false;
             RGEContext db = new RGEContext();
+
             AnchorPointList anchor_point_list = new AnchorPointList();
             using (SqlCommand cmd = new SqlCommand("EGH.GetListAnchorPointOnDistanceLessThanD", db.connection))
             {
@@ -509,11 +510,7 @@ namespace EGH01DB.Points
                     }
                     rc = anchor_point_list.Count > 0;
                     reader.Close();
-
-
-
-
-                }
+}
                 catch (Exception e)
                 {
                     rc = false;
@@ -522,10 +519,9 @@ namespace EGH01DB.Points
             }
         }
 
-        public static AnchorPointList CreateNear(Coordinates center, float radius1, float radius2)
+        public static AnchorPointList CreateNear(IDBContext db,   Coordinates center, float radius1, float radius2)
         {
             bool rc = false;
-            RGEContext db = new RGEContext();
             AnchorPointList anchor_point_list = new AnchorPointList();
             using (SqlCommand cmd = new SqlCommand("EGH.GetListAnchorPointOnDistanceLessThanD2MoreThanD1", db.connection))
             {
@@ -582,6 +578,70 @@ namespace EGH01DB.Points
             }
 
         }
+
+        public static AnchorPointList CreateNear(Coordinates center, float radius1, float radius2)
+        {
+            bool rc = false;
+            RGEContext db = new RGEContext();
+            return CreateNear(db, center, radius1, radius2);
+
+            //AnchorPointList anchor_point_list = new AnchorPointList();
+            //using (SqlCommand cmd = new SqlCommand("EGH.GetListAnchorPointOnDistanceLessThanD2MoreThanD1", db.connection))
+            //{
+            //    cmd.CommandType = CommandType.StoredProcedure;
+            //    {
+            //        SqlParameter parm = new SqlParameter("@ШиротаГрад", SqlDbType.Real);
+            //        parm.Value = center.latitude;
+            //        cmd.Parameters.Add(parm);
+            //    }
+            //    {
+            //        SqlParameter parm = new SqlParameter("@ДолготаГрад", SqlDbType.Real);
+            //        parm.Value = center.lngitude;
+            //        cmd.Parameters.Add(parm);
+            //    }
+            //    {
+            //        SqlParameter parm = new SqlParameter("@Расстояние1", SqlDbType.Real);
+            //        parm.Value = radius1;
+            //        cmd.Parameters.Add(parm);
+            //    }
+            //    {
+            //        SqlParameter parm = new SqlParameter("@Расстояние2", SqlDbType.Real);
+            //        parm.Value = radius2;
+            //        cmd.Parameters.Add(parm);
+            //    }
+            //    try
+            //    {
+            //        cmd.ExecuteNonQuery();
+            //        SqlDataReader reader = cmd.ExecuteReader();
+            //        while (reader.Read())
+            //        {
+            //            int id = (int)reader["IdТехногенногоОбъекта"];
+            //            float x = (float)reader["ШиротаГрад"];
+            //            float y = (float)reader["ДолготаГрад"];
+            //            int ground_type_code = (int)reader["ТипГрунта"];
+            //            int cadastre_type_code = (int)reader["КодНазначенияЗемель"];
+            //            float waterdeep = (float)reader["ГлубинаГрунтовыхВод"];
+            //            float height = (float)reader["ВысотаУровнемМоря"];
+            //            GroundType ground_type = new GroundType(ground_type_code);
+            //            Coordinates coordinates = new Coordinates((float)x, (float)y);
+            //            CadastreType cadastre_type = new CadastreType(cadastre_type_code);
+            //            Point point = new Point(coordinates, ground_type, (float)waterdeep, (float)height);
+            //            //delta = (float)reader["Расстояние"];
+            //            AnchorPoint anchor_point = new AnchorPoint(id, point, cadastre_type);
+            //            anchor_point_list.Add(anchor_point);
+            //        }
+            //        rc = anchor_point_list.Count > 0;
+            //        reader.Close();
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        rc = false;
+            //    };
+            //    return anchor_point_list;
+            //}
+
+        }
+
 
         //  найти  список точек в заданном полигоне 
         public static AnchorPointList CreateNear(Coordinates center, CoordinatesList border)

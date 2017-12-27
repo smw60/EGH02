@@ -1,43 +1,827 @@
 <AnchorPointList>
   <AnchorPoint id="1">
-    <Point height="150" waterdeep="2.5">
-      <Coordinates latitude="54.30696" latitude_d="54" latitude_m="18" latitude_s="25.04608" lngitude="26.86174" lngitude_d="26" lngitude_m="51" lngitude_s="42.25754" />
-      <GroundType type_code="9" name="Тест Песок м/з" porosity="0.4" holdmigration="14" waterfilter="4.213E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.08" soilmoisture="0.39" аveryanovfactor="4" permeability="0.2" density="1450" />
+    <Point height="174,55" waterdeep="4,2">
+      <Coordinates latitude="54,30812" latitude_d="54" latitude_m="18" latitude_s="29,23462" lngitude="26,86108" lngitude_d="26" lngitude_m="51" lngitude_s="39,90234" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
     </Point>
-    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0.0001" water_pdk_coef="0.0001" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
   </AnchorPoint>
   <AnchorPoint id="2">
-    <Point height="130" waterdeep="3.5">
-      <Coordinates latitude="53.11807" latitude_d="53" latitude_m="7" latitude_s="5.061035" lngitude="22.37281" lngitude_d="22" lngitude_m="22" lngitude_s="22.11731" />
-      <GroundType type_code="10" name="Тест Супесь" porosity="0.46" holdmigration="31.3" waterfilter="4.5E-06" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.11" soilmoisture="0.42" аveryanovfactor="4.5" permeability="0.2" density="1650" />
+    <Point height="7,7" waterdeep="175,35">
+      <Coordinates latitude="54,30799" latitude_d="54" latitude_m="18" latitude_s="28,78143" lngitude="26,86133" lngitude_d="26" lngitude_m="51" lngitude_s="40,78125" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
     </Point>
-    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0.0005" water_pdk_coef="0.0005" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
   </AnchorPoint>
   <AnchorPoint id="3">
-    <Point height="110" waterdeep="3">
-      <Coordinates latitude="53.11812" latitude_d="53" latitude_m="7" latitude_s="5.239563" lngitude="22.37281" lngitude_d="22" lngitude_m="22" lngitude_s="22.11044" />
-      <GroundType type_code="9" name="Тест Песок м/з" porosity="0.4" holdmigration="14" waterfilter="4.213E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.08" soilmoisture="0.39" аveryanovfactor="4" permeability="0.2" density="1450" />
+    <Point height="4,3" waterdeep="175,35">
+      <Coordinates latitude="54,30787" latitude_d="54" latitude_m="18" latitude_s="28,34198" lngitude="26,86163" lngitude_d="26" lngitude_m="51" lngitude_s="41,85928" />
+      <GroundType type_code="10" name="Тест Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
     </Point>
     <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
   </AnchorPoint>
   <AnchorPoint id="4">
-    <Point height="121" waterdeep="2">
-      <Coordinates latitude="55.50493" latitude_d="55" latitude_m="30" latitude_s="17.75665" lngitude="28.73968" lngitude_d="28" lngitude_m="44" lngitude_s="22.85934" />
-      <GroundType type_code="10" name="Тест Супесь" porosity="0.46" holdmigration="31.3" waterfilter="4.5E-06" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.11" soilmoisture="0.42" аveryanovfactor="4.5" permeability="0.2" density="1650" />
+    <Point height="3,6" waterdeep="175,4">
+      <Coordinates latitude="54,30777" latitude_d="54" latitude_m="18" latitude_s="27,98492" lngitude="26,86183" lngitude_d="26" lngitude_m="51" lngitude_s="42,57339" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
     </Point>
-    <CadastreType type_code="5" name="Земли лесного фонда" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
   </AnchorPoint>
   <AnchorPoint id="5">
-    <Point height="141" waterdeep="2.5">
-      <Coordinates latitude="53.00002" latitude_d="53" latitude_m="0" latitude_s="0.08239746" lngitude="29.27159" lngitude_d="29" lngitude_m="16" lngitude_s="17.71454" />
-      <GroundType type_code="10" name="Тест Супесь" porosity="0.46" holdmigration="31.3" waterfilter="4.5E-06" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.11" soilmoisture="0.42" аveryanovfactor="4.5" permeability="0.2" density="1650" />
+    <Point height="2,9" waterdeep="175,35">
+      <Coordinates latitude="54,30773" latitude_d="54" latitude_m="18" latitude_s="27,82013" lngitude="26,86208" lngitude_d="26" lngitude_m="51" lngitude_s="43,4935" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
     </Point>
-    <CadastreType type_code="7" name="Земли запаса" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
   </AnchorPoint>
   <AnchorPoint id="6">
-    <Point height="0.02" waterdeep="0.03">
-      <Coordinates latitude="26.00056" latitude_d="26" latitude_m="0" latitude_s="2.005005" lngitude="16.0006" lngitude_d="16" lngitude_m="0" lngitude_s="2.1492" />
-      <GroundType type_code="1" name="Песчаный" porosity="0.43" holdmigration="0.6" waterfilter="4.21E-05" diffusion="0.2" distribution="0.2" sorption="0.2" watercapacity="0.01" soilmoisture="0.2" аveryanovfactor="5" permeability="0.2" density="2100" />
+    <Point height="2,5" waterdeep="174,9">
+      <Coordinates latitude="54,30814" latitude_d="54" latitude_m="18" latitude_s="29,30328" lngitude="26,86136" lngitude_d="26" lngitude_m="51" lngitude_s="40,89798" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="7">
+    <Point height="3,2" waterdeep="175,45">
+      <Coordinates latitude="54,30799" latitude_d="54" latitude_m="18" latitude_s="28,7677" lngitude="26,862" lngitude_d="26" lngitude_m="51" lngitude_s="43,18451" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="8">
+    <Point height="3" waterdeep="176,3">
+      <Coordinates latitude="54,30758" latitude_d="54" latitude_m="18" latitude_s="27,27081" lngitude="26,86254" lngitude_d="26" lngitude_m="51" lngitude_s="45,13458" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="9">
+    <Point height="3,3" waterdeep="174,1">
+      <Coordinates latitude="54,30845" latitude_d="54" latitude_m="18" latitude_s="30,42938" lngitude="26,86105" lngitude_d="26" lngitude_m="51" lngitude_s="39,77875" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="10">
+    <Point height="3,7" waterdeep="176,05">
+      <Coordinates latitude="54,30766" latitude_d="54" latitude_m="18" latitude_s="27,57294" lngitude="26,86111" lngitude_d="26" lngitude_m="51" lngitude_s="39,99847" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="11">
+    <Point height="7" waterdeep="176,1">
+      <Coordinates latitude="54,30763" latitude_d="54" latitude_m="18" latitude_s="27,46307" lngitude="26,86137" lngitude_d="26" lngitude_m="51" lngitude_s="40,93231" />
+      <GroundType type_code="10" name="Тест Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="12">
+    <Point height="7" waterdeep="176,2">
+      <Coordinates latitude="54,30751" latitude_d="54" latitude_m="18" latitude_s="27,03735" lngitude="26,86157" lngitude_d="26" lngitude_m="51" lngitude_s="41,66016" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="13">
+    <Point height="4" waterdeep="176,35">
+      <Coordinates latitude="54,30751" latitude_d="54" latitude_m="18" latitude_s="27,02362" lngitude="26,86127" lngitude_d="26" lngitude_m="51" lngitude_s="40,56839" />
+      <GroundType type_code="10" name="Тест Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="14">
+    <Point height="11,3" waterdeep="176,55">
+      <Coordinates latitude="54,30742" latitude_d="54" latitude_m="18" latitude_s="26,7215" lngitude="26,86149" lngitude_d="26" lngitude_m="51" lngitude_s="41,37863" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="15">
+    <Point height="6,2" waterdeep="176,45">
+      <Coordinates latitude="54,30696" latitude_d="54" latitude_m="18" latitude_s="25,04608" lngitude="26,86024" lngitude_d="26" lngitude_m="51" lngitude_s="36,87424" />
+      <GroundType type_code="10" name="Тест Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="16">
+    <Point height="5" waterdeep="176,25">
+      <Coordinates latitude="54,30685" latitude_d="54" latitude_m="18" latitude_s="24,64783" lngitude="26,8599" lngitude_d="26" lngitude_m="51" lngitude_s="35,62454" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="17">
+    <Point height="5" waterdeep="177,25">
+      <Coordinates latitude="54,30645" latitude_d="54" latitude_m="18" latitude_s="23,2196" lngitude="26,86331" lngitude_d="26" lngitude_m="51" lngitude_s="47,92236" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="18">
+    <Point height="5" waterdeep="177,8">
+      <Coordinates latitude="54,30624" latitude_d="54" latitude_m="18" latitude_s="22,47803" lngitude="26,86101" lngitude_d="26" lngitude_m="51" lngitude_s="39,64828" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="19">
+    <Point height="5" waterdeep="178,15">
+      <Coordinates latitude="54,30607" latitude_d="54" latitude_m="18" latitude_s="21,86005" lngitude="26,86154" lngitude_d="26" lngitude_m="51" lngitude_s="41,55029" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="20">
+    <Point height="5" waterdeep="178,55">
+      <Coordinates latitude="54,3059" latitude_d="54" latitude_m="18" latitude_s="21,2558" lngitude="26,86222" lngitude_d="26" lngitude_m="51" lngitude_s="44,00162" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="21">
+    <Point height="7,5" waterdeep="177,25">
+      <Coordinates latitude="54,30646" latitude_d="54" latitude_m="18" latitude_s="23,2608" lngitude="26,86155" lngitude_d="26" lngitude_m="51" lngitude_s="41,57089" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="22">
+    <Point height="5" waterdeep="176,8">
+      <Coordinates latitude="54,30676" latitude_d="54" latitude_m="18" latitude_s="24,31824" lngitude="26,86186" lngitude_d="26" lngitude_m="51" lngitude_s="42,69012" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="23">
+    <Point height="5,5" waterdeep="176,85">
+      <Coordinates latitude="54,307" latitude_d="54" latitude_m="18" latitude_s="25,19714" lngitude="26,8623" lngitude_d="26" lngitude_m="51" lngitude_s="44,26941" />
+      <GroundType type_code="10" name="Тест Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="24">
+    <Point height="5" waterdeep="176,6">
+      <Coordinates latitude="54,30729" latitude_d="54" latitude_m="18" latitude_s="26,24084" lngitude="26,86267" lngitude_d="26" lngitude_m="51" lngitude_s="45,6221" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="25">
+    <Point height="5" waterdeep="177,2">
+      <Coordinates latitude="54,30639" latitude_d="54" latitude_m="18" latitude_s="23,01361" lngitude="26,86221" lngitude_d="26" lngitude_m="51" lngitude_s="43,95355" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="26">
+    <Point height="5" waterdeep="177,05">
+      <Coordinates latitude="54,3066" latitude_d="54" latitude_m="18" latitude_s="23,75519" lngitude="26,86288" lngitude_d="26" lngitude_m="51" lngitude_s="46,36368" />
+      <GroundType type_code="10" name="Тест Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="27">
+    <Point height="6,1" waterdeep="176,75">
+      <Coordinates latitude="54,30692" latitude_d="54" latitude_m="18" latitude_s="24,89502" lngitude="26,86313" lngitude_d="26" lngitude_m="51" lngitude_s="47,26318" />
+      <GroundType type_code="10" name="Тест Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="28">
+    <Point height="5" waterdeep="176,45">
+      <Coordinates latitude="54,3073" latitude_d="54" latitude_m="18" latitude_s="26,28204" lngitude="26,86316" lngitude_d="26" lngitude_m="51" lngitude_s="47,37305" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="29">
+    <Point height="5" waterdeep="176,3">
+      <Coordinates latitude="54,30739" latitude_d="54" latitude_m="18" latitude_s="26,61163" lngitude="26,86224" lngitude_d="26" lngitude_m="51" lngitude_s="44,07028" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="30">
+    <Point height="5" waterdeep="176,45">
+      <Coordinates latitude="54,30679" latitude_d="54" latitude_m="18" latitude_s="24,44183" lngitude="26,86065" lngitude_d="26" lngitude_m="51" lngitude_s="38,35052" />
+      <GroundType type_code="10" name="Тест Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="31">
+    <Point height="5,1" waterdeep="176,7">
+      <Coordinates latitude="54,30693" latitude_d="54" latitude_m="18" latitude_s="24,94995" lngitude="26,86109" lngitude_d="26" lngitude_m="51" lngitude_s="39,92981" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="32">
+    <Point height="5" waterdeep="176,55">
+      <Coordinates latitude="54,30726" latitude_d="54" latitude_m="18" latitude_s="26,14471" lngitude="26,86131" lngitude_d="26" lngitude_m="51" lngitude_s="40,71945" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="33">
+    <Point height="2,4" waterdeep="176,4">
+      <Coordinates latitude="54,30733" latitude_d="54" latitude_m="18" latitude_s="26,37817" lngitude="26,86076" lngitude_d="26" lngitude_m="51" lngitude_s="38,72131" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="34">
+    <Point height="1,7" waterdeep="176,05">
+      <Coordinates latitude="54,30775" latitude_d="54" latitude_m="18" latitude_s="27,91626" lngitude="26,86249" lngitude_d="26" lngitude_m="51" lngitude_s="44,96292" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="35">
+    <Point height="186,9" waterdeep="2,9">
+      <Coordinates latitude="53,66319" latitude_d="53" latitude_m="39" latitude_s="47,46643" lngitude="27,08388" lngitude_d="27" lngitude_m="5" lngitude_s="1,979828" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="36">
+    <Point height="187,2" waterdeep="3,4">
+      <Coordinates latitude="53,66307" latitude_d="53" latitude_m="39" latitude_s="47,04071" lngitude="27,08395" lngitude_d="27" lngitude_m="5" lngitude_s="2,220154" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="37">
+    <Point height="187,3" waterdeep="2,8">
+      <Coordinates latitude="53,6632" latitude_d="53" latitude_m="39" latitude_s="47,50763" lngitude="27,08421" lngitude_d="27" lngitude_m="5" lngitude_s="3,160858" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="38">
+    <Point height="187,05" waterdeep="3">
+      <Coordinates latitude="53,66324" latitude_d="53" latitude_m="39" latitude_s="47,65869" lngitude="27,08459" lngitude_d="27" lngitude_m="5" lngitude_s="4,534149" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="39">
+    <Point height="187,2" waterdeep="3,2">
+      <Coordinates latitude="53,66333" latitude_d="53" latitude_m="39" latitude_s="48,00201" lngitude="27,0848" lngitude_d="27" lngitude_m="5" lngitude_s="5,26886" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="40">
+    <Point height="186,9" waterdeep="2,9">
+      <Coordinates latitude="53,66346" latitude_d="53" latitude_m="39" latitude_s="48,46893" lngitude="27,08447" lngitude_d="27" lngitude_m="5" lngitude_s="4,074097" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="41">
+    <Point height="187,2" waterdeep="2,6">
+      <Coordinates latitude="53,66368" latitude_d="53" latitude_m="39" latitude_s="49,23798" lngitude="27,08486" lngitude_d="27" lngitude_m="5" lngitude_s="5,502319" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="42">
+    <Point height="187,44" waterdeep="3">
+      <Coordinates latitude="53,66381" latitude_d="53" latitude_m="39" latitude_s="49,71863" lngitude="27,08433" lngitude_d="27" lngitude_m="5" lngitude_s="3,572845" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="43">
+    <Point height="187,2" waterdeep="2,9">
+      <Coordinates latitude="53,66359" latitude_d="53" latitude_m="39" latitude_s="48,93585" lngitude="27,08419" lngitude_d="27" lngitude_m="5" lngitude_s="3,09906" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="44">
+    <Point height="187" waterdeep="3">
+      <Coordinates latitude="53,66364" latitude_d="53" latitude_m="39" latitude_s="49,10065" lngitude="27,08399" lngitude_d="27" lngitude_m="5" lngitude_s="2,350616" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="45">
+    <Point height="186,82" waterdeep="2,42">
+      <Coordinates latitude="53,66344" latitude_d="53" latitude_m="39" latitude_s="48,40027" lngitude="27,084" lngitude_d="27" lngitude_m="5" lngitude_s="2,405548" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="46">
+    <Point height="141,5" waterdeep="3,9">
+      <Coordinates latitude="53,11993" latitude_d="53" latitude_m="7" latitude_s="11,7627" lngitude="24,40682" lngitude_d="24" lngitude_m="24" lngitude_s="24,5668" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="47">
+    <Point height="141,7" waterdeep="3">
+      <Coordinates latitude="53,1198" latitude_d="53" latitude_m="7" latitude_s="11,26831" lngitude="24,40664" lngitude_d="24" lngitude_m="24" lngitude_s="23,90076" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="48">
+    <Point height="141,78" waterdeep="3">
+      <Coordinates latitude="53,11963" latitude_d="53" latitude_m="7" latitude_s="10,6778" lngitude="24,40659" lngitude_d="24" lngitude_m="24" lngitude_s="23,73596" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="49">
+    <Point height="141,66" waterdeep="3">
+      <Coordinates latitude="53,11971" latitude_d="53" latitude_m="7" latitude_s="10,96619" lngitude="24,40729" lngitude_d="24" lngitude_m="24" lngitude_s="26,25595" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="50">
+    <Point height="141,53" waterdeep="3">
+      <Coordinates latitude="53,11954" latitude_d="53" latitude_m="7" latitude_s="10,33447" lngitude="24,40719" lngitude_d="24" lngitude_m="24" lngitude_s="25,8989" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="51">
+    <Point height="141,5" waterdeep="3">
+      <Coordinates latitude="53,11932" latitude_d="53" latitude_m="7" latitude_s="9,56543" lngitude="24,40713" lngitude_d="24" lngitude_m="24" lngitude_s="25,67917" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="52">
+    <Point height="141,58" waterdeep="3">
+      <Coordinates latitude="53,11943" latitude_d="53" latitude_m="7" latitude_s="9,949951" lngitude="24,40652" lngitude_d="24" lngitude_m="24" lngitude_s="23,4819" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="53">
+    <Point height="141,6" waterdeep="3">
+      <Coordinates latitude="53,11924" latitude_d="53" latitude_m="7" latitude_s="9,249573" lngitude="24,40662" lngitude_d="24" lngitude_m="24" lngitude_s="23,81836" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="54">
+    <Point height="140,45" waterdeep="3">
+      <Coordinates latitude="53,11894" latitude_d="53" latitude_m="7" latitude_s="8,178406" lngitude="24,40534" lngitude_d="24" lngitude_m="24" lngitude_s="19,23157" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="55">
+    <Point height="140,62" waterdeep="3">
+      <Coordinates latitude="53,11809" latitude_d="53" latitude_m="7" latitude_s="5,115967" lngitude="24,40915" lngitude_d="24" lngitude_m="24" lngitude_s="32,95761" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="56">
+    <Point height="140,8" waterdeep="3">
+      <Coordinates latitude="53,11847" latitude_d="53" latitude_m="7" latitude_s="6,475525" lngitude="24,40543" lngitude_d="24" lngitude_m="24" lngitude_s="19,54056" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="57">
+    <Point height="140,7" waterdeep="3">
+      <Coordinates latitude="53,11842" latitude_d="53" latitude_m="7" latitude_s="6,296997" lngitude="24,40532" lngitude_d="24" lngitude_m="24" lngitude_s="19,15604" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="58">
+    <Point height="141,38" waterdeep="3">
+      <Coordinates latitude="53,11813" latitude_d="53" latitude_m="7" latitude_s="5,280762" lngitude="24,40547" lngitude_d="24" lngitude_m="24" lngitude_s="19,70535" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="59">
+    <Point height="141,35" waterdeep="3">
+      <Coordinates latitude="53,11829" latitude_d="53" latitude_m="7" latitude_s="5,830078" lngitude="24,40543" lngitude_d="24" lngitude_m="24" lngitude_s="19,54056" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="60">
+    <Point height="141,1" waterdeep="3">
+      <Coordinates latitude="53,11818" latitude_d="53" latitude_m="7" latitude_s="5,45929" lngitude="24,40528" lngitude_d="24" lngitude_m="24" lngitude_s="19,01184" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="61">
+    <Point height="141,37" waterdeep="3">
+      <Coordinates latitude="53,11817" latitude_d="53" latitude_m="7" latitude_s="5,404358" lngitude="24,40541" lngitude_d="24" lngitude_m="24" lngitude_s="19,45816" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="62">
+    <Point height="141,16" waterdeep="3">
+      <Coordinates latitude="53,1179" latitude_d="53" latitude_m="7" latitude_s="4,456787" lngitude="24,40528" lngitude_d="24" lngitude_m="24" lngitude_s="19,01184" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="63">
+    <Point height="141,47" waterdeep="3">
+      <Coordinates latitude="53,118" latitude_d="53" latitude_m="7" latitude_s="4,80011" lngitude="24,40556" lngitude_d="24" lngitude_m="24" lngitude_s="20,00748" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="64">
+    <Point height="141,5" waterdeep="3">
+      <Coordinates latitude="53,11798" latitude_d="53" latitude_m="7" latitude_s="4,717712" lngitude="24,40579" lngitude_d="24" lngitude_m="24" lngitude_s="20,85205" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="65">
+    <Point height="141,4" waterdeep="3">
+      <Coordinates latitude="53,11795" latitude_d="53" latitude_m="7" latitude_s="4,635315" lngitude="24,40613" lngitude_d="24" lngitude_m="24" lngitude_s="22,08115" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="66">
+    <Point height="141,52" waterdeep="3">
+      <Coordinates latitude="53,1181" latitude_d="53" latitude_m="7" latitude_s="5,157166" lngitude="24,40598" lngitude_d="24" lngitude_m="24" lngitude_s="21,5387" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="67">
+    <Point height="141,7" waterdeep="3">
+      <Coordinates latitude="53,11814" latitude_d="53" latitude_m="7" latitude_s="5,32196" lngitude="24,40618" lngitude_d="24" lngitude_m="24" lngitude_s="22,23907" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="68">
+    <Point height="141,55" waterdeep="3">
+      <Coordinates latitude="53,11803" latitude_d="53" latitude_m="7" latitude_s="4,909973" lngitude="24,40636" lngitude_d="24" lngitude_m="24" lngitude_s="22,91199" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="69">
+    <Point height="141,1" waterdeep="3">
+      <Coordinates latitude="53,1181" latitude_d="53" latitude_m="7" latitude_s="5,170898" lngitude="24,40747" lngitude_d="24" lngitude_m="24" lngitude_s="26,90826" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="70">
+    <Point height="141,38" waterdeep="3">
+      <Coordinates latitude="53,11789" latitude_d="53" latitude_m="7" latitude_s="4,401855" lngitude="24,40708" lngitude_d="24" lngitude_m="24" lngitude_s="25,50064" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="71">
+    <Point height="140,97" waterdeep="3">
+      <Coordinates latitude="53,11829" latitude_d="53" latitude_m="7" latitude_s="5,830078" lngitude="24,40525" lngitude_d="24" lngitude_m="24" lngitude_s="18,90198" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="72">
+    <Point height="140,9" waterdeep="3">
+      <Coordinates latitude="53,11811" latitude_d="53" latitude_m="7" latitude_s="5,198364" lngitude="24,40515" lngitude_d="24" lngitude_m="24" lngitude_s="18,55179" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="73">
+    <Point height="140,69" waterdeep="3">
+      <Coordinates latitude="53,11796" latitude_d="53" latitude_m="7" latitude_s="4,649048" lngitude="24,40509" lngitude_d="24" lngitude_m="24" lngitude_s="18,31146" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="74">
+    <Point height="140,99" waterdeep="3">
+      <Coordinates latitude="53,11775" latitude_d="53" latitude_m="7" latitude_s="3,893738" lngitude="24,40504" lngitude_d="24" lngitude_m="24" lngitude_s="18,12607" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="75">
+    <Point height="140,8" waterdeep="3">
+      <Coordinates latitude="53,1174" latitude_d="53" latitude_m="7" latitude_s="2,644043" lngitude="24,40503" lngitude_d="24" lngitude_m="24" lngitude_s="18,10547" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="76">
+    <Point height="140,8" waterdeep="3">
+      <Coordinates latitude="53,11716" latitude_d="53" latitude_m="7" latitude_s="1,77887" lngitude="24,40485" lngitude_d="24" lngitude_m="24" lngitude_s="17,46002" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="77">
+    <Point height="141,06" waterdeep="3">
+      <Coordinates latitude="53,11761" latitude_d="53" latitude_m="7" latitude_s="3,413086" lngitude="24,40527" lngitude_d="24" lngitude_m="24" lngitude_s="18,97751" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="78">
+    <Point height="140,6" waterdeep="3">
+      <Coordinates latitude="53,11697" latitude_d="53" latitude_m="7" latitude_s="1,078491" lngitude="24,40469" lngitude_d="24" lngitude_m="24" lngitude_s="16,87637" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="79">
+    <Point height="140,9" waterdeep="3">
+      <Coordinates latitude="53,11779" latitude_d="53" latitude_m="7" latitude_s="4,058533" lngitude="24,40556" lngitude_d="24" lngitude_m="24" lngitude_s="20,00061" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="80">
+    <Point height="141,1" waterdeep="3">
+      <Coordinates latitude="53,11764" latitude_d="53" latitude_m="7" latitude_s="3,495483" lngitude="24,40646" lngitude_d="24" lngitude_m="24" lngitude_s="23,26904" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="81">
+    <Point height="141,1" waterdeep="3">
+      <Coordinates latitude="53,11756" latitude_d="53" latitude_m="7" latitude_s="3,220825" lngitude="24,40599" lngitude_d="24" lngitude_m="24" lngitude_s="21,56616" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="82">
+    <Point height="140,8" waterdeep="3">
+      <Coordinates latitude="53,11748" latitude_d="53" latitude_m="7" latitude_s="2,918701" lngitude="24,40544" lngitude_d="24" lngitude_m="24" lngitude_s="19,58176" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="83">
+    <Point height="141,09" waterdeep="3">
+      <Coordinates latitude="53,11731" latitude_d="53" latitude_m="7" latitude_s="2,30072" lngitude="24,40629" lngitude_d="24" lngitude_m="24" lngitude_s="22,63733" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="84">
+    <Point height="140,9" waterdeep="3">
+      <Coordinates latitude="53,11734" latitude_d="53" latitude_m="7" latitude_s="2,424316" lngitude="24,40535" lngitude_d="24" lngitude_m="24" lngitude_s="19,2659" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="85">
+    <Point height="141,52" waterdeep="3">
+      <Coordinates latitude="53,11709" latitude_d="53" latitude_m="7" latitude_s="1,531677" lngitude="24,40528" lngitude_d="24" lngitude_m="24" lngitude_s="18,99811" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="86">
+    <Point height="140,7" waterdeep="3">
+      <Coordinates latitude="53,1171" latitude_d="53" latitude_m="7" latitude_s="1,572876" lngitude="24,4057" lngitude_d="24" lngitude_m="24" lngitude_s="20,51559" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="87">
+    <Point height="141" waterdeep="3">
+      <Coordinates latitude="53,11707" latitude_d="53" latitude_m="7" latitude_s="1,44928" lngitude="24,40607" lngitude_d="24" lngitude_m="24" lngitude_s="21,86829" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="88">
+    <Point height="141,4" waterdeep="3">
+      <Coordinates latitude="53,11715" latitude_d="53" latitude_m="7" latitude_s="1,737671" lngitude="24,40664" lngitude_d="24" lngitude_m="24" lngitude_s="23,90076" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="89">
+    <Point height="141,16" waterdeep="3">
+      <Coordinates latitude="53,11682" latitude_d="53" latitude_m="7" latitude_s="0,5566406" lngitude="24,40654" lngitude_d="24" lngitude_m="24" lngitude_s="23,53683" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="90">
+    <Point height="140,3" waterdeep="3">
+      <Coordinates latitude="53,1167" latitude_d="53" latitude_m="7" latitude_s="0,1034546" lngitude="24,40517" lngitude_d="24" lngitude_m="24" lngitude_s="18,62045" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="91">
+    <Point height="140,4" waterdeep="3">
+      <Coordinates latitude="53,11662" latitude_d="53" latitude_m="6" latitude_s="59,84253" lngitude="24,40569" lngitude_d="24" lngitude_m="24" lngitude_s="20,46753" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="92">
+    <Point height="140,84" waterdeep="3">
+      <Coordinates latitude="53,11655" latitude_d="53" latitude_m="6" latitude_s="59,59534" lngitude="24,40635" lngitude_d="24" lngitude_m="24" lngitude_s="22,85706" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="93">
+    <Point height="140,41" waterdeep="3">
+      <Coordinates latitude="53,11633" latitude_d="53" latitude_m="6" latitude_s="58,7851" lngitude="24,4051" lngitude_d="24" lngitude_m="24" lngitude_s="18,35953" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="94">
+    <Point height="140,16" waterdeep="3">
+      <Coordinates latitude="53,11624" latitude_d="53" latitude_m="6" latitude_s="58,45551" lngitude="24,40561" lngitude_d="24" lngitude_m="24" lngitude_s="20,17914" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="95">
+    <Point height="140,45" waterdeep="3">
+      <Coordinates latitude="53,11619" latitude_d="53" latitude_m="6" latitude_s="58,29071" lngitude="24,4062" lngitude_d="24" lngitude_m="24" lngitude_s="22,30774" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="96">
+    <Point height="140,95" waterdeep="3">
+      <Coordinates latitude="53,11575" latitude_d="53" latitude_m="6" latitude_s="56,69769" lngitude="24,40534" lngitude_d="24" lngitude_m="24" lngitude_s="19,21097" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="97">
+    <Point height="140,6" waterdeep="3">
+      <Coordinates latitude="53,1157" latitude_d="53" latitude_m="6" latitude_s="56,50543" lngitude="24,40578" lngitude_d="24" lngitude_m="24" lngitude_s="20,81085" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="98">
+    <Point height="141,05" waterdeep="3">
+      <Coordinates latitude="53,11552" latitude_d="53" latitude_m="6" latitude_s="55,85999" lngitude="24,40554" lngitude_d="24" lngitude_m="24" lngitude_s="19,93195" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="99">
+    <Point height="140,5" waterdeep="3">
+      <Coordinates latitude="53,11649" latitude_d="53" latitude_m="6" latitude_s="59,34814" lngitude="24,40462" lngitude_d="24" lngitude_m="24" lngitude_s="16,62918" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="100">
+    <Point height="141,3" waterdeep="3">
+      <Coordinates latitude="53,11647" latitude_d="53" latitude_m="6" latitude_s="59,27948" lngitude="24,40478" lngitude_d="24" lngitude_m="24" lngitude_s="17,2197" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="101">
+    <Point height="141,3" waterdeep="3">
+      <Coordinates latitude="53,1159" latitude_d="53" latitude_m="6" latitude_s="57,24701" lngitude="24,40457" lngitude_d="24" lngitude_m="24" lngitude_s="16,43692" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="102">
+    <Point height="141,6" waterdeep="3">
+      <Coordinates latitude="53,1156" latitude_d="53" latitude_m="6" latitude_s="56,14838" lngitude="24,40473" lngitude_d="24" lngitude_m="24" lngitude_s="17,04117" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="103">
+    <Point height="141,5" waterdeep="3">
+      <Coordinates latitude="53,11579" latitude_d="53" latitude_m="6" latitude_s="56,83502" lngitude="24,40408" lngitude_d="24" lngitude_m="24" lngitude_s="14,69971" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="105">
+    <Point height="733,9" waterdeep="720,7">
+      <Coordinates latitude="43,29877" latitude_d="43" latitude_m="17" latitude_s="55,56152" lngitude="76,84361" lngitude_d="76" lngitude_m="50" lngitude_s="37,00562" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0,0001" water_pdk_coef="0,0001" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="106">
+    <Point height="680,93" waterdeep="673,13">
+      <Coordinates latitude="43,36361" latitude_d="43" latitude_m="21" latitude_s="48,9798" lngitude="76,85439" lngitude_d="76" lngitude_m="51" lngitude_s="15,78735" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0,0001" water_pdk_coef="0,0001" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="107">
+    <Point height="649,17" waterdeep="619,87">
+      <Coordinates latitude="43,36197" latitude_d="43" latitude_m="21" latitude_s="43,10211" lngitude="76,99387" lngitude_d="76" lngitude_m="59" lngitude_s="37,91748" />
+      <GroundType type_code="10" name="Тест Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    </Point>
+    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0,0005" water_pdk_coef="0,0005" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="108">
+    <Point height="831,93" waterdeep="781,93">
+      <Coordinates latitude="43,278" latitude_d="43" latitude_m="16" latitude_s="40,81329" lngitude="77,02113" lngitude_d="77" lngitude_m="1" lngitude_s="16,05286" />
+      <GroundType type_code="10" name="Тест Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    </Point>
+    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0,0005" water_pdk_coef="0,0005" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="109">
+    <Point height="700" waterdeep="676">
+      <Coordinates latitude="43,33298" latitude_d="43" latitude_m="19" latitude_s="58,73199" lngitude="76,84856" lngitude_d="76" lngitude_m="50" lngitude_s="54,83093" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0,0005" water_pdk_coef="0,0005" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="110">
+    <Point height="640,71" waterdeep="636,71">
+      <Coordinates latitude="43,40468" latitude_d="43" latitude_m="24" latitude_s="16,84204" lngitude="76,87671" lngitude_d="76" lngitude_m="52" lngitude_s="36,15234" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0,0005" water_pdk_coef="0,0005" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="111">
+    <Point height="633,34" waterdeep="28">
+      <Coordinates latitude="43,40678" latitude_d="43" latitude_m="24" latitude_s="24,40887" lngitude="76,94341" lngitude_d="76" lngitude_m="56" lngitude_s="36,25854" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0,0001" water_pdk_coef="0,0001" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="112">
+    <Point height="719,46" waterdeep="8,7">
+      <Coordinates latitude="43,29485" latitude_d="43" latitude_m="17" latitude_s="41,45782" lngitude="76,92956" lngitude_d="76" lngitude_m="55" lngitude_s="46,40808" />
+      <GroundType type_code="10" name="Тест Супесь" porosity="0,46" holdmigration="31,3" waterfilter="4,5E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,11" soilmoisture="0,42" аveryanovfactor="4,5" permeability="0,2" density="1650" />
+    </Point>
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0,0001" water_pdk_coef="0,0001" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="113">
+    <Point height="700,13" waterdeep="0,4">
+      <Coordinates latitude="43,3146" latitude_d="43" latitude_m="18" latitude_s="52,56683" lngitude="76,90182" lngitude_d="76" lngitude_m="54" lngitude_s="6,542358" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0,0001" water_pdk_coef="0,0001" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="114">
+    <Point height="661,5" waterdeep="13,5">
+      <Coordinates latitude="43,38083" latitude_d="43" latitude_m="22" latitude_s="50,97015" lngitude="76,84953" lngitude_d="76" lngitude_m="50" lngitude_s="58,29163" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0,0001" water_pdk_coef="0,0001" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="115">
+    <Point height="644,54" waterdeep="10">
+      <Coordinates latitude="43,38007" latitude_d="43" latitude_m="22" latitude_s="48,25104" lngitude="76,95919" lngitude_d="76" lngitude_m="57" lngitude_s="33,08533" />
+      <GroundType type_code="11" name="Тест Суглинок" porosity="0,48" holdmigration="86" waterfilter="2,2E-06" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,14" soilmoisture="0,44" аveryanovfactor="6" permeability="0,2" density="1750" />
+    </Point>
+    <CadastreType type_code="2" name="Земли населенных пунктов, садоводческих товариществ, дачных кооперативов" pdk_coef="0,0001" water_pdk_coef="0,0001" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="116">
+    <Point height="164,15" waterdeep="6,749">
+      <Coordinates latitude="48,41621" latitude_d="48" latitude_m="24" latitude_s="58,35663" lngitude="57,30853" lngitude_d="57" lngitude_m="18" lngitude_s="30,70404" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0,0005" water_pdk_coef="0,0005" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="117">
+    <Point height="159,44" waterdeep="3,04">
+      <Coordinates latitude="48,41249" latitude_d="48" latitude_m="24" latitude_s="44,96704" lngitude="57,3191" lngitude_d="57" lngitude_m="19" lngitude_s="8,744202" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0,0005" water_pdk_coef="0,0005" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="118">
+    <Point height="159,36" waterdeep="2,76">
+      <Coordinates latitude="48,4099" latitude_d="48" latitude_m="24" latitude_s="35,65613" lngitude="57,30778" lngitude_d="57" lngitude_m="18" lngitude_s="27,99866" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
+    </Point>
+    <CadastreType type_code="3" name="Земли промышленности, транспорта, связи, энергетики, обороны и иного      &#xD;&#xA;    назначения" pdk_coef="0,0005" water_pdk_coef="0,0005" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
+  </AnchorPoint>
+  <AnchorPoint id="119">
+    <Point height="0" waterdeep="0">
+      <Coordinates latitude="0" latitude_d="0" latitude_m="0" latitude_s="0" lngitude="0" lngitude_d="0" lngitude_m="0" lngitude_s="0" />
+      <GroundType type_code="9" name="Тест Песок м/з" porosity="0,4" holdmigration="14" waterfilter="4,213E-05" diffusion="0,2" distribution="0,2" sorption="0,2" watercapacity="0,08" soilmoisture="0,39" аveryanovfactor="4" permeability="0,2" density="1450" />
     </Point>
     <CadastreType type_code="1" name="Земли сельскохозяйственного назначения" pdk_coef="5E-05" water_pdk_coef="5E-05" ground_doc_name="ПДК от 12.03.2012 № 17/1" water_doc_name="ПДК от 06.10.2004 № 90" />
   </AnchorPoint>
