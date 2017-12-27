@@ -47,7 +47,6 @@ namespace EGH01.Models.EGHRGE
         {
             this.menuitempoint = menuitemgeop;
             this.Regim = REGIM.INIT;
-            List<PetrochemicalType> ptl = new List<EGH01DB.Types.PetrochemicalType>();
             if (!Helper.GetListPetrochemicalType(db, ref petrochemicaltypelist)) this.Regim = REGIM.RUNERROR;
             this.incidenttypelist = new EGH01DB.Types.IncidentTypeList(db);
             if (this.incidenttypelist == null) this.Regim = REGIM.RUNERROR;

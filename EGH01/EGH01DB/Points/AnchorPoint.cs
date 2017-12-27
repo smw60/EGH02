@@ -548,11 +548,12 @@ namespace EGH01DB.Points
                 }
                 try
                 {
-                    cmd.ExecuteNonQuery();
+                  //  cmd.ExecuteNonQuery();
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        int id = (int)reader["IdТехногенногоОбъекта"];
+                        // int id = (int)reader["IdТехногенногоОбъекта"];
+                        int id = (int)reader["IdОпорнойГеологическойТочки"];
                         float x = (float)reader["ШиротаГрад"];
                         float y = (float)reader["ДолготаГрад"];
                         int ground_type_code = (int)reader["ТипГрунта"];

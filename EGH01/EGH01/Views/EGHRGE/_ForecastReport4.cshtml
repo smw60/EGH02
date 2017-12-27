@@ -1,5 +1,6 @@
 ﻿@using EGH01.Core;
 @using EGH01.Models.EGH;
+@using EGH01DB;
 @using EGH01DB.Primitives;
 @using EGH01DB.Types;
 @using EGH01DB.Blurs;
@@ -47,8 +48,16 @@
     </fieldset>
     
     <fieldset form="ChoiseRiskObject">
-        <legend> Природоохранные объекты </legend>
+        <legend> Природоохранные объекты ( @( String.Format("радиус: {0} - {1}м )", level1.R1, level4.l4)) </legend>
         
+        @foreach (RGEContext.FEcoObjectsList.FEcoObject eo in level4.f4ecoobjectslist)
+        {
+            <p>
+                <label class="boxdata-label-40 "> </label> @eo.line
+            </p>
+        }
+
+
     </fieldset>
 
 

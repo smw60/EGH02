@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Globalization;
 using EGH01DB.Types;
+using System.Data.SqlClient;
+using System.Data;
 
 
 namespace EGH01DB.Primitives
@@ -63,7 +65,38 @@ namespace EGH01DB.Primitives
             string point = "Point(" + lngitude.ToString("F5", CultureInfo.InvariantCulture) + " " + latitude.ToString("F5", CultureInfo.InvariantCulture) + ")";
             return point;
         }
-
+        public bool IsHome(EGH01DB.IDBContext dbcontext)
+        {
+            bool rc = false;
+            using (SqlCommand cmd = new SqlCommand("MAP.InBelarus", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@point", SqlDbType.VarChar);
+                    parm.Value = this.GetMapPoint();
+                    cmd.Parameters.Add(parm);
+                }
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (rc = reader.Read())
+                    {
+                        int region_name_code = (int)reader["Obj_Id"];
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+            }
+            return rc;
+        }
    
         public Coordinates(int latd, int latm, float lats, int lngd, int lngm, float lngs)
         {

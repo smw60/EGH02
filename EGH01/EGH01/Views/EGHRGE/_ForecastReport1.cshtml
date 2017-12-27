@@ -167,9 +167,9 @@
 
 
     <fieldset form="ChoiseRiskObject">
-        <legend> Природоохранные объекты </legend>
+        <legend> Природоохранные объекты (радиус: @(level1.R1.ToString() +"м)") </legend>
 
-        @foreach (RGEContext.F1EcoObjectsList.F1EcoObject eo in level1.f1ecoobjectslist)
+        @foreach (RGEContext.FEcoObjectsList.FEcoObject eo in level1.f1ecoobjectslist)
         {
           <p>
             <label class="boxdata-label-40 "> </label> @eo.line
@@ -178,9 +178,9 @@
        
     </fieldset>
     <fieldset form="ChoiseRiskObject">
-        <legend> Опорные точки </legend>
+        <legend> Опорные точки (радиус: @(level1.R1.ToString() + "м)") </legend>
 
-        @foreach (RGEContext.F1AnchorPointList.F1AnchorPoint ap in level1.f1anchorpointlist)
+        @foreach (RGEContext.FAnchorPointList.FAnchorPoint ap in level1.f1anchorpointlist)
         {
             <p>
                 <label class="boxdata-label-40 "> </label> @ap.line
