@@ -22,7 +22,17 @@ namespace EGH01.Controllers
         }
 
         // проверка процедур  Map
-        
+
+        public ActionResult Blurborder()
+        {
+            RGEContext db = new RGEContext();
+            //Coordinates p = new Coordinates(28.4421796312367f, 54.9043260781941f);
+
+            //RGEContext.BlurBorder bb = new RGEContext.BlurBorder(db, p, 10.0f);
+
+
+            return View("Index");
+        }
         public ActionResult Map_GetDistrict()// 
         {
             RGEContext db = new RGEContext();

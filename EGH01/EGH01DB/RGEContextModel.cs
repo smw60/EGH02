@@ -325,6 +325,7 @@ namespace EGH01DB
                     
                 }
              }
+
              {
                  AnchorPointList alist = AnchorPointList.CreateNear(f0.db, f0.riskobject.coordinates, 0.0f, this.R1);  
                                   
@@ -338,21 +339,25 @@ namespace EGH01DB
 
 
 
-                   
-             this.bb = new BlurBorder(this.R1, new BlurBorder.XY[]   // отладка 
-                                                    {
-                                                        new BlurBorder.XY(7,25),
-                                                        new BlurBorder.XY(8,7), 
-                                                        new BlurBorder.XY(10,5),
-                                                        new BlurBorder.XY(20,8), 
-                                                        new BlurBorder.XY(37,23),
-                                                        new BlurBorder.XY(22,36), 
-                                                        new BlurBorder.XY(7,25)
-                                                    }); 
-              // public static EcoObjectsList CreateEcoObjectsList(EGH01DB.IDBContext dbcontext, Point center, float distance1 = 0.0f, float distance2 = float.MaxValue)
 
 
-         }
+
+                //this.bb = new BlurBorder(this.R1, new BlurBorder.XY[]   // отладка 
+                //                                       {
+                //                                           new BlurBorder.XY(7,25),
+                //                                           new BlurBorder.XY(8,7), 
+                //                                           new BlurBorder.XY(10,5),
+                //                                           new BlurBorder.XY(20,8), 
+                //                                           new BlurBorder.XY(37,23),
+                //                                           new BlurBorder.XY(22,36), 
+                //                                           new BlurBorder.XY(7,25)
+                //                                       }); 
+                // public static EcoObjectsList CreateEcoObjectsList(EGH01DB.IDBContext dbcontext, Point center, float distance1 = 0.0f, float distance2 = float.MaxValue)
+
+                this.bb = new BlurBorder(this.f0.db, this.f0.riskobject.coordinates, this.R1);
+
+
+            }
 
      }
     public class ECOForecast2     // почва  
@@ -724,50 +729,237 @@ namespace EGH01DB
      {
          public class XY
          {
-             public int x;
-             public int y;
-             public XY(int x, int y) { this.x = x; this.y = y; }
+             public float x;
+             public float y;
+             public XY(float x, float y) { this.x = x; this.y = y; }
          }
-         public int R;
-         public int LimitR = 7;
-         public int nr;  
-         public int   CanvaX = 400;
-         public int   CanvaY = 400;
-         public XY center = null;
-         public float KS = 1.0f;
-         public XY[] xy;
-        
-         public BlurBorder(float r, XY[] xy)
-         {
-             this.xy = xy;
-             this.KS = getKS();
-             this.nr = (int)Math.Ceiling(r);
-             this.R =  (int)Math.Ceiling(r*KS);
-            
-             this.center = new XY(this.CanvaX / 2, this.CanvaY / 2);
-             for (int k = 0; k < this.xy.Length; k++)
-             {
-                 this.xy[k].x = (int)(this.KS * (float)this.xy[k].x);
-                 this.xy[k].y = (int)(this.KS * (float)this.xy[k].y); 
-             }
-             
-         }
-         private float getKS()
-         {
-             float rc = 1.0f;
-             int   mxy = 1;
-             for (int k = 0; k < this.xy.Length; k++)
-             {
-                 mxy = xy[k].x > mxy ? xy[k].x : mxy;
-                 mxy = xy[k].y > mxy ? xy[k].y : mxy;
-             }
-             rc = ((float)Math.Min(this.CanvaX, this.CanvaY)) / ((float)mxy); 
+            public int R;
+            public int LimitR = 7;
+            public int nr;
+            public int CanvaX = 450;
+            public int CanvaY = 450;
+            public XY center;
+            public XY center2;
+            // public float KS = 1.0f;
+            // public XY[] xy;
+            public Coordinates[] border;
+            public float[] height;
+            public float[] resigular;
+            public float[] length;
+            public Coordinates[] newborder;
+            public float[] distance;
+            public Coordinates[] newborder2;
+            public float[] newlength;
+            public XY[] newborder3;
 
-             return rc;
-         }
+            //   public BlurBorder(float r, XY[] xy)
+            //{
+            //    this.xy = xy;
+            //    this.KS = getKS();
+            //    this.nr = (int)Math.Ceiling(r);
+            //    this.R =  (int)Math.Ceiling(r*KS);
+
+            //    this.center = new XY(this.CanvaX / 2, this.CanvaY / 2);
+            //    for (int k = 0; k < this.xy.Length; k++)
+            //    {
+            //        this.xy[k].x = (int)(this.KS * (float)this.xy[k].x);
+            //        this.xy[k].y = (int)(this.KS * (float)this.xy[k].y); 
+            //    }
+
+            //}
+            //private float getKS()
+            //{
+            //    float rc = 1.0f;
+            //    int   mxy = 1;
+            //    for (int k = 0; k < this.xy.Length; k++)
+            //    {
+            //        mxy = xy[k].x > mxy ? xy[k].x : mxy;
+            //        mxy = xy[k].y > mxy ? xy[k].y : mxy;
+            //    }
+            //    rc = ((float)Math.Min(this.CanvaX, this.CanvaY)) / ((float)mxy); 
+
+            //    return rc;
+            //}
+            public BlurBorder(IDBContext db, Coordinates coordinates, float r)
+            {
 
 
-     } 
+                this.border = new Coordinates[8];
+                Coordinates c = new Coordinates(coordinates);
+                for (int i = 0; i < 8; i++)
+                {
+                    border[i] = c.getByAngle(coordinates, 45 * i, r);
+                }
+
+                this.height = new float[8] ;
+
+                for (int i = 0; i < 8; i++)
+                {
+                    height[i] = 0.0f;
+                    if (!MapHelper.GetHeight(db, border[i], out height[i])) height[i] = -1.0f;
+                }
+
+                this.resigular = new float[8];
+                float h0 = 0.0f;
+               if (!MapHelper.GetHeight(db, coordinates, out h0)) h0 = -1.0f;
+                for (int i = 0; i < 8; i++)
+                {
+                    resigular[i] = h0 - height[i];
+                }
+
+                this.length = new float[8];
+                for (int i = 0; i < 8; i++)
+                {
+                    length[i] = resigular[i] + r;
+                }
+
+                this.newborder = new Coordinates[8];
+                for (int i = 0; i < 8; i++)
+                {
+                    newborder[i] = c.getByAngle(coordinates, 45 * i, length[i]);
+                }
+
+                this.distance = new float[8];
+                for (int i = 0; i < 8; i++)
+                {
+                    if (i == 7)
+                    {
+                        this.distance[i] = new Coordinates(newborder[i]).Distance(newborder[0]);
+
+                    }
+                    else
+                        this.distance[i] = new Coordinates(newborder[i]).Distance(newborder[i + 1]);
+                }
+
+                float t = 0.0f;
+                for (int i = 0; i < 8; i++)
+                {
+                    float p;
+                    float g;
+                    if (i == 7)
+                    {
+                        p = (length[i] + length[0] + distance[i]) / 2;
+                        g = (float)Math.Sqrt(p * (p - length[i]) * (p - length[0]) * (p - distance[i]));
+
+                    }
+                    else
+                    {
+                        p = (length[i] + length[i + 1] + distance[i]) / 2;
+                        g = (float)Math.Sqrt(p * (p - length[i]) * (p - length[i + 1]) * (p - distance[i]));
+                    }
+
+                    t += g;
+
+                }
+
+                int k = (int)Math.Sqrt(((float)Math.PI * (float)Math.Pow(r, 2)) / t);
+
+                this.newlength = new float[8];
+                for (int i = 0; i < newlength.Length; i++)
+                {
+                    newlength[i] = length[i] * k;
+                }
+
+                this.newborder2 = new Coordinates[8];
+                Coordinates co = new Coordinates(coordinates);
+                for (int i = 0; i < 8; i++)
+                {
+                    newborder2[i] = co.getByAngle(coordinates, 45 * i, newlength[i]);
+                }
+
+                float max_x = 1.0f;
+                float max_y = 1.0f;
+                float ymax_x = 0.0f;
+                float ymax_y = 0.0f;
+                float ymin_x = 0.0f;
+                float xmin_y = 0.0f;
+                for (int i = 0; i < this.newborder2.Length; i++)
+                {
+                    max_x = newborder2[i].latitude > max_x ? newborder2[i].latitude : max_x;
+                    max_y = newborder2[i].lngitude > max_y ? newborder2[i].lngitude : max_y;
+                    if (newborder2[i].latitude == max_x)
+                    {
+                        ymax_x = newborder2[i].lngitude;
+                    }
+                    if (newborder2[i].lngitude == max_y)
+                    {
+                        ymax_y = newborder2[i].latitude;
+                    }
+                }
+                float min_y = 999.0f;
+                float min_x = 999.0f;
+                for (int i = 0; i < this.newborder2.Length; i++)
+                {
+                    min_x = newborder2[i].latitude < min_x ? newborder2[i].latitude : min_x;
+                    min_y = newborder2[i].lngitude < min_y ? newborder2[i].lngitude : min_y;
+
+                    if (newborder2[i].latitude == min_x)
+                    {
+                        ymin_x = newborder2[i].lngitude;
+                    }
+                    if (newborder2[i].lngitude == min_y)
+                    {
+                        xmin_y = newborder2[i].latitude;
+                    }
+
+                }
+
+                //float l1 = (float)Math.Abs(coordinates.latitude - max_x);
+                //float l2 = (float)Math.Abs(coordinates.lngitude - max_y);
+                //float l3 = (float)Math.Abs(coordinates.latitude - min_x);
+                //float l4 = (float)Math.Abs(coordinates.lngitude - min_y);
+
+                float l1 = (float)Math.Sqrt(Math.Pow(coordinates.latitude - max_x, 2) + Math.Pow(coordinates.lngitude - ymax_x, 2));
+                float l2 = (float)Math.Sqrt(Math.Pow(coordinates.latitude - xmin_y, 2) + Math.Pow(coordinates.lngitude - min_y, 2));
+                float l3 = (float)Math.Sqrt(Math.Pow(coordinates.latitude - min_x, 2) + Math.Pow(coordinates.lngitude - ymin_x, 2));
+                float l4 = (float)Math.Sqrt(Math.Pow(coordinates.latitude - ymax_y, 2) + Math.Pow(coordinates.lngitude - max_y, 2));
+
+                float l5 = l1 + l3;
+                float l6 = l2 + l4;
+
+                float min = 0.0f;
+                float max = 0.0f;
+                if (l5 < l6)
+                {
+                    max = l6;
+                    min = l5;
+                }
+
+                else
+                {
+                    max = l5;
+                    min = l6;
+                }
+
+
+                float k1 = 0.0f;
+                k1 = 400 / max;
+                float k2 = 400 / min;
+
+
+                this.newborder3 = new XY[8];
+                for (int i = 0; i < 8; i++)
+                {
+                   
+                    float a = (newborder2[i].latitude - coordinates.latitude) * k2 + this.CanvaX / 2;
+                    float b = (newborder2[i].lngitude - coordinates.lngitude) * k1 + this.CanvaY / 2;
+                    newborder3[i] = new XY(a, b);
+                }
+
+                float f = (coordinates.latitude - min_x) * k2;
+                float h = (coordinates.lngitude - min_y) * k1;
+                this.center = new XY(f, h);
+
+
+                this.nr = (int)Math.Ceiling(r);
+                this.R = (int)Math.Ceiling(nr * 400 / (min * Coordinates.EquatorLat1DegreeLength_m));
+                this.center2 = new XY(this.CanvaX / 2, this.CanvaY / 2);
+
+
+
+            }
+
+        } 
 
      #region ECOForecast [старая версия]
      public partial class ECOForecast         //  модель прогнозирования 
