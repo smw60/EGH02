@@ -10,7 +10,7 @@ using System.Xml.Linq;
 using System.Globalization;
 using EGH01.Models.EGHRGE;
 using EGH01DB;
-using EGH01DB.Primitives;
+//using EGH01DB.Primitives;
 using EGH01DB.Types;
 using EGH01DB.Points;
 using EGH01DB.Objects;
@@ -52,7 +52,27 @@ namespace EGH01.Controllers
                     else if (menuitem != null &&  menuitem.Equals("Forecast.Cancel")) view = View("Index", db);
                     else if (menuitem != null &&  menuitem.Equals("Forecast.Save"))
                     {
-                            //ForecastViewConext viewcontext = db.GetViewContext(ForecastViewConext.VIEWNAME) as ForecastViewConext;
+                        
+                        if (fvc.ecoforecastx != null)
+                        {
+
+                            //RGEContext.Report report = fvc.ecoforecastx.CreateReport();
+                            XmlNode xn =  fvc.ecoforecastx.CreateReport().toXmlNode(); 
+                            EGH01DB.Primitives.Report report = new EGH01DB.Primitives.Report(1000, "П", DateTime.Now, xn);
+                            EGH01DB.Primitives.Report.Create(db, report);
+
+                            RGEContext.Report rrr = new RGEContext.Report(xn); 
+                           
+
+
+                               // public Report(int id, string stage, DateTime date, XmlNode xmlcontetnt, string comment = "")
+
+                           
+                             // report.Save();
+                        
+                        } 
+
+                            //ForecastViewConext viewtext = db.GetViewContext(ForecastViewConext.VIEWNAME) as ForecastViewConext;
                             //EGH01DB.RGEContext.ECOForecast forecast = viewcontext.ecoforecast;
                             //RGEContext.ECOForecast.Create(db, forecast, "отладка");
                      }

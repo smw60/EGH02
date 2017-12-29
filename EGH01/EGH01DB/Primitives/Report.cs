@@ -80,10 +80,20 @@ namespace EGH01DB.Primitives
           this.xmlcontetnt     = xmlcontetnt;
           this.xslhtmlstyle    = xslhtmlstyle;
           this.comment         = comment;
+        }
+
+        public Report(int id, string stage, DateTime date, XmlNode xmlcontetnt, string comment = "")
+        {
+            this.id = id;
+            this.parent = null;
+            this.stage = stage;
+            this.date = date;
+            this.xmlcontetnt = xmlcontetnt;
+            this.xslhtmlstyle = null;
+            this.comment = comment;
         }    
 
-   
-       
+          
         public string ToHTML()                                // преобразование XML-XSLT->HTML  
         { 
           //// примерно так - не проверил!!!
@@ -137,13 +147,13 @@ namespace EGH01DB.Primitives
                 {
                     SqlParameter parm = new SqlParameter("@Родитель", SqlDbType.Int);
                     parm.IsNullable = true;
-                    parm.Value = report.parent.id;
+                    parm.Value =  (report.parent == null?0: report.parent.id);
                     cmd.Parameters.Add(parm);
                 }
                 {
                     SqlParameter parm = new SqlParameter("@ТекстОтчета", SqlDbType.Xml);
                     parm.IsNullable = true;
-                    parm.Value = report.xmlcontetnt;
+                    parm.Value = report.xmlcontetnt.OuterXml;
                     cmd.Parameters.Add(parm);
                 }
                 {

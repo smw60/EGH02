@@ -44,8 +44,196 @@ namespace EGH01DB
              this.level4 = new ECOForecast4(this.level3); 
 
          }
+         public Report CreateReport()
+         {
 
+             return new Report()
+             {
+                 date = this.level0.date,
+                 date_message = this.level0.date_message,
+                 petrochemicaltype_name = this.level0.petrochemicaltype.name,
+                 V0  = this.level0.V0,
+                 temperature = this.level0.temperature,
+                 riskobject_name = this.level0.riskobject.name, 
+                 coordinates = this.level0.riskobject.coordinates,
+                 M0  = this.level0.M0,
+                 //--------------------------
+                 dM1 = this.level1.dM1,
+                 S1 =  this.level1.S1,
+                 H1 =  this.level1.H1,
+                 R1  = this.level1.R1,
+                 M1  = this.level1.M1,
+                 f1ecoobjectslist = this.level1.f1ecoobjectslist,
+                 //--------------------------
+                 dM2  = this.level2.dM2, 
+                 M2   = this.level2.M2,
+                 H2   = this.level2.H2,
+                 //--------------------------
+                 dM3 = this.level3.dM3, 
+                 groundtypename  = this.level3.groundtypename,
+                 H3 = this.level3.h3, 
+                 M3 = this.level3.M3, 
+                 C3 = this.level3.C3,
+                 v3 = this.level3.v3,
+                 //-----------------------------
+                 dM4 = this.level4.dM4,
+                 C4 = this.level4.C4,
+                 t4 = this.level4.t4,
+                 v4 = this.level4.v4,
+                 h4 = this.level4.h4,
+                 f4ecoobjectslist = this.level4.f4ecoobjectslist
+       
+             };
+         }
+         
      }
+
+     public class Report
+     {
+         public DateTime date;                   // дата инцидента
+         public DateTime date_message;           // дата сообщения о инциденте  
+         public string   petrochemicaltype_name; // наименование нефтепродукта  
+         public float    V0;                     // объем пролиого нефтепродукта  
+         public float    temperature;            // температура 
+         public string   riskobject_name;        // место пролива 
+         public Coordinates coordinates;         // географические координты пролива
+         public float    M0;                     // масса пролитого нефтепродукта  
+         //-------------------------------------
+         public float    S1;       // площадь пятна  
+         public float    H1;       // толщина пятна  
+         public float    R1;       // радиус  пятна 
+         public float    dM1;      // остаток НП достигший поверхности
+         public float    M1;       // масса испарившегося нп   
+         public FEcoObjectsList f1ecoobjectslist;  //перечень экологических объектов в пятне загрязнения;
+         //----------------------------------
+         public float   dM2;        // остаток НП достигший почвы 
+         public float   M2;         // адсорбированная почвой масса
+         public float   H2;         // глубина в почву  
+         //----------------------------------
+         public string  groundtypename; // название грунта 
+         public float   dM3;            // остаток НП достигший грунта
+         public float   M3;             // масса адсорбированного в грунте НП  
+         public float   H3;             // грубина проникновения НП в грунт 
+         public float   C3;             // максимальная концентрация нп в грунте 
+         public float   v3;             // горизонтальная скорость проникновения нп в грунте
+        //----------------------------------
+         public float   dM4;            // остаток НП достигший грунтовых вод 
+         public float   C4;             //  концентрация в гр. водах 
+         public float   t4;             //  время  достижения грунтовых вод
+         public float   l4;             //  максимальный радиус распространения загрязнения 
+         public float   v4;             //  горизонтальная скорость распространения загрязнения
+         public float   h4 =  1.0f;    //  толщина слоя грунтовых вод
+         public FEcoObjectsList f4ecoobjectslist; //перечень экологических объектов вdjlyjv  пятне загрязнения;
+
+         public Report() { }
+
+         public Report(XmlNode node)
+         {
+
+             this.date                   = Helper.GetDateTimeAttribute(node, "date", DateTime.Now);
+             this.date_message           = Helper.GetDateTimeAttribute(node, "date_message", DateTime.Now);
+             this.petrochemicaltype_name = Helper.GetStringAttribute(node, "petrochemicaltype_name", "");
+             this.V0                     = Helper.GetFloatAttribute(node, "V0", 0.0f);
+             this.temperature            = Helper.GetFloatAttribute(node, "temperature", 0.0f);
+             this.riskobject_name        = Helper.GetStringAttribute(node, "riskobject_name", "");
+             {
+                 float lat = Helper.GetFloatAttribute(node, "coordinates_lat", 0.0f);
+                 float lng = Helper.GetFloatAttribute(node, "coordinates_lng", 0.0f);
+                 this.coordinates = new Coordinates(lat, lng);
+             }
+             this.M0 = Helper.GetFloatAttribute(node, "M0", 0.0f);
+             //---------------1--------------------------------------
+             this.S1  = Helper.GetFloatAttribute(node, "S1", 0.0f);
+             this.H1  = Helper.GetFloatAttribute(node, "H1", 0.0f);
+             this.R1  = Helper.GetFloatAttribute(node, "R1", 0.0f);
+             this.dM1 = Helper.GetFloatAttribute(node, "dM1", 0.0f);
+             this.M1  = Helper.GetFloatAttribute(node, "M1", 0.0f);
+           
+             //---------------2--------------------------------------
+             this.dM2 = Helper.GetFloatAttribute(node, "dM2", 0.0f);
+             this.M2  = Helper.GetFloatAttribute(node, "M2", 0.0f);
+             this.H2  = Helper.GetFloatAttribute(node, "H2", 0.0f);
+             //---------------3--------------------------------------
+             this.groundtypename = Helper.GetStringAttribute(node,"groundtypename", "");
+             this.dM3            = Helper.GetFloatAttribute(node, "dM3", 0.0f);
+             this.M3             = Helper.GetFloatAttribute(node, "M3", 0.0f);
+             this.H3             = Helper.GetFloatAttribute(node, "H3", 0.0f);
+             this.C3             = Helper.GetFloatAttribute(node, "C3", 0.0f);
+             this.v3             = Helper.GetFloatAttribute(node, "v3", 0.0f);
+             //---------------4--------------------------------------
+             this.dM4            = Helper.GetFloatAttribute(node, "dM4", 0.0f);
+             this.C4             = Helper.GetFloatAttribute(node, "C4", 0.0f);
+             this.t4             = Helper.GetFloatAttribute(node, "t4", 0.0f);
+             this.l4             = Helper.GetFloatAttribute(node, "l4", 0.0f);
+             this.v4             = Helper.GetFloatAttribute(node, "v4", 0.0f);
+             this.h4             = Helper.GetFloatAttribute(node, "h4", 0.0f);
+
+             //--------------- 1 & 4--------------------------------------
+             {
+                 this.f1ecoobjectslist = new FEcoObjectsList();
+                 this.f4ecoobjectslist = new FEcoObjectsList();
+                 XmlNodeList x = node.SelectNodes(".//FECObjectsList");
+                 if (x != null)
+                 {
+                     foreach (XmlNode n in x)
+                     {
+                         string s = Helper.GetStringAttribute(n, "comment", "xx");
+                         if      (s.Equals("f1")) this.f1ecoobjectslist = new FEcoObjectsList(n);
+                         else if (s.Equals("f4")) this.f4ecoobjectslist = new FEcoObjectsList(n);
+                     }
+                 }
+             }
+
+         }
+         public XmlNode toXmlNode(string comment = "")
+         {
+             XmlDocument doc = new XmlDocument();
+             XmlElement rc = doc.CreateElement("ECOForecastX");
+             if (!String.IsNullOrEmpty(comment)) rc.SetAttribute("comment", comment);
+             int id = 0;
+             rc.SetAttribute("id", id.ToString());
+             rc.SetAttribute("date", this.date.ToString());
+             rc.SetAttribute("date_message", this.date_message.ToString());
+             rc.SetAttribute("temperature", this.temperature.ToString());
+             rc.SetAttribute("groundtypename", this.groundtypename);
+             rc.SetAttribute("riskobject_name", this.riskobject_name.ToString());
+             rc.SetAttribute("coordinates_lat", this.coordinates.latitude.ToString());
+             rc.SetAttribute("coordinates_lng", this.coordinates.lngitude.ToString());
+             rc.SetAttribute("V0", this.V0.ToString());
+             rc.SetAttribute("M0", this.M0.ToString());
+             //------------------- 1 ----------------------
+             rc.SetAttribute("S1",  this.S1.ToString());
+             rc.SetAttribute("H1",  this.H1.ToString());
+             rc.SetAttribute("R1",  this.R1.ToString());
+             rc.SetAttribute("dM1", this.dM1.ToString());
+             rc.SetAttribute("M1",  this.M1.ToString());
+             //------------------- 2 ----------------------
+              rc.SetAttribute("dM2",  this.dM2.ToString());
+              rc.SetAttribute("M2",   this.M2.ToString());
+              rc.SetAttribute("H2",   this.H2.ToString());
+             //------------------- 3 ---------------
+              rc.SetAttribute("groundtypename", this.groundtypename);
+              rc.SetAttribute("dM3", this.dM3.ToString());
+              rc.SetAttribute("M3",  this.M3.ToString());
+              rc.SetAttribute("H3",  this.H3.ToString());
+              rc.SetAttribute("C3",  this.C3.ToString());
+              rc.SetAttribute("v3",  this.v3.ToString());
+              //------------------- 4 ---------------
+              rc.SetAttribute("dM4", this.dM3.ToString());
+              rc.SetAttribute("C4", this.C4.ToString());
+              rc.SetAttribute("t4", this.C3.ToString());
+              rc.SetAttribute("l4", this.l4.ToString());
+              rc.SetAttribute("v4", this.v4.ToString());
+              rc.SetAttribute("h4", this.h4.ToString());
+
+              rc.AppendChild(doc.ImportNode(this.f1ecoobjectslist.toXmlNode("f1"), true));
+              rc.AppendChild(doc.ImportNode(this.f4ecoobjectslist.toXmlNode("f4"), true));
+              return (XmlNode)rc;
+         }
+
+     };
+
+
 
     public class ECOForecast0     // поверхность 
      {
@@ -245,13 +433,10 @@ namespace EGH01DB
                 this.H3 = this.h3 * this.dM3 / this.M3;
              }
              else this.H3 = this.h3; 
-               
-             
-                
-            
+                          
              if (this.H3 > 0) 
              {
-                 this.C3 = this.M3 / (this.f1.S1 * this.H3 * this.ro3);
+                 this.C3 = this.M3 / (this.f1.S1 * this.H3);   //    * this.ro3);
                  
              }
              else this.C3 = 0;
@@ -270,35 +455,44 @@ namespace EGH01DB
          public float l4        { get; private set; }   //  максимальный радиус распространения загрязнения 
          public float v4        { get; private set; }   //  горизонтальная скорость распространения загрязнения
          public float C4        { get; private set; }   //  концентрация в гр. водах 
-         public float h4       { get { return 1.0f; } }   //  толщина слоя грунтовых вод
+         public float h4        { get { return 1.0f; } }   //  толщина слоя грунтовых вод
          public float dM4       { get; private set; }    // остаток НП достигший грунтовых вод 
          public FEcoObjectsList f4ecoobjectslist { get; private set; }       // перечень экологических объектов в водном  пятне загрязнения
-
-
-
+        
          public ECOForecast4(ECOForecast3 f3)
-         { 
-          this.f0 =  f3.f0;
-          this.f1 =  f3.f1;  
-          this.f2 =  f3.f2;
-          this.f3 =  f3;
-          this.dM4 =  this.f3.dM3 - this.f3.M3 > 0? this.f3.dM3 - this.f3.M3: 0.0f;
-          this.t4  = (this.f2.h2+this.f3.h3)/this.f3.v3;                  // у насти ошибка !!!            
-          this.l4  = (float)Math.Round(this.dM4/(2*this.f1.R1 * this.h4 * this.f3.rov* this.f3.m3* this.f3.w3* this.f0.delta0/this.f3.deltav),0);
-          this.C4  = this.dM4/(2*this.f1.R1*this.l4);                     // у насти ошибка !!! 
+         {
+             this.f0 = f3.f0;
+             this.f1 = f3.f1;
+             this.f2 = f3.f2;
+             this.f3 = f3;
+             this.dM4 = this.f3.dM3 - this.f3.M3 > 0 ? this.f3.dM3 - this.f3.M3 : 0.0f;
+             this.t4 = (this.f2.h2 + this.f3.h3) / this.f3.v3;                  // у насти ошибка !!!            
+             this.l4 = (float)Math.Round(this.dM4 / (2 * this.f1.R1 * this.h4 * this.f3.rov * this.f3.m3 * this.f3.w3 * this.f0.delta0 / this.f3.deltav), 0);
+             this.C4 = this.dM4 / (this.f1.S1 * this.h4);      //(2 * this.f1.R1 * this.l4);                     // у насти ошибка !!! 
 
-          this.f4ecoobjectslist = new FEcoObjectsList("BASE", f0.riskobject, EcoObjectsList.CreateEcoObjectsList(this.f0.db, f0.riskobject, this.f1.R1, this.l4));
+            
+             {
+                 this.f4ecoobjectslist = new FEcoObjectsList("BASE", f0.riskobject, EcoObjectsList.CreateEcoObjectsList(this.f0.db, f0.riskobject, this.f1.R1, this.l4));
+                 EcoObjectsList ecoobjectslist = null;
+                 if (EcoObjectsList.FindAtDistance(f0.db, f0.riskobject.coordinates, (int)this.l4, out ecoobjectslist))
+                 {
+                     this.f4ecoobjectslist.AddRange("MAPE", f0.riskobject, ecoobjectslist);
+                 }
 
-          {
-              EcoObjectsList ecoobjectslist = null;
-              if (EcoObjectsList.FindAtDistance(f0.db, f0.riskobject.coordinates, (int)this.f1.R1, out ecoobjectslist))
-              {
-                  this.f4ecoobjectslist.AddRange("MAPE", f0.riskobject, ecoobjectslist);
+                 float sa = 0.0f;
+                 foreach (FEcoObjectsList.FEcoObject o in this.f4ecoobjectslist)
+                 {
+                     sa += o.angle;
+                 }
+                 sa = (sa  < Const.ZERO? Const.ZERO: sa );
 
-              }
-          }
-
-
+                 float dma = this.dM4 / sa; 
+                 foreach (FEcoObjectsList.FEcoObject o in this.f4ecoobjectslist)
+                 {
+                     o.c = dma * o.angle / (o.distance * 2 * this.f1.R1 * 1.0f * this.f3.ro3 );
+                     o.v = this.f3.v3 * o.angle;
+                 }
+             }
          }
          
      }
@@ -315,6 +509,7 @@ namespace EGH01DB
              public float  angle;
              public string name;
              public float  c;
+             public float  v;
              public string line
              {
                  get
@@ -329,6 +524,33 @@ namespace EGH01DB
                                          );
               }
              }
+
+             public static string starttable 
+             {
+                 get
+                 {
+                     return String.Format("<table style=\"width:95%; margin:1px>\"" +
+                                          "<tr>"+
+                                          "<th> Номер </th> <th> Расстояние (м) </th>  <th> Угол (град) </th>  <th> Концентрация (мг/дм.куб) </th><th> Скорость(м/сут)</th> <th> Наименование</th>" +
+                                          "</tr>"
+                                          );
+                 }
+             
+             }
+             public static string endtable
+             {
+                 get {return String.Format("</table>"); }
+             }
+             public string linetable
+             {
+                 get
+                 {
+                     return String.Format("<tr><td> {0}-{1} </td> <td> {2} </td>  <td> {3} </td> <td> {4} </td> <td> {5} </td>   <td> {6} </td>  </tr>",
+
+                                         this.prefix, this.id, Math.Round(this.distance, 1),  Math.Round(Math.Atan(this.angle), 3), Math.Round(this.c * Const.KG_to_MG / Const.M3_to_DM3, 0), Math.Round(this.v*Const.SEC_PER_DAY,6), this.name);
+                 }
+
+             }
              public string linex
              {
                  get
@@ -338,16 +560,64 @@ namespace EGH01DB
                  }
              }
 
+             public XmlNode toXmlNode(string comment = "")
+             {
+                 XmlDocument doc = new XmlDocument();
+                 XmlElement rc = doc.CreateElement("FECObject");
+                 if (!String.IsNullOrEmpty(comment)) rc.SetAttribute("comment", comment);
+                 rc.SetAttribute("prefix", this.prefix);
+                 rc.SetAttribute("id", id.ToString());
+                 rc.SetAttribute("distance",  this.distance.ToString());
+                 rc.SetAttribute("height",    this.height.ToString());
+                 rc.SetAttribute("angle",     this.angle.ToString());
+                 rc.SetAttribute("name",      this.name);
+                 rc.SetAttribute("c",         this.c.ToString());
+                 rc.SetAttribute("v",         this.c.ToString());
+                 return (XmlNode)rc;
+             }
 
+             public FEcoObject(XmlNode node)
+             {
+
+                 this.prefix = Helper.GetStringAttribute(node, "prefix");
+                 this.id = Helper.GetIntAttribute(node, "id", 0);
+                 this.distance = Helper.GetFloatAttribute(node, "distance");
+                 this.height = Helper.GetFloatAttribute(node, "height");
+                 this.angle = Helper.GetFloatAttribute(node, "angle");
+                 this.name = Helper.GetStringAttribute(node, "name");
+                 this.c = Helper.GetFloatAttribute(node, "c");
+                 this.v = Helper.GetFloatAttribute(node, "v");
+             }
+             public FEcoObject() { }
          }
 
          public FEcoObjectsList(string px, Point center,  EcoObjectsList ecojbjectslist)
          {
-
-           AddRange(px, center, ecojbjectslist);
-                    
+           AddRange(px, center, ecojbjectslist);         
          }
-         public bool  AddRange(string px, Point center, EcoObjectsList ecojbjectslist)
+         public FEcoObjectsList():base(new List<FEcoObjectsList.FEcoObject>()) 
+         { 
+         
+         }
+
+         public FEcoObjectsList(XmlNode node)
+         {
+             foreach (XmlElement x in node)
+             {
+                 if (x.Name.Equals("FECObject")) this.Add(new FEcoObject(x));
+             }  
+         }
+
+         public XmlNode toXmlNode(string comment = "")
+         {
+             XmlDocument doc = new XmlDocument();
+             XmlElement rc = doc.CreateElement("FECObjectsList");
+             if (!String.IsNullOrEmpty(comment)) rc.SetAttribute("comment", comment);
+             this.ForEach(m => rc.AppendChild(doc.ImportNode(m.toXmlNode(), true)));
+             return (XmlNode)rc;
+         }
+
+         public bool  AddRange(string px, Point center, EcoObjectsList ecojbjectslist, float r = 0.0f)
          {
                          
              bool rc = false;
@@ -355,9 +625,9 @@ namespace EGH01DB
              {
                  foreach (EcoObject eo in ecojbjectslist)
                  {
-                     if (center.height - eo.height > 0)
+                     if (center.height - eo.height > 0  && center.coordinates.Distance(eo.coordinates) > r)
                      {
-                         this.Add(
+                        this.Add(
                                      new FEcoObject()
                                      {
                                          prefix = px,
@@ -368,18 +638,13 @@ namespace EGH01DB
                                          name = eo.name,
                                          c =  eo.pollutionecoobject
                                      }
-                                  );
-                     
+                                  ); 
                    }
-                     
                  }
              }
              return rc;
           }
-
-
      }
-
 
      public class FAnchorPointList : List<FAnchorPointList.FAnchorPoint>
      {
@@ -405,7 +670,6 @@ namespace EGH01DB
          }
          public class C : IEqualityComparer<AnchorPoint>
          {
-
              public bool Equals(AnchorPoint x, AnchorPoint y)
              {
                  return x.id == y.id;

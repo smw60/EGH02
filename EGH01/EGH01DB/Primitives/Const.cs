@@ -13,6 +13,8 @@ namespace EGH01DB.Primitives
         public const float LNGM = 111134.9f;                               // 1 град долготы   
         public const float KG_to_MG = 1000000.0f;                          // кг в мг 
         public const float MG_to_KG = 0.000001f;                           // мг в кг
+        public const float M3_to_DM3 = 1000.0f;
+
         public const float ZERO = 0.0000001f;                               // ноль 
         public const float TIME_INFINITY = float.MaxValue;                  //бесконечный интервал времени 
         public static readonly DateTime DATE_INFINITY = DateTime.MaxValue;  //бесконечная дата  
