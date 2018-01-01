@@ -18,11 +18,14 @@
     if (context == null) { Model.SaveViewContext(CEQViewContext.VIEWNAME, context = new CEQViewContext()); }
     
     List<SelectListItem> reportlist = new List<SelectListItem>();
-    {
-        List<EGH01DB.RGEContext.ECOForecast> flist = new List<EGH01DB.RGEContext.ECOForecast>();
-        if ( Helper.GetListECOForecast(Model,  ref flist))
+      {
+
+       // List<EGH01DB.RGEContext.ECOForecast> flist = new List<EGH01DB.RGEContext.ECOForecast>();
+          List<EGH01DB.RGEContext.Report> flist = new List<RGEContext.Report>();   
+      //  if ( Helper.GetListECOForecast(Model,  ref flist))
+        if (Helper.GetListRGERepotr(Model, ref flist))
         {
-            foreach (RGEContext.ECOForecast f in flist)
+            foreach (RGEContext.Report f in flist)
             {
 
                 reportlist.Add(

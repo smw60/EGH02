@@ -11,6 +11,7 @@ using EGH01DB.Types;
 using EGH01DB.Primitives;
 using EGH01DB.Points;
 using System.Xml;
+using System.Data;
 namespace EGH01DB
 {
    
@@ -55,6 +56,7 @@ namespace EGH01DB
                  V0  = this.level0.V0,
                  temperature = this.level0.temperature,
                  riskobject_name = this.level0.riskobject.name, 
+                 riskobject_id   = this.level0.riskobject.id,
                  coordinates = this.level0.riskobject.coordinates,
                  M0  = this.level0.M0,
                  //--------------------------
@@ -90,11 +92,13 @@ namespace EGH01DB
 
      public class Report
      {
+         public int id;
          public DateTime date;                   // дата инцидента
          public DateTime date_message;           // дата сообщения о инциденте  
          public string   petrochemicaltype_name; // наименование нефтепродукта  
          public float    V0;                     // объем пролиого нефтепродукта  
          public float    temperature;            // температура 
+         public int      riskobject_id;          // идентификатор объекта 
          public string   riskobject_name;        // место пролива 
          public Coordinates coordinates;         // географические координты пролива
          public float    M0;                     // масса пролитого нефтепродукта  
@@ -124,9 +128,15 @@ namespace EGH01DB
          public float   v4;             //  горизонтальная скорость распространения загрязнения
          public float   h4 =  1.0f;    //  толщина слоя грунтовых вод
          public FEcoObjectsList f4ecoobjectslist; //перечень экологических объектов вdjlyjv  пятне загрязнения;
-
+         public string line
+         {
+             get
+             {
+                 return string.Format("{0}-П-{1:yyy-MM-dd}", this.id, this.date)
+                       + string.Format(": {0}, {1}, {2}", this.V0, this.petrochemicaltype_name, this.riskobject_name);
+             }
+         }
          public Report() { }
-
          public Report(XmlNode node)
          {
 
@@ -135,6 +145,7 @@ namespace EGH01DB
              this.petrochemicaltype_name = Helper.GetStringAttribute(node, "petrochemicaltype_name", "");
              this.V0                     = Helper.GetFloatAttribute(node, "V0", 0.0f);
              this.temperature            = Helper.GetFloatAttribute(node, "temperature", 0.0f);
+             this.riskobject_id          = Helper.GetIntAttribute(node, "riskobject_id", -1);
              this.riskobject_name        = Helper.GetStringAttribute(node, "riskobject_name", "");
              {
                  float lat = Helper.GetFloatAttribute(node, "coordinates_lat", 0.0f);
@@ -185,17 +196,77 @@ namespace EGH01DB
              }
 
          }
+         public Report(int id, XmlNode node)
+         {
+             this.id = id;
+             this.date = Helper.GetDateTimeAttribute(node, "date", DateTime.Now);
+             this.date_message = Helper.GetDateTimeAttribute(node, "date_message", DateTime.Now);
+             this.petrochemicaltype_name = Helper.GetStringAttribute(node, "petrochemicaltype_name", "");
+             this.V0 = Helper.GetFloatAttribute(node, "V0", 0.0f);
+             this.temperature = Helper.GetFloatAttribute(node, "temperature", 0.0f);
+             this.riskobject_id   = Helper.GetIntAttribute(node, "riskobject_id", -1);
+             this.riskobject_name = Helper.GetStringAttribute(node, "riskobject_name", "");
+             {
+                 float lat = Helper.GetFloatAttribute(node, "coordinates_lat", 0.0f);
+                 float lng = Helper.GetFloatAttribute(node, "coordinates_lng", 0.0f);
+                 this.coordinates = new Coordinates(lat, lng);
+             }
+             this.M0 = Helper.GetFloatAttribute(node, "M0", 0.0f);
+             //---------------1--------------------------------------
+             this.S1 = Helper.GetFloatAttribute(node, "S1", 0.0f);
+             this.H1 = Helper.GetFloatAttribute(node, "H1", 0.0f);
+             this.R1 = Helper.GetFloatAttribute(node, "R1", 0.0f);
+             this.dM1 = Helper.GetFloatAttribute(node, "dM1", 0.0f);
+             this.M1 = Helper.GetFloatAttribute(node, "M1", 0.0f);
+
+             //---------------2--------------------------------------
+             this.dM2 = Helper.GetFloatAttribute(node, "dM2", 0.0f);
+             this.M2 = Helper.GetFloatAttribute(node, "M2", 0.0f);
+             this.H2 = Helper.GetFloatAttribute(node, "H2", 0.0f);
+             //---------------3--------------------------------------
+             this.groundtypename = Helper.GetStringAttribute(node, "groundtypename", "");
+             this.dM3 = Helper.GetFloatAttribute(node, "dM3", 0.0f);
+             this.M3 = Helper.GetFloatAttribute(node, "M3", 0.0f);
+             this.H3 = Helper.GetFloatAttribute(node, "H3", 0.0f);
+             this.C3 = Helper.GetFloatAttribute(node, "C3", 0.0f);
+             this.v3 = Helper.GetFloatAttribute(node, "v3", 0.0f);
+             //---------------4--------------------------------------
+             this.dM4 = Helper.GetFloatAttribute(node, "dM4", 0.0f);
+             this.C4 = Helper.GetFloatAttribute(node, "C4", 0.0f);
+             this.t4 = Helper.GetFloatAttribute(node, "t4", 0.0f);
+             this.l4 = Helper.GetFloatAttribute(node, "l4", 0.0f);
+             this.v4 = Helper.GetFloatAttribute(node, "v4", 0.0f);
+             this.h4 = Helper.GetFloatAttribute(node, "h4", 0.0f);
+
+             //--------------- 1 & 4--------------------------------------
+             {
+                 this.f1ecoobjectslist = new FEcoObjectsList();
+                 this.f4ecoobjectslist = new FEcoObjectsList();
+                 XmlNodeList x = node.SelectNodes(".//FECObjectsList");
+                 if (x != null)
+                 {
+                     foreach (XmlNode n in x)
+                     {
+                         string s = Helper.GetStringAttribute(n, "comment", "xx");
+                         if (s.Equals("f1")) this.f1ecoobjectslist = new FEcoObjectsList(n);
+                         else if (s.Equals("f4")) this.f4ecoobjectslist = new FEcoObjectsList(n);
+                     }
+                 }
+             }
+
+         }
          public XmlNode toXmlNode(string comment = "")
          {
              XmlDocument doc = new XmlDocument();
              XmlElement rc = doc.CreateElement("ECOForecastX");
              if (!String.IsNullOrEmpty(comment)) rc.SetAttribute("comment", comment);
-             int id = 0;
+             UInt64 id = (UInt64)DateTime.Now.ToBinary();
              rc.SetAttribute("id", id.ToString());
              rc.SetAttribute("date", this.date.ToString());
              rc.SetAttribute("date_message", this.date_message.ToString());
              rc.SetAttribute("temperature", this.temperature.ToString());
              rc.SetAttribute("groundtypename", this.groundtypename);
+             rc.SetAttribute("riskobject_id", this.riskobject_id.ToString());
              rc.SetAttribute("riskobject_name", this.riskobject_name.ToString());
              rc.SetAttribute("coordinates_lat", this.coordinates.latitude.ToString());
              rc.SetAttribute("coordinates_lng", this.coordinates.lngitude.ToString());
@@ -230,7 +301,50 @@ namespace EGH01DB
               rc.AppendChild(doc.ImportNode(this.f4ecoobjectslist.toXmlNode("f4"), true));
               return (XmlNode)rc;
          }
+         public static bool GetById(IDBContext db, int id, out Report report)
+         {
+            bool rc = false;
+            report = new Report();
+            using (SqlCommand cmd = new SqlCommand("EGH.GetReportbyId", db.connection))
+             {
+                 cmd.CommandType = CommandType.StoredProcedure;
+                 {
+                     SqlParameter parm = new SqlParameter("@IdОтчета", SqlDbType.Int);
+                     parm.Value = id;
+                     cmd.Parameters.Add(parm);
+                 }
+                 {
+                     SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                     parm.Direction = ParameterDirection.ReturnValue;
+                     cmd.Parameters.Add(parm);
+                 }
+                 try
+                 {
+                    // cmd.ExecuteNonQuery();
+                     SqlDataReader reader = cmd.ExecuteReader();
+                     if (rc = reader.Read())
+                     {
+                         DateTime date = (DateTime)reader["ДатаОтчета"];
+                         string stage = (string)reader["Стадия"];
+                         int predator = (int)reader["Родитель"];
+                         string xmlContent = (string)reader["ТекстОтчета"];
+                         XmlDocument doc = new XmlDocument();
+                         doc.LoadXml(xmlContent);
+                         XmlNode newNode = doc.DocumentElement;
+                         report = new Report(id, newNode);
+                         
+                     }
+                     reader.Close();
+                 }
+                 catch (Exception e)
+                 {
+                     rc = false;
+                 };
 
+             }
+             return rc;
+         } 
+     
      };
 
 
@@ -338,23 +452,7 @@ namespace EGH01DB
  
 
 
-
-
-
-
-                //this.bb = new BlurBorder(this.R1, new BlurBorder.XY[]   // отладка 
-                //                                       {
-                //                                           new BlurBorder.XY(7,25),
-                //                                           new BlurBorder.XY(8,7), 
-                //                                           new BlurBorder.XY(10,5),
-                //                                           new BlurBorder.XY(20,8), 
-                //                                           new BlurBorder.XY(37,23),
-                //                                           new BlurBorder.XY(22,36), 
-                //                                           new BlurBorder.XY(7,25)
-                //                                       }); 
-                // public static EcoObjectsList CreateEcoObjectsList(EGH01DB.IDBContext dbcontext, Point center, float distance1 = 0.0f, float distance2 = float.MaxValue)
-
-                this.bb = new BlurBorder(this.f0.db, this.f0.riskobject.coordinates, this.R1);
+             //this.bb = new BlurBorder(this.f0.db, this.f0.riskobject.coordinates, this.R1);
 
 
             }
@@ -641,7 +739,7 @@ namespace EGH01DB
                                          distance = center.coordinates.Distance(eo.coordinates),
                                          angle = center.coordinates.Distance(eo.coordinates) != 0 ? (center.height - eo.height) / center.coordinates.Distance(eo.coordinates) : 0,
                                          name = eo.name,
-                                         c =  eo.pollutionecoobject
+                                         c =   eo.pollutionecoobject
                                      }
                                   ); 
                    }
@@ -729,8 +827,7 @@ namespace EGH01DB
      {
          public class XY
          {
-             public float x;
-             public float y;
+             public float x, y;
              public XY(float x, float y) { this.x = x; this.y = y; }
          }
             public int R;
@@ -740,9 +837,7 @@ namespace EGH01DB
             public int CanvaY = 450;
             public XY center;
             public XY center2;
-            // public float KS = 1.0f;
-            // public XY[] xy;
-            public Coordinates[] border;
+           public Coordinates[] border;
             public float[] height;
             public float[] resigular;
             public float[] length;
@@ -752,37 +847,9 @@ namespace EGH01DB
             public float[] newlength;
             public XY[] newborder3;
 
-            //   public BlurBorder(float r, XY[] xy)
-            //{
-            //    this.xy = xy;
-            //    this.KS = getKS();
-            //    this.nr = (int)Math.Ceiling(r);
-            //    this.R =  (int)Math.Ceiling(r*KS);
-
-            //    this.center = new XY(this.CanvaX / 2, this.CanvaY / 2);
-            //    for (int k = 0; k < this.xy.Length; k++)
-            //    {
-            //        this.xy[k].x = (int)(this.KS * (float)this.xy[k].x);
-            //        this.xy[k].y = (int)(this.KS * (float)this.xy[k].y); 
-            //    }
-
-            //}
-            //private float getKS()
-            //{
-            //    float rc = 1.0f;
-            //    int   mxy = 1;
-            //    for (int k = 0; k < this.xy.Length; k++)
-            //    {
-            //        mxy = xy[k].x > mxy ? xy[k].x : mxy;
-            //        mxy = xy[k].y > mxy ? xy[k].y : mxy;
-            //    }
-            //    rc = ((float)Math.Min(this.CanvaX, this.CanvaY)) / ((float)mxy); 
-
-            //    return rc;
-            //}
+          
             public BlurBorder(IDBContext db, Coordinates coordinates, float r)
             {
-
 
                 this.border = new Coordinates[8];
                 Coordinates c = new Coordinates(coordinates);
@@ -903,11 +970,6 @@ namespace EGH01DB
                     }
 
                 }
-
-                //float l1 = (float)Math.Abs(coordinates.latitude - max_x);
-                //float l2 = (float)Math.Abs(coordinates.lngitude - max_y);
-                //float l3 = (float)Math.Abs(coordinates.latitude - min_x);
-                //float l4 = (float)Math.Abs(coordinates.lngitude - min_y);
 
                 float l1 = (float)Math.Sqrt(Math.Pow(coordinates.latitude - max_x, 2) + Math.Pow(coordinates.lngitude - ymax_x, 2));
                 float l2 = (float)Math.Sqrt(Math.Pow(coordinates.latitude - xmin_y, 2) + Math.Pow(coordinates.lngitude - min_y, 2));

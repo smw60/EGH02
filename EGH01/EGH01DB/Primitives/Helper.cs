@@ -964,6 +964,53 @@ namespace EGH01DB.Primitives
             }
             return rc;
         }
+        static public bool GetListRGERepotr(EGH01DB.IDBContext dbcontext, ref List<RGEContext.Report> list_eco_forecast)
+        {
+            bool rc = false;
+            list_eco_forecast = new List<RGEContext.Report>();   //   new RGEContext.ECOForecastlist();
+            using (SqlCommand cmd = new SqlCommand("EGH.GetEcoForecastList", dbcontext.connection))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                {
+                    SqlParameter parm = new SqlParameter("@exitrc", SqlDbType.Int);
+                    parm.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(parm);
+                }
+                try
+                {
+                    //cmd.ExecuteNonQuery();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+
+                        string stage = (string)reader["Стадия"];
+                        int report_id = (int)reader["IdОтчета"];
+                        DateTime date = (DateTime)reader["ДатаОтчета"];
+                        int predator = (int)reader["Родитель"];
+
+                        string xmlContent = (string)reader["ТекстОтчета"];
+                        if (!xmlContent.Trim().Equals(""))
+                        {
+                            XmlDocument doc = new XmlDocument();
+                            doc.LoadXml(xmlContent);
+                            XmlNode newNode = doc.DocumentElement;
+                            list_eco_forecast.Add(new RGEContext.Report(report_id, newNode));
+                            //comment = (string)reader["Комментарий"];
+                        }
+                    }
+                    rc = true;                       //((int)cmd.Parameters["@exitrc"].Value > 0);
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    rc = false;
+                };
+
+            }
+            return rc;
+        }
+
+
         static public bool GetListECOEvalution(EGH01DB.IDBContext dbcontext, ref List<CEQContext.ECOEvalution> list_ecoevalution)
         {
             bool rc = false;

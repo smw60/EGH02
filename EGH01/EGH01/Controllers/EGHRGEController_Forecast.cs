@@ -56,25 +56,17 @@ namespace EGH01.Controllers
                         if (fvc.ecoforecastx != null)
                         {
 
-                            //RGEContext.Report report = fvc.ecoforecastx.CreateReport();
                             XmlNode xn =  fvc.ecoforecastx.CreateReport().toXmlNode(); 
                             EGH01DB.Primitives.Report report = new EGH01DB.Primitives.Report(1000, "П", DateTime.Now, xn);
                             EGH01DB.Primitives.Report.Create(db, report);
 
-                            RGEContext.Report rrr = new RGEContext.Report(xn); 
-                           
-
-
-                               // public Report(int id, string stage, DateTime date, XmlNode xmlcontetnt, string comment = "")
-
-                           
-                             // report.Save();
+                           //  RGEContext.Report rrr = new RGEContext.Report(xn); 
+                           // public Report(int id, string stage, DateTime date, XmlNode xmlcontetnt, string comment = "")
+                           // report.Save();
                         
                         } 
 
-                            //ForecastViewConext viewtext = db.GetViewContext(ForecastViewConext.VIEWNAME) as ForecastViewConext;
-                            //EGH01DB.RGEContext.ECOForecast forecast = viewcontext.ecoforecast;
-                            //RGEContext.ECOForecast.Create(db, forecast, "отладка");
+                           
                      }
                 }
           }

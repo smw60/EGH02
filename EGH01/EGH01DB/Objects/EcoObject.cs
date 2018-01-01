@@ -320,7 +320,7 @@ namespace EGH01DB.Objects
                 }
                 try
                 {
-                    cmd.ExecuteNonQuery();
+                    //cmd.ExecuteNonQuery();
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
@@ -378,12 +378,11 @@ namespace EGH01DB.Objects
                                                                         pdk, water_pdk_coef,
                                                                         ground_doc_name, water_doc_name);
                         string ecoobject_name = (string)reader["НаименованиеПриродоохранногоОбъекта"];
-
-
                         ecoobject = new EcoObject(id, point, ecoobjecttype, cadastre_type, ecoobject_name, iswaterobject);
                     }
+                    rc = true;
                     reader.Close();
-                    rc = (int)cmd.Parameters["@exitrc"].Value > 0;
+                   // rc = (int)cmd.Parameters["@exitrc"].Value > 0;
                 }
                 catch (Exception e)
                 {

@@ -61,10 +61,9 @@
     <fieldset form="ChoiseRiskObject">
         <legend>Форма  назменого пятна загрязнения</legend>
 
-        <canvas id="topblure" width="@level1.bb.CanvaX" height="@level1.bb.CanvaY" style="border-style:solid;border-width:1px; background-color:white;">
-
-        </canvas>
-        <script type="text/javascript">
+        @*<canvas id="topblure" width="@level1.bb.CanvaX" height="@level1.bb.CanvaY" style="border-style:solid;border-width:1px; background-color:white;">
+        </canvas>*@
+        @*<script type="text/javascript">
             var JSONCanv = JSON.parse("@JSONCanv".split('&quot;').join('"'));  
             var DarkOliveGray = '#556B2F';
             var DarkStateGray = '#2F4F4F';
@@ -91,10 +90,7 @@
             context.closePath();
             context.stroke();
 
-            
-            //console.log(JSONCanv.LimitR);
-            //console.log(JSONCanv.R);
-            // пятно 
+          
             if (JSONCanv.nr >= JSONCanv.LimitR) {
                 context.beginPath();
                 context.fillStyle = DarkStateGray;            //'#FF000';
@@ -122,15 +118,7 @@
                 context.stroke()
             }
 
-
-
-
-
-            // окружность 
-            //context.beginPath();
-            //context.strokeStyle = Red;
-            //context.arc(JSONCanv.center.x, JSONCanv.center.y, JSONCanv.R, 0, 2 * Math.PI, true);
-
+            
             // оси  
             context.moveTo(JSONCanv.center2.x, 0);
             context.lineTo(JSONCanv.center2.x, JSONCanv.center2.x * 2);
@@ -150,18 +138,7 @@
             context.closePath();
             context.fill();
 
-            //var maxb = 0
-            //for (var i = 1; i < JSONCanv.xy.length; i++) {
-            //    if (JSONCanv.xy[i].x > maxb) maxb = JSONCanv.xy[i].x;
-            //    if (JSONCanv.xy[i].y > maxb) maxb = JSONCanv.xy[i].y;
-            // }
-            // maxb = Math.max(maxb, JSONCanv.r);
-            // var KS = Math.min(canvasW / 2, canvasH / 2) / maxb;
-            // var R = KS * JSONCanv.r   // радиус окружности 
-            // сетка 
-
-
-        </script>
+        </script>*@
 
     </fieldset>
 

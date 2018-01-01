@@ -18,8 +18,8 @@ namespace EGH01DB.Types
         public float water_pdk_coef { get; private set; }
         public string ground_doc_name { get; private set; }   // наименование документа по земле 
         public string water_doc_name { get; private set; }   // наименование документа по воде 
-        static public CadastreType defaulttype { get { return new CadastreType(0, "Не определен", 0.0f, 0.0f,"",""); } }  // выдавать при ошибке
-        
+        static public CadastreType defaulttype { get { return new CadastreType(0, "Не определен", 5E-05f, 0.0001f, "мин.значение", "мин.значение"); } }  // выдавать при ошибке
+        // потом  defaulttype из БД 
         public CadastreType()
         {
             this.type_code = -1;
