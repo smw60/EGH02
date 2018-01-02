@@ -526,6 +526,7 @@
     <Content Include="Views\EGHMAP\EGHMAPECO.cshtml" />
     <Content Include="Views\EGHMAP\EGHMAPWATER.cshtml" />
     <Content Include="Views\EGHMAP\EGHMAPOTHER.cshtml" />
+    <Content Include="Views\EGHCEQ\CEQReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

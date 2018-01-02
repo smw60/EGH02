@@ -28,21 +28,12 @@ namespace EGH01.Controllers
                if (context != null &&  context.RegimChoice  == CEQViewContext.REGIM_CHOICE.CHOICE)
                {
 
-                   //EGH01DB.RGEContext.ECOForecast forecast =  new EGH01DB.RGEContext.ECOForecast();
-                   //string comment = string.Empty;
-                   //if (EGH01DB.RGEContext.ECOForecast.GetById(ceq, (int) context.idforecat, out  forecast, out comment))
-                   //{
-                   //  context.ecoevalution = new CEQContext.ECOEvalution(forecast); 
-                   //  rc = View("Index",ceq);
- 
-                   //} 
-
                    EGH01DB.RGEContext.Report rgereport = new RGEContext.Report();
                    if (EGH01DB.RGEContext.Report.GetById(ceq, (int)context.idforecat, out rgereport))
                    {
 
                        EGH01DB.CEQContext.Report ceqreport =  new EGH01DB.CEQContext.Report(ceq, rgereport);
-                       int k = 1;
+                       rc = View("CEQReport",ceqreport);
                    }
                }
                else   rc = View(ceq);
@@ -117,7 +108,14 @@ namespace EGH01.Controllers
 
 }
 
+//EGH01DB.RGEContext.ECOForecast forecast =  new EGH01DB.RGEContext.ECOForecast();
+//string comment = string.Empty;
+//if (EGH01DB.RGEContext.ECOForecast.GetById(ceq, (int) context.idforecat, out  forecast, out comment))
+//{
+//  context.ecoevalution = new CEQContext.ECOEvalution(forecast); 
+//  rc = View("Index",ceq);
 
+//} 
 
 
 //switch (CEQViewContext.HandlerChoiceForecast(ceq, this.HttpContext.Request.Params))

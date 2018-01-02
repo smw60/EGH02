@@ -249,8 +249,9 @@
                 }
                 else if (ViewBag.EGHLayout.StartsWith("CEQ"))
                 {
-                    <li>@Html.ActionLink("Результаты прогнозирования", "ChoiceForecastResult", "EGHCEQ")</li>
-                    <li>@Html.ActionLink("Оценка прогнозируемого состояния", "EvalutionForecast", "EGHCEQ")</li>
+                    <li>@Html.ActionLink("Оценка прогнозируемого состояния", "ChoiceForecastResult", "EGHCEQ")</li>
+                    @*<li>@Html.ActionLink("Результаты прогнозирования", "ChoiceForecastResult", "EGHCEQ")</li>*@
+                    @*<li>@Html.ActionLink("Оценка прогнозируемого состояния", "EvalutionForecast", "EGHCEQ")</li>*@
                     <li>@Html.ActionLink("Предельно-допустимые концентрации", "CadastreType", "EGHCEQ")</li>
                     <li>@Html.ActionLink("Отчеты", "Report", "EGHCEQ")</li>
                 }

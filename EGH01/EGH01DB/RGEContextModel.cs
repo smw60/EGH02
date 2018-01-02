@@ -82,6 +82,7 @@ namespace EGH01DB
                  C4 = this.level4.C4,
                  t4 = this.level4.t4,
                  v4 = this.level4.v4,
+                 l4 = this.level4.l4,
                  h4 = this.level4.h4,
                  f4ecoobjectslist = this.level4.f4ecoobjectslist
        
@@ -264,6 +265,7 @@ namespace EGH01DB
              rc.SetAttribute("id", id.ToString());
              rc.SetAttribute("date", this.date.ToString());
              rc.SetAttribute("date_message", this.date_message.ToString());
+             rc.SetAttribute("petrochemicaltype_name", this.petrochemicaltype_name);
              rc.SetAttribute("temperature", this.temperature.ToString());
              rc.SetAttribute("groundtypename", this.groundtypename);
              rc.SetAttribute("riskobject_id", this.riskobject_id.ToString());
@@ -539,7 +541,7 @@ namespace EGH01DB
                           
              if (this.H3 > 0) 
              {
-                 this.C3 = this.M3 / (this.f1.S1 * this.H3);   //    * this.ro3);
+                 this.C3 = this.M3 / (this.f1.S1 * this.H3 * this.ro3);
                  
              }
              else this.C3 = 0;
@@ -592,7 +594,7 @@ namespace EGH01DB
                  float dma = this.dM4 / sa; 
                  foreach (FEcoObjectsList.FEcoObject o in this.f4ecoobjectslist)
                  {
-                     o.c = dma * o.angle / (o.distance * 2 * this.f1.R1 * 1.0f * this.f3.ro3 );
+                     o.c = dma * o.angle / (o.distance * 2 * this.f1.R1 * this.h4 * this.f3.ro3 );
                      o.v = this.f3.v3 * o.angle;
                  }
              }
@@ -675,7 +677,7 @@ namespace EGH01DB
                  rc.SetAttribute("angle",     this.angle.ToString());
                  rc.SetAttribute("name",      this.name);
                  rc.SetAttribute("c",         this.c.ToString());
-                 rc.SetAttribute("v",         this.c.ToString());
+                 rc.SetAttribute("v",         this.v.ToString());
                  return (XmlNode)rc;
              }
 

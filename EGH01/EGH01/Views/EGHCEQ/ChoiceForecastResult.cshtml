@@ -12,9 +12,12 @@
     if (context == null) { Model.SaveViewContext("ChoiceForecastResult", context = new CEQViewContext()); };
     
 }
-@Html.Partial("_ConfirmChoiceForecastResult", @Model)
+@Html.Partial("_ChoiceForecastResult", @Model)
 
-@switch (context.RegimChoice)
+
+@*@Html.Partial("_ConfirmChoiceForecastResult", @Model)*@
+
+@*@switch (context.RegimChoice)
 {
     case CEQViewContext.REGIM_CHOICE.INIT:     @Html.Partial("_ChoiceForecastResult", @Model)  break;
                                  
@@ -23,7 +26,7 @@
     case CEQViewContext.REGIM_CHOICE.ERROR:    break;
     case CEQViewContext.REGIM_CHOICE.REPORT:   break;                        
     default: break;                                                                    
-} 
+}*@ 
     
 
 

@@ -14,7 +14,7 @@ using EGH01DB.Objects;
 using EGH01DB.Types;
 using EGH01DB.Blurs;
 using EGH01DB.Primitives;
-
+using EGH01DB;
 
 namespace EGH01DB
 {
@@ -22,26 +22,52 @@ namespace EGH01DB
     {
         public class Report
         {
-            RGEContext.Report report;
+            public RGEContext.Report report;
             public float excessgroundconcentration = 0.0f;     // превышение концентрации в грунте (наземное пятно)
-            public float exesswaterconcentration = 0.0f;     // превышение концентрации в воде   (наземное пятно)
-            public float[] wb_exesswaterconcentration;           // превышение концентрации в воде   (водное   пятно)
+            public float exesswaterconcentration = 0.0f;       // превышение концентрации в воде   (наземное пятно)
+            public float water_pdk_coef = 0.0f;
+            public float pdk_coef = 0.0f;
+            public CadastreType cadastretype = CadastreType.defaulttype;
+            public RiskObject   riskobject   = RiskObject.defaulttype;
+           
             public Report(CEQContext db, RGEContext.Report report)
             {
                 this.report = report;
+                this.pdk_coef       = cadastretype.pdk_coef;
+                this.water_pdk_coef = cadastretype.water_pdk_coef;
                 if (report.riskobject_id > 0)
                 {
-                    RiskObject robj = new RiskObject();
-                    if (RiskObject.GetById(db, report.riskobject_id, ref robj))
+                    if (RiskObject.GetById(db, report.riskobject_id, ref riskobject))
                     {
-                        if (robj.cadastretype.pdk_coef > 0 && this.report.C3 > 0)
-                        {
-                            this.excessgroundconcentration = this.report.C3 / robj.cadastretype.pdk_coef;
-                            this.exesswaterconcentration = this.report.C4 / robj.cadastretype.water_pdk_coef;
-                        }
+                        if (riskobject.cadastretype.pdk_coef > 0)       this.pdk_coef = riskobject.cadastretype.pdk_coef;
+                        if (riskobject.cadastretype.water_pdk_coef > 0) this.water_pdk_coef = riskobject.cadastretype.water_pdk_coef;
                     }
                 }
+                this.excessgroundconcentration = this.report.C3 / (this.pdk_coef);
+                this.exesswaterconcentration  =  this.report.C4 / this.water_pdk_coef;
             }
+            
+            public static string starttable
+            {
+                get
+                {
+                    return String.Format("<table style=\"width:95%; margin:1px>\"" +
+                      "<tr>" +
+                      "<th>Номер</th><th>Расстояние (м)</th><th>Концентрация (мг/дм.куб)</th><th>Кратность превышения</th> <th> Скорость(м/сут)</th><th> Наименование</th>" +
+                      "</tr>"
+                       );
+                }
+            }
+            public static string endtable
+            {
+                get { return String.Format("</table>"); }
+            }
+            public string linetable(RGEContext.FEcoObjectsList.FEcoObject  eobj)
+            {
+                return String.Format("<tr><td> {0}-{1} </td> <td> {2} </td>  <td> {3} </td> <td> {4} </td> <td> {5} </td>   <td> {6} </td>  </tr>",
+                     eobj.prefix, eobj.id, Math.Round(eobj.distance, 1),  Math.Round(eobj.c * Const.KG_to_MG / Const.M3_to_DM3, 0), Math.Round(eobj.c/this.water_pdk_coef, 2),  Math.Round(eobj.v * Const.SEC_PER_DAY, 6), eobj.name);
+            } 
+
         }
   
 
