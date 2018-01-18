@@ -32,11 +32,26 @@ namespace EGH01.Controllers
                    if (EGH01DB.RGEContext.Report.GetById(ceq, (int)context.idforecat, out rgereport))
                    {
 
-                       EGH01DB.CEQContext.Report ceqreport =  new EGH01DB.CEQContext.Report(ceq, rgereport);
-                       rc = View("CEQReport",ceqreport);
+                       context.report =  new EGH01DB.CEQContext.Report(ceq, rgereport);
+                       rc = View("CEQReport", context.report);
                    }
                }
-               else   rc = View(ceq);
+               else if (context != null && context.RegimChoice == CEQViewContext.REGIM_CHOICE.SAVE)
+               {
+                   rc = View("Index");
+                   XmlNode xn = context.report.toXmlNode();
+                   int k = 1;
+
+                   //XmlNode xn = fvc.ecoforecastx.CreateReport().toXmlNode();
+                   //EGH01DB.Primitives.Report report = new EGH01DB.Primitives.Report(1000, "П", DateTime.Now, xn);
+                   //EGH01DB.Primitives.Report.Create(db, report);
+
+               }
+               else if (context != null && context.RegimChoice == CEQViewContext.REGIM_CHOICE.CANCEL)
+               {
+                   rc = View("Index");
+               }
+               else rc = View(ceq);
             }
             catch (EGHDBException e)
             {
@@ -50,39 +65,39 @@ namespace EGH01.Controllers
         }
 
         
-        public ActionResult EvalutionForecast()
-        {
-            ViewBag.EGHLayout = "CEQ";
-            CEQContext db = null; 
-            ActionResult rc = View("Index");
-            try
-            {
-                db = new CEQContext(this);
-                rc = View("Index",db);
-                CEQViewContext context = CEQViewContext.HandlerEvalutionForecast(db, this.HttpContext.Request.Params);
-                switch (context.RegimEvalution)
-                {
-                    case CEQViewContext.REGIM_EVALUTION.INIT:   rc = View(db); break;
-                    case CEQViewContext.REGIM_EVALUTION.CHOICE: rc = View(db); break;
-                    case CEQViewContext.REGIM_EVALUTION.REPORT: rc = View(db); break;
-                    case CEQViewContext.REGIM_EVALUTION.SAVE:   rc =  View("Index",db);
-                                                               CEQContext.ECOEvalution.Create(db,context.ecoevalution,"отладка"); 
-                                                               context.RegimEvalution = CEQViewContext.REGIM_EVALUTION.CHOICE;       
-                                                               break;
-                    default: rc = View("Index", db); break;
-                }
+        //public ActionResult EvalutionForecast()
+        //{
+        //    ViewBag.EGHLayout = "CEQ";
+        //    CEQContext db = null; 
+        //    ActionResult rc = View("Index");
+        //    try
+        //    {
+        //        db = new CEQContext(this);
+        //        rc = View("Index",db);
+        //        CEQViewContext context = CEQViewContext.HandlerEvalutionForecast(db, this.HttpContext.Request.Params);
+        //        switch (context.RegimEvalution)
+        //        {
+        //            case CEQViewContext.REGIM_EVALUTION.INIT:   rc = View(db); break;
+        //            case CEQViewContext.REGIM_EVALUTION.CHOICE: rc = View(db); break;
+        //            case CEQViewContext.REGIM_EVALUTION.REPORT: rc = View(db); break;
+        //            case CEQViewContext.REGIM_EVALUTION.SAVE:   rc =  View("Index",db);
+        //                                                       CEQContext.ECOEvalution.Create(db,context.ecoevalution,"отладка"); 
+        //                                                       context.RegimEvalution = CEQViewContext.REGIM_EVALUTION.CHOICE;       
+        //                                                       break;
+        //            default: rc = View("Index", db); break;
+        //        }
                                
-            }
-            catch (EGHDBException e)
-            {
-                rc = View("Index",db);
-            }
-            catch (Exception e)
-            {
-                rc = View("Index", db);
-            }
-            return rc;
-        }
+        //    }
+        //    catch (EGHDBException e)
+        //    {
+        //        rc = View("Index",db);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        rc = View("Index", db);
+        //    }
+        //    return rc;
+        //}
 
         public ActionResult Index()
         {

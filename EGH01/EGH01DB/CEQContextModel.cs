@@ -66,7 +66,60 @@ namespace EGH01DB
             {
                 return String.Format("<tr><td> {0}-{1} </td> <td> {2} </td>  <td> {3} </td> <td> {4} </td> <td> {5} </td>   <td> {6} </td>  </tr>",
                      eobj.prefix, eobj.id, Math.Round(eobj.distance, 1),  Math.Round(eobj.c * Const.KG_to_MG / Const.M3_to_DM3, 0), Math.Round(eobj.c/this.water_pdk_coef, 2),  Math.Round(eobj.v * Const.SEC_PER_DAY, 6), eobj.name);
-            } 
+            }
+            public XmlNode toXmlNode(string comment = "")
+            {
+                XmlDocument doc = new XmlDocument();
+                XmlElement rc = doc.CreateElement("CEQReport");
+                if (!String.IsNullOrEmpty(comment)) rc.SetAttribute("comment", comment);
+                //UInt64 id = (UInt64)DateTime.Now.ToBinary();
+                //rc.SetAttribute("id", id.ToString());
+                //rc.SetAttribute("date", this.date.ToString());
+                //rc.SetAttribute("date_message", this.date_message.ToString());
+                //rc.SetAttribute("petrochemicaltype_name", this.petrochemicaltype_name);
+                //rc.SetAttribute("temperature", this.temperature.ToString());
+                //rc.SetAttribute("groundtypename", this.groundtypename);
+                //rc.SetAttribute("riskobject_id", this.riskobject_id.ToString());
+                //rc.SetAttribute("riskobject_name", this.riskobject_name.ToString());
+                //rc.SetAttribute("coordinates_lat", this.coordinates.latitude.ToString());
+                //rc.SetAttribute("coordinates_lng", this.coordinates.lngitude.ToString());
+                //rc.SetAttribute("V0", this.V0.ToString());
+                //rc.SetAttribute("M0", this.M0.ToString());
+                ////------------------- 1 ----------------------
+                //rc.SetAttribute("S1", this.S1.ToString());
+                //rc.SetAttribute("H1", this.H1.ToString());
+                //rc.SetAttribute("R1", this.R1.ToString());
+                //rc.SetAttribute("dM1", this.dM1.ToString());
+                //rc.SetAttribute("M1", this.M1.ToString());
+                ////------------------- 2 ----------------------
+                //rc.SetAttribute("dM2", this.dM2.ToString());
+                //rc.SetAttribute("M2", this.M2.ToString());
+                //rc.SetAttribute("H2", this.H2.ToString());
+                ////------------------- 3 ---------------
+                //rc.SetAttribute("groundtypename", this.groundtypename);
+                //rc.SetAttribute("dM3", this.dM3.ToString());
+                //rc.SetAttribute("M3", this.M3.ToString());
+                //rc.SetAttribute("H3", this.H3.ToString());
+                //rc.SetAttribute("C3", this.C3.ToString());
+                //rc.SetAttribute("v3", this.v3.ToString());
+                ////------------------- 4 ---------------
+                //rc.SetAttribute("dM4", this.dM3.ToString());
+                //rc.SetAttribute("C4", this.C4.ToString());
+                //rc.SetAttribute("t4", this.C3.ToString());
+                //rc.SetAttribute("l4", this.l4.ToString());
+                //rc.SetAttribute("v4", this.v4.ToString());
+                //rc.SetAttribute("h4", this.h4.ToString());
+
+                 rc.AppendChild(doc.ImportNode(this.report.toXmlNode(), true));
+                //rc.AppendChild(doc.ImportNode(this.f4ecoobjectslist.toXmlNode("f4"), true));
+                return (XmlNode)rc;
+            }
+
+
+
+
+
+
 
         }
   

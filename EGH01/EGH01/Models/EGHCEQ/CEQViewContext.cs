@@ -11,15 +11,16 @@ namespace EGH01.Models.EGHCEQ
     public class CEQViewContext
     {
         
-        public enum REGIM_CHOICE {INIT, CHOICE, CANCEL, ERROR, REPORT};
+        public enum REGIM_CHOICE {INIT, CHOICE, CANCEL, ERROR, REPORT, SAVE};
         public enum REGIM_EVALUTION{ INIT, CHOICE, CANCEL, ERROR, REPORT, SAVE };
         public REGIM_CHOICE RegimChoice { get; set; }
         public REGIM_EVALUTION RegimEvalution { get; set; }
         public const string VIEWNAME = "ChoiceForecastResult";
         public int? idforecat     { get; set; }
         public RGEContext.ECOForecast  ecoforecat   { get;  private set; }
-        public CEQContext.ECOEvalution  ecoevalution { get; set;} 
+        public CEQContext.ECOEvalution  ecoevalution { get; set;}
 
+        public CEQContext.Report report { get; set;}
         public CEQViewContext()
         {
             this.RegimChoice = REGIM_CHOICE.INIT;
@@ -29,22 +30,22 @@ namespace EGH01.Models.EGHCEQ
 
         }
         
-        public static CEQViewContext HandlerEvalutionForecast(CEQContext db, NameValueCollection parms)
-        {
-             CEQViewContext rc = db.GetViewContext(VIEWNAME) as CEQViewContext;
+        //public static CEQViewContext HandlerEvalutionForecast(CEQContext db, NameValueCollection parms)
+        //{
+        //     CEQViewContext rc = db.GetViewContext(VIEWNAME) as CEQViewContext;
 
-             if ((rc = db.GetViewContext(VIEWNAME) as CEQViewContext) != null)
-             {
-                rc.RegimEvalution =  rc.RegimEvalution == REGIM_EVALUTION.CANCEL? REGIM_EVALUTION.INIT: rc.RegimEvalution;
-                string menuitem = parms["menuitem"];
-                if (menuitem != null)
-                {
-                    if       (menuitem.Equals("Report.Save"))    rc.RegimEvalution = REGIM_EVALUTION.SAVE;
-                    else  if (menuitem.Equals("Report.Cancel"))  rc.RegimEvalution = REGIM_EVALUTION.CANCEL;
-                }
-             }
-             return rc;
-        }
+        //     if ((rc = db.GetViewContext(VIEWNAME) as CEQViewContext) != null)
+        //     {
+        //        rc.RegimEvalution =  rc.RegimEvalution == REGIM_EVALUTION.CANCEL? REGIM_EVALUTION.INIT: rc.RegimEvalution;
+        //        string menuitem = parms["menuitem"];
+        //        if (menuitem != null)
+        //        {
+        //            if       (menuitem.Equals("CEQReport.Save"))    rc.RegimEvalution = REGIM_EVALUTION.SAVE;
+        //            else  if (menuitem.Equals("CEQReport.Cancel"))  rc.RegimEvalution = REGIM_EVALUTION.CANCEL;
+        //        }
+        //     }
+        //     return rc;
+        //}
         
         public static CEQViewContext  HandlerChoiceForecast(CEQContext db, NameValueCollection parms)
         {
@@ -89,6 +90,10 @@ namespace EGH01.Models.EGHCEQ
                     {
                            rc.RegimChoice = REGIM_CHOICE.INIT;
                     }
+                    else if (menuitem.Equals("CEQReport.Save")) rc.RegimChoice = REGIM_CHOICE.SAVE;
+                    else if (menuitem.Equals("CEQReport.Cancel")) rc.RegimChoice = REGIM_CHOICE.CANCEL;
+
+
                 }
             }
           

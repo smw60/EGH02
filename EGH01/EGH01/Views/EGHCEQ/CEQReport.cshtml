@@ -9,15 +9,15 @@
 
     Layout = "~/Views/Shared/EGHLayout.cshtml";
     Menu start = new Menu(
-                          new Menu.MenuItem("Сохранить отчет", "Forecast.Save", false),
-                          new Menu.MenuItem("Отказаться", "Forecast.Cancel",  true)
+                          new Menu.MenuItem("Сохранить отчет", "CEQReport.Save", true),
+                          new Menu.MenuItem("Отказаться", "CEQReport.Cancel",  true)
                          );
 
     RGEContext.Report rgerepot = Model.report;                       
 
 }
 
-@using (Html.BeginForm("Index", "EGHCEQ"))
+@using (Html.BeginForm("ChoiceForecastResult", "EGHCEQ"))
 {
     <div class="box">
         <div class="boxdata">
