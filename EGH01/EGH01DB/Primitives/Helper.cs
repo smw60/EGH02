@@ -1011,10 +1011,10 @@ namespace EGH01DB.Primitives
         }
 
 
-        static public bool GetListECOEvalution(EGH01DB.IDBContext dbcontext, ref List<CEQContext.ECOEvalution> list_ecoevalution)
+        static public bool GetListECOEvalution(EGH01DB.IDBContext dbcontext, ref List<CEQContext.Report> list_ecoevalution)
         {
             bool rc = false;
-            list_ecoevalution =   new List<CEQContext.ECOEvalution>();   //   new RGEContext.ECOForecastlist();
+            list_ecoevalution = new List<CEQContext.Report>();   //   new RGEContext.ECOForecastlist();
             using (SqlCommand cmd = new SqlCommand("EGH.GetECOEvalutionList", dbcontext.connection))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -1041,7 +1041,7 @@ namespace EGH01DB.Primitives
                           XmlDocument doc = new XmlDocument();
                           doc.LoadXml(xmlContent);
                           XmlNode newNode = doc.DocumentElement;
-                          list_ecoevalution.Add(new CEQContext.ECOEvalution(newNode));
+                          list_ecoevalution.Add(new CEQContext.Report(newNode));
                          }
                     }
                     rc = true;   //   ((int)cmd.Parameters["@exitrc"].Value >0);

@@ -12,10 +12,10 @@
     
     List<SelectListItem> reportlist = new List<SelectListItem>();
     {
-        List<EGH01DB.CEQContext.ECOEvalution> list = new List<EGH01DB.CEQContext.ECOEvalution>();
+        List<EGH01DB.CEQContext.Report> list = new List<EGH01DB.CEQContext.Report>();
         if ( Helper.GetListECOEvalution(Model,  ref list))
         {
-          foreach (CEQContext.ECOEvalution f in list)
+          foreach (CEQContext.Report f in list)
           {
 
                 reportlist.Add(

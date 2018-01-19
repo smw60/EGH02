@@ -451,10 +451,10 @@ namespace EGH01DB
 
                  }
              }
- 
 
 
-             //this.bb = new BlurBorder(this.f0.db, this.f0.riskobject.coordinates, this.R1);
+
+             this.bb = new BlurBorder(this.f0.db, this.f0.riskobject.coordinates, this.R1);
 
 
             }
@@ -833,7 +833,7 @@ namespace EGH01DB
              public XY(float x, float y) { this.x = x; this.y = y; }
          }
             public int R;
-            public int LimitR = 7;
+            public int LimitR = 100;      //!!!!!!!!!!!!!!!!!!!!
             public int nr;
             public int CanvaX = 450;
             public int CanvaY = 450;
@@ -865,12 +865,12 @@ namespace EGH01DB
                 for (int i = 0; i < 8; i++)
                 {
                     height[i] = 0.0f;
-                    if (!MapHelper.GetHeight(db, border[i], out height[i])) height[i] = -1.0f;
+                    //if (!MapHelper.GetHeight(db, border[i], out height[i])) height[i] = -1.0f;
                 }
 
                 this.resigular = new float[8];
                 float h0 = 0.0f;
-               if (!MapHelper.GetHeight(db, coordinates, out h0)) h0 = -1.0f;
+               // if (!MapHelper.GetHeight(db, coordinates, out h0)) h0 = -1.0f;
                 for (int i = 0; i < 8; i++)
                 {
                     resigular[i] = h0 - height[i];

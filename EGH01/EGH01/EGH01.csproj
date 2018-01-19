@@ -500,7 +500,7 @@
     <Content Include="Views\EGHORT\RehabilitationMethodsDelete.cshtml" />
     <Content Include="Views\EGHORT\RehabilitationMethodsUpdate.cshtml" />
     <Content Include="Views\EGHORT\_RehabilitationMethods.cshtml" />
-    <Content Include="Views\EGHGEA\ClassificationEvalution.cshtml" />
+    <Content Include="Views\EGHGEA\XXXClassificationEvalution.cshtml" />
     <Content Include="Views\EGHCCO\PetrochemicalCategories.cshtml" />
     <Content Include="Views\EGHCCO\PetrochemicalCategoriesCreate.cshtml" />
     <Content Include="Views\EGHCCO\PetrochemicalCategoriesDelete.cshtml" />
@@ -511,7 +511,7 @@
     <Content Include="Views\EGHORT\_ConfirmChoiceClassificationResult.cshtml" />
     <Content Include="Views\EGHORT\Rehabilitation.cshtml" />
     <Content Include="Views\EGHORT\_ORTReport.cshtml" />
-    <Content Include="Views\EGHGEA\_GEAReport.cshtml" />
+    <Content Include="Views\EGHGEA\_XXXGEAReport.cshtml" />
     <Content Include="Views\EGHGEA\_SoilPollutionCategoriesList - Копировать.cshtml" />
     <Content Include="Views\EGHGEA\_SoilPollutionCategoriesList - Копировать %282%29.cshtml" />
     <Content Include="Views\EGHMAP\Index.cshtml" />
@@ -527,6 +527,8 @@
     <Content Include="Views\EGHMAP\EGHMAPWATER.cshtml" />
     <Content Include="Views\EGHMAP\EGHMAPOTHER.cshtml" />
     <Content Include="Views\EGHCEQ\CEQReport.cshtml" />
+    <None Include="Views\EGHGEA\_GEAReport.cshtml" />
+    <Content Include="Views\EGHGEA\ClassificationEvalution.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

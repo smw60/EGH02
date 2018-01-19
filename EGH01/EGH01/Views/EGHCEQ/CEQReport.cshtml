@@ -62,7 +62,7 @@
                     <fieldset form="ChoiseRiskObject">
                         <legend> Грунтовый слой</legend>
                         <p>
-                            <label class="boxdata-label-40 ">Максимальная концентрация нефтеродукта в грунте (кг/кг>)</label>
+                            <label class="boxdata-label-40 ">Максимальная концентрация нефтеродукта в грунте (кг/кг)</label>
                             @rgerepot.C3 = @(Math.Round(rgerepot.C3 * Const.KG_to_MG, 3))(мг/кг)
                         </p>
                         <p>
@@ -128,7 +128,10 @@
 
 
             </fieldset>  
-            <fieldset form="ChoiseRiskObject">
+            @if (rgerepot.l4 > rgerepot.R1)
+            {
+                
+                <fieldset form="ChoiseRiskObject">
                 <legend> Подземное пятно загрязнения (@( String.Format("радиус: {0} - {1} м )", rgerepot.R1, rgerepot.l4)) </legend>
 
 
@@ -146,7 +149,10 @@
 
 
                 </fieldset>
-            </fieldset>
+               </fieldset>
+                
+            }
+            
         </div>
         @Html.Partial("_TypeLineMenu", start)
     </div>

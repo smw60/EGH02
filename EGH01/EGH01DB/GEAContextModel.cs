@@ -16,7 +16,60 @@ namespace EGH01DB
 
    public partial  class GEAContext: IDBContext
    {
-        public class  ECOClassification: CEQContext.ECOEvalution
+   
+       //public class Report 
+       //{
+       //    public CEQContext.Report report;
+       //    public int id { get; set; }
+       //    public DateTime date { get; set; }
+       //    SoilPollutionCategories soilpollutioncategories;
+       //    WaterPollutionCategories waterpollutioncategories;
+       //    public Report(GEAContext db, CEQContext.Report report)
+       //    {
+       //        this.report = report;
+       //        this.id = (int)DateTime.Now.Second;
+       //        this.date = DateTime.Now;
+
+       //        {
+       //            SoilPollutionCategories spc = this.soilpollutioncategories = null;
+       //            SoilPollutionCategories.GetByVolume_Cadastre(db, this.report.excessgroundconcentration, CadastreType.defaulttype.type_code, out spc);
+       //            this.soilpollutioncategories = spc;
+
+       //        }
+
+       //        {
+
+       //            WaterPollutionCategories wpc = this .waterpollutioncategories = null;
+       //            WaterPollutionCategories.GetByExcess_Cadastre(db, this.report.exesswaterconcentration, CadastreType.defaulttype.type_code,, out wpc);
+       //            this.waterpollutioncategories = wpc;
+
+       //        }
+       //        WaterPollutionList wpl = new WaterPollutionList(); 
+
+       //        foreach(RGEContext.FEcoObjectsList.FEcoObject eo  in this.report.report.f4ecoobjectslist)
+       //        {
+                      
+       //               WaterPollutionCategories x = null;  
+       //               WaterPollutionCategories.GetByExcess_Cadastre(db, eo.c,  CadastreType.defaulttype.type_code, out x);
+       //               //wpl.Add(new WaterPollution(  )    .waterpollutioncategories = x ;
+       //        }  
+
+                
+       //    }
+       //    public string line
+       //    {
+       //        get
+       //        {
+       //            return string.Format("{0}-C-{1:yyyy-MM-dd}/{2}-Р-{3:yyyy-MM-dd}", this.id, this.date, this.report.id,this.report.date)
+       //            + string.Format(": {0}, {1}, {2}", this.report.report.V0, this.report.report.petrochemicaltype_name, this.report.report.riskobject_name);
+       //        }
+       //    } 
+       
+       
+       //}
+        
+       
+       public class  ECOClassification: CEQContext.ECOEvalution
         {
               public int                  id   {get; set;}
               public DateTime             date {get; set;}  

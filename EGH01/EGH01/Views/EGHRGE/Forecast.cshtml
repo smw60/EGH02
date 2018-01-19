@@ -102,7 +102,7 @@
 
         @{
 
-            string volume = "5";
+            string volume = "10";
             if (context.Volume != null)
             {
                 volume = ((int)context.Volume).ToString();
@@ -121,8 +121,9 @@
                 temperature = ((float)context.Temperature).ToString();
             }
             <div class="boxdata">
-                <label class="boxdata-label-30">Температура воздуха(С°)</label>
-                <input class="boxdata-input-30" type="number" name="temperature" value="@temperature" min="-50" max="50" step="1" />
+                @*<label class="boxdata-label-30">Температура воздуха(С°)</label>*@
+                @*<input class="boxdata-input-30" type="number" name="temperature" value="@temperature" min="-50" max="50" step="1" />*@
+                <input class="boxdata-input-30" type="hidden" name="temperature" value="@temperature" min="-50" max="50" step="1" />
             </div>
 
         }

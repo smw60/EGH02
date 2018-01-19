@@ -23,16 +23,16 @@ namespace EGH01.Controllers
             ActionResult rc = View("Index");
             try
             {
-               CEQContext ceq  = new CEQContext(this);
-               CEQViewContext context = CEQViewContext.HandlerChoiceForecast(ceq, this.HttpContext.Request.Params);
+               CEQContext db  = new CEQContext(this);
+               CEQViewContext context = CEQViewContext.HandlerChoiceForecast(db, this.HttpContext.Request.Params);
                if (context != null &&  context.RegimChoice  == CEQViewContext.REGIM_CHOICE.CHOICE)
                {
 
                    EGH01DB.RGEContext.Report rgereport = new RGEContext.Report();
-                   if (EGH01DB.RGEContext.Report.GetById(ceq, (int)context.idforecat, out rgereport))
+                   if (EGH01DB.RGEContext.Report.GetById(db, (int)context.idforecat, out rgereport))
                    {
 
-                       context.report =  new EGH01DB.CEQContext.Report(ceq, rgereport);
+                       context.report =  new EGH01DB.CEQContext.Report(db, rgereport);
                        rc = View("CEQReport", context.report);
                    }
                }
@@ -40,6 +40,8 @@ namespace EGH01.Controllers
                {
                    rc = View("Index");
                    XmlNode xn = context.report.toXmlNode();
+                   EGH01DB.Primitives.Report report = new EGH01DB.Primitives.Report(1000, "Р", DateTime.Now, xn);
+                   EGH01DB.Primitives.Report.Create(db, report);
                    int k = 1;
 
                    //XmlNode xn = fvc.ecoforecastx.CreateReport().toXmlNode();
@@ -51,7 +53,7 @@ namespace EGH01.Controllers
                {
                    rc = View("Index");
                }
-               else rc = View(ceq);
+               else rc = View(db);
             }
             catch (EGHDBException e)
             {
