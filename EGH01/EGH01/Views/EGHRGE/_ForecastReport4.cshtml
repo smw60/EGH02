@@ -47,22 +47,22 @@
         }
     </fieldset>
     
-    @if (level4.dM4 > 0)
+    @if (level4.dM4 > 0 && @level4.l4 > 0)
     { 
+        //if (level4.f4ecoobjectslist.Count > 0)
+        //{
+        //}   
             <fieldset form="ChoiseRiskObject">
                 <legend> Природоохранные объекты ( @( String.Format("радиус: {0} - {1}м )", level1.R1, level4.l4)) </legend>
-        
                 @Html.Raw(RGEContext.FEcoObjectsList.FEcoObject.starttable)
-
                 @foreach (RGEContext.FEcoObjectsList.FEcoObject eo in level4.f4ecoobjectslist)
                 {
-                   
-                    @Html.Raw(eo.linetable)
+                    Html.Raw(eo.linetable);
                 }
                 @Html.Raw(RGEContext.FEcoObjectsList.FEcoObject.endtable)
-
             </fieldset>
-    }
+        
+   }
   
 </div>
        

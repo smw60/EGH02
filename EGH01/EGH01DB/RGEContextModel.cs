@@ -18,8 +18,6 @@ namespace EGH01DB
     public partial class RGEContext
     {
 
-
-          
      public class  ECOForecastX
      {
          public  ECOForecast0 level0  {get; private set;}
@@ -97,23 +95,23 @@ namespace EGH01DB
          public DateTime date;                   // дата инцидента
          public DateTime date_message;           // дата сообщения о инциденте  
          public string   petrochemicaltype_name; // наименование нефтепродукта  
-         public float    V0;                     // объем пролиого нефтепродукта  
+         public float    V0;                     // объем пролитого нефтепродукта  
          public float    temperature;            // температура 
          public int      riskobject_id;          // идентификатор объекта 
          public string   riskobject_name;        // место пролива 
          public Coordinates coordinates;         // географические координты пролива
          public float    M0;                     // масса пролитого нефтепродукта  
          //-------------------------------------
-         public float    S1;       // площадь пятна  
-         public float    H1;       // толщина пятна  
-         public float    R1;       // радиус  пятна 
-         public float    dM1;      // остаток НП достигший поверхности
-         public float    M1;       // масса испарившегося нп   
+         public float    S1;                     // площадь пятна  
+         public float    H1;                     // толщина пятна  
+         public float    R1;                     // радиус  пятна 
+         public float    dM1;                    // остаток НП достигший поверхности
+         public float    M1;                     // масса испарившегося нп   
          public FEcoObjectsList f1ecoobjectslist;  //перечень экологических объектов в пятне загрязнения;
          //----------------------------------
-         public float   dM2;        // остаток НП достигший почвы 
-         public float   M2;         // адсорбированная почвой масса
-         public float   H2;         // глубина в почву  
+         public float   dM2;            // остаток НП достигший почвы 
+         public float   M2;             // адсорбированная почвой масса
+         public float   H2;             // глубина проникновения  в почву  
          //----------------------------------
          public string  groundtypename; // название грунта 
          public float   dM3;            // остаток НП достигший грунта
@@ -127,7 +125,7 @@ namespace EGH01DB
          public float   t4;             //  время  достижения грунтовых вод
          public float   l4;             //  максимальный радиус распространения загрязнения 
          public float   v4;             //  горизонтальная скорость распространения загрязнения
-         public float   h4 =  1.0f;    //  толщина слоя грунтовых вод
+         public float   h4 =  1.0f;     //  толщина слоя грунтовых вод
          public FEcoObjectsList f4ecoobjectslist; //перечень экологических объектов вdjlyjv  пятне загрязнения;
          public string line
          {
@@ -416,9 +414,8 @@ namespace EGH01DB
          public BlurBorder        bb               { get; private set; }       // границы пятна 
          public float             dM1              { get; private set; }       // остаток НП достигший поверхности
          public FEcoObjectsList  f1ecoobjectslist  { get; private set; }       // перечень экологических объектов в пятне загрязнения
-         public FAnchorPointList f1anchorpointlist { get; private set; }       // перечень  объектов в пятне загрязнения
+         public FAnchorPointList f1anchorpointlist { get; private set; }       // перечень  опорных точек в пятне загрязнения
          
-
          public ECOForecast1(ECOForecast0 f0)  
          {
              this.f0 = f0;
@@ -426,7 +423,7 @@ namespace EGH01DB
              this.d1 = SpreadingCoefficient.GetByData(f0.db, f0.riskobject.groundtype, f0.petrochemicaltype, f0.V0, 0.0f);
              this.d1 = this.d1 <= 0 ? 5.0f : this.d1;   // заглушка
              this.q1 = EvaporationCoefficient.GetByData(f0.temperature);
-             this.S1 = this.d1 * this.f0.V0;
+             this.S1 = (this.d1 + 2*this.d1/(float)Math.Pow((double)this.f0.V0, 0.2)) * this.f0.V0;      //  this.d1 * this.f0.V0; 
              this.R1 =  (float)Math.Round((float)Math.Sqrt(this.S1 / Math.PI),0);
              this.H1 = f0.V0 / this.S1;
              this.M1 = this.S1 * this.q1;
@@ -571,11 +568,15 @@ namespace EGH01DB
              this.f2 = f3.f2;
              this.f3 = f3;
              this.dM4 = this.f3.dM3 - this.f3.M3 > 0 ? this.f3.dM3 - this.f3.M3 : 0.0f;
-             this.t4 = (this.f2.h2 + this.f3.h3) / this.f3.v3;                  // у насти ошибка !!!            
-             this.l4 = (float)Math.Round(this.dM4 / (2 * this.f1.R1 * this.h4 * this.f3.rov * this.f3.m3 * this.f3.w3 * this.f0.delta0 / this.f3.deltav), 0);
+             this.t4 = (this.f2.h2 + this.f3.h3) / this.f3.v3;                  // у насти ошибка !!!  
+             {
+                 this.l4 = (float)Math.Round(this.dM4 / (2 * this.f1.R1 * this.h4 * this.f3.rov * this.f3.m3 * this.f3.w3 * this.f0.delta0 / this.f3.deltav), 0);
+                 this.l4 = (this.l4 > this.f1.R1) ? this.l4 : 0;  
+             }
+             
              this.C4 = this.dM4 / (this.f1.S1 * this.h4);      //(2 * this.f1.R1 * this.l4);                     // у насти ошибка !!! 
 
-            
+
              {
                  this.f4ecoobjectslist = new FEcoObjectsList("BASE", f0.riskobject, EcoObjectsList.CreateEcoObjectsList(this.f0.db, f0.riskobject, this.f1.R1, this.l4));
                  EcoObjectsList ecoobjectslist = null;
@@ -589,19 +590,18 @@ namespace EGH01DB
                  {
                      sa += o.angle;
                  }
-                 sa = (sa  < Const.ZERO? Const.ZERO: sa );
+                 sa = (sa < Const.ZERO ? Const.ZERO : sa);
 
-                 float dma = this.dM4 / sa; 
+                 float dma = this.dM4 / sa;
                  foreach (FEcoObjectsList.FEcoObject o in this.f4ecoobjectslist)
                  {
-                     o.c = dma * o.angle / (o.distance * 2 * this.f1.R1 * this.h4 * this.f3.ro3 );
+                     o.c = dma * o.angle / (o.distance * 2 * this.f1.R1 * this.h4 * this.f3.ro3);
                      o.v = this.f3.v3 * o.angle;
                  }
              }
          }
          
      }
-
 
      public class FEcoObjectsList : List<FEcoObjectsList.FEcoObject>
      {
@@ -629,7 +629,6 @@ namespace EGH01DB
                                          );
               }
              }
-
              public static string starttable 
              {
                  get
@@ -664,7 +663,6 @@ namespace EGH01DB
                                          
                  }
              }
-
              public XmlNode toXmlNode(string comment = "")
              {
                  XmlDocument doc = new XmlDocument();
@@ -680,7 +678,6 @@ namespace EGH01DB
                  rc.SetAttribute("v",         this.v.ToString());
                  return (XmlNode)rc;
              }
-
              public FEcoObject(XmlNode node)
              {
 
@@ -695,7 +692,6 @@ namespace EGH01DB
              }
              public FEcoObject() { }
          }
-
          public FEcoObjectsList(string px, Point center,  EcoObjectsList ecojbjectslist)
          {
            AddRange(px, center, ecojbjectslist);         
@@ -712,7 +708,6 @@ namespace EGH01DB
                  if (x.Name.Equals("FECObject")) this.Add(new FEcoObject(x));
              }  
          }
-
          public XmlNode toXmlNode(string comment = "")
          {
              XmlDocument doc = new XmlDocument();
@@ -721,7 +716,6 @@ namespace EGH01DB
              this.ForEach(m => rc.AppendChild(doc.ImportNode(m.toXmlNode(), true)));
              return (XmlNode)rc;
          }
-
          public bool  AddRange(string px, Point center, EcoObjectsList ecojbjectslist, float r = 0.0f)
          {
                          
@@ -823,7 +817,6 @@ namespace EGH01DB
          }
 
      }
-
 
      public class BlurBorder
      {
@@ -1024,7 +1017,7 @@ namespace EGH01DB
             }
 
         } 
-
+//---------------------------------------------------------------------------------------------------------------
      #region ECOForecast [старая версия]
      public partial class ECOForecast         //  модель прогнозирования 
      {
