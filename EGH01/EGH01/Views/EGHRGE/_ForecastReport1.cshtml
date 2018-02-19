@@ -37,25 +37,25 @@
         <legend> Вычисления </legend>
         <p>
             <label class="boxdata-label-40 ">Масса нефтепродукта на поверностном  слое (кг) </label>
-            @level0.M0
+             @(Math.Round(level0.M0,0))
         </p>
         <p>
             <label class="boxdata-label-40 ">Площадь наземного пятна загрязнения (м<sup>2</sup>) </label>
-            @level1.S1
+            @(Math.Round(level1.S1,0))
         </p>
 
         <p>
             <label class="boxdata-label-40 "> Радиус пятна при равномерном растекании (м) </label>
-            @level1.R1
+            @(Math.Round(level1.R1,1))
         </p>
 
         <p>
             <label class="boxdata-label-40 ">Толщина наземного пятна загрязнения (м) </label>
-            @level1.H1
+            @(Math.Round(level1.H1,4))
         </p>
         <p>
             <label class="boxdata-label-40 ">Масса испарившегося нефтепродукта (кг) </label>
-            @level1.M1
+            @(Math.Round(level1.M1,0))
         </p>
     </fieldset>
     <fieldset form="ChoiseRiskObject">

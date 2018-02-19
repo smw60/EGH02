@@ -34,7 +34,7 @@
         {
             <p>
                 <label class="boxdata-label-40 ">Время достижения максимальной концентрации (с) </label>
-                @level4.t4 = @(Math.Round(level4.t4/Const.SEC_PER_DAY,1))
+                @level4.t4 = @(Math.Round(level4.t4/Const.SEC_PER_DAY,1)) (сутки)
             </p>
             <p >
                 <label class="boxdata-label-40 ">Средняя концентрация в грунтовых водах (кг/м<sup>3</sup>) </label>
@@ -47,20 +47,27 @@
         }
     </fieldset>
     
-    @if (level4.dM4 > 0 && @level4.l4 > 0)
+    @if (level4.dM4 > 0 && @level4.l4 > 0 )
     { 
-        //if (level4.f4ecoobjectslist.Count > 0)
-        //{
-        //}   
+       
+           
             <fieldset form="ChoiseRiskObject">
                 <legend> Природоохранные объекты ( @( String.Format("радиус: {0} - {1}м )", level1.R1, level4.l4)) </legend>
-                @Html.Raw(RGEContext.FEcoObjectsList.FEcoObject.starttable)
-                @foreach (RGEContext.FEcoObjectsList.FEcoObject eo in level4.f4ecoobjectslist)
+                @if (level4.f4ecoobjectslist.Count > 0)
                 {
-                    Html.Raw(eo.linetable);
+                   Html.Raw(RGEContext.FEcoObjectsList.FEcoObject.starttable);
+                   foreach (RGEContext.FEcoObjectsList.FEcoObject eo in level4.f4ecoobjectslist)
+                   {
+                    <p>  @Html.Raw(eo.linetable) </p>   
+                   }
+                   @Html.Raw(RGEContext.FEcoObjectsList.FEcoObject.endtable)
                 }
-                @Html.Raw(RGEContext.FEcoObjectsList.FEcoObject.endtable)
+                else
+                {
+                 <p> Прироохранные объекты не найдены </p>
+                }
             </fieldset>
+         
         
    }
   
