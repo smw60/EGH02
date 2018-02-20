@@ -88,44 +88,43 @@ namespace EGH01DB
          }
          
      }
-
      public class Report
      {
          public int id;
          public DateTime date;                   // дата инцидента
          public DateTime date_message;           // дата сообщения о инциденте  
-         public string   petrochemicaltype_name; // наименование нефтепродукта  
-         public float    V0;                     // объем пролитого нефтепродукта  
-         public float    temperature;            // температура 
-         public int      riskobject_id;          // идентификатор объекта 
-         public string   riskobject_name;        // место пролива 
+         public string petrochemicaltype_name; // наименование нефтепродукта  
+         public float V0;                     // объем пролитого нефтепродукта  
+         public float temperature;            // температура 
+         public int riskobject_id;          // идентификатор объекта 
+         public string riskobject_name;        // место пролива 
          public Coordinates coordinates;         // географические координты пролива
-         public float    M0;                     // масса пролитого нефтепродукта  
+         public float M0;                     // масса пролитого нефтепродукта  
          //-------------------------------------
-         public float    S1;                     // площадь пятна  
-         public float    H1;                     // толщина пятна  
-         public float    R1;                     // радиус  пятна 
-         public float    dM1;                    // остаток НП достигший поверхности
-         public float    M1;                     // масса испарившегося нп   
+         public float S1;                     // площадь пятна  
+         public float H1;                     // толщина пятна  
+         public float R1;                     // радиус  пятна 
+         public float dM1;                    // остаток НП достигший поверхности
+         public float M1;                     // масса испарившегося нп   
          public FEcoObjectsList f1ecoobjectslist;  //перечень экологических объектов в пятне загрязнения;
          //----------------------------------
-         public float   dM2;            // остаток НП достигший почвы 
-         public float   M2;             // адсорбированная почвой масса
-         public float   H2;             // глубина проникновения  в почву  
+         public float dM2;            // остаток НП достигший почвы 
+         public float M2;             // адсорбированная почвой масса
+         public float H2;             // глубина проникновения  в почву  
          //----------------------------------
-         public string  groundtypename; // название грунта 
-         public float   dM3;            // остаток НП достигший грунта
-         public float   M3;             // масса адсорбированного в грунте НП  
-         public float   H3;             // грубина проникновения НП в грунт 
-         public float   C3;             // максимальная концентрация нп в грунте 
-         public float   v3;             // горизонтальная скорость проникновения нп в грунте
-        //----------------------------------
-         public float   dM4;            // остаток НП достигший грунтовых вод 
-         public float   C4;             //  концентрация в гр. водах 
-         public float   t4;             //  время  достижения грунтовых вод
-         public float   l4;             //  максимальный радиус распространения загрязнения 
-         public float   v4;             //  горизонтальная скорость распространения загрязнения
-         public float   h4 =  1.0f;     //  толщина слоя грунтовых вод
+         public string groundtypename; // название грунта 
+         public float dM3;            // остаток НП достигший грунта
+         public float M3;             // масса адсорбированного в грунте НП  
+         public float H3;             // грубина проникновения НП в грунт 
+         public float C3;             // максимальная концентрация нп в грунте 
+         public float v3;             // горизонтальная скорость проникновения нп в грунте
+         //----------------------------------
+         public float dM4;            // остаток НП достигший грунтовых вод 
+         public float C4;             //  концентрация в гр. водах 
+         public float t4;             //  время  достижения грунтовых вод
+         public float l4;             //  максимальный радиус распространения загрязнения 
+         public float v4;             //  горизонтальная скорость распространения загрязнения
+         public float h4 = 1.0f;     //  толщина слоя грунтовых вод
          public FEcoObjectsList f4ecoobjectslist; //перечень экологических объектов вdjlyjv  пятне загрязнения;
          public string line
          {
@@ -139,13 +138,13 @@ namespace EGH01DB
          public Report(XmlNode node)
          {
 
-             this.date                   = Helper.GetDateTimeAttribute(node, "date", DateTime.Now);
-             this.date_message           = Helper.GetDateTimeAttribute(node, "date_message", DateTime.Now);
+             this.date = Helper.GetDateTimeAttribute(node, "date", DateTime.Now);
+             this.date_message = Helper.GetDateTimeAttribute(node, "date_message", DateTime.Now);
              this.petrochemicaltype_name = Helper.GetStringAttribute(node, "petrochemicaltype_name", "");
-             this.V0                     = Helper.GetFloatAttribute(node, "V0", 0.0f);
-             this.temperature            = Helper.GetFloatAttribute(node, "temperature", 0.0f);
-             this.riskobject_id          = Helper.GetIntAttribute(node, "riskobject_id", -1);
-             this.riskobject_name        = Helper.GetStringAttribute(node, "riskobject_name", "");
+             this.V0 = Helper.GetFloatAttribute(node, "V0", 0.0f);
+             this.temperature = Helper.GetFloatAttribute(node, "temperature", 0.0f);
+             this.riskobject_id = Helper.GetIntAttribute(node, "riskobject_id", -1);
+             this.riskobject_name = Helper.GetStringAttribute(node, "riskobject_name", "");
              {
                  float lat = Helper.GetFloatAttribute(node, "coordinates_lat", 0.0f);
                  float lng = Helper.GetFloatAttribute(node, "coordinates_lng", 0.0f);
@@ -153,30 +152,30 @@ namespace EGH01DB
              }
              this.M0 = Helper.GetFloatAttribute(node, "M0", 0.0f);
              //---------------1--------------------------------------
-             this.S1  = Helper.GetFloatAttribute(node, "S1", 0.0f);
-             this.H1  = Helper.GetFloatAttribute(node, "H1", 0.0f);
-             this.R1  = Helper.GetFloatAttribute(node, "R1", 0.0f);
+             this.S1 = Helper.GetFloatAttribute(node, "S1", 0.0f);
+             this.H1 = Helper.GetFloatAttribute(node, "H1", 0.0f);
+             this.R1 = Helper.GetFloatAttribute(node, "R1", 0.0f);
              this.dM1 = Helper.GetFloatAttribute(node, "dM1", 0.0f);
-             this.M1  = Helper.GetFloatAttribute(node, "M1", 0.0f);
-           
+             this.M1 = Helper.GetFloatAttribute(node, "M1", 0.0f);
+
              //---------------2--------------------------------------
              this.dM2 = Helper.GetFloatAttribute(node, "dM2", 0.0f);
-             this.M2  = Helper.GetFloatAttribute(node, "M2", 0.0f);
-             this.H2  = Helper.GetFloatAttribute(node, "H2", 0.0f);
+             this.M2 = Helper.GetFloatAttribute(node, "M2", 0.0f);
+             this.H2 = Helper.GetFloatAttribute(node, "H2", 0.0f);
              //---------------3--------------------------------------
-             this.groundtypename = Helper.GetStringAttribute(node,"groundtypename", "");
-             this.dM3            = Helper.GetFloatAttribute(node, "dM3", 0.0f);
-             this.M3             = Helper.GetFloatAttribute(node, "M3", 0.0f);
-             this.H3             = Helper.GetFloatAttribute(node, "H3", 0.0f);
-             this.C3             = Helper.GetFloatAttribute(node, "C3", 0.0f);
-             this.v3             = Helper.GetFloatAttribute(node, "v3", 0.0f);
+             this.groundtypename = Helper.GetStringAttribute(node, "groundtypename", "");
+             this.dM3 = Helper.GetFloatAttribute(node, "dM3", 0.0f);
+             this.M3 = Helper.GetFloatAttribute(node, "M3", 0.0f);
+             this.H3 = Helper.GetFloatAttribute(node, "H3", 0.0f);
+             this.C3 = Helper.GetFloatAttribute(node, "C3", 0.0f);
+             this.v3 = Helper.GetFloatAttribute(node, "v3", 0.0f);
              //---------------4--------------------------------------
-             this.dM4            = Helper.GetFloatAttribute(node, "dM4", 0.0f);
-             this.C4             = Helper.GetFloatAttribute(node, "C4", 0.0f);
-             this.t4             = Helper.GetFloatAttribute(node, "t4", 0.0f);
-             this.l4             = Helper.GetFloatAttribute(node, "l4", 0.0f);
-             this.v4             = Helper.GetFloatAttribute(node, "v4", 0.0f);
-             this.h4             = Helper.GetFloatAttribute(node, "h4", 0.0f);
+             this.dM4 = Helper.GetFloatAttribute(node, "dM4", 0.0f);
+             this.C4 = Helper.GetFloatAttribute(node, "C4", 0.0f);
+             this.t4 = Helper.GetFloatAttribute(node, "t4", 0.0f);
+             this.l4 = Helper.GetFloatAttribute(node, "l4", 0.0f);
+             this.v4 = Helper.GetFloatAttribute(node, "v4", 0.0f);
+             this.h4 = Helper.GetFloatAttribute(node, "h4", 0.0f);
 
              //--------------- 1 & 4--------------------------------------
              {
@@ -188,7 +187,7 @@ namespace EGH01DB
                      foreach (XmlNode n in x)
                      {
                          string s = Helper.GetStringAttribute(n, "comment", "xx");
-                         if      (s.Equals("f1")) this.f1ecoobjectslist = new FEcoObjectsList(n);
+                         if (s.Equals("f1")) this.f1ecoobjectslist = new FEcoObjectsList(n);
                          else if (s.Equals("f4")) this.f4ecoobjectslist = new FEcoObjectsList(n);
                      }
                  }
@@ -203,7 +202,7 @@ namespace EGH01DB
              this.petrochemicaltype_name = Helper.GetStringAttribute(node, "petrochemicaltype_name", "");
              this.V0 = Helper.GetFloatAttribute(node, "V0", 0.0f);
              this.temperature = Helper.GetFloatAttribute(node, "temperature", 0.0f);
-             this.riskobject_id   = Helper.GetIntAttribute(node, "riskobject_id", -1);
+             this.riskobject_id = Helper.GetIntAttribute(node, "riskobject_id", -1);
              this.riskobject_name = Helper.GetStringAttribute(node, "riskobject_name", "");
              {
                  float lat = Helper.GetFloatAttribute(node, "coordinates_lat", 0.0f);
@@ -273,39 +272,39 @@ namespace EGH01DB
              rc.SetAttribute("V0", this.V0.ToString());
              rc.SetAttribute("M0", this.M0.ToString());
              //------------------- 1 ----------------------
-             rc.SetAttribute("S1",  this.S1.ToString());
-             rc.SetAttribute("H1",  this.H1.ToString());
-             rc.SetAttribute("R1",  this.R1.ToString());
+             rc.SetAttribute("S1", this.S1.ToString());
+             rc.SetAttribute("H1", this.H1.ToString());
+             rc.SetAttribute("R1", this.R1.ToString());
              rc.SetAttribute("dM1", this.dM1.ToString());
-             rc.SetAttribute("M1",  this.M1.ToString());
+             rc.SetAttribute("M1", this.M1.ToString());
              //------------------- 2 ----------------------
-              rc.SetAttribute("dM2",  this.dM2.ToString());
-              rc.SetAttribute("M2",   this.M2.ToString());
-              rc.SetAttribute("H2",   this.H2.ToString());
+             rc.SetAttribute("dM2", this.dM2.ToString());
+             rc.SetAttribute("M2", this.M2.ToString());
+             rc.SetAttribute("H2", this.H2.ToString());
              //------------------- 3 ---------------
-              rc.SetAttribute("groundtypename", this.groundtypename);
-              rc.SetAttribute("dM3", this.dM3.ToString());
-              rc.SetAttribute("M3",  this.M3.ToString());
-              rc.SetAttribute("H3",  this.H3.ToString());
-              rc.SetAttribute("C3",  this.C3.ToString());
-              rc.SetAttribute("v3",  this.v3.ToString());
-              //------------------- 4 ---------------
-              rc.SetAttribute("dM4", this.dM3.ToString());
-              rc.SetAttribute("C4", this.C4.ToString());
-              rc.SetAttribute("t4", this.C3.ToString());
-              rc.SetAttribute("l4", this.l4.ToString());
-              rc.SetAttribute("v4", this.v4.ToString());
-              rc.SetAttribute("h4", this.h4.ToString());
+             rc.SetAttribute("groundtypename", this.groundtypename);
+             rc.SetAttribute("dM3", this.dM3.ToString());
+             rc.SetAttribute("M3", this.M3.ToString());
+             rc.SetAttribute("H3", this.H3.ToString());
+             rc.SetAttribute("C3", this.C3.ToString());
+             rc.SetAttribute("v3", this.v3.ToString());
+             //------------------- 4 ---------------
+             rc.SetAttribute("dM4", this.dM3.ToString());
+             rc.SetAttribute("C4", this.C4.ToString());
+             rc.SetAttribute("t4", this.C3.ToString());
+             rc.SetAttribute("l4", this.l4.ToString());
+             rc.SetAttribute("v4", this.v4.ToString());
+             rc.SetAttribute("h4", this.h4.ToString());
 
-              rc.AppendChild(doc.ImportNode(this.f1ecoobjectslist.toXmlNode("f1"), true));
-              rc.AppendChild(doc.ImportNode(this.f4ecoobjectslist.toXmlNode("f4"), true));
-              return (XmlNode)rc;
+             rc.AppendChild(doc.ImportNode(this.f1ecoobjectslist.toXmlNode("f1"), true));
+             rc.AppendChild(doc.ImportNode(this.f4ecoobjectslist.toXmlNode("f4"), true));
+             return (XmlNode)rc;
          }
          public static bool GetById(IDBContext db, int id, out Report report)
          {
-            bool rc = false;
-            report = new Report();
-            using (SqlCommand cmd = new SqlCommand("EGH.GetReportbyId", db.connection))
+             bool rc = false;
+             report = new Report();
+             using (SqlCommand cmd = new SqlCommand("EGH.GetReportbyId", db.connection))
              {
                  cmd.CommandType = CommandType.StoredProcedure;
                  {
@@ -320,7 +319,7 @@ namespace EGH01DB
                  }
                  try
                  {
-                    // cmd.ExecuteNonQuery();
+                     // cmd.ExecuteNonQuery();
                      SqlDataReader reader = cmd.ExecuteReader();
                      if (rc = reader.Read())
                      {
@@ -332,7 +331,7 @@ namespace EGH01DB
                          doc.LoadXml(xmlContent);
                          XmlNode newNode = doc.DocumentElement;
                          report = new Report(id, newNode);
-                         
+
                      }
                      reader.Close();
                  }
@@ -343,9 +342,10 @@ namespace EGH01DB
 
              }
              return rc;
-         } 
-     
+         }
+
      };
+    
 
 
 
@@ -518,14 +518,14 @@ namespace EGH01DB
              }
 
              this.groundtypename = this.f0.riskobject.groundtype.name;
-             this.h3 = this.f0.riskobject.waterdeep;
-             this.k3 = this.f0.riskobject.groundtype.waterfilter;
-             this.r3 = this.f0.riskobject.groundtype.holdmigration;
-             this.m3 = this.f0.riskobject.groundtype.porosity;
-             this.w3 = this.f0.riskobject.groundtype.watercapacity;
-             this.ro3 = this.f0.riskobject.groundtype.density;
+             this.h3 = this.f0.riskobject.waterdeep;                                // усреднить по опорным точкам 
+             this.k3 = this.f0.riskobject.groundtype.waterfilter;                   // усреднить по опорным точкам
+             this.r3 = this.f0.riskobject.groundtype.holdmigration;                 // усреднить по опорным точкам 
+             this.m3 = this.f0.riskobject.groundtype.porosity;                      // усреднить по опорным точкам
+             this.w3 = this.f0.riskobject.groundtype.watercapacity;                 // усреднить по опорным точкам     
+             this.ro3 = this.f0.riskobject.groundtype.density;                      // усреднить по опорным точкам      
 
-             this.v3 = this.k3 / this.r3;
+             this.v3 = this.k3 / this.r3;                                           
 
              this.M3 = this.h3 * this.f1.S1 * this.rov * this.m3 * this.w3 * this.f0.delta0 / this.deltav;
 
@@ -1165,6 +1165,8 @@ namespace EGH01DB
              rc.AppendChild(doc.ImportNode(this.waterblur.toXmlNode(), true));
              return (XmlNode)rc;
          }
+        
+
      }
      #endregion 
 
