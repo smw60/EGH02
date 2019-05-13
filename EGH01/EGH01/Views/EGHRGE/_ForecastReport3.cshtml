@@ -23,36 +23,37 @@
 
 <div class="boxdata">
 
-    <h4>3. Грунтовый слой</h4>
-    
+    @*<h4>3. Грунтовый слой</h4>*@
+    <h4>3. Зона аэрации</h4>
+
     <fieldset form="ChoiseRiskObject">
         <legend> Справочные данные </legend>
-        
+
         <p>
             <label class="boxdata-label-40 ">Тип грунта</label>
-            @level3.groundtypename 
+            @level3.groundtypename
         </p>
-        
-         <p>
+
+        <p>
             <label class="boxdata-label-40 ">Средняя плотность грунта (кг/м<sup>3</sup>)</label>
             @level3.ro3
         </p>
         <p>
-           <label class="boxdata-label-40 ">Коэффициент фильтрации грунтом воды (м/с)</label>
+            <label class="boxdata-label-40 ">Коэффициент фильтрации грунтом воды(м/с)</label>
             @level3.k3
         </p>
         <p>
-           <label class="boxdata-label-40 ">Коэффициент задержки нефтепродукта в грунте </label>
+            <label class="boxdata-label-40 ">Коэффициент задержки нефтепродукта в грунте </label>
             @level3.r3
         </p>
         <p>
-            <label class="boxdata-label-40 ">Пористость грунта </label>
+            <label class="boxdata-label-40 ">Пористость грунта(%) </label>
             @level3.m3
         </p>
         <p>
-            <label class="boxdata-label-40 ">Капилярная влагомкость  грунта</label>
+            <label class="boxdata-label-40 ">Капилярная влагомкость грунта(%)</label>
             @level3.w3
-       
+
         <p>
             <label class="boxdata-label-40 ">Плотность воды (кг/м<sup>3</sup>)</label>
             @level3.rov
@@ -62,43 +63,44 @@
             @level3.deltav
         </p>
         <p>
-            <label class="boxdata-label-40 ">Толщина грунтового слоя  (м)</label>
+            @*<label class="boxdata-label-40 ">Толщина грунтового слоя  (м)</label>*@
+            <label class="boxdata-label-40 ">Мощность зоны аэрации(м)</label>
             @level3.h3
         </p>
-        
+
     </fieldset>
     <fieldset form="ChoiseRiskObject">
         <legend> Вычисления </legend>
         <p>
-            <label class="boxdata-label-40 ">Масса нефтепродукта достигшая грунтового слоя (кг) </label>
-            @Math.Round(level3.dM3,1)
+            <label class="boxdata-label-40 ">Масса нефтепродукта достигшая зоны аэрации(кг) </label>
+            @Math.Round(level3.dM3, 1)
         </p>
 
         @if (Math.Round(level3.dM3, 0) > 0)
-        { 
-                 <p>
-                    <label class="boxdata-label-40 ">Скорость вертикального проникновенния нефтепродукта в грунт(м/с) </label>
-                     @Math.Round(level3.v3, 8)  =  @(Math.Round(86400.0f * level3.v3,2)) (м/сутки)    
-                </p>
-        
-                <p>
-                    <label class="boxdata-label-40 ">Максимальная глубина проникновения нефтепродукта в грунт(м) </label>
-                    @Math.Round(level3.H3, 1)
-                </p>
-                <p>
-                   <label class="boxdata-label-40 ">Максимальная концентрация нефтеродукта в грунте (кг/кг>)</label>
-                   @level3.C3   = @(Math.Round(level3.C3 * Const.KG_to_MG)) (мг/кг) 
-                </p>
-                <p>
-                   <label class="boxdata-label-40 ">Масса нефтепродукта адсорбированная грунтом (кг)</label>
-                   @Math.Round(level3.M3) 
-                </p>
-               
-        } 
-        
+        {
+            <p>
+                <label class="boxdata-label-40 ">Скорость вертикального проникновенния нефтепродукта в грунт(м/с) </label>
+                @Math.Round(level3.v3, 8)  =  @(Math.Round(86400.0f * level3.v3, 2)) (м/сутки)
+            </p>
+
+            <p>
+                <label class="boxdata-label-40 ">Максимальная глубина проникновения нефтепродукта в грунт(м) </label>
+                @Math.Round(level3.H3, 1)
+            </p>
+            <p>
+                <label class="boxdata-label-40 ">Максимальная концентрация нефтеродукта в грунте (кг/кг>)</label>
+                @level3.C3   = @(Math.Round(level3.C3 * Const.KG_to_MG)) (мг/кг)
+            </p>
+            <p>
+                <label class="boxdata-label-40 ">Масса нефтепродукта адсорбированная грунтами зоны аэрации(кг)</label>
+                @Math.Round(level3.M3)
+            </p>
+
+        }
+
     </fieldset>
     @if (level1.f1ecoobjectslist.Count > 0)
-    { 
+    {
         <fieldset form="ChoiseRiskObject">
             <legend> Природоохранные объекты (радиус: @(level1.R1.ToString() + "м)") </legend>
 
@@ -109,8 +111,8 @@
                 </p>
             }
         </fieldset>
-    } 
-    
+    }
+
 
 
 </div>

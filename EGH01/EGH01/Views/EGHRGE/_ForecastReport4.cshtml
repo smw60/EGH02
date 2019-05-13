@@ -26,25 +26,29 @@
     <fieldset form="ChoiseRiskObject">
         <legend> Вычисления </legend>
         <p>
-            <label class="boxdata-label-40 ">Масса нефтепродукта достигшая грунтовых вод (кг)</label>
-            @level4.dM4 
+            <label class="boxdata-label-40 ">Уровень грунтовых вод(м)</label>
+            @level4.H4
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Масса нефтепродукта достигшая грунтовых вод(кг)</label>
+            @level4.dM4
         </p>
 
         @if (Math.Round(level4.dM4, 0) > 0)
-        {
-            <p>
-                <label class="boxdata-label-40 ">Время достижения максимальной концентрации (с) </label>
-                @level4.t4 = @(Math.Round(level4.t4/Const.SEC_PER_DAY,1)) (сутки)
-            </p>
-            <p >
-                <label class="boxdata-label-40 ">Средняя концентрация в грунтовых водах (кг/м<sup>3</sup>) </label>
-                @level4.C4 = @(level4.C4*Const.KG_to_MG/Const.M3_to_DM3) (мг/дм<sup>3</sup>))
-            </p>
-            <p>
-                <label class="boxdata-label-40 ">Максимальное расстояние распространения фронта загрзнения (м) </label>
-                 @level4.l4
-            </p>
-        }
+    {
+        <p>
+            <label class="boxdata-label-40 ">Время достижения максимальной концентрации(с) </label>
+            @level4.t4 = @(Math.Round(level4.t4 / Const.SEC_PER_DAY, 1)) (сутки)
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Средняя концентрация в грунтовых водах (кг/м<sup>3</sup>) </label>
+            @level4.C4 = @(level4.C4 * Const.KG_to_MG / Const.M3_to_DM3) (мг/дм<sup>3</sup>))
+        </p>
+        <p>
+            <label class="boxdata-label-40 ">Максимальное расстояние распространения фронта загрзнения (м) </label>
+            @level4.l4
+        </p>
+}
     </fieldset>
     
     @if (level4.dM4 > 0 && @level4.l4 > 0 )

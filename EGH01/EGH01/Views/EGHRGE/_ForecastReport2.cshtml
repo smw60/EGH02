@@ -28,8 +28,9 @@
 
         </p>
         <p>
-           <label class="boxdata-label-40 ">Средняя высота почвенного слоя (м) </label>
-            @level2.h2 
+            @*<label class="boxdata-label-40 ">Средняя высота почвенного слоя (м) </label>*@
+            <label class="boxdata-label-40 ">Мощность гумусового горизонта(см) </label>
+            @(level2.h2*100)
         </p>
     </fieldset>
     <fieldset form="ChoiseRiskObject">
@@ -43,8 +44,10 @@
              @level2.M2
         </p>
         <p>
-            <label class="boxdata-label-40 ">Максимальная глубина проникновения нефтепродукта в почву (м) </label>
-            @level2.H2
+            @*<label class="boxdata-label-40 ">Максимальная глубина проникновения нефтепродукта в почву (м) </label>
+            @level2.H2*@
+            <label class="boxdata-label-40 ">Максимальная глубина проникновения нефтепродукта в почву(cм) </label>
+            @(level2.H2 * 100)
         </p>
     </fieldset>
 

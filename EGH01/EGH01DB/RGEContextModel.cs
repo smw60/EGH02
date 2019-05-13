@@ -557,6 +557,7 @@ namespace EGH01DB
          public float l4        { get; private set; }   //  максимальный радиус распространения загрязнения 
          public float v4        { get; private set; }   //  горизонтальная скорость распространения загрязнения
          public float C4        { get; private set; }   //  концентрация в гр. водах 
+         public float H4        { get { return f2.h2 + f3.h3;}}   //  глубина залегания грунтовых вод   
          public float h4        { get { return 1.0f; } }   //  толщина слоя грунтовых вод
          public float dM4       { get; private set; }    // остаток НП достигший грунтовых вод 
          public FEcoObjectsList f4ecoobjectslist { get; private set; }       // перечень экологических объектов в водном  пятне загрязнения
